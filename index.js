@@ -1,16 +1,17 @@
-let r = "r";
-let i = "i";
-let c = "c";
-let k = "k";
+let tirana = "k";
+let rome = "i";
+let berlin = "c";
+let paris = "r";
+let sofia = tirana;
 
 window.addEventListener("keydown", function(e) {
-    if (e.key === r) {
+    if (e.key === paris) {
         window.addEventListener("keydown", function(e) {
-            if (e.key === i) {
+            if (e.key === rome) {
                 window.addEventListener("keydown", function(e) {
-                    if (e.key === c) {
+                    if (e.key === berlin) {
                         window.addEventListener("keydown", function(e) {
-                            if (e.key === c) {
+                            if (e.key === sofia) {
                                 window.location.href = "https://www.youtube.com/watch?v=oHg5SJYRHA0";
                             }
                         })
