@@ -1,14 +1,16 @@
-let r = "c";
-let f = "r";
+let r = "r";
+let i = "i";
+let c = "c";
+let k = "k";
 
 window.addEventListener("keydown", function(e) {
-    if (e.key === f) {
+    if (e.key === r) {
         window.addEventListener("keydown", function(e) {
-            if (e.key === 'i') {
+            if (e.key === i) {
                 window.addEventListener("keydown", function(e) {
-                    if (e.key === r) {
+                    if (e.key === c) {
                         window.addEventListener("keydown", function(e) {
-                            if (e.key === 'k') {
+                            if (e.key === c) {
                                 window.location.href = "https://www.youtube.com/watch?v=oHg5SJYRHA0";
                             }
                         })
