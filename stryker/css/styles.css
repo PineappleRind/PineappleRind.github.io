@@ -20,6 +20,11 @@ body {
   margin: 0;
 }
 
+body a {
+  color: white;
+  text-decoration: none;
+}
+
 nav {
   padding: 20px;
   background-color: rgba(0, 0, 0, 0.24);
@@ -27,15 +32,42 @@ nav {
   top: 0;
   left: 0;
   right: 0;
-  position: absolute;
+  position: fixed;
 }
 
 nav div.left {
   float: left;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+nav div.left a {
+  font-size: 20px;
+  padding: 20px;
+  color: white;
+  text-decoration: none;
 }
 
 nav div:not(.left) {
   float: right;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
 nav div:not(.left) a {
@@ -46,12 +78,48 @@ nav div:not(.left) a {
 }
 
 main {
-  margin-top: 80px;
+  height: 100%;
 }
 
-main h1.title {
+main div.hero {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+main div.hero::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url("hero.png");
+  z-index: -1;
+  -webkit-filter: blur(3px);
+          filter: blur(3px);
+  -webkit-transition: all 2s linear;
+  transition: all 2s linear;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+main div.hero h1.title {
   font-size: 100px;
   -webkit-animation: h1load 2s;
           animation: h1load 2s;
+  margin: 0;
+  background-color: rgba(0, 0, 0, 0.212);
+  padding: 10px;
 }
 /*# sourceMappingURL=styles.css.map */
