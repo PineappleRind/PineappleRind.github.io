@@ -7,25 +7,48 @@ html {
     height: 100%;
     width: 100%;
     margin:0;
+    font-weight: 200;
+    font-family: 'Arial', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
 }
 
 body {
     height: 100%;
     width: 100%;
-    background-color: rgb(227, 227, 227);
+    background-color: rgb(62, 62, 62);
     margin:0;
 }
 
 nav {
     padding: 20px;
-    background-color: rgba(0,0,0,0.1);
+    background-color: rgba(0, 0, 0, 0.24);
     width: 100%;
     top: 0;
     left: 0;
     right:0;
     position: absolute;
+
+    div.left {
+        float: left;
+    }
+
+    div:not(.left) {
+        float: right;
+
+        a {
+            font-size: 20px;
+            padding: 20px;
+            color: white;
+            text-decoration: none;
+        }
+    }
 }
 
 main {
-    margin-top: 20px;
+    margin-top: 80px;
+
+    h1.title {
+        font-size: 100px;
+        animation: h1load 2s
+    }
 }
