@@ -1,0 +1,31 @@
+* {
+    box-sizing: border-box;
+    margin:0;
+}
+
+html {
+    height: 100%;
+    width: 100%;
+    margin:0;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    background-color: rgb(227, 227, 227);
+    margin:0;
+}
+
+nav {
+    padding: 20px;
+    background-color: rgba(0,0,0,0.1);
+    width: 100%;
+    top: 0;
+    left: 0;
+    right:0;
+    position: absolute;
+}
+
+main {
+    margin-top: 20px;
+}
