@@ -122,4 +122,70 @@ main div.hero h1.title {
   background-color: rgba(0, 0, 0, 0.212);
   padding: 10px;
 }
+
+main .arrow-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+}
+
+main .arrow-wrap #goDown {
+  position: absolute;
+  z-index: 6;
+  bottom: 40px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg) scale(5);
+  border: solid white;
+  border-width: 0 1px 1px 0;
+  padding: 3px;
+  -webkit-animation: arrow 4s infinite;
+          animation: arrow 4s infinite;
+}
+
+@-webkit-keyframes arrow {
+  0% {
+    bottom: 40px;
+  }
+  15% {
+    bottom: 50px;
+  }
+  30% {
+    bottom: 40px;
+  }
+  45% {
+    bottom: 50px;
+  }
+  60% {
+    bottom: 40px;
+  }
+}
+
+@keyframes arrow {
+  0% {
+    bottom: 40px;
+  }
+  15% {
+    bottom: 50px;
+  }
+  30% {
+    bottom: 40px;
+  }
+  45% {
+    bottom: 50px;
+  }
+  60% {
+    bottom: 40px;
+  }
+}
 /*# sourceMappingURL=styles.css.map */

@@ -91,4 +91,45 @@ main {
             padding: 10px;
         }
     }
+
+    .arrow-wrap {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        #goDown {
+            position: absolute;
+            z-index: 6;
+            bottom: 40px;
+            transform: rotate(45deg);
+            -webkit-transform: rotate(45deg) scale(5);
+            border: solid rgb(255, 255, 255);
+            border-width: 0 1px 1px 0;
+            padding: 3px;
+            animation: arrow 4s infinite;
+        }
+    }
+}
+
+@keyframes arrow {
+    0% {
+        bottom: 40px
+    }
+
+    15% {
+        bottom: 50px
+    }
+
+    30% {
+        bottom: 40px
+    }
+
+    45% {
+        bottom: 50px
+    }
+
+    60% {
+        bottom: 40px
+    }
 }
