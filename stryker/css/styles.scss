@@ -111,7 +111,7 @@ main {
     position: absolute;
     width: 100%;
     z-index:4;
-    section.second-page, section.first-page, section.third-page, section.transparent {
+    section.second-page, section.first-page, section.third-page, section.transparent, section.fourth-page {
         scroll-snap-align: start;
         height: 100%;
     }
@@ -209,6 +209,27 @@ main {
             
         }
     }
+
+    section.fourth-page {
+        width:  100%;
+        height: 100%;
+        background: rgb(87, 111, 197);
+        z-index: 5;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        color:black;
+        box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.527);
+
+        .discord-wrap {
+            width: 300px;
+            padding:10px;
+            border-radius: 10px;
+            background-color: #fff;
+            height: 50%;
+            color: black;
+        }
+    }
         div.hero {
             height: 100%;
             display: flex;
@@ -259,6 +280,50 @@ main {
     }
 }
 
+.nav-toggle {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    height: 2rem;
+    position: fixed;
+    width: 3.6rem;
+    z-index: 9;
+    top: 30px;
+    right: 30px;
+  }
+  
+  .nav-toggle .nav-toggle-bar,  .nav-toggle .nav-toggle-bar::after,  .nav-toggle .nav-toggle-bar::before {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    background: white;
+    content: '';
+    height: 0.4rem;
+    width: 100%;
+    margin:0;
+  }
+  
+  .nav-toggle .nav-toggle-bar { margin-top: 0; }
+  
+  .nav-toggle .nav-toggle-bar::after { margin-top: 0.9rem; }
+  
+  .nav-toggle .nav-toggle-bar::before { margin-top: -0.9rem; }
+  
+  .nav-toggle.expanded .nav-toggle-bar { background: transparent; }
+  
+  .nav-toggle.expanded .nav-toggle-bar::after, .nav-toggle.expanded .nav-toggle-bar::before {
+    background: white;
+    margin-top: 0;
+    margin:0;
+  }
 footer {
         height: 80px;
         background-color: #333;
@@ -311,8 +376,21 @@ footer {
 @keyframes heroload {
     from {opacity:0;}
 }
-@media only screen and (min-width: 800px) {
-    main .second-page .logo-wrap .logo {
-        height: 400px;
+
+@media (max-width: 700px) {
+    .log {
+        height: 100px;
     }
 }
+
+@media screen and (max-width: 800px) {
+    nav {
+        display: none;
+    }
+
+    .nav-collapsed-open {
+        z-index: 9;
+        display: block;
+    }
+  }
+  
