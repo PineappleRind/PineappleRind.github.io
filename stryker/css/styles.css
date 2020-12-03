@@ -41,6 +41,10 @@ nav {
   bottom: calc(100% - 120px);
 }
 
+nav.scrolled {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
 nav div.left {
   float: left;
   display: -webkit-box;
@@ -63,6 +67,15 @@ nav div.left a {
   padding: 20px;
   color: white;
   text-decoration: none;
+  margin-left: 30px;
+}
+
+nav div.left a img {
+  height: 80px;
+  margin: 0;
+  position: fixed;
+  top: 10px;
+  left: 30px;
 }
 
 nav div:not(.left) {
@@ -112,12 +125,19 @@ main {
       scroll-snap-points-y: repeat(100%);
   -ms-scroll-snap-type: y mandatory;
       scroll-snap-type: y mandatory;
-  overflow: scroll;
+  overflow-y: scroll;
+  position: absolute;
+  width: 100%;
+  z-index: 4;
 }
 
-main section.second-page, main section.first-page, main section.third-page {
+main section.second-page, main section.first-page, main section.third-page, main section.transparent {
   scroll-snap-align: start;
   height: 100%;
+}
+
+main section.transparent {
+  height: 80px;
 }
 
 main section.second-page {
@@ -125,7 +145,7 @@ main section.second-page {
   height: 100%;
   background: -webkit-gradient(linear, left top, left bottom, from(#240854), to(#002d58));
   background: linear-gradient(#240854, #002d58);
-  z-index: 5;
+  z-index: 6;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -168,8 +188,8 @@ main section.second-page .logo-wrap .logo {
 main section.third-page {
   width: 100%;
   height: 100%;
-  background: -webkit-gradient(linear, left top, left bottom, from(#240854), to(#002d58));
-  background: linear-gradient(#240854, #002d58);
+  background: -webkit-gradient(linear, left top, left bottom, from(#540850), to(#1a0058));
+  background: linear-gradient(#540850, #1a0058);
   z-index: 5;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -181,6 +201,8 @@ main section.third-page {
       -ms-flex-align: center;
           align-items: center;
   color: black;
+  -webkit-box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.212);
+          box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.212);
 }
 
 main section.third-page .merch-info-wrap {
@@ -247,8 +269,6 @@ main div.hero::before {
   height: 100%;
   background: url("hero.png");
   z-index: -1;
-  -webkit-filter: blur(3px);
-          filter: blur(3px);
   -webkit-transition: all 2s linear;
   transition: all 2s linear;
   background-attachment: fixed;
@@ -298,6 +318,36 @@ main .arrow-wrap #goDown {
   padding: 3px;
   -webkit-animation: arrow 4s infinite;
           animation: arrow 4s infinite;
+}
+
+footer {
+  height: 80px;
+  background-color: #333;
+  position: fixed;
+  bottom: 0;
+  z-index: 3;
+  right: 0;
+  left: 0;
+  padding: 20px;
+  padding-top: 30px;
+}
+
+footer div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+footer div p {
+  font-size: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 @-webkit-keyframes arrow {

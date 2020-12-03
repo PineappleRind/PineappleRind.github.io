@@ -1,15 +1,18 @@
-let r = document.querySelector("#goDown");
 let n = document.querySelector("main");
+let s = document.querySelector("nav");
 
-onscroll = e => {
-    hideArrow();
+
+
+let f = document.querySelector(".footer");
+
+function showFooter() {
+    f.style.display = 'block';
 }
 
-function hideArrow() {
-    if (n.scrollTop == '0') {
-        r.style.display = 'block';
-    } else if (n.scrollTop > '1') {
-        r.style.display = 'none';
-    }
-    console.log(n.scrollTop)
+setTimeout(function() {
+    showFooter();
+}, 800)
+
+if (n.scrollTop() > s.scrollHeight()) {
+    s.style.backgroundColor = 'rgba(0,0,0,0.7)';
 }
