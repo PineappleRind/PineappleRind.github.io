@@ -1,6 +1,6 @@
 let n = document.querySelector("main");
 let s = document.querySelector("nav");
-let r, t;
+let r, t, c;
 t = document.querySelector(".nav-toggle");
 r = {
     d: document.querySelector(".nav-toggle"),
@@ -9,7 +9,7 @@ r = {
     }
 };
 
-
+c = document.querySelector(".nav-mobile");
 
 let f = document.querySelector(".footer");
 
@@ -17,14 +17,20 @@ function showFooter() {
     f.style.display = 'block';
 }
 
+function nav() {
+    if (c.style.width !== '100%') {
+       c.style.width = '100%';
+    } else {
+        c.style.width = '0%';
+    }
+}
+
 setTimeout(function() {
     showFooter();
 }, 800)
 
-if (n.scrollTop >= s.scrollHeight) {
-    s.style.backgroundColor = 'rgba(0,0,0,0.7)';
-}
 
 t.addEventListener("click", function(e){
     r.l(e);
+    nav();
 })

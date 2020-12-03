@@ -20,8 +20,21 @@ body {
     overflow: hidden;
 
     a {
-        color: white;
+        color: blue;
+        position: relative;
+        margin-bottom: 2px;
         text-decoration: none;
+        font-weight: 600;
+
+        &:hover {
+            opacity:0.9;
+            background:linear-gradient(rgb(0, 139, 219),rgb(124, 0, 173));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -moz-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 20px;
+        }
     }
 }
 
@@ -110,6 +123,33 @@ nav {
     }
 }
 
+.nav-mobile {
+    position: absolute;
+    width: 0%;
+    right:0;
+    left:0;
+    bottom:0;
+    top:0;
+    background-color: rgba(0, 0, 0, 0.709);
+    z-index: 10;
+    transition: 1s;
+    overflow-x: hidden;
+    display: none;
+
+    img {
+        height: 100px;
+    }
+}
+
+.logo-discord {
+    background: rgb(52, 52, 52);
+    width: 300px;
+    position: relative;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin:0;
+}
+
 main {
     height: 100%;
     scroll-snap-points-y: repeat(100%);
@@ -118,6 +158,10 @@ main {
     position: absolute;
     width: 100%;
     z-index:4;
+
+    .logo-about {
+        height: 400px;
+    }
     section.second-page, section.first-page, section.third-page, section.transparent, section.fourth-page {
         scroll-snap-align: start;
         height: 100%;
@@ -196,6 +240,7 @@ main {
                 margin: 20px;
                 text-align: center;
                 font-size: 20px;
+
                 a {
                     color: blue;
                     position: relative;
@@ -230,11 +275,18 @@ main {
 
         .discord-wrap {
             width: 300px;
-            padding:10px;
             border-radius: 10px;
             background-color: #fff;
-            height: 50%;
+            height: 70%;
             color: black;
+
+            h1, p {
+                margin: 10px;
+            }
+
+            p {
+                font-size: 20px;
+            }
         }
     }
         div.hero {
@@ -294,7 +346,7 @@ main {
     height: 2rem;
     position: fixed;
     width: 3.6rem;
-    z-index: 9;
+    z-index: 14;
     top: 30px;
     right: 30px;
     display: none;
@@ -316,6 +368,7 @@ main {
     height: 0.4rem;
     width: 100%;
     margin:0;
+    z-index: 14;
   }
   
   .nav-toggle .nav-toggle-bar { margin-top: 0; }
@@ -329,8 +382,10 @@ main {
   .nav-toggle.expanded .nav-toggle-bar::after, .nav-toggle.expanded .nav-toggle-bar::before {
     background: white;
     margin-top: 0;
+    z-index: 14;
     margin:0;
   }
+  
 footer {
         height: 80px;
         background-color: #333;
@@ -387,21 +442,31 @@ footer {
 @keyframes h1load {
     from {transform: scale(0.3); opacity:0;}
 }
-
-@media (max-width: 700px) {
-    .logo {
-        height: 100px;
-    }
-}
-
 @media screen and (max-width: 800px) {
     nav {
         display: none;
     }
 
     .nav-toggle {
-        z-index: 9;
         display: block;
+        animation: navload 1s;
+    }
+
+    .nav-mobile {
+        display: block;
+    }
+
+    main .logo-about {
+        height: 300px;
     }
   }
   
+@media screen and (max-width: 500px) {
+    main .logo-about {
+        height: 200px;
+    }
+
+    main .first-page, main .second-page, main .third-page, main .fourth-page {
+        flex-direction: column;
+    }
+}
