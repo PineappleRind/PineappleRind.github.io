@@ -16,8 +16,9 @@ html {
 body {
   height: 100%;
   width: 100%;
-  background-color: #3e3e3e;
+  background-color: black;
   margin: 0;
+  overflow: hidden;
 }
 
 body a {
@@ -34,6 +35,10 @@ nav {
   right: 0;
   position: fixed;
   z-index: 7;
+  -webkit-animation: navload 2s;
+          animation: navload 2s;
+  height: 100px;
+  bottom: calc(100% - 120px);
 }
 
 nav div.left {
@@ -54,7 +59,7 @@ nav div.left {
 }
 
 nav div.left a {
-  font-size: 20px;
+  font-size: 30px;
   padding: 20px;
   color: white;
   text-decoration: none;
@@ -76,14 +81,38 @@ nav div:not(.left) a {
   padding: 20px;
   color: white;
   text-decoration: none;
+  position: relative;
+}
+
+nav div:not(.left) a:hover {
+  opacity: 0.9;
+}
+
+nav div:not(.left) a:hover::before {
+  width: 100%;
+  left: 0;
+}
+
+nav div:not(.left) a::before {
+  width: 0;
+  height: 3px;
+  position: absolute;
+  left: 50%;
+  right: 0;
+  bottom: 0;
+  content: "";
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  background-color: #ffffff;
 }
 
 main {
   height: 100%;
-  -ms-scroll-snap-points-y: repeat(100px);
-      scroll-snap-points-y: repeat(100px);
+  -ms-scroll-snap-points-y: repeat(100%);
+      scroll-snap-points-y: repeat(100%);
   -ms-scroll-snap-type: y mandatory;
       scroll-snap-type: y mandatory;
+  overflow: scroll;
 }
 
 main section.second-page, main section.first-page {
@@ -167,6 +196,8 @@ main div.hero::before {
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
+  -webkit-animation: heroload 1s;
+          animation: heroload 1s;
 }
 
 main div.hero h1.title {
@@ -244,6 +275,40 @@ main .arrow-wrap #goDown {
   }
   60% {
     bottom: 40px;
+  }
+}
+
+@-webkit-keyframes navload {
+  0% {
+    -webkit-transform: translateY(-100px);
+            transform: translateY(-100px);
+  }
+  40% {
+    -webkit-transform: translateY(-100px);
+            transform: translateY(-100px);
+  }
+}
+
+@keyframes navload {
+  0% {
+    -webkit-transform: translateY(-100px);
+            transform: translateY(-100px);
+  }
+  40% {
+    -webkit-transform: translateY(-100px);
+            transform: translateY(-100px);
+  }
+}
+
+@-webkit-keyframes heroload {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes heroload {
+  from {
+    opacity: 0;
   }
 }
 
