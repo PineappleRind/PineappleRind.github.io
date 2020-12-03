@@ -23,12 +23,18 @@ body {
   #blurOverlay {
     display: block;
     @include overlay;
-    z-index:3;
-    opacity:0;
-    -webkit-backdrop-filter: blur(5px);
-    backdrop-filter: blur(5px);
-    background-color: rgba(0, 0, 0, 0.339);
+    z-index: 3;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.6);
     transition: 0.5s linear;
+  }
+
+  noscript {
+    @include overlay;
+    background: rgb(255, 255, 255);
+    z-index: 100;
+    font-size: 50px;
+    font-family: 'Times New Roman', Times, serif;
   }
 }
 
@@ -120,8 +126,8 @@ nav {
   }
 
   div.github {
-    height: 80px;
-    width: 80px;
+    height: 70px;
+    width: 70px;
     border-radius: 50%;
     padding: 20px;
     background-color: rgb(255, 255, 255);
@@ -138,20 +144,40 @@ nav {
     position: absolute;
     top: 10px;
     right: 100px;
-    z-index: 6;
+    z-index: 7;
 
     &:hover {
       transform: scale(1.05)
     }
 
     a img {
-      height: 80px
+      height: 72px;
+      width: 70px;
     }
   }
 
+  p#githubLabel {
+    overflow: hidden;
+    position: absolute;
+    top: -5px;
+    right: 185px;
+    z-index: 6;
+    font-size: 19px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.339);
+    padding: 21px;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    overflow: hidden;
+    opacity:0;
+    padding-left: 40px;
+    transition: 0.4s;
+    display: none;
+  }
+
   div.menu {
-    height: 80px;
-    width: 80px;
+    height: 70px;
+    width: 70px;
     border-radius: 50%;
     padding: 20px;
     background-color: coral;
@@ -167,6 +193,7 @@ nav {
     position: absolute;
     top: 10px;
     z-index: 6;
+    margin:0;
     
 
     .nav-toggle {
@@ -178,6 +205,7 @@ nav {
       position: fixed;
       width: 3.6rem;
       z-index: 2;
+      padding:0;
     }
     
     .nav-toggle .nav-toggle-bar,  .nav-toggle .nav-toggle-bar::after,  .nav-toggle .nav-toggle-bar::before {
@@ -196,13 +224,14 @@ nav {
       height: 0.4rem;
       width: 100%;
       margin:0;
+      padding:0;
     }
     
     .nav-toggle .nav-toggle-bar { margin-top: 0; }
     
-    .nav-toggle .nav-toggle-bar::after { margin-top: 0.9rem; }
+    .nav-toggle .nav-toggle-bar::after { margin-top: 0.8rem; }
     
-    .nav-toggle .nav-toggle-bar::before { margin-top: -0.9rem; }
+    .nav-toggle .nav-toggle-bar::before { margin-top: -0.8rem; }
     
     .nav-toggle.expanded .nav-toggle-bar { background: transparent; }
     
@@ -247,7 +276,7 @@ nav {
       flex-direction: column;
       font-size: 40px;
       text-transform: lowercase;
-      margin-top: 100px;
+      margin-top: 120px;
       animation-duration: 1s;
       position: relative;
 
@@ -257,6 +286,7 @@ nav {
         position: relative;
         width: fit-content;
         color: black;
+        font-size: 35px;
         &::after {
             background: #000000;
             width: 0;
@@ -276,32 +306,44 @@ nav {
         }
 
         &.special {
-          border-radius: 10px;
-          border: 2px solid rgb(80, 109, 255);
-          background-color: rgba(80, 109, 255, 0.422);
-          transition: 0.5s;
-          padding:0;
-          width: 100%;
-
-          font-size: 40px;
-          color: white;
+          background-color: rgb(23, 93, 255);
           text-transform: uppercase;
+          font-weight: 700;
+          font-size: 35px;
+          color: white;
+          padding: 20px;
+          overflow: hidden;
           text-align: center;
-          margin-top: 30px;
-          position: relative;
-  
-          &:hover {
-            background-color: rgba(80, 109, 255, 0.815);
-            border: 2px solid rgb(80, 109, 255);
-            &::after {
-              width:0;
-            }
+          margin: 40px;
+          margin-left:0;
+          -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none;
+
+          &::after {
+            display: none;
           }
         }
       }
     }
   }
 }
+
+          .ripple {
+            width: 48px;
+            height: 48px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%) scale(0, 0);
+            border-radius: 50%;
+            background-color: rgb(255, 255, 255);
+            opacity: 1;
+            pointer-events: none;
+          }
+          .ripple-animate {
+            transition: 0.6s transform, opacity 0.6s;
+          }
 
 .modal-blur {
   @include overlay;
@@ -311,8 +353,8 @@ nav {
   transition: 0.5s;
   .modal {
     position: fixed;
-    top: 10%;
-    bottom: 10%;
+    top: 30%;
+    bottom: 30%;
     left: 30%;
     right:30%;
     background-color: #fff;
@@ -331,7 +373,7 @@ nav {
     p {
       font-size: 40px;
       position: absolute;
-      top:0px;
+      top:-30px;
       right: 10px;
       cursor: pointer;
     }
@@ -341,6 +383,13 @@ nav {
 @keyframes scale-out {
   to {
     transform: scale(0);
+    opacity: 0;
+  }
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
     opacity: 0;
   }
 }
