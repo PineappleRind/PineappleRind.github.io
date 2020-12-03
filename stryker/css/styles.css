@@ -26,6 +26,14 @@ body a {
   text-decoration: none;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cabin', Verdana, Geneva, Tahoma, sans-serif;
+}
+
+p, b, i, a {
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+}
+
 nav {
   padding: 20px;
   background-color: rgba(0, 0, 0, 0.24);
@@ -308,8 +316,8 @@ main div.hero::before {
 
 main div.hero h1.title {
   font-size: 100px;
-  -webkit-animation: h1load 2s;
-          animation: h1load 2s;
+  -webkit-animation: h1load 1s;
+          animation: h1load 1s;
   margin: 0;
   background-color: rgba(0, 0, 0, 0.212);
   padding: 10px;
@@ -360,6 +368,7 @@ main .arrow-wrap #goDown {
   z-index: 9;
   top: 30px;
   right: 30px;
+  display: none;
 }
 
 .nav-toggle .nav-toggle-bar, .nav-toggle .nav-toggle-bar::after, .nav-toggle .nav-toggle-bar::before {
@@ -498,8 +507,24 @@ footer div p {
   }
 }
 
+@-webkit-keyframes h1load {
+  from {
+    -webkit-transform: scale(0.3);
+            transform: scale(0.3);
+    opacity: 0;
+  }
+}
+
+@keyframes h1load {
+  from {
+    -webkit-transform: scale(0.3);
+            transform: scale(0.3);
+    opacity: 0;
+  }
+}
+
 @media (max-width: 700px) {
-  .log {
+  .logo {
     height: 100px;
   }
 }
@@ -508,7 +533,7 @@ footer div p {
   nav {
     display: none;
   }
-  .nav-collapsed-open {
+  .nav-toggle {
     z-index: 9;
     display: block;
   }
