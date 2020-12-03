@@ -191,6 +191,38 @@ main section.third-page .merch-info-wrap {
   height: 50%;
 }
 
+main section.third-page .merch-info-wrap h1 {
+  color: black;
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  font-size: 45px;
+}
+
+main section.third-page .merch-info-wrap p {
+  color: black;
+  margin: 20px;
+  text-align: center;
+  font-size: 20px;
+}
+
+main section.third-page .merch-info-wrap p a {
+  color: blue;
+  position: relative;
+  margin-bottom: 2px;
+}
+
+main section.third-page .merch-info-wrap p a:hover {
+  opacity: 0.9;
+  background: -webkit-gradient(linear, left top, left bottom, from(#008bdb), to(#7c00ad));
+  background: linear-gradient(#008bdb, #7c00ad);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 20px;
+}
+
 main div.hero {
   height: 100%;
   display: -webkit-box;
