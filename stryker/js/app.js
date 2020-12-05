@@ -25,6 +25,12 @@ function nav() {
     }
 }
 
+var i;
+for (i = 0; i < 70; i++) {
+    let snow = document.createElement('snow');
+    document.body.appendChild(snow);
+}
+    
 setTimeout(function() {
     showFooter();
 }, 800)

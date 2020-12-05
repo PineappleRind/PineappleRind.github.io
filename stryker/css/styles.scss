@@ -45,6 +45,29 @@ h1, h2, h3, h4, h5, h6 {
 p, b, i, a {
     font-family: 'Open Sans', Arial, Helvetica, sans-serif;
 }
+
+snow {
+    border-radius: 50%;
+    background: white;
+    position: absolute;
+    animation: star linear infinite; 
+    z-index: 100;
+    @for $i from 1 through 70 {
+      &:nth-child(#{$i}) {
+        $size: random(3) + 3px;
+        width: $size;
+        height: $size;
+        animation-duration: random(5) + 5s;
+        animation-delay: random(40) - 40s;
+        right: random(351) - 1vh;
+      }
+    }
+  }
+  @keyframes star {
+    from { transform: translate(0, 0); }
+    to { transform: translate(100vw, 100vw); }
+  }
+
 nav {
     padding: 20px;
     background-color: rgba(0, 0, 0, 0.24);
@@ -77,6 +100,9 @@ nav {
             text-decoration: none;
             margin-left: 30px;
 
+            &:hover {
+                color: white;
+            }
             img {
                 height: 80px;
                 margin:0;
@@ -99,7 +125,9 @@ nav {
             position: relative;
 
             &:hover {
-                opacity:0.9;
+                color: white;
+                -webkit-text-fill-color: white;
+                background-color: white;
 
                 &::before {
                     width: 100%;
@@ -162,6 +190,20 @@ main {
     .logo-about {
         height: 400px;
     }
+
+    .discord-wrap, .merch-info-wrap, .h1-wrap {
+        transition: .4s;
+    }
+
+    .discord-wrap:hover, .merch-info-wrap:hover, .h1-wrap:hover {
+        box-shadow: 0 10px 20px 5px rgba(0, 0, 0, 0.374);
+        transform: translateY(-1px);
+    }
+
+    .discord-wrap:hover {
+        cursor: pointer;
+    }
+    
     section.second-page, section.first-page, section.third-page, section.transparent, section.fourth-page {
         scroll-snap-align: start;
         height: 100%;
@@ -184,7 +226,7 @@ main {
             background-color: #fff;
             width: 300px;
             border-radius: 20px;
-            box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.349);
+            box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.233);
 
             h1 {
                 color: black;
@@ -277,16 +319,38 @@ main {
             width: 300px;
             border-radius: 10px;
             background-color: #fff;
-            height: 70%;
+            height: 65%;
             color: black;
+            box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.212);
+            margin: 40px;
 
             h1, p {
                 margin: 10px;
+                text-align: center;
+                color: black;
+            }
+
+            h1 {
+                font-weight: 800;
+                font-size: 30px;
             }
 
             p {
-                font-size: 20px;
+                font-size: 20px
             }
+        }
+
+        h1 {
+            margin: 50px;
+            color: white;
+            font-weight: 200;
+            font-size: 50px;
+        }
+
+        p.arrow-discord {
+            font-size: 100px;
+            font-weight: 900;
+            color: white;
         }
     }
         div.hero {
