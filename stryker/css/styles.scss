@@ -366,12 +366,11 @@ main {
                 width: 100%;
                 height: 100%;
                 background: url('hero.png');
-                z-index: -1;
+                z-index: 1;
                 transition: all 2s linear;
                 background-attachment: fixed;
                 background-size: cover;
                 background-position: center;
-                animation: heroload 1s;
             }
             h1.title {
             font-size: 100px;
@@ -402,6 +401,20 @@ main {
         }
     }
 }
+
+.modal-donate {
+    z-index: 14;
+    background-color: #fff;
+    padding: 20px;
+    position: fixed;
+    top: 20%;
+    bottom: 20%;
+    left: 20%;
+    right: 20%;
+    color: black;
+    display: none;
+}
+
 .nav-toggle {
     -webkit-user-select: none;
     -moz-user-select: none;

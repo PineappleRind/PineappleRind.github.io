@@ -1,6 +1,6 @@
 let n = document.querySelector("main");
 let s = document.querySelector("nav");
-let r, t, c;
+let r, t, c, g;
 t = document.querySelector(".nav-toggle");
 r = {
     d: document.querySelector(".nav-toggle"),
@@ -8,6 +8,8 @@ r = {
         e.preventDefault(), this.d.classList.toggle("expanded")
     }
 };
+
+g = document.getElementById('donateBtn');
 
 c = document.querySelector(".nav-mobile");
 
@@ -30,6 +32,16 @@ for (i = 0; i < 70; i++) {
     let snow = document.createElement('snow');
     document.body.appendChild(snow);
 }
+let h;
+h = document.getElementById('modalDonate');
+
+function donateModal() {
+    h.style.display = 'block';
+}
+
+g.addEventListener('click', function() {
+    donateModal();
+});
     
 setTimeout(function() {
     showFooter();

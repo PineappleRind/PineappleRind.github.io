@@ -2,7 +2,7 @@
 
 var n = document.querySelector("main");
 var s = document.querySelector("nav");
-var r, t, c;
+var r, t, c, g;
 t = document.querySelector(".nav-toggle");
 r = {
   d: document.querySelector(".nav-toggle"),
@@ -10,6 +10,7 @@ r = {
     e.preventDefault(), this.d.classList.toggle("expanded");
   }
 };
+g = document.getElementById('donateBtn');
 c = document.querySelector(".nav-mobile");
 var f = document.querySelector(".footer");
 
@@ -25,11 +26,21 @@ function nav() {
   }
 }
 
-for (var i = 0; i >= 70; i++) {
-  var snow = document.createElement('SNOW');
+var i;
+
+for (i = 0; i < 70; i++) {
+  var snow = document.createElement('snow');
   document.body.appendChild(snow);
 }
 
+var h;
+h = document.getElementById('modalDonate');
+
+function donateModal() {
+  h.style.display = 'block';
+}
+
+g.addEventListener('click', donateModal());
 setTimeout(function () {
   showFooter();
 }, 800);
