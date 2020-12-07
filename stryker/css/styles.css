@@ -1,6 +1,8 @@
 * {
   box-sizing: border-box;
   margin: 0;
+  animation-duration: 1s;
+  transition: 0.3s;
 }
 
 html {
@@ -26,15 +28,6 @@ body a {
   text-decoration: none;
   font-weight: 600;
 }
-body a:hover {
-  opacity: 0.9;
-  background: linear-gradient(#008bdb, #7c00ad);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-size: 20px;
-}
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Cabin", Verdana, Geneva, Tahoma, sans-serif;
@@ -52,494 +45,494 @@ snow {
   z-index: 100;
 }
 snow:nth-child(1) {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
   animation-duration: 9s;
-  animation-delay: -8s;
-  right: 61vh;
+  animation-delay: -36s;
+  right: 187vh;
 }
 snow:nth-child(2) {
-  width: 6px;
-  height: 6px;
-  animation-duration: 10s;
-  animation-delay: -6s;
-  right: 79vh;
+  width: 5px;
+  height: 5px;
+  animation-duration: 6s;
+  animation-delay: -28s;
+  right: 292vh;
 }
 snow:nth-child(3) {
-  width: 6px;
-  height: 6px;
-  animation-duration: 9s;
-  animation-delay: -10s;
-  right: 70vh;
+  width: 4px;
+  height: 4px;
+  animation-duration: 7s;
+  animation-delay: -18s;
+  right: 109vh;
 }
 snow:nth-child(4) {
-  width: 4px;
-  height: 4px;
+  width: 6px;
+  height: 6px;
   animation-duration: 9s;
-  animation-delay: -8s;
-  right: 311vh;
+  animation-delay: -5s;
+  right: 59vh;
 }
 snow:nth-child(5) {
-  width: 6px;
-  height: 6px;
-  animation-duration: 10s;
-  animation-delay: -33s;
-  right: 53vh;
+  width: 5px;
+  height: 5px;
+  animation-duration: 7s;
+  animation-delay: -17s;
+  right: 96vh;
 }
 snow:nth-child(6) {
-  width: 6px;
-  height: 6px;
-  animation-duration: 9s;
-  animation-delay: -34s;
-  right: 299vh;
+  width: 5px;
+  height: 5px;
+  animation-duration: 6s;
+  animation-delay: -13s;
+  right: 270vh;
 }
 snow:nth-child(7) {
-  width: 6px;
-  height: 6px;
-  animation-duration: 10s;
-  animation-delay: -9s;
-  right: 86vh;
+  width: 4px;
+  height: 4px;
+  animation-duration: 7s;
+  animation-delay: -18s;
+  right: 172vh;
 }
 snow:nth-child(8) {
-  width: 6px;
-  height: 6px;
-  animation-duration: 10s;
-  animation-delay: -9s;
-  right: 284vh;
+  width: 5px;
+  height: 5px;
+  animation-duration: 7s;
+  animation-delay: -26s;
+  right: 155vh;
 }
 snow:nth-child(9) {
-  width: 4px;
-  height: 4px;
+  width: 5px;
+  height: 5px;
   animation-duration: 10s;
-  animation-delay: -22s;
-  right: 332vh;
+  animation-delay: -6s;
+  right: 155vh;
 }
 snow:nth-child(10) {
-  width: 4px;
-  height: 4px;
-  animation-duration: 6s;
-  animation-delay: -8s;
-  right: 339vh;
+  width: 6px;
+  height: 6px;
+  animation-duration: 7s;
+  animation-delay: -18s;
+  right: 14vh;
 }
 snow:nth-child(11) {
   width: 5px;
   height: 5px;
   animation-duration: 9s;
-  animation-delay: -21s;
-  right: 129vh;
+  animation-delay: -36s;
+  right: 280vh;
 }
 snow:nth-child(12) {
-  width: 5px;
-  height: 5px;
-  animation-duration: 10s;
-  animation-delay: -10s;
-  right: 20vh;
-}
-snow:nth-child(13) {
   width: 6px;
   height: 6px;
-  animation-duration: 7s;
-  animation-delay: -25s;
-  right: 76vh;
+  animation-duration: 8s;
+  animation-delay: -29s;
+  right: 109vh;
 }
-snow:nth-child(14) {
+snow:nth-child(13) {
   width: 5px;
   height: 5px;
-  animation-duration: 6s;
+  animation-duration: 7s;
+  animation-delay: -8s;
+  right: 59vh;
+}
+snow:nth-child(14) {
+  width: 6px;
+  height: 6px;
+  animation-duration: 9s;
   animation-delay: -30s;
-  right: 288vh;
+  right: 169vh;
 }
 snow:nth-child(15) {
   width: 4px;
   height: 4px;
-  animation-duration: 7s;
-  animation-delay: -16s;
-  right: 286vh;
+  animation-duration: 10s;
+  animation-delay: -33s;
+  right: 213vh;
 }
 snow:nth-child(16) {
-  width: 5px;
-  height: 5px;
-  animation-duration: 10s;
-  animation-delay: -24s;
-  right: 324vh;
+  width: 6px;
+  height: 6px;
+  animation-duration: 8s;
+  animation-delay: -7s;
+  right: 76vh;
 }
 snow:nth-child(17) {
   width: 4px;
   height: 4px;
-  animation-duration: 6s;
-  animation-delay: -29s;
-  right: 149vh;
+  animation-duration: 9s;
+  animation-delay: -38s;
+  right: 26vh;
 }
 snow:nth-child(18) {
-  width: 4px;
-  height: 4px;
-  animation-duration: 9s;
-  animation-delay: -25s;
-  right: 180vh;
+  width: 5px;
+  height: 5px;
+  animation-duration: 10s;
+  animation-delay: 0s;
+  right: 243vh;
 }
 snow:nth-child(19) {
   width: 4px;
   height: 4px;
   animation-duration: 7s;
-  animation-delay: -19s;
-  right: 201vh;
+  animation-delay: -8s;
+  right: 235vh;
 }
 snow:nth-child(20) {
-  width: 4px;
-  height: 4px;
-  animation-duration: 8s;
-  animation-delay: -35s;
-  right: 210vh;
+  width: 6px;
+  height: 6px;
+  animation-duration: 9s;
+  animation-delay: -19s;
+  right: 71vh;
 }
 snow:nth-child(21) {
-  width: 6px;
-  height: 6px;
-  animation-duration: 10s;
+  width: 4px;
+  height: 4px;
+  animation-duration: 6s;
   animation-delay: -17s;
-  right: 326vh;
+  right: 339vh;
 }
 snow:nth-child(22) {
-  width: 6px;
-  height: 6px;
-  animation-duration: 7s;
-  animation-delay: -4s;
-  right: 184vh;
-}
-snow:nth-child(23) {
-  width: 5px;
-  height: 5px;
-  animation-duration: 6s;
-  animation-delay: -8s;
-  right: 221vh;
-}
-snow:nth-child(24) {
-  width: 5px;
-  height: 5px;
-  animation-duration: 9s;
-  animation-delay: -22s;
-  right: 217vh;
-}
-snow:nth-child(25) {
-  width: 5px;
-  height: 5px;
-  animation-duration: 8s;
-  animation-delay: -8s;
-  right: 51vh;
-}
-snow:nth-child(26) {
-  width: 6px;
-  height: 6px;
-  animation-duration: 6s;
-  animation-delay: -11s;
-  right: 103vh;
-}
-snow:nth-child(27) {
   width: 4px;
   height: 4px;
   animation-duration: 7s;
-  animation-delay: -38s;
-  right: 272vh;
+  animation-delay: -29s;
+  right: 71vh;
+}
+snow:nth-child(23) {
+  width: 6px;
+  height: 6px;
+  animation-duration: 6s;
+  animation-delay: -25s;
+  right: 6vh;
+}
+snow:nth-child(24) {
+  width: 6px;
+  height: 6px;
+  animation-duration: 7s;
+  animation-delay: -35s;
+  right: 160vh;
+}
+snow:nth-child(25) {
+  width: 4px;
+  height: 4px;
+  animation-duration: 7s;
+  animation-delay: -35s;
+  right: 138vh;
+}
+snow:nth-child(26) {
+  width: 4px;
+  height: 4px;
+  animation-duration: 10s;
+  animation-delay: -23s;
+  right: 237vh;
+}
+snow:nth-child(27) {
+  width: 5px;
+  height: 5px;
+  animation-duration: 6s;
+  animation-delay: 0s;
+  right: 310vh;
 }
 snow:nth-child(28) {
   width: 6px;
   height: 6px;
-  animation-duration: 6s;
-  animation-delay: -33s;
-  right: 110vh;
+  animation-duration: 10s;
+  animation-delay: -15s;
+  right: 267vh;
 }
 snow:nth-child(29) {
-  width: 5px;
-  height: 5px;
-  animation-duration: 10s;
-  animation-delay: -5s;
-  right: 217vh;
-}
-snow:nth-child(30) {
-  width: 6px;
-  height: 6px;
-  animation-duration: 7s;
-  animation-delay: -33s;
-  right: 331vh;
-}
-snow:nth-child(31) {
-  width: 6px;
-  height: 6px;
-  animation-duration: 9s;
-  animation-delay: -22s;
-  right: 61vh;
-}
-snow:nth-child(32) {
   width: 4px;
   height: 4px;
-  animation-duration: 10s;
-  animation-delay: -34s;
-  right: 174vh;
+  animation-duration: 6s;
+  animation-delay: -32s;
+  right: 123vh;
+}
+snow:nth-child(30) {
+  width: 4px;
+  height: 4px;
+  animation-duration: 7s;
+  animation-delay: -21s;
+  right: 223vh;
+}
+snow:nth-child(31) {
+  width: 4px;
+  height: 4px;
+  animation-duration: 8s;
+  animation-delay: -5s;
+  right: 228vh;
+}
+snow:nth-child(32) {
+  width: 5px;
+  height: 5px;
+  animation-duration: 8s;
+  animation-delay: -9s;
+  right: 267vh;
 }
 snow:nth-child(33) {
   width: 5px;
   height: 5px;
   animation-duration: 9s;
-  animation-delay: -6s;
-  right: 162vh;
+  animation-delay: -1s;
+  right: 308vh;
 }
 snow:nth-child(34) {
-  width: 6px;
-  height: 6px;
-  animation-duration: 8s;
-  animation-delay: -22s;
-  right: 138vh;
+  width: 5px;
+  height: 5px;
+  animation-duration: 10s;
+  animation-delay: -13s;
+  right: 242vh;
 }
 snow:nth-child(35) {
   width: 4px;
   height: 4px;
-  animation-duration: 9s;
-  animation-delay: -24s;
-  right: 122vh;
+  animation-duration: 7s;
+  animation-delay: -9s;
+  right: 344vh;
 }
 snow:nth-child(36) {
   width: 6px;
   height: 6px;
-  animation-duration: 9s;
-  animation-delay: -13s;
-  right: 277vh;
+  animation-duration: 10s;
+  animation-delay: -11s;
+  right: 278vh;
 }
 snow:nth-child(37) {
   width: 5px;
   height: 5px;
-  animation-duration: 7s;
-  animation-delay: -27s;
-  right: 269vh;
+  animation-duration: 10s;
+  animation-delay: 0s;
+  right: 35vh;
 }
 snow:nth-child(38) {
-  width: 4px;
-  height: 4px;
-  animation-duration: 10s;
-  animation-delay: -5s;
-  right: 350vh;
-}
-snow:nth-child(39) {
   width: 6px;
   height: 6px;
-  animation-duration: 8s;
-  animation-delay: -13s;
-  right: 83vh;
+  animation-duration: 6s;
+  animation-delay: -24s;
+  right: 137vh;
 }
-snow:nth-child(40) {
+snow:nth-child(39) {
   width: 5px;
   height: 5px;
-  animation-duration: 10s;
-  animation-delay: -34s;
-  right: 184vh;
+  animation-duration: 8s;
+  animation-delay: -5s;
+  right: 296vh;
+}
+snow:nth-child(40) {
+  width: 6px;
+  height: 6px;
+  animation-duration: 6s;
+  animation-delay: -6s;
+  right: 248vh;
 }
 snow:nth-child(41) {
   width: 5px;
   height: 5px;
-  animation-duration: 10s;
-  animation-delay: -37s;
-  right: 215vh;
+  animation-duration: 6s;
+  animation-delay: -18s;
+  right: 11vh;
 }
 snow:nth-child(42) {
-  width: 4px;
-  height: 4px;
-  animation-duration: 7s;
-  animation-delay: -13s;
-  right: 258vh;
-}
-snow:nth-child(43) {
   width: 6px;
   height: 6px;
   animation-duration: 6s;
-  animation-delay: -2s;
-  right: 82vh;
+  animation-delay: -39s;
+  right: 294vh;
+}
+snow:nth-child(43) {
+  width: 5px;
+  height: 5px;
+  animation-duration: 7s;
+  animation-delay: -38s;
+  right: 15vh;
 }
 snow:nth-child(44) {
   width: 6px;
   height: 6px;
-  animation-duration: 7s;
-  animation-delay: -30s;
-  right: 10vh;
+  animation-duration: 8s;
+  animation-delay: -5s;
+  right: 229vh;
 }
 snow:nth-child(45) {
-  width: 4px;
-  height: 4px;
-  animation-duration: 7s;
-  animation-delay: -19s;
-  right: 202vh;
+  width: 6px;
+  height: 6px;
+  animation-duration: 10s;
+  animation-delay: -30s;
+  right: 312vh;
 }
 snow:nth-child(46) {
   width: 4px;
   height: 4px;
-  animation-duration: 9s;
-  animation-delay: -17s;
-  right: 341vh;
+  animation-duration: 7s;
+  animation-delay: -27s;
+  right: 215vh;
 }
 snow:nth-child(47) {
-  width: 4px;
-  height: 4px;
-  animation-duration: 8s;
-  animation-delay: -5s;
-  right: 285vh;
+  width: 6px;
+  height: 6px;
+  animation-duration: 10s;
+  animation-delay: -25s;
+  right: 158vh;
 }
 snow:nth-child(48) {
-  width: 5px;
-  height: 5px;
+  width: 6px;
+  height: 6px;
   animation-duration: 10s;
-  animation-delay: -11s;
-  right: 148vh;
+  animation-delay: -19s;
+  right: 40vh;
 }
 snow:nth-child(49) {
-  width: 5px;
-  height: 5px;
-  animation-duration: 9s;
-  animation-delay: -29s;
-  right: 37vh;
+  width: 6px;
+  height: 6px;
+  animation-duration: 7s;
+  animation-delay: -36s;
+  right: 107vh;
 }
 snow:nth-child(50) {
   width: 6px;
   height: 6px;
   animation-duration: 9s;
-  animation-delay: -5s;
-  right: 308vh;
+  animation-delay: -1s;
+  right: 242vh;
 }
 snow:nth-child(51) {
-  width: 5px;
-  height: 5px;
-  animation-duration: 10s;
-  animation-delay: -1s;
-  right: 139vh;
+  width: 4px;
+  height: 4px;
+  animation-duration: 7s;
+  animation-delay: -33s;
+  right: 346vh;
 }
 snow:nth-child(52) {
-  width: 6px;
-  height: 6px;
-  animation-duration: 6s;
-  animation-delay: -16s;
-  right: 236vh;
-}
-snow:nth-child(53) {
   width: 5px;
   height: 5px;
-  animation-duration: 7s;
-  animation-delay: -31s;
-  right: 122vh;
+  animation-duration: 9s;
+  animation-delay: -3s;
+  right: 98vh;
+}
+snow:nth-child(53) {
+  width: 4px;
+  height: 4px;
+  animation-duration: 9s;
+  animation-delay: -13s;
+  right: 98vh;
 }
 snow:nth-child(54) {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
   animation-duration: 6s;
-  animation-delay: -5s;
-  right: 52vh;
+  animation-delay: -24s;
+  right: 302vh;
 }
 snow:nth-child(55) {
-  width: 6px;
-  height: 6px;
-  animation-duration: 10s;
-  animation-delay: -21s;
-  right: 337vh;
+  width: 4px;
+  height: 4px;
+  animation-duration: 9s;
+  animation-delay: -13s;
+  right: 205vh;
 }
 snow:nth-child(56) {
   width: 5px;
   height: 5px;
-  animation-duration: 6s;
-  animation-delay: -17s;
-  right: 66vh;
+  animation-duration: 10s;
+  animation-delay: -20s;
+  right: 157vh;
 }
 snow:nth-child(57) {
   width: 6px;
   height: 6px;
-  animation-duration: 8s;
-  animation-delay: -1s;
-  right: 322vh;
+  animation-duration: 6s;
+  animation-delay: -35s;
+  right: 282vh;
 }
 snow:nth-child(58) {
   width: 6px;
   height: 6px;
-  animation-duration: 6s;
-  animation-delay: -35s;
-  right: 153vh;
+  animation-duration: 9s;
+  animation-delay: -31s;
+  right: 234vh;
 }
 snow:nth-child(59) {
-  width: 6px;
-  height: 6px;
-  animation-duration: 6s;
-  animation-delay: -20s;
-  right: 89vh;
+  width: 5px;
+  height: 5px;
+  animation-duration: 10s;
+  animation-delay: -39s;
+  right: 285vh;
 }
 snow:nth-child(60) {
+  width: 5px;
+  height: 5px;
+  animation-duration: 8s;
+  animation-delay: -34s;
+  right: 151vh;
+}
+snow:nth-child(61) {
+  width: 5px;
+  height: 5px;
+  animation-duration: 9s;
+  animation-delay: -2s;
+  right: 136vh;
+}
+snow:nth-child(62) {
   width: 4px;
   height: 4px;
   animation-duration: 6s;
-  animation-delay: -35s;
-  right: 158vh;
-}
-snow:nth-child(61) {
-  width: 6px;
-  height: 6px;
-  animation-duration: 6s;
-  animation-delay: -1s;
-  right: 334vh;
-}
-snow:nth-child(62) {
-  width: 5px;
-  height: 5px;
-  animation-duration: 6s;
-  animation-delay: -35s;
-  right: 99vh;
+  animation-delay: -16s;
+  right: 138vh;
 }
 snow:nth-child(63) {
-  width: 6px;
-  height: 6px;
+  width: 4px;
+  height: 4px;
   animation-duration: 10s;
-  animation-delay: -30s;
-  right: 328vh;
+  animation-delay: -17s;
+  right: 309vh;
 }
 snow:nth-child(64) {
-  width: 6px;
-  height: 6px;
-  animation-duration: 7s;
-  animation-delay: -20s;
-  right: 284vh;
+  width: 5px;
+  height: 5px;
+  animation-duration: 9s;
+  animation-delay: -19s;
+  right: 183vh;
 }
 snow:nth-child(65) {
   width: 6px;
   height: 6px;
-  animation-duration: 10s;
-  animation-delay: -16s;
-  right: 322vh;
+  animation-duration: 8s;
+  animation-delay: -31s;
+  right: 147vh;
 }
 snow:nth-child(66) {
-  width: 4px;
-  height: 4px;
+  width: 6px;
+  height: 6px;
   animation-duration: 9s;
-  animation-delay: -1s;
-  right: 124vh;
+  animation-delay: -18s;
+  right: 57vh;
 }
 snow:nth-child(67) {
   width: 5px;
   height: 5px;
-  animation-duration: 6s;
-  animation-delay: -29s;
-  right: 250vh;
+  animation-duration: 7s;
+  animation-delay: -20s;
+  right: 115vh;
 }
 snow:nth-child(68) {
+  width: 6px;
+  height: 6px;
+  animation-duration: 8s;
+  animation-delay: -9s;
+  right: 79vh;
+}
+snow:nth-child(69) {
   width: 4px;
   height: 4px;
   animation-duration: 8s;
-  animation-delay: -10s;
-  right: 34vh;
-}
-snow:nth-child(69) {
-  width: 5px;
-  height: 5px;
-  animation-duration: 8s;
-  animation-delay: -12s;
-  right: 69vh;
+  animation-delay: -14s;
+  right: 113vh;
 }
 snow:nth-child(70) {
-  width: 5px;
-  height: 5px;
+  width: 6px;
+  height: 6px;
   animation-duration: 7s;
-  animation-delay: -14s;
-  right: 255vh;
+  animation-delay: -26s;
+  right: 106vh;
 }
 
 @keyframes star {
@@ -580,9 +573,6 @@ nav div.left a {
   text-decoration: none;
   margin-left: 30px;
 }
-nav div.left a:hover {
-  color: white;
-}
 nav div.left a img {
   height: 80px;
   margin: 0;
@@ -605,7 +595,6 @@ nav div:not(.left) a {
 nav div:not(.left) a:hover {
   color: white;
   -webkit-text-fill-color: white;
-  background-color: white;
 }
 nav div:not(.left) a:hover::before {
   width: 100%;
@@ -643,7 +632,7 @@ nav div:not(.left) a::before {
 
 .logo-discord {
   background: #343434;
-  width: 300px;
+  width: 310px;
   position: relative;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -667,7 +656,6 @@ main .discord-wrap, main .merch-info-wrap, main .h1-wrap {
 }
 main .discord-wrap:hover, main .merch-info-wrap:hover, main .h1-wrap:hover {
   box-shadow: 0 10px 20px 5px rgba(0, 0, 0, 0.374);
-  transform: translateY(-1px);
 }
 main .discord-wrap:hover {
   cursor: pointer;
@@ -726,7 +714,7 @@ main section.third-page .merch-info-wrap {
   padding: 10px;
   border-radius: 10px;
   background-color: #fff;
-  height: 50%;
+  height: 300px;
 }
 main section.third-page .merch-info-wrap h1 {
   color: black;
@@ -767,13 +755,17 @@ main section.fourth-page {
   box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.527);
 }
 main section.fourth-page .discord-wrap {
-  width: 300px;
+  width: 310px;
   border-radius: 10px;
   background-color: #fff;
-  height: 65%;
+  height: 500px;
   color: black;
   box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.212);
   margin: 40px;
+}
+main section.fourth-page .discord-wrap:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 20px 5px rgba(0, 0, 0, 0.212);
 }
 main section.fourth-page .discord-wrap h1, main section.fourth-page .discord-wrap p {
   margin: 10px;
@@ -783,6 +775,7 @@ main section.fourth-page .discord-wrap h1, main section.fourth-page .discord-wra
 main section.fourth-page .discord-wrap h1 {
   font-weight: 800;
   font-size: 30px;
+  width: 300px;
 }
 main section.fourth-page .discord-wrap p {
   font-size: 20px;
@@ -792,11 +785,7 @@ main section.fourth-page h1 {
   color: white;
   font-weight: 200;
   font-size: 50px;
-}
-main section.fourth-page p.arrow-discord {
-  font-size: 100px;
-  font-weight: 900;
-  color: white;
+  width: 500px;
 }
 main div.hero {
   height: 100%;
@@ -811,11 +800,12 @@ main div.hero::before {
   width: 100%;
   height: 100%;
   background: url("hero.png");
-  z-index: 1;
+  z-index: -1;
   transition: all 2s linear;
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
+  animation: heroload 1s;
 }
 main div.hero h1.title {
   font-size: 100px;
@@ -855,6 +845,25 @@ main .arrow-wrap #goDown {
   right: 20%;
   color: black;
   display: none;
+}
+.modal-donate a {
+  float: right;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  width: 60px;
+  font-size: 30px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-weight: 100;
+  text-decoration: transparent;
+  color: black;
+}
+.modal-donate a:hover {
+  background-color: #e13535;
+  color: white;
 }
 
 .nav-toggle {
@@ -913,6 +922,18 @@ main .arrow-wrap #goDown {
   margin: 0;
 }
 
+#overlay {
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  position: fixed;
+  z-index: 13;
+  background: rgba(0, 0, 0, 0.374);
+  display: none;
+  opacity: 0;
+}
+
 footer {
   height: 80px;
   background-color: #333;
@@ -956,7 +977,7 @@ footer div p {
   0% {
     transform: translateY(-100px);
   }
-  40% {
+  10% {
     transform: translateY(-100px);
   }
 }
@@ -968,6 +989,18 @@ footer div p {
 @keyframes h1load {
   from {
     transform: scale(0.3);
+    opacity: 0;
+  }
+}
+@keyframes modal {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+}
+@keyframes modal-close {
+  to {
+    transform: translateY(30px);
     opacity: 0;
   }
 }

@@ -1,6 +1,17 @@
 * {
     box-sizing: border-box;
     margin:0;
+    animation-duration: 1s;
+    transition: .3s;
+}
+
+@mixin overlay {
+    top:0;
+    bottom:0;
+    right:0;
+    left:0;
+    position: fixed;
+    z-index: 13;
 }
 
 html {
@@ -25,16 +36,6 @@ body {
         margin-bottom: 2px;
         text-decoration: none;
         font-weight: 600;
-
-        &:hover {
-            opacity:0.9;
-            background:linear-gradient(rgb(0, 139, 219),rgb(124, 0, 173));
-            background-clip: text;
-            -webkit-background-clip: text;
-            -moz-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 20px;
-        }
     }
 }
 
@@ -100,9 +101,6 @@ nav {
             text-decoration: none;
             margin-left: 30px;
 
-            &:hover {
-                color: white;
-            }
             img {
                 height: 80px;
                 margin:0;
@@ -127,7 +125,6 @@ nav {
             &:hover {
                 color: white;
                 -webkit-text-fill-color: white;
-                background-color: white;
 
                 &::before {
                     width: 100%;
@@ -171,7 +168,7 @@ nav {
 
 .logo-discord {
     background: rgb(52, 52, 52);
-    width: 300px;
+    width: 310px;
     position: relative;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -197,7 +194,6 @@ main {
 
     .discord-wrap:hover, .merch-info-wrap:hover, .h1-wrap:hover {
         box-shadow: 0 10px 20px 5px rgba(0, 0, 0, 0.374);
-        transform: translateY(-1px);
     }
 
     .discord-wrap:hover {
@@ -267,7 +263,7 @@ main {
             padding:10px;
             border-radius: 10px;
             background-color: #fff;
-            height: 50%;
+            height: 300px;
 
             h1 {
                 color: black;
@@ -316,13 +312,18 @@ main {
         box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.527);
 
         .discord-wrap {
-            width: 300px;
+            width: 310px;
             border-radius: 10px;
             background-color: #fff;
-            height: 65%;
+            height: 500px;
             color: black;
             box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.212);
             margin: 40px;
+
+            &:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 4px 20px 5px rgba(0, 0, 0, 0.212);
+            }
 
             h1, p {
                 margin: 10px;
@@ -333,6 +334,7 @@ main {
             h1 {
                 font-weight: 800;
                 font-size: 30px;
+                width: 300px;
             }
 
             p {
@@ -345,12 +347,7 @@ main {
             color: white;
             font-weight: 200;
             font-size: 50px;
-        }
-
-        p.arrow-discord {
-            font-size: 100px;
-            font-weight: 900;
-            color: white;
+            width: 500px;
         }
     }
         div.hero {
@@ -366,11 +363,12 @@ main {
                 width: 100%;
                 height: 100%;
                 background: url('hero.png');
-                z-index: 1;
+                z-index: -1;
                 transition: all 2s linear;
                 background-attachment: fixed;
                 background-size: cover;
                 background-position: center;
+                animation: heroload 1s;
             }
             h1.title {
             font-size: 100px;
@@ -413,6 +411,27 @@ main {
     right: 20%;
     color: black;
     display: none;
+
+    a {
+        float: right;
+        position: absolute;
+        top:0;
+        right:0;
+        cursor: pointer;
+        width: 60px;
+        font-size: 30px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        font-weight: 100;
+        text-decoration: transparent;
+        color: black;
+
+        &:hover {
+            background-color: rgb(225, 53, 53);
+            color: white;
+        }
+    }
 }
 
 .nav-toggle {
@@ -462,6 +481,13 @@ main {
     z-index: 14;
     margin:0;
   }
+
+#overlay {
+    @include overlay;
+    background: rgba(0, 0, 0, 0.374);
+    display: none;
+    opacity: 0;
+}
   
 footer {
         height: 80px;
@@ -509,7 +535,7 @@ footer {
 
 @keyframes navload {
     0% {transform: translateY(-100px)}
-    40% {transform: translateY(-100px)}
+    10% {transform: translateY(-100px)}
 }
 
 @keyframes heroload {
@@ -519,6 +545,16 @@ footer {
 @keyframes h1load {
     from {transform: scale(0.3); opacity:0;}
 }
+
+@keyframes modal {
+    from {transform: translateY(30px); opacity:0;}
+}
+
+@keyframes modal-close {
+    to {transform: translateY(30px); opacity:0;}
+}
+
+
 @media screen and (max-width: 800px) {
     nav {
         display: none;

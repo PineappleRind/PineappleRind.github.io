@@ -32,16 +32,41 @@ for (i = 0; i < 70; i++) {
     let snow = document.createElement('snow');
     document.body.appendChild(snow);
 }
-let h;
+let h, j, k;
 h = document.getElementById('modalDonate');
+j = document.getElementById('overlay');
+k = document.getElementById('modalClose');
 
 function donateModal() {
     h.style.display = 'block';
+    h.style.animationName = 'modal';
+
+    j.style.display = 'block';
+    setTimeout(function() {
+        j.style.opacity = '1';
+    }, 1)
+}
+
+function closeDonateModal() {
+    h.style.animationName = 'modal-close';
+    setTimeout(function(){
+        h.style.display = 'none';
+    },1000);
+
+    j.style.opacity = '0';
+
+    setTimeout(function() {
+        j.style.display = 'none';
+    }, 1000)
 }
 
 g.addEventListener('click', function() {
     donateModal();
 });
+
+k.addEventListener('click', function() {
+    closeDonateModal();
+})
     
 setTimeout(function() {
     showFooter();
