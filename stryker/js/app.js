@@ -70,7 +70,7 @@ k.addEventListener('click', function() {
     
 setTimeout(function() {
     showFooter();
-}, 800)
+}, 2000)
 
 
 t.addEventListener("click", function(e){

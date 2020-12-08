@@ -1,8 +1,11 @@
+$b: 1.5em; // border-width
+$blur: blur(9px);
+$rect: inset(0);
+
 * {
     box-sizing: border-box;
     margin:0;
     animation-duration: 1s;
-    transition: .3s;
 }
 
 @mixin overlay {
@@ -132,6 +135,24 @@ nav {
                 }
             }
 
+            &.active {
+                &::before {
+                    width: 90%;
+                    left:5%;
+                    right:5%;
+                }
+
+                &:hover {
+                    color: white;
+                    -webkit-text-fill-color: white;
+    
+                    &::before {
+                        width: 100%;
+                        left:0;
+                    }
+                }
+            }
+
             &::before {
                 width: 0;
                 height: 3px;
@@ -217,6 +238,80 @@ main {
         display: flex;
         justify-content: space-evenly;
         align-items: center;
+
+        &.colour-scheme-two { 
+            background: linear-gradient(to top, rgb(129, 18, 18),rgb(76, 67, 54));
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            position: relative;
+
+            div.flex {
+                display: flex;
+                width: 100%;
+                flex-direction: row;
+                justify-content: space-around;
+                align-items: center;
+                padding: 20px;
+                height: 80%;
+            }
+
+            .blur {
+                position: absolute;
+                left:0;
+                top:0;
+                background-color: transparent;
+                backdrop-filter: blur(3px);
+                width:20px;
+                height:100%;
+                bottom:0;
+                z-index: 2;
+
+                &.right {
+                    right:0;
+                    left:unset;
+                }
+
+                &.left {
+                    left:0;
+                    right:unset;
+                }
+            }
+
+            div.podcast-links {
+                margin-bottom: 80px;
+
+
+                ul {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-around;
+                    list-style-type: none;
+                    padding: 10px;
+                    width: 120%;
+                    animation: scroll 25s linear infinite;
+
+                    li {
+                        padding: 10px;
+                        background-color: #eee;
+                        border-radius: 5px;
+                        color: black;
+                        margin-left: 10px;
+                        margin-right: 10px;
+                        box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.212);
+                        cursor: pointer;
+                        transition: .3s;
+                        font-size: 20px;
+
+                        &:hover {
+                            transform: translateY(-2px);
+                            box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.479);
+                        }
+                    }
+                }
+            }
+        }
 
         .h1-wrap {
             background-color: #fff;
@@ -499,6 +594,7 @@ footer {
         left:0;
         padding: 20px;
         padding-top:30px;
+        display: none;
         div {
             display: flex;
             align-items: center;
@@ -539,7 +635,8 @@ footer {
 }
 
 @keyframes heroload {
-    from {opacity:0;}
+    0% {opacity:0;}
+    50% {opacity:0;}
 }
 
 @keyframes h1load {
@@ -552,6 +649,11 @@ footer {
 
 @keyframes modal-close {
     to {transform: translateY(30px); opacity:0;}
+}
+
+@keyframes scroll {
+    from {transform: translateX(-1170px);}
+    to {transform: translateX(0%);}
 }
 
 
