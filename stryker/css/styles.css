@@ -961,7 +961,7 @@ main section.second-page {
           justify-content: space-evenly;
   -webkit-box-align: center;
       -ms-flex-align: center;
-          align-items: center;
+          align-items: center
 }
 
 main section.second-page.colour-scheme-two {
