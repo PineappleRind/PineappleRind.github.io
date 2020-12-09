@@ -5,6 +5,10 @@ body {
   font-family: Inter, sans-serif;
 }
 
+body.calculator-body {
+  background-color: #111;
+}
+
 a {
   text-decoration: none;
   color: black;
@@ -187,6 +191,96 @@ footer .foot a {
   color: white;
   margin: 0;
   transition: 0.2s;
+}
+
+/* for calculator */
+
+.flex-align {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.calculator {
+  padding: 20px;
+  max-width: 280px;
+  min-height: 425px;
+  max-height: 500px;
+  border-radius: 50px;
+background: linear-gradient(145deg, #1a003a, #4b00a7);
+box-shadow:  20px 20px 60px hsla(267, 96%, 21%, 0.37), 
+             -20px -20px 60px hsla(267, 97%, 28%, 0.315);
+}
+.calculator-display {
+  width: 240px;
+  min-height: 95px;
+  margin: 1em auto;
+  padding: 0.5em;
+  box-sizing: border-box;
+  background-color: rgb(44, 44, 44);
+  border: 1px solid #666;
+  font-family: 'Arimo', sans-serif;
+  position: relative;
+  word-wrap: break-word;
+  
+}
+input {
+  height: 1.1em;
+  background-color: transparent;
+  border: none;
+  text-align: right;
+}
+textarea {
+  border: none;
+  resize: none;
+  height: 2.2em;
+  text-align: right;
+  overflow: hidden;
+}
+.calculator-display.top {
+  width: 99%;
+  color: #777;
+  font-size: 1.1em;
+}
+.calculator-display.bottom {
+  width: 92%;
+  font-size: 1.4em;
+  color: #00344f;
+  position: absolute;
+  right: 0.3em;
+  bottom: 0.1em;
+}
+.calculator-buttons {
+  width: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  float: left;
+}
+.calc-button {
+  width: 50px;
+  max-height: 20px;
+  padding: 12px 0;
+  margin: 0.35em;
+  border-radius: 73px;
+background: linear-gradient(95deg, #ffffff, #b9b9b9);
+transition: .1s;
+  color: #00344f;
+  font-family: 'Arimo', sans-serif;
+  text-align: center;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+.calc-button:active {
+  transform: translateY(1px);
+  border-radius: 50px;
+background: linear-gradient(95deg, #ffffff, #b9b9b9);
+box-shadow: inset 4px 4px 9px #d9d9d9, 
+            inset -4px -4px 9px #ffffff;
 }
 
 @media only screen and (max-width: 780px) {
