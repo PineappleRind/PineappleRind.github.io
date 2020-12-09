@@ -23,6 +23,8 @@ let minus = document.getElementById('minus');
 let divide = document.getElementById('divide');
 let times = document.getElementById('times');
 
+let pi = document.getElementById('pi');
+
 let decimal = document.getElementById('decimal');
 let equals = document.getElementById('equals');
 
@@ -44,6 +46,7 @@ clear.addEventListener('click', function() {
     setTimeout(function() {
         output.value = '';
         output.style.animationName = '';
+        equation = output.value;
     },200)
 })
 
@@ -53,73 +56,80 @@ backspace.addEventListener('click', function() {
 
 one.addEventListener('click', function() {
     equation += '1';
-    output.value += '1';
+    output.value += ' 1 ';
 })
 two.addEventListener('click', function() {
     equation += '2';
-    output.value += '2';
+    output.value += ' 2 ';
 })
 three.addEventListener('click', function() {
     equation += '3';
-    output.value += '3';
+    output.value += ' 3 ';
 })
 four.addEventListener('click', function() {
     equation += '4';
-    output.value += '4';
+    output.value += ' 4 ';
 })
 five.addEventListener('click', function() {
     equation += '5';
-    output.value += '5';
+    output.value += ' 5 ';
 })
 six.addEventListener('click', function() {
     equation += '6';
-    output.value += '6';
+    output.value += ' 6 ';
 })
 seven.addEventListener('click', function() {
-    output.value += '7';
-    equation += '7';
+    output.value += ' 7 ';
+    equation += ' 7 ';
 })
 eight.addEventListener('click', function() {
     equation += '8';
-    output.value += '8';
+    output.value += ' 8 ';
 })
 nine.addEventListener('click', function() {
-    output.value += '9';
+    output.value += ' 9 ';
     equation += '9';
 })
 zero.addEventListener('click', function() {
-    output.value += '0';
+    output.value += ' 0 ';
     equation += '0';
 })
+
+
 
 plus.addEventListener('click', function() {
     output.value += '+';
     equation += '+';
 })
-
 minus.addEventListener('click', function() {
     output.value += '-';
     equation += '-';
 })
-
 times.addEventListener('click', function() {
     output.value += '×';
     equation += '*';
 })
-
 divide.addEventListener('click', function() {
     output.value += '÷';
     equation += '/'
-    
 })
+
+
+
+pi.addEventListener('click', function() {
+    output.value += 'π';
+    equation += ' 3.14159265358979323 ';
+})
+
+
 
 decimal.addEventListener('click', function() {
     output.value += '.';
     equation += '.';
 })
-
 equals.addEventListener('click', function() {
     output.value = evaluateInts(equation);
+    equation = output.value;
 })
 
 window.onerror=function(msg, url, linenumber){
@@ -199,6 +209,19 @@ function checkForScience() {
 oninput = e => {
     checkForScience();
 }
+
+onclick = e => {
+    let t = equation;
+    setTimeout(function() {
+        if (equation === '') {
+            t = 'No equation'
+        }
+        console.log('Current equation: ' + t);
+    }, 1)
+    console.clear();
+}
+
+console.log('No equation');
 
 window.addEventListener("keydown", function(e) {
     if (e.key === 'a') {
