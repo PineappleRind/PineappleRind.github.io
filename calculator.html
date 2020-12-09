@@ -41,9 +41,23 @@
             <div class="calc-button" id="zero">0</div>
             <div class="calc-button" id="decimal">.</div>
         </div>
-        <div class="settings">&#9881;</div>
+        <div class="calculator-buttons left">
+          <div id="scientificWrap" style="display: none;">
+            <div class="calc-button scientific" id="pi">π</div>
+          </div>
+        </div>
+        <p id="settings" class="settings">&#9881;</p>
       </div>
     </div>
+    <div class="modal" id="settingsModal">
+      <h1>Settings</h1>
+      <p class="modal-close">&times;</p>
+      <input type="radio" id="scientific" name="settings">
+      <label for="scientific">Scientific Calculator (Still working on it 😄)</label><br>
+      <input type="radio" id="arithmetic" name="settings">
+      <label for="arithmetic">Arithmetic Calculator</label>
+    </div>
+    <div id="overlayBlack"></div>
     <script src="calc.js"> </script>
 </body>
 </html>

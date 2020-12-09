@@ -146,6 +146,12 @@ function settings() {
     setTimeout(function(){
         modal.style.animationName = '';
     }, 1000)
+
+    let overlay = document.getElementById('overlayBlack');
+    overlay.style.display = 'block';
+    setTimeout(function(){
+        overlay.style.opacity = '1';
+    }, 100)
 }
 
 function settingsClose() {
@@ -155,11 +161,44 @@ function settingsClose() {
     setTimeout(function(){
         modal.style.display = 'none';
         modal.style.animationName = '';
-    }, 1000)
+    }, 500)
+
+    let overlay = document.getElementById('overlayBlack');
+    overlay.style.opacity = '0';
+
+    setTimeout(function(){
+        overlay.style.display = 'none';
+    }, 500)
 }
 
 let closeButton = document.querySelector('.modal-close');
+closeButton.addEventListener('click', function() {
+    settingsClose();
+})
 
+let settingsBtn = document.getElementById('settings');
+settingsBtn.addEventListener('click', function() {
+    settings();
+})
+
+
+let science = document.getElementById('scientific');
+let arith = document.getElementById('arithmetc');
+let thebuttons = document.getElementById('scientificWrap');
+
+function checkForScience() {
+    if (science.checked === true) {
+        thebuttons.style.display = 'block';
+        document.querySelector('.calculator').style.maxWidth = '500px';
+        document.querySelector('.calculator-buttons').style.width = '50%';
+    } else if (arithmetic.checked === true) {
+        thebuttons.style.display = 'none';
+    }
+}
+
+oninput = e => {
+    checkForScience();
+}
 
 window.addEventListener("keydown", function(e) {
     if (e.key === 'a') {
