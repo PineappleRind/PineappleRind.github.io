@@ -216,6 +216,7 @@ footer .foot a {
 background: linear-gradient(145deg, #1a003a, #4b00a7);
 box-shadow:  20px 20px 60px hsla(267, 96%, 21%, 0.37), 
              -20px -20px 60px hsla(267, 97%, 28%, 0.315);
+  position: relative
 }
 .calculator-display {
   width: 240px;
@@ -256,6 +257,7 @@ input {
   flex-wrap: wrap;
   justify-content: center;
   float: left;
+  position: relative
 }
 .calc-button {
   width: 50px;
@@ -284,12 +286,38 @@ input {
 .calc-button:nth-last-child(2) {
   margin-top: -51px;
 }
+
+.settings {
+  position: absolute;
+  top:15px;
+  right: 25px;
+  color: rgb(213, 173, 230);
+  font-size: 30px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.settings:hover {
+  text-shadow: 0px 0px 7px rgba(246, 169, 233, 0.466);
+  transform: scale(1.1)
+}
 .calc-button:active {
   transform: translateY(1px);
   border-radius: 50px;
 background: linear-gradient(95deg, #ffffff, #b9b9b9);
 box-shadow: inset 4px 4px 9px #d9d9d9, 
             inset -4px -4px 9px #ffffff;
+}
+
+.modal {
+  position: fixed;
+  top: 30%;
+  bottom: 30%;
+  left: 20%;
+  right: 20%;
+  animation-duration: 0.6s;
+  background-color: #ccc;
+  animation-timing-function: ease-out;
 }
 
 @keyframes kern-out {
@@ -328,5 +356,54 @@ box-shadow: inset 4px 4px 9px #d9d9d9,
   }
   main[data-css=boxshadow] .message {
     display: block;
+  }
+}
+
+@keyframes bounce-in {
+  from,
+  20%,
+  40%,
+  60%,
+  80%,
+  to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  0% {
+    opacity: 0;
+    -webkit-transform: scale3d(0.5, 0.5, 0.5);
+    transform: scale3d(0.5, 0.5, 0.5);
+  }
+
+  25% {
+    -webkit-transform: scale3d(1.1, 1.1, 1.1);
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+
+  50% {
+    -webkit-transform: scale3d(0.92, 0.92, 0.92);
+    transform: scale3d(0.92, 0.92, 0.92);
+  }
+
+  75% {
+    opacity: 1;
+    -webkit-transform: scale3d(1.01, 1.01, 1.01);
+    transform: scale3d(1.01, 1.01, 1.01);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes float-out {
+  to {
+    opacity: 0;
+    -webkit-transform: translateY(100px);
+    transform: translateY(100px);
+    -moz-transform: translateY(100px);
   }
 }
