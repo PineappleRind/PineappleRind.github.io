@@ -56,42 +56,42 @@ backspace.addEventListener('click', function() {
 
 one.addEventListener('click', function() {
     equation += '1';
-    output.value += ' 1 ';
+    output.value += '1';
 })
 two.addEventListener('click', function() {
     equation += '2';
-    output.value += ' 2 ';
+    output.value += '2';
 })
 three.addEventListener('click', function() {
     equation += '3';
-    output.value += ' 3 ';
+    output.value += '3';
 })
 four.addEventListener('click', function() {
     equation += '4';
-    output.value += ' 4 ';
+    output.value += '4';
 })
 five.addEventListener('click', function() {
     equation += '5';
-    output.value += ' 5 ';
+    output.value += '5';
 })
 six.addEventListener('click', function() {
     equation += '6';
-    output.value += ' 6 ';
+    output.value += '6';
 })
 seven.addEventListener('click', function() {
-    output.value += ' 7 ';
-    equation += ' 7 ';
+    output.value += '7';
+    equation += '7';
 })
 eight.addEventListener('click', function() {
     equation += '8';
-    output.value += ' 8 ';
+    output.value += '8';
 })
 nine.addEventListener('click', function() {
-    output.value += ' 9 ';
+    output.value += '9';
     equation += '9';
 })
 zero.addEventListener('click', function() {
-    output.value += ' 0 ';
+    output.value += '0';
     equation += '0';
 })
 
@@ -120,8 +120,6 @@ pi.addEventListener('click', function() {
     output.value += 'π';
     equation += ' 3.14159265358979323 ';
 })
-
-
 
 decimal.addEventListener('click', function() {
     output.value += '.';

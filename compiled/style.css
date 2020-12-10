@@ -270,7 +270,7 @@ input {
   margin: 0.35em;
   border-radius: 73px;
   background: linear-gradient(95deg, #ffffff, #b9b9b9);
-  transition: .1s;
+  transition: .05s;
   color: #00344f;
   font-family: 'Arimo', sans-serif;
   text-align: center;
