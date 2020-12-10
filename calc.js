@@ -28,7 +28,7 @@ var equals = document.getElementById('equals');
 var output = document.querySelector('#calculatorOutput');
 
 function removeLastDigit(t) {
-    var strng = t.value;
+    var strng = t;
     return strng.substring(0,strng.length-1);
 }
 
@@ -46,7 +46,8 @@ clear.addEventListener('click', function() {
 })
 
 backspace.addEventListener('click', function() {
-    output.value = removeLastDigit(output);
+    output.value = removeLastDigit(output.value);
+    equation = removeLastDigit(equation);
 }) 
 
 one.addEventListener('click', function() {
