@@ -2,38 +2,36 @@
 Use with permission. */
 
 
-let clear = document.getElementById('clearBtn');
-let backspace = document.getElementById('backspace');
+var clear = document.getElementById('clearBtn');
+var backspace = document.getElementById('backspace');
 
-let one = document.getElementById('one');
-let two = document.getElementById('two');
-let three = document.getElementById('three');
-let four = document.getElementById('four');
-let five = document.getElementById('five');
-let six = document.getElementById('six');
-let seven = document.getElementById('seven');
-let eight = document.getElementById('eight');
-let nine = document.getElementById('nine');
-let zero = document.getElementById('zero');
+var one = document.getElementById('one');
+var two = document.getElementById('two');
+var three = document.getElementById('three');
+var four = document.getElementById('four');
+var five = document.getElementById('five');
+var six = document.getElementById('six');
+var seven = document.getElementById('seven');
+var eight = document.getElementById('eight');
+var nine = document.getElementById('nine');
+var zero = document.getElementById('zero');
 
-let equation = '';
+var equation = '';
 
-let plus = document.getElementById('plus');
-let minus = document.getElementById('minus');
-let divide = document.getElementById('divide');
-let times = document.getElementById('times');
+var plus = document.getElementById('plus');
+var minus = document.getElementById('minus');
+var divide = document.getElementById('divide');
+var times = document.getElementById('times');
 
-let pi = document.getElementById('pi');
+var pi = document.getElementById('pi');
 
-let decimal = document.getElementById('decimal');
-let equals = document.getElementById('equals');
+var decimal = document.getElementById('decimal');
+var equals = document.getElementById('equals');
 
-let output = document.querySelector('#calculatorOutput');
-
-let add = false;
+var output = document.querySelector('#calculatorOutput');
 
 function removeLastDigit(t) {
-    let strng = t.value;
+    var strng = t.value;
     return strng.substring(0,strng.length-1);
 }
 
@@ -134,8 +132,7 @@ window.onerror=function(msg, url, linenumber){
     output.value = 'Error code: -1';
 }
 
-let num = parseInt(output.value);
-
+var num = parseInt(output.value);
 if (num > 10000000000) {
     output.value = 'Error code: 1';
 }
@@ -147,7 +144,7 @@ if (num < -1000000000) {
 // Now for settings modal.
 
 function settings() {
-    let modal = document.getElementById('settingsModal');
+    var modal = document.getElementById('settingsModal');
     modal.style.display = 'block';
     modal.style.animationName = 'bounce-in';
 
@@ -155,7 +152,7 @@ function settings() {
         modal.style.animationName = '';
     }, 1000)
 
-    let overlay = document.getElementById('overlayBlack');
+    var overlay = document.getElementById('overlayBlack');
     overlay.style.display = 'block';
     setTimeout(function(){
         overlay.style.opacity = '1';
@@ -163,7 +160,7 @@ function settings() {
 }
 
 function settingsClose() {
-    let modal = document.getElementById('settingsModal');
+    var modal = document.getElementById('settingsModal');
     modal.style.animationName = 'float-out';
 
     setTimeout(function(){
@@ -171,7 +168,7 @@ function settingsClose() {
         modal.style.animationName = '';
     }, 500)
 
-    let overlay = document.getElementById('overlayBlack');
+    var overlay = document.getElementById('overlayBlack');
     overlay.style.opacity = '0';
 
     setTimeout(function(){
@@ -179,20 +176,20 @@ function settingsClose() {
     }, 500)
 }
 
-let closeButton = document.querySelector('.modal-close');
+var closeButton = document.querySelector('.modal-close');
 closeButton.addEventListener('click', function() {
     settingsClose();
 })
 
-let settingsBtn = document.getElementById('settings');
+var settingsBtn = document.getElementById('settings');
 settingsBtn.addEventListener('click', function() {
     settings();
 })
 
 
-let science = document.getElementById('scientific');
-let arith = document.getElementById('arithmetc');
-let thebuttons = document.getElementById('scientificWrap');
+var science = document.getElementById('scientific');
+var arith = document.getElementById('arithmetc');
+var thebuttons = document.getElementById('scientificWrap');
 
 function checkForScience() {
     if (science.checked === true) {
@@ -201,6 +198,8 @@ function checkForScience() {
         document.querySelector('.calculator-buttons').style.width = '50%';
     } else if (arithmetic.checked === true) {
         thebuttons.style.display = 'none';
+        document.querySelector('.calculator').style.maxWidth = null;
+        document.querySelector('.calculator-buttons').style.width = '100%';
     }
 }
 
@@ -209,7 +208,7 @@ oninput = e => {
 }
 
 onclick = e => {
-    let t = equation;
+    var t = equation;
     setTimeout(function() {
         if (equation === '') {
             t = 'No equation'
