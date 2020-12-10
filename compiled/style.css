@@ -213,9 +213,9 @@ footer .foot a {
   min-height: 425px;
   max-height: 500px;
   border-radius: 50px;
-background: linear-gradient(145deg, #1a003a, #4b00a7);
-box-shadow:  20px 20px 60px hsla(267, 96%, 21%, 0.37), 
-             -20px -20px 60px hsla(267, 97%, 28%, 0.315);
+  background: #31006d;
+  box-shadow:  20px 20px 60px hsla(267, 96%, 21%, 0.37), 
+              -20px -20px 60px hsla(267, 97%, 28%, 0.315);
   position: relative
 }
 .calculator-display {
@@ -228,21 +228,20 @@ box-shadow:  20px 20px 60px hsla(267, 96%, 21%, 0.37),
   word-wrap: break-word;
   border-radius: 30px;
   outline: none;
+  overflow-x: hidden;
+  overflow-y: visible;
 }
-input {
-  height: 1.1em;
-  background-color: transparent;
-  border: none;
-}
+
 .calculator-display.top {
   width: 99%;
   font-size: 1.1em;
   resize: none;
   border: none;
   outline: none;
-  background: linear-gradient(145deg, #0c0618, #170b33);
+  background: linear-gradient(145deg, #332058, #241150);
   color: white;
   float: right;
+  box-shadow: inset 17px 17px 33px #190e30;
 }
 .calculator-buttons {
   width: auto;
@@ -269,7 +268,7 @@ input {
   padding: 12px 0;
   margin: 0.35em;
   border-radius: 73px;
-  background: linear-gradient(95deg, #ffffff, #b9b9b9);
+  background: linear-gradient(95deg, #ffffff, #4e4e4e);
   transition: .05s;
   color: #00344f;
   font-family: 'Arimo', sans-serif;
@@ -281,20 +280,13 @@ input {
   float: left;
 }
 
-.calc-button:nth-last-child(1), .calc-button:nth-last-child(2) {
-  margin-top: -51px;
-}
-
-.calc-button.scientific:nth-last-child(1), .calc-button.scientific:nth-last-child(2) {
-  margin-top: 160px;
-}
-
-.calc-button.scientific {
-  margin-top: 160px;
-}
-
 .calc-button.height {
   padding: 40px 0;
+}
+
+.bottom {
+  margin-top: -53px;
+  margin-left: -60px;
 }
 
 .settings {
@@ -314,8 +306,7 @@ input {
 .calc-button:active {
   transform: translateY(1px);
   border-radius: 50px;
-background: linear-gradient(95deg, #ffffff, #b9b9b9);
-box-shadow: inset 4px 4px 9px #d9d9d9, 
+box-shadow: inset 4px 4px 9px #b1b1b1, 
             inset -4px -4px 9px #ffffff;
 }
 
@@ -386,14 +377,20 @@ box-shadow: inset 4px 4px 9px #d9d9d9,
 
 .hidden-box {
   position: fixed;
-  height: 50px;
-  width: 50px;
+  height: 70px;
+  width: 70px;
   right:0;
   bottom:0;
   background: transparent;
   z-index: 19;
+  cursor: help;
 }
 
+.hidden-box:hover {
+  position: fixed;
+  height: 100px;
+  width: 100px;
+}
 @keyframes kern-out {
   to {color: transparent; text-shadow: 0 0 8px rgb(255, 255, 255);}
 }

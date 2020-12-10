@@ -18,7 +18,6 @@ var clear = document.getElementById("clearBtn"),
     divide = document.getElementById("divide"),
     times = document.getElementById("times"),
     pi = document.getElementById("pi"),
-    squared = document.getElementById("squared"),
     decimal = document.getElementById("decimal"),
     equals = document.getElementById("equals"),
     output = document.querySelector("#calculatorOutput");
@@ -67,17 +66,13 @@ clear.addEventListener("click", function () {
 }), divide.addEventListener("click", function () {
   output.value += "÷", equation += "/";
 }), pi.addEventListener("click", function () {
-  output.value += "π", equation += " 3.14159265358979323 ";
-}), squared.addEventListener("click", function () {
-  output.value += "²";
-  var e = Math.pow(output.length - 1, 20);
-  equation += e;
+  output.value += "π", equation += " 3.14159265358979323846264338327950288419716939937510582097494459230781640628620899862803482534211706798214808651328230664709384460955058223172535940812848111745028410270193852110555964462294895493038196442881097566593344612847564823378678316527120190914564856692346034861045432664821339360726024914127372458700660631558817488152092096282925409171536436789259036001133053054882046652138414695194151160943305727036575959195309218611738193261179310511854807446237996274956735188575272489122793818 ";
 }), decimal.addEventListener("click", function () {
   output.value += ".", equation += ".";
 }), equals.addEventListener("click", function () {
   output.value = evaluateInts(equation), equation = output.value;
 }), window.onerror = function (e, t, n) {
-  output.value = "Error code:" + e + ", " + n + ", " + t;
+  output.value = "Error code: -1";
 };
 var num = parseInt(output.value);
 
@@ -106,17 +101,14 @@ var settingsBtn = document.getElementById("settings");
 settingsBtn.addEventListener("click", function () {
   settings();
 });
-var science = document.getElementById("scientific"),
-    arith = document.getElementById("arithmetc"),
-    thebuttons = document.getElementById("scientificWrap");
-
-function checkForScience() {
-  !0 === science.checked ? (thebuttons.style.display = "block", document.querySelector(".calculator").style.maxWidth = "500px", document.querySelector(".calculator-buttons").style.width = "50%") : !0 === arithmetic.checked && (thebuttons.style.display = "none", document.querySelector(".calculator").style.maxWidth = null, document.querySelector(".calculator-buttons").style.width = "100%");
-}
+var calc = document.querySelector('.calculator');
+var color = document.getElementById('bgColor');
 
 oninput = function oninput(e) {
-  checkForScience();
-}, onclick = function onclick(e) {
+  calc.style.backgroundColor = color.value;
+};
+
+onclick = function onclick(e) {
   var t = equation;
   setTimeout(function () {
     "" === equation && (t = "No equation"), console.log("Current equation: " + t);
@@ -155,4 +147,27 @@ box.addEventListener("click", function () {
       pogChamp();
     });
   });
-}); // Next i'm going to make the keypad work :)
+});
+
+document.onkeypress = function (e) {
+  e = e || window.event;
+  var charCode = e.keyCode || e.which;
+  var charStr = String.fromCharCode(charCode);
+
+  if (charStr == '1' || charStr == '2' || charStr == '3' || charStr == '4' || charStr == '5' || charStr == '6' || charStr == '7' || charStr == '8' || charStr == '9' || charStr == '+' || charStr == '-') {
+    output.value += charStr;
+    equation += charStr;
+  } else if (charCode == '13' || charStr == '=') {
+    output.value = evaluateInts(equation);
+    equation = output.value;
+  } else if (charStr == '*') {
+    equation += '*';
+    output.value += '×';
+  } else if (charStr == '/') {
+    equation += '/';
+    output.value += '÷';
+  } else if (charStr == 'Backspace') {
+    removeLastDigit(equation);
+    removeLastDigit(output.value);
+  }
+};
