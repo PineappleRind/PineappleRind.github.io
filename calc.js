@@ -1,7 +1,3 @@
-/* JavaScript by PineappleRind (pineapplerind.github.io), 2020. 
-Use with permission. */
-
-
 var clear = document.getElementById('clearBtn');
 var backspace = document.getElementById('backspace');
 
@@ -24,6 +20,7 @@ var divide = document.getElementById('divide');
 var times = document.getElementById('times');
 
 var pi = document.getElementById('pi');
+var squared = document.getElementById('squared');
 
 var decimal = document.getElementById('decimal');
 var equals = document.getElementById('equals');
@@ -118,6 +115,12 @@ pi.addEventListener('click', function() {
     output.value += 'π';
     equation += ' 3.14159265358979323 ';
 })
+squared.addEventListener('click', function() {
+    output.value += '²';
+    var answer = Math.pow((output.length-1), 20)
+    equation += answer;
+})
+
 
 decimal.addEventListener('click', function() {
     output.value += '.';
@@ -129,7 +132,7 @@ equals.addEventListener('click', function() {
 })
 
 window.onerror=function(msg, url, linenumber){
-    output.value = 'Error code: -1';
+    output.value = 'Error code:' + msg + ', ' + linenumber + ', ' + url;
 }
 
 var num = parseInt(output.value);
