@@ -9,7 +9,7 @@ r = {
     }
 };
 
-g = document.getElementById('donateBtn');
+g = document.getElementById('contactBtn');
 
 c = document.querySelector(".nav-mobile");
 
@@ -32,41 +32,10 @@ for (i = 0; i < 70; i++) {
     let snow = document.createElement('snow');
     document.body.appendChild(snow);
 }
-let h, j, k;
-h = document.getElementById('modalDonate');
-j = document.getElementById('overlay');
-k = document.getElementById('modalClose');
 
-function donateModal() {
-    h.style.display = 'block';
-    h.style.animationName = 'modal';
+let scroll = window.scrollY;
 
-    j.style.display = 'block';
-    setTimeout(function() {
-        j.style.opacity = '1';
-    }, 1)
-}
-
-function closeDonateModal() {
-    h.style.animationName = 'modal-close';
-    setTimeout(function(){
-        h.style.display = 'none';
-    },1000);
-
-    j.style.opacity = '0';
-
-    setTimeout(function() {
-        j.style.display = 'none';
-    }, 1000)
-}
-
-g.addEventListener('click', function() {
-    donateModal();
-});
-
-k.addEventListener('click', function() {
-    closeDonateModal();
-})
+if (window.scrollY)
     
 setTimeout(function() {
     showFooter();
@@ -77,3 +46,40 @@ t.addEventListener("click", function(e){
     r.l(e);
     nav();
 })
+
+
+function urlhash(link) {
+    window.location.hash = link;
+}
+
+
+setInterval(function(){
+    if (window.location.hash == '#merch') {
+    document.querySelector('#merchlink').classList.add('active');
+} else if (window.location.hash !== '#merch') {
+    document.querySelector('#merchlink').classList.remove('active');
+} 
+
+if (window.location.hash == '#about') {
+    document.getElementById('aboutlink').classList.add('active');
+} else if (window.location.hash !== '#about') {
+    document.querySelector('#aboutlink').classList.remove('active');
+}
+
+if (window.location.hash == '#podcast') {
+    document.getElementById('podcastlink').classList.add('active');
+} else if (window.location.hash !== '#podcast') {
+    document.querySelector('#podcastlink').classList.remove('active');
+}
+
+if (window.location.hash == '#home') {
+    document.getElementById('homelink').classList.add('active');
+} else if (window.location.hash !== '#home') {
+    document.querySelector('#homelink').classList.remove('active');
+}
+
+if (window.location.hash == '') {
+    document.getElementById('aboutlink').classList.remove('active');
+    document.querySelector('#merchlink').classList.remove('active');
+}
+},1)

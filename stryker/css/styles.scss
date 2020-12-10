@@ -24,6 +24,8 @@ html {
     font-weight: 200;
     font-family: 'Arial', Tahoma, Geneva, Verdana, sans-serif;
     color: white;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
@@ -118,12 +120,42 @@ nav {
         float: right;
         display: flex;
         flex-direction: row;
+        position: relative;
+        .line {
+            height: 3px;
+            right: calc(100% - 100px);
+            width: 100px;
+            background-color: white;
+            animation: navline 1s linear infinite;
+            animation-play-state: paused;
+            animation-delay: calc(var(--scroll) * -1s);
+            animation-iteration-count: 1;
+            animation-fill-mode: both;
+            position: absolute;
+            bottom:0;
+            left:0;
+        }
         a {
             font-size: 20px;
             padding: 20px;
             color: white;
             text-decoration: none;
             position: relative;
+
+            &.active {
+                &:hover {
+                    color: white;
+                    -webkit-text-fill-color: white;
+                    &::before {
+                        width: 100%;
+                        left:0;
+                    }
+                }
+                &::before {
+                    width: 90%;
+                    left: 5%;
+                }
+            }
 
             &:hover {
                 color: white;
@@ -132,24 +164,6 @@ nav {
                 &::before {
                     width: 100%;
                     left:0;
-                }
-            }
-
-            &.active {
-                &::before {
-                    width: 90%;
-                    left:5%;
-                    right:5%;
-                }
-
-                &:hover {
-                    color: white;
-                    -webkit-text-fill-color: white;
-    
-                    &::before {
-                        width: 100%;
-                        left:0;
-                    }
                 }
             }
 
@@ -204,6 +218,8 @@ main {
     position: absolute;
     width: 100%;
     z-index:4;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
 
     .logo-about {
         height: 400px;
@@ -652,6 +668,10 @@ footer {
 @keyframes scroll {
     from {transform: translateX(-1170px);}
     to {transform: translateX(0%);}
+}
+
+@keyframes navline {
+    to {right: 0}
 }
 
 
