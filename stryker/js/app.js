@@ -82,4 +82,4 @@ if (window.location.hash == '') {
     document.getElementById('aboutlink').classList.remove('active');
     document.querySelector('#merchlink').classList.remove('active');
 }
-},1)
+},100)

@@ -75,28 +75,54 @@ h1.title {
 }
 
 li a {
-    display: block;
-    color: white;
-    text-align: center;
+    position: relative;
+  height: 3.5rem;
+  width: 14rem;
+  border: none;
+  border-radius: 20rem;
+  background-color: var(--color-button);
+  color: var(--color-button-text);
+  font-size:20px;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+  transition:
+    background-color 500ms,
+    color 500ms;
+    padding: 20px;
     text-decoration: none;
-    padding: 25px;
-    border-radius: 40px;
-    background: #2674e8;
-    font-size: 20px;
-    flex-wrap: wrap;
-    margin-left: 10px;
-    margin-right: 10px;
-    cursor: pointer;
-    min-width: 50px;
-    box-shadow: 0 0 0 0 #5a99d4e0;
-    transition: 0.5s ease-in-out;
 }
 
-li a:hover, 
-li a:active {
-  animation: pulse 1s;
-  box-shadow: 0 0 0 2em rgba(255, 255, 255, 0);
-}
+li a::after {
+    content: ' ';
+    position: absolute;
+    left: -2px;
+    top: -2px;
+    width: calc(100% + 1.4rem);
+    height: calc(100% + 1.4rem);
+    margin: -0.7rem;
+    border: 2.5px solid rgb(255, 255, 255);
+    border-radius: inherit;
+    opacity: 0;
+    transition:
+      opacity 500ms,
+      width 500ms,
+      height 500ms,
+      margin 500ms;
+  }
+  
+li a:hover {
+  /*   color: var(--color-button); */
+    color: #F5F5F5;
+    background-color: black;
+  }
+  
+  li a:hover::after {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    opacity: 0.8;
+  }
 
 li a[css-data="2"] {
     background: #2660e8;
