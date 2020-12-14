@@ -324,11 +324,12 @@ h1.projects-title span {
     border-radius: 7px;
     animation: load 2s;
     overflow: scroll;
+    overflow-x: hidden;
 }
 
 .projects-wrap {
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     width: 100%;
     position: relative;
     flex-wrap: wrap;
@@ -342,7 +343,7 @@ h1.projects-title span {
     box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.13);
     border-radius: 10px;
     min-width: 100px;
-    max-width: calc(200px + 20%);
+    max-width: calc(100px + 20%);
     max-height: 300px;
     margin: 10px;
     transition: 0.5s;
