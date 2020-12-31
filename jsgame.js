@@ -1,4 +1,4 @@
-let btn, cntr, cntrt, counter, firstOption, secondOption, openstore, overlay, closeOverlay, twotimes;
+let btn, cntr, cntrt, counter, firstOption, secondOption, openstore, overlay, closeOverlay, integer;
 
 btn = document.getElementById('clicker');
 cntr = document.querySelector('.counter');
@@ -35,7 +35,11 @@ function addThingyIForgot() {
 }
 
 firstOption.addEventListener('click', () => {
-    counter = counter - 50;
+    integer = 50;
+    counter = counter - integer;
+    setTimeout(function() {
+        integer = integer + 50;
+    }, 10)
     main();
     btn.addEventListener('click', () => {
         counter++;
