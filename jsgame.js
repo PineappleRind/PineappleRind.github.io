@@ -25,7 +25,7 @@ function increase() {
 }
 
 function addThingyIForgot() {
-    if (counter >= 5) {
+    if (counter >= 50) {
         firstOption.style.opacity = '1';
         firstOption.style.pointerEvents = 'all';
     } else {
