@@ -35,7 +35,7 @@ function addThingyIForgot() {
 }
 
 firstOption.addEventListener('click', () => {
-    counter = counter - 5;
+    counter = counter - 50;
     main();
     btn.addEventListener('click', () => {
         counter++;
