@@ -1,23 +1,50 @@
-let btn, cntr, counter, firstOption, openstore, overlay, closeOverlay;
+let btn, cntr, cntrt, counter, firstOption, secondOption, openstore, overlay, closeOverlay, twotimes;
 
 btn = document.getElementById('clicker');
 cntr = document.querySelector('.counter');
+cntrt = document.querySelector('.counter-store');
 counter = 0;
+twotimes = 0;
 
 firstOption = document.getElementById('first');
+secondOption = document.getElementById('second');
 
-setInterval(function(){
-    if (counter >= 5) {
-        firstOption.style.opacity = '1';
-        firstOption.style.cursor = 'pointer';
-        firstOption.style.pointerEvents = 'all';
-    }
-}, 1000)
 btn.addEventListener('click', () => {
+    main();
     counter++;
-    cntr.innerHTML = counter;
 })
 
+function main() {
+    increase();
+    addThingyIForgot();
+}
+
+function increase() {
+    cntr.innerHTML = counter;
+    cntrt.innerHTML = counter;
+}
+
+function addThingyIForgot() {
+    if (counter >= 5) {
+        firstOption.style.opacity = '1';
+        firstOption.style.pointerEvents = 'all';
+    } else {
+        firstOption.style.opacity = '0.4';
+        firstOption.style.pointerEvents = 'none';
+    }
+}
+
+firstOption.addEventListener('click', () => {
+    counter = counter - 5;
+    main();
+    btn.addEventListener('click', () => {
+        counter++;
+    })
+})
+
+secondOption.addEventListener('click', () => {
+    counter = counter - 200;
+})
 openstore = document.querySelector('.open-store');
 overlay = document.querySelector('.store-overlay');
 closeOverlay = document.getElementById('closeOverlay');
