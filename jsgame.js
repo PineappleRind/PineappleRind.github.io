@@ -1,4 +1,4 @@
-let btn, cntr, cntrt, counter, firstOption, secondOption, openstore, overlay, closeOverlay, integer;
+let btn, cntr, cntrt, counter, firstOption, secondOption, openstore, overlay, closeOverlay, integer, firstPrice;
 
 btn = document.getElementById('clicker');
 cntr = document.querySelector('.counter');
@@ -33,12 +33,15 @@ function addThingyIForgot() {
         firstOption.style.pointerEvents = 'none';
     }
 }
-
+firstPrice = document.getElementById('firstPrice');
 firstOption.addEventListener('click', () => {
     integer = 50;
     counter = counter - integer;
     setTimeout(function() {
         integer = integer + 50;
+        setTimeout(function() {
+            firstPrice.innerHTML = integer + 'ω';
+        },10)
     }, 10)
     main();
     btn.addEventListener('click', () => {
