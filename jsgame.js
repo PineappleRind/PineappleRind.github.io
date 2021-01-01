@@ -24,18 +24,19 @@ function increase() {
     cntrt.innerHTML = counter;
 }
 
+integer = 50;
+
 function addThingyIForgot() {
-    if (counter >= 50) {
+    if (counter >= integer) {
         firstOption.style.opacity = '1';
         firstOption.style.pointerEvents = 'all';
-    } else {
+    } else if (counter >= 200) else {
         firstOption.style.opacity = '0.4';
         firstOption.style.pointerEvents = 'none';
     }
 }
 firstPrice = document.getElementById('firstPrice');
 firstOption.addEventListener('click', () => {
-    integer = 50;
     counter = counter - integer;
     setTimeout(function() {
         integer = integer + 50;
