@@ -83,6 +83,7 @@ function checkForWinner() {
         cpuScore.style.color = 'green'
         yourScore.style.color = 'red'
     }
+}
 
 function getRandomInt(max) {
     return Math.floor((Math.random() * max) + 1);
