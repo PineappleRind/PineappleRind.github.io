@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random game</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Open+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main class="box">
+        <h1>Your Score</h1>
+        <p id="counter">0</p>
+        <button class="ripple-button">Click!!</button>
+        <hr>
+        <h1>CPU Score</h1>
+        <p id="counterCPU">0</p>
+        <hr>
+        <a href="/">Restart...</a>
+        <a href="#">Settings...</a>
+    </main>
+
+    <div class="modal-bg">
+        <div class="modal">
+            <p id="close">&times;</p>
+            <h1>Game Info</h1>
+            <hr>
+            <p>Click the button to gain a random number of XP. See if you can get more XP than the CPU!</p>
+        </div>
+    </div>
+
+    <div id="snackbar">Congratulations! You hit <b id="snackbarMilestone">1000</b> XP </div>
+
+    <script src="index.js"></script>
+</body>
+</html>

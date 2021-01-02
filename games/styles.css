@@ -1,0 +1,172 @@
+* {
+    margin:0;
+    padding:0;
+}
+
+body {
+    background-color: #f1f1f1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: Cabin, Verdana, Geneva, Tahoma, sans-serif;
+}
+
+p, b, i, button {
+    font-family: Open Sans, Roboto, Arial, Helvetica, sans-serif;
+}
+
+button {
+    position: relative;
+overflow: hidden;
+outline: none;
+border: none;
+background: rgb(48, 48, 48);
+color: #fff;
+border-radius: 2px;
+padding: 8px 16px;
+margin: 8px;
+font-size: 14px;
+font-family: inherit;
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+cursor: pointer;
+transition: 150ms cubic-bezier(.44,2.29,.54,1.29);
+}
+
+button:hover {
+    background-color: black;
+}
+
+button:active {
+    transform: scale(0.9);
+    box-shadow: 0 0px 5px 2px rgba(0,0,0,0.4);
+    opacity:0.7;
+}
+.box {
+    border-radius: 20px;
+    border: 1px solid rgb(218, 218, 218);
+    background: white;
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    animation: float-up 2s ease;
+}
+
+.box hr {
+    width: 100%;
+    margin:0;
+}
+
+.modal-bg {
+    position: fixed;
+    z-index: 2;
+    background-color: rgba(0,0,0,0.8);
+    top:0;
+    bottom:0;
+    right:0;
+    left:0;
+    transition: 0.5s;
+}
+.modal {
+    position: fixed;
+    border-radius: 20px;
+    border: 1px solid rgb(218, 218, 218);
+    top: 40vh;
+    right: 30%;
+    left: 30%;
+    bottom: 40vh;
+    background: white;
+    padding: 20px;
+}
+
+.modal h1:not(#close) {
+    margin-top:-20px;
+}
+
+.modal *:not(#close) {
+    margin-top: 20px;
+}
+
+.modal #close {
+    margin-left: calc(100% - 10px);
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.ripple {
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+    width: 5px;
+    height: 5px;
+    animation: rippleEffect 1s 1;
+    opacity: 0;
+  }
+
+  /* The snackbar - position it at the bottom and in the middle of the screen */
+#snackbar {
+    visibility: hidden; /* Hidden by default. Visible on click */
+    min-width: 250px; /* Set a default minimum width */
+    margin-left: -125px; /* Divide value of min-width by 2 */
+    background-color: #333; /* Black background color */
+    color: #fff; /* White text color */
+    text-align: center; /* Centered text */
+    border-radius: 2px; /* Rounded borders */
+    padding: 16px; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: 1; /* Add a z-index if needed */
+    left: 50%; /* Center the snackbar */
+    bottom: 30px; /* 30px from the bottom */
+  }
+  
+  /* Show the snackbar when clicking on a button (class added with JavaScript) */
+  #snackbar.showing {
+    visibility: visible; /* Show the snackbar */
+    /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+    However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  }
+  
+  /* Animations to fade the snackbar in and out */
+  @-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+  }
+  
+  @keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+  }
+  
+  @keyframes rippleEffect {
+    0% {
+      transform: scale(1);
+      opacity: 0.4;
+    }
+    100% {
+      transform: scale(100);
+      opacity: 0;
+    }
+  }
+
+@keyframes float-up {
+    from {transform: translateY(200px); opacity:0;}
+}
