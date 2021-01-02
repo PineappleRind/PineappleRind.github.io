@@ -61,13 +61,28 @@ let counterCPU = document.getElementById('counterCPU');
 
 
 button.addEventListener('click', function() {
+    updateCounters();
+    checkForWinner();
+})
+
+function updateCounters() {
     i = i + getRandomInt(10);
     counter.innerHTML = i;
-    h++;
-
     j = j + getRandomInt(10);
-counterCPU.innerHTML = j;
-})
+    counterCPU.innerHTML = j;
+}
+
+let yourScore = document.getElementById('yourScore');
+let cpuScore = document.getElementById('cpuScore');
+
+function checkForWinner() {
+    if (i >= j) {
+        cpuScore.style.color = 'red'
+        yourScore.style.color = 'green'
+    } else if (j > i) {
+        cpuScore.style.color = 'green'
+        yourScore.style.color = 'red'
+    }
 
 function getRandomInt(max) {
     return Math.floor((Math.random() * max) + 1);
