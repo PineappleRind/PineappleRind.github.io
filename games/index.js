@@ -52,11 +52,35 @@ window.onload = function() {
 }
 }
 
+let settingsOpen = document.getElementById('settings');
+let settingsModal = document.querySelector('.settings-modal-bg');
+let settingsClose = document.getElementById('closeSettings');
+
+function openModal() {
+    settingsModal.style.display = 'flex';
+    setTimeout(function(){
+        settingsModal.style.opacity = '1';
+    },10);
+}
+
+function closeSettingsModal() {
+    settingsModal.style.opacity = '0';
+    setTimeout(function(){
+        settingsModal.style.display = 'none';
+    },500)
+}
+
+settingsOpen.addEventListener('click', function(){
+    openModal();
+})
+
+settingsClose.addEventListener('click', function(){
+    closeSettingsModal();
+})
 let button = document.querySelector('.ripple-button');
 let i = 0;
 let counter = document.getElementById('counter');
 let j = 0;
-let h = 0;
 let counterCPU = document.getElementById('counterCPU');
 
 
