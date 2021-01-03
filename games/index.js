@@ -22,11 +22,8 @@ function getCookie(cname) {
 let btn = document.getElementById('close');
 let modal = document.querySelector('.modal-bg');
 btn.addEventListener('click', function() {
-    modal.style.opacity = 0;
     setCookie('tutorial','true');
-    setTimeout(() => {
-        modal.style.display = 'none';
-    }, 500)
+    closeModal(modal)
 })
 
 if (getCookie('tutorial') === 'true,expires=864000') {
@@ -56,26 +53,26 @@ let settingsOpen = document.getElementById('settings');
 let settingsModal = document.querySelector('.settings-modal-bg');
 let settingsClose = document.getElementById('closeSettings');
 
-function openModal() {
-    settingsModal.style.display = 'flex';
+function closeModal(modal) {
+    modal.style.opacity = '0';
     setTimeout(function(){
-        settingsModal.style.opacity = '1';
-    },10);
-}
-
-function closeSettingsModal() {
-    settingsModal.style.opacity = '0';
-    setTimeout(function(){
-        settingsModal.style.display = 'none';
+        modal.style.display = 'none';
     },500)
 }
 
+function openModal(modal) {
+    modal.style.display = 'flex';
+    setTimeout(function(){
+        modal.style.opacity = '1';
+    },10)
+}
+
 settingsOpen.addEventListener('click', function(){
-    openModal();
+    openModal(settingsModal);
 })
 
 settingsClose.addEventListener('click', function(){
-    closeSettingsModal();
+    closeModal(settingsModal);
 })
 let button = document.querySelector('.ripple-button');
 let i = 0;
@@ -102,10 +99,14 @@ let cpuScore = document.getElementById('cpuScore');
 function checkForWinner() {
     if (i >= j) {
         cpuScore.style.color = 'red'
+        yourScore.style.fontWeight = '800'
+        cpuScore.style.fontWeight = '400'
         yourScore.style.color = 'green'
     } else if (j > i) {
         cpuScore.style.color = 'green'
         yourScore.style.color = 'red'
+        cpuScore.style.fontWeight = '800'
+        yourScore.style.fontWeight = '400'
     }
 }
 
