@@ -99,14 +99,20 @@ let cpuScore = document.getElementById('cpuScore');
 function checkForWinner() {
     if (i >= j) {
         cpuScore.style.color = 'red'
-        yourScore.style.fontWeight = '800'
-        cpuScore.style.fontWeight = '400'
+        yourScore.style.transform = 'scale(1.1)'
+        cpuScore.style.transform = 'scale(1)'
         yourScore.style.color = 'green'
     } else if (j > i) {
         cpuScore.style.color = 'green'
         yourScore.style.color = 'red'
-        cpuScore.style.fontWeight = '800'
-        yourScore.style.fontWeight = '400'
+        cpuScore.style.transform = 'scale(1.1)'
+        yourScore.style.transform = 'scale(1)'
+    }
+
+    if (i > 1000 || j > 1000) {
+        button.style.pointerEvents = 'none';
+
+        console.log('Under construction')
     }
 }
 

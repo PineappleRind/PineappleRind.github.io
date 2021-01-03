@@ -1,6 +1,7 @@
 * {
     margin:0;
     padding:0;
+    transition:0.5s;
 }
 
 body {
@@ -22,19 +23,19 @@ p, b, i, button {
 
 button {
     position: relative;
-overflow: hidden;
-outline: none;
-border: none;
-background: rgb(48, 48, 48);
-color: #fff;
-border-radius: 2px;
-padding: 8px 16px;
-margin: 8px;
-font-size: 14px;
-font-family: inherit;
-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-cursor: pointer;
-transition: 150ms cubic-bezier(.44,2.29,.54,1.29);
+    overflow: hidden;
+    outline: none;
+    border: none;
+    background: rgb(48, 48, 48);
+    color: #fff;
+    border-radius: 2px;
+    padding: 8px 16px;
+    margin: 8px;
+    font-size: 14px;
+    font-family: inherit;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    cursor: url('http://www.clipartbest.com/cliparts/niB/Eao/niBEaoxLT.png'), pointer;
+    transition: 150ms cubic-bezier(.44,2.29,.54,1.29);
 }
 
 button:hover {
@@ -62,6 +63,12 @@ button:active {
 .box hr {
     width: 100%;
     margin:0;
+}
+
+.game-title {
+  color: #555;
+  font-size: 20px;
+  text-transform: uppercase;
 }
 
 .modal-bg, .settings-modal-bg {
