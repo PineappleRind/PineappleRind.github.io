@@ -22,32 +22,31 @@ window.addEventListener("keydown", function(e) {
     }
 })
 
-function snackbar() {
-    var x = document.getElementById("snackbar");
-    x.className = "appear";
-    let y = document.getElementById("overlay");
-    y.style.display = 'block';
-    y.addEventListener("click", function() {
-        y.style.opacity = '0';
-        x.className = x.className.replace("appear", "");
+let author = 'PineappleRind. '
+let intro = 'Made by '
+let contact = 'Email: pineapplerind.info@gmail.com'
 
-    });
-    setTimeout(function() { y.style.opacity = '1'; }, 1)
-    setTimeout(function() {
-        x.className = x.className.replace("appear", "");
-        y.style.opacity = '0';
-    }, 2000);
-    setTimeout(function() {
-        y.style.display = 'none';
-    }, 3000);
+console.log(intro + author + contact);
+
+function redirect(link, method) { 
+    window.open(link, method); 
 }
 
-function copy() {
-    let text = "pr#2020";
-    navigator.clipboard.writeText(text)
-    let tooltip = document.getElementById('copied');
-    tooltip.style.opacity = '1';
-    setTimeout(function() {
-        tooltip.style.opacity = '0';
-    }, 1000);
+const g = document.getElementById('navButtons');
+const title = document.querySelector('.title');
+
+for (let i = 0, len = g.children.length; i < len; i++) {
+    g.children[i].onmouseover = function(){
+        title.style.background = '#9a59b9'
+    }
+
+    g.children[i].onmouseleave = function(){
+        title.style.background = '#b9598e'
+    }
+}
+
+onmousemove = e => {
+    let y = e.clientY/200 - 2
+    let x = e.clientX/100 - 3
+    title.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
 }

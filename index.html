@@ -7,48 +7,23 @@
     <title>Home | pineapplerind</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/CSSRulePlugin.min.js"></script>
 </head>
 
-<body class="dark" id="body">
-    <main class="flex-main">
-        <div class="main">
-            <h1 class="title">
-                PineappleRind
-                <hr>
-                <p>frontend web developer</p>
-            </h1>
+<body id="body">
+        <div class="title">
+            <h1>PineappleRind</h1>
+            <hr>
+            <p>frontend web developer</p>
         </div>
-        <ul class="nav">
-            <li><a css-data="2" href="https://github.com/pineapplerind">GitHub</a></li>
-            <li><a css-data="3" onclick="snackbar()">Discord</a></li>
-            <li><a css-data="4" href="/projects">Projects</a></li>
-            <li><a css-data="5" href="/redirect-codepen">Codepen</a></li>
-        </ul>
-    </main>
-    <div id="snackbar">
-        <h1>Discord</h1>
-        <p class="subheading" id="p" onclick="copy();">pr#2020
-            <span id="copied" class="tooltiptext">Copied!</span>
-        </p>
-    </div>
-    <div id="formOverlay">
-        <form action="https://formspree.io/f/xjvprqve" method="POST">
-            <h1>Contact Me</h1>
-            <input type="text" placeholder="Email, discord, twitter or anything" name="_replyto"><br>
-            <input type="text" placeholder="Your message..." name="content"><br>
-            <input type="submit" value="Send">
-        </form>
-    </div>
-    <div id="overlay"></div>
+    <nav id="navButtons">
+        <button onclick="redirect('https://github.com/pineapplerind')">GitHub</button>
+        <button onclick="redirect('/projects', '')">Projects</button>
+        <button>Discord</button>
+    </nav>
     <script src="index.js"></script>
-    <script>
-        let author = 'PineappleRind. '
-        let intro = 'Made by '
-        let contact = 'Email: pineapplerind.info@gmail.com'
-
-        console.log(intro + author + contact);
-    </script>
-    <script></script>
+    <script> </script>
 </body>
 
 </html>
