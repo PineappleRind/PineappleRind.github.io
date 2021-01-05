@@ -2,10 +2,11 @@
     margin:0;
     padding:0;
     transition:0.5s;
+    animation-duration:0.5s;
 }
 
 body {
-    background-color: #f1f1f1;
+    background-color: #eaeaea;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -48,10 +49,12 @@ button:active {
     opacity:0.7;
 }
 .box {
-    border-radius: 20px;
-    border: 1px solid rgb(218, 218, 218);
-    background: white;
-    padding: 20px;
+    padding: 40px;
+    border-radius: 50px;
+    background: linear-gradient(145deg, #e6e6e6, #ffffff);
+    box-shadow:  50px 50px 100px #c9c9c9,
+             -50px -50px 100px #ffffff;
+    border: 1px solid rgb(198, 198, 198);
 
     display: flex;
     flex-direction: column;
@@ -60,6 +63,9 @@ button:active {
     animation: float-up 2s ease;
 }
 
+.box:focus {
+  border: 1px solid rgb(129, 129, 129);
+}
 .box hr {
     width: 100%;
     margin:0;
@@ -91,6 +97,11 @@ button:active {
     bottom: 40vh;
     background: white;
     padding: 20px;
+}
+
+.modal {
+  bottom: 30vh;
+  top: 30vh;
 }
 
 .settings-modal-bg {
@@ -138,36 +149,7 @@ button:active {
     bottom: 30px; /* 30px from the bottom */
   }
   
-  /* Show the snackbar when clicking on a button (class added with JavaScript) */
-  #snackbar.showing {
-    visibility: visible; /* Show the snackbar */
-    /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
-    However, delay the fade out process for 2.5 seconds */
-    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-    animation: fadein 0.5s, fadeout 0.5s 2.5s;
-  }
-  
-  /* Animations to fade the snackbar in and out */
-  @-webkit-keyframes fadein {
-    from {bottom: 0; opacity: 0;}
-    to {bottom: 30px; opacity: 1;}
-  }
-  
-  @keyframes fadein {
-    from {bottom: 0; opacity: 0;}
-    to {bottom: 30px; opacity: 1;}
-  }
-  
-  @-webkit-keyframes fadeout {
-    from {bottom: 30px; opacity: 1;}
-    to {bottom: 0; opacity: 0;}
-  }
-  
-  @keyframes fadeout {
-    from {bottom: 30px; opacity: 1;}
-    to {bottom: 0; opacity: 0;}
-  }
-  
+
   @keyframes rippleEffect {
     0% {
       transform: scale(1);
@@ -181,4 +163,10 @@ button:active {
 
 @keyframes float-up {
     from {transform: translateY(200px); opacity:0;}
+}
+
+@keyframes bounce {
+  0% {transform: scale(0)};
+  50% {transform: scale(2)};
+  100% {transform: scale(1)};
 }

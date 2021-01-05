@@ -74,45 +74,59 @@ settingsOpen.addEventListener('click', function(){
 settingsClose.addEventListener('click', function(){
     closeModal(settingsModal);
 })
+
 let button = document.querySelector('.ripple-button');
 let i = 0;
 let counter = document.getElementById('counter');
 let j = 0;
 let counterCPU = document.getElementById('counterCPU');
 
-
-button.addEventListener('click', function() {
+/*let functioninterval = setInterval(function() {
+    updateCounters();
+    checkForWinner();
+},100)*/
+button.addEventListener('click', () => {
     updateCounters();
     checkForWinner();
 })
-
 function updateCounters() {
     i = i + getRandomInt(10);
     counter.innerHTML = i;
     j = j + getRandomInt(10);
     counterCPU.innerHTML = j;
+
+    //if (i > 500 || j > 500) {
+        //clearInterval(functioninterval);
+    //}
 }
 
 let yourScore = document.getElementById('yourScore');
 let cpuScore = document.getElementById('cpuScore');
 
+let winnerText = document.getElementById('winnertext');
+winnerText.style.display = 'none'
 function checkForWinner() {
     if (i >= j) {
         cpuScore.style.color = 'red'
         yourScore.style.transform = 'scale(1.1)'
         cpuScore.style.transform = 'scale(1)'
         yourScore.style.color = 'green'
+
+        winnerText.innerHTML = 'You win!'
     } else if (j > i) {
         cpuScore.style.color = 'green'
         yourScore.style.color = 'red'
         cpuScore.style.transform = 'scale(1.1)'
         yourScore.style.transform = 'scale(1)'
+
+        winnerText.innerHTML = 'Cpu wins!'
     }
 
-    if (i > 1000 || j > 1000) {
+    if (i > 500 || j > 500) {
         button.style.pointerEvents = 'none';
-
-        console.log('Under construction')
+        winnerText.style.display = 'block';
+        winnerText.style.animationName = 'bounce';
+        return false;
     }
 }
 
