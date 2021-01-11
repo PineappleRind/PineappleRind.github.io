@@ -81,13 +81,14 @@ let counter = document.getElementById('counter');
 let j = 0;
 let counterCPU = document.getElementById('counterCPU');
 
-/*let functioninterval = setInterval(function() {
+/*let functionInterval = setInterval(function() {
     updateCounters();
     checkForWinner();
 },100)*/
 button.addEventListener('click', () => {
     updateCounters();
     checkForWinner();
+    goalFunction();
 })
 function updateCounters() {
     i = i + getRandomInt(10);
@@ -96,7 +97,7 @@ function updateCounters() {
     counterCPU.innerHTML = j;
 
     //if (i > 500 || j > 500) {
-        //clearInterval(functioninterval);
+        //clearInterval(functionInterval);
     //}
 }
 
@@ -104,7 +105,9 @@ let yourScore = document.getElementById('yourScore');
 let cpuScore = document.getElementById('cpuScore');
 
 let winnerText = document.getElementById('winnertext');
-winnerText.style.display = 'none'
+winnerText.style.display = 'none';
+let goal = 500;
+
 function checkForWinner() {
     if (i >= j) {
         cpuScore.style.color = 'red'
@@ -122,13 +125,45 @@ function checkForWinner() {
         winnerText.innerHTML = 'Cpu wins!'
     }
 
-    if (i > 500 || j > 500) {
+    if (i > goal || j > goal) {
         button.style.pointerEvents = 'none';
         winnerText.style.display = 'block';
         winnerText.style.animationName = 'bounce';
         return false;
     }
 }
+
+function goalFunction() {
+    let goalSpan = document.getElementById('goal');
+    goal = parseInt(goalSpan.value);
+    setTimeout(function(){document.getElementById('number').innerHTML = goal;},10)
+}
+
+function autoInit() {
+    let functionInterval = setInterval(function() {
+        updateCounters();
+        checkForWinner();
+        autoStop();
+    },100);
+    function autoStop() {
+        if (i > 500 || j > 500) {
+            clearInterval(functionInterval);
+        }
+    }
+}
+let autoBox = document.getElementById('auto');
+oninput = () => {
+    goalFunction();
+    if (autoBox.checked === true) {
+        let autoButton = document.getElementById('autoInit');
+        autoButton.style.display = 'block';
+        autoButton.addEventListener('click', function() {
+            autoInit();
+            this.style.display = 'none';
+        })
+    }
+}
+
 
 function getRandomInt(max) {
     return Math.floor((Math.random() * max) + 1);

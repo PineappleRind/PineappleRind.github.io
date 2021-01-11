@@ -35,8 +35,8 @@ button {
     font-size: 14px;
     font-family: inherit;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    cursor: url('http://www.clipartbest.com/cliparts/niB/Eao/niBEaoxLT.png'), pointer;
-    transition: 150ms cubic-bezier(.44,2.29,.54,1.29);
+    cursor: pointer;
+    transition: 400ms cubic-bezier(.44,2.69,.54,1.29);
 }
 
 button:hover {
@@ -60,7 +60,7 @@ button:active {
     flex-direction: column;
     justify-content: space-evenly;
 
-    animation: float-up 2s ease;
+    animation: float-up 1s ease;
 }
 
 .box:focus {
@@ -104,6 +104,10 @@ button:active {
   top: 30vh;
 }
 
+.settings-modal {
+  bottom: 10%;
+}
+
 .settings-modal-bg {
      display: none;
     opacity:0;
@@ -133,23 +137,15 @@ button:active {
     opacity: 0;
   }
 
-  /* The snackbar - position it at the bottom and in the middle of the screen */
-#snackbar {
-    visibility: hidden; /* Hidden by default. Visible on click */
-    min-width: 250px; /* Set a default minimum width */
-    margin-left: -125px; /* Divide value of min-width by 2 */
-    background-color: #333; /* Black background color */
-    color: #fff; /* White text color */
-    text-align: center; /* Centered text */
-    border-radius: 2px; /* Rounded borders */
-    padding: 16px; /* Padding */
-    position: fixed; /* Sit on top of the screen */
-    z-index: 1; /* Add a z-index if needed */
-    left: 50%; /* Center the snackbar */
-    bottom: 30px; /* 30px from the bottom */
+  #autoInit {
+    position: fixed;
+    top: 40%;
+    bottom: 40%;
+    right: 40%;
+    left: 40%;
+    z-index: 5;
   }
   
-
   @keyframes rippleEffect {
     0% {
       transform: scale(1);
@@ -162,11 +158,15 @@ button:active {
   }
 
 @keyframes float-up {
-    from {transform: translateY(200px); opacity:0;}
+    from {transform: rotateY(40deg); opacity:0;}
 }
 
 @keyframes bounce {
   0% {transform: scale(0)};
   50% {transform: scale(2)};
   100% {transform: scale(1)};
+}
+
+@-webkit-keyframes bounce {
+  0% {opacity:0;}
 }

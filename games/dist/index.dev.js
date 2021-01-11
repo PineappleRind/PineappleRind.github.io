@@ -85,20 +85,31 @@ var i = 0;
 var counter = document.getElementById('counter');
 var j = 0;
 var counterCPU = document.getElementById('counterCPU');
+/*let functionInterval = setInterval(function() {
+    updateCounters();
+    checkForWinner();
+},100)*/
+
 button.addEventListener('click', function () {
   updateCounters();
   checkForWinner();
+  goalFunction();
 });
 
 function updateCounters() {
   i = i + getRandomInt(10);
   counter.innerHTML = i;
   j = j + getRandomInt(10);
-  counterCPU.innerHTML = j;
+  counterCPU.innerHTML = j; //if (i > 500 || j > 500) {
+  //clearInterval(functionInterval);
+  //}
 }
 
 var yourScore = document.getElementById('yourScore');
 var cpuScore = document.getElementById('cpuScore');
+var winnerText = document.getElementById('winnertext');
+winnerText.style.display = 'none';
+var goal = 500;
 
 function checkForWinner() {
   if (i >= j) {
@@ -106,18 +117,59 @@ function checkForWinner() {
     yourScore.style.transform = 'scale(1.1)';
     cpuScore.style.transform = 'scale(1)';
     yourScore.style.color = 'green';
+    winnerText.innerHTML = 'You win!';
   } else if (j > i) {
     cpuScore.style.color = 'green';
     yourScore.style.color = 'red';
     cpuScore.style.transform = 'scale(1.1)';
     yourScore.style.transform = 'scale(1)';
+    winnerText.innerHTML = 'Cpu wins!';
   }
 
-  if (i > 1000 || j > 1000) {
+  if (i > goal || j > goal) {
     button.style.pointerEvents = 'none';
-    console.log('Under construction');
+    winnerText.style.display = 'block';
+    winnerText.style.animationName = 'bounce';
+    return false;
   }
 }
+
+function goalFunction() {
+  var goalSpan = document.getElementById('goal');
+  goal = parseInt(goalSpan.value);
+  setTimeout(function () {
+    document.getElementById('number').innerHTML = goal;
+  }, 10);
+}
+
+function autoInit() {
+  var functionInterval = setInterval(function () {
+    updateCounters();
+    checkForWinner();
+    autoStop();
+  }, 100);
+
+  function autoStop() {
+    if (i > 500 || j > 500) {
+      clearInterval(functionInterval);
+    }
+  }
+}
+
+var autoBox = document.getElementById('auto');
+
+oninput = function oninput() {
+  goalFunction();
+
+  if (autoBox.checked === true) {
+    var autoButton = document.getElementById('autoInit');
+    autoButton.style.display = 'block';
+    autoButton.addEventListener('click', function () {
+      autoInit();
+      this.style.display = 'none';
+    });
+  }
+};
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * max + 1);

@@ -30,7 +30,7 @@ function addThingyIForgot() {
     if (counter >= integer) {
         firstOption.style.opacity = '1';
         firstOption.style.pointerEvents = 'all';
-    } else if (counter >= 200) else {
+    } else if (counter >= 200) {
         firstOption.style.opacity = '0.4';
         firstOption.style.pointerEvents = 'none';
     }
