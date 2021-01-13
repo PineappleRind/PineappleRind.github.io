@@ -81,24 +81,28 @@ let counter = document.getElementById('counter');
 let j = 0;
 let counterCPU = document.getElementById('counterCPU');
 
-/*let functionInterval = setInterval(function() {
-    updateCounters();
-    checkForWinner();
-},100)*/
 button.addEventListener('click', () => {
     updateCounters();
     checkForWinner();
     goalFunction();
 })
 function updateCounters() {
-    i = i + getRandomInt(10);
-    counter.innerHTML = i;
-    j = j + getRandomInt(10);
-    counterCPU.innerHTML = j;
-
-    //if (i > 500 || j > 500) {
-        //clearInterval(functionInterval);
-    //}
+    if (probabillity() === 'major') {
+        i = i + getRandomInt(20);
+        counter.innerHTML = i;
+        j = j + getRandomInt(10);
+        counterCPU.innerHTML = j;
+    } else if (probabillity() === 'regular') {
+        i = i + getRandomInt(15);
+        counter.innerHTML = i;
+        j = j + getRandomInt(10);
+        counterCPU.innerHTML = j;
+    } else {
+        i = i + getRandomInt(10);
+        counter.innerHTML = i;
+        j = j + getRandomInt(10);
+        counterCPU.innerHTML = j;
+    }
 }
 
 let yourScore = document.getElementById('yourScore');
@@ -139,7 +143,7 @@ function goalFunction() {
     setTimeout(function(){document.getElementById('number').innerHTML = goal;},10)
 }
 
-function autoInit() {
+/*function autoInit() {
     let functionInterval = setInterval(function() {
         updateCounters();
         checkForWinner();
@@ -150,21 +154,40 @@ function autoInit() {
             clearInterval(functionInterval);
         }
     }
-}
+}*/
 let autoBox = document.getElementById('auto');
 oninput = () => {
     goalFunction();
-    if (autoBox.checked === true) {
+    /*if (autoBox.checked === true) {
         let autoButton = document.getElementById('autoInit');
         autoButton.style.display = 'block';
         autoButton.addEventListener('click', function() {
             autoInit();
-            this.style.display = 'none';
+            autoButton.style.display = 'none';
         })
-    }
+        document.getElementById('sliderContainer').style.display = 'inline';
+    } else if (autoBox.checked === false) {
+        document.getElementById('sliderContainer').style.display = 'none';
+        autoButton.style.display = 'none';
+    }*/
+    probabillity();
+
 }
 
 
 function getRandomInt(max) {
     return Math.floor((Math.random() * max) + 1);
+}
+
+function probabillity() {
+    let slight = document.getElementById('slightProb');
+    let major = document.getElementById('majorProb');
+
+    if (major.checked === true) {
+        return 'major';
+    } else if (slight.checked === true) {
+        return 'slight';
+    } else {
+        return 'regular';
+    }
 }
