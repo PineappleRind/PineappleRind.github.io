@@ -20,7 +20,7 @@
         <hr>
         <p id="winnertext"></p>
         <a href="/games/Random%20Game">Restart...</a>
-        <a id="settings" href="#">undefined</a>
+        <a id="settings" href="#">Settings...</a>
     </main>
 
     <div class="modal-bg">
@@ -42,11 +42,12 @@
             <p style="display: inline-block">First to <input id="goal" value="500"></p><br>
             <input type="checkbox" id="auto">
             <label for="auto">Autoclick</label>
-        </div>
+            <br>
+            <p style="display: inline;">XP gained per click between 0 and</p>
+            <input id="xpValue" style="display: inline; width: 20px; box-shadow: 0 0 10px 2px rgba(0,0,0,0.5)">
+            <br>
+            <input type="range" value="10" id="sliderXP" style="width: 300px;"max="100" step="5">
     </div>
-
-    <!-- <div class="winner-modal-bg"></div> -->
-
     <script src="index.js"></script>
 </body>
 </html>

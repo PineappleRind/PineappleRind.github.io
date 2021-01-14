@@ -145,7 +145,7 @@ button:active {
     left: 40%;
     z-index: 5;
   }
-  
+
   @keyframes rippleEffect {
     0% {
       transform: scale(1);

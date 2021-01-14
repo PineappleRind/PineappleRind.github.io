@@ -85,21 +85,7 @@ let counterCPU = document.getElementById('counterCPU');
     updateCounters();
     checkForWinner();
 },100)*/
-button.addEventListener('click', () => {
-    updateCounters();
-    checkForWinner();
-    goalFunction();
-})
-function updateCounters() {
-    i = i + getRandomInt(10);
-    counter.innerHTML = i;
-    j = j + getRandomInt(10);
-    counterCPU.innerHTML = j;
 
-    //if (i > 500 || j > 500) {
-        //clearInterval(functionInterval);
-    //}
-}
 
 let yourScore = document.getElementById('yourScore');
 let cpuScore = document.getElementById('cpuScore');
@@ -151,6 +137,7 @@ function autoInit() {
         }
     }
 }
+
 let autoBox = document.getElementById('auto');
 oninput = () => {
     goalFunction();
@@ -163,8 +150,23 @@ oninput = () => {
         })
     }
 }
-
-
 function getRandomInt(max) {
     return Math.floor((Math.random() * max) + 1);
 }
+
+    button.addEventListener('click', () => {
+        updateCounters();
+        checkForWinner();
+        goalFunction();
+    })
+
+  let slideXP = document.getElementById('sliderXP');
+  let slideXPValue = document.getElementById('xpValue');
+  function updateCounters() {
+      i = i + getRandomInt(slideXP.value);
+      counter.innerHTML = i;
+      j = j + getRandomInt(slideXP.value);
+      counterCPU.innerHTML = j;
+  }
+
+  slideXPValue.innerHTML = slideXP.value;

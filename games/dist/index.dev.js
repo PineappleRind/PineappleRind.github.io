@@ -90,21 +90,6 @@ var counterCPU = document.getElementById('counterCPU');
     checkForWinner();
 },100)*/
 
-button.addEventListener('click', function () {
-  updateCounters();
-  checkForWinner();
-  goalFunction();
-});
-
-function updateCounters() {
-  i = i + getRandomInt(10);
-  counter.innerHTML = i;
-  j = j + getRandomInt(10);
-  counterCPU.innerHTML = j; //if (i > 500 || j > 500) {
-  //clearInterval(functionInterval);
-  //}
-}
-
 var yourScore = document.getElementById('yourScore');
 var cpuScore = document.getElementById('cpuScore');
 var winnerText = document.getElementById('winnertext');
@@ -174,3 +159,20 @@ oninput = function oninput() {
 function getRandomInt(max) {
   return Math.floor(Math.random() * max + 1);
 }
+
+button.addEventListener('click', function () {
+  updateCounters();
+  checkForWinner();
+  goalFunction();
+});
+var slideXP = document.getElementById('sliderXP');
+var slideXPValue = document.getElementById('xpValue');
+
+function updateCounters() {
+  i = i + getRandomInt(slideXP.value);
+  counter.innerHTML = i;
+  j = j + getRandomInt(slideXP.value);
+  counterCPU.innerHTML = j;
+}
+
+slideXPValue.innerHTML = slideXP.value;

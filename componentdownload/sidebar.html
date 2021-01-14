@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar | Component Download</title>
+    <style>
+        .sidebar {
+            height: 100%;
+            width: 500px;
+            position: fixed;
+            left: 100%;
+            right: 0;
+            bottom: 0;
+            top: 0;
+            background: white;
+            -webkit-transition: 0.5s;
+            transition: 0.5s;
+            z-index: 5;
+            color: white;
+            box-shadow: 0 0 30px rgba(0,0,0,0.4);
+            font-family: 'Inter', Arial, sans-serif;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            height: 100%;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            text-transform: lowercase;
+            margin-top: 100px;
+            -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+            position: relative;
+            list-style-type: none;
+        }
+
+        .sidebar ul li {
+            padding: 10px;
+            cursor: pointer;
+            position: relative;
+            width: fit-content;
+            color: black;
+            font-size: 30px;
+            transition: 200ms;
+        }
+
+        .sidebar ul li:hover:not(.special) {
+            color: #777;
+        }
+
+        .sidebar ul li.special {
+            position: relative;
+            overflow: hidden;
+            transition: 200ms;
+            color: black;
+            border: 3px solid #00b6ee;
+            padding: 15px 30px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 30px;
+            outline: 0;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .sidebar ul li.special:hover {
+            opacity: 0.7;
+        }
+
+        #close {
+            color:black;
+            font-size: 40px;
+            margin-left:calc(100% - 150px);
+            cursor: pointer;
+        }
+
+        .sidebar .footer {
+            position: absolute;
+            bottom:0;
+            color: black;
+            width: 400px;
+            margin-bottom: 40px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <a id="open" href="#">Open Sidebar</a>
+    <div class="sidebar">
+        <p id="close">&times;</p>
+        <ul>
+            <li>Link</li>
+            <li>Link</li>
+            <li>Link</li>
+            <li class="special">special link</li>
+        </ul>
+        <div class="footer">
+            <p>footer | 2021</p>
+        </div>
+    </div>
+    <script>
+        let open = document.getElementById('open');
+        open.addEventListener('click', () => {
+            document.querySelector('.sidebar').style.left = 'calc(100% - 400px)';
+        })
+
+        let close = document.getElementById('close');
+        close.addEventListener('click', () => {
+            document.querySelector('.sidebar').style.left = '100%';
+        })
+    </script>
+</body>
+</html>

@@ -62,3 +62,71 @@ nav button:hover {
     margin-left: 20px;
     margin-right: 20px;
 }
+
+
+
+/* Component Download Homepage */
+
+
+
+body.componentdownload {
+    background: radial-gradient(rgb(97, 97, 133), rgb(72,72,105));
+}
+.box {
+    position: fixed;
+    top: 10%;
+    bottom: 10%;
+    right: 20%;
+    left: 20%;
+
+    background-color: #f1f1f1;
+    color: black;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px 10px rgba(0, 0, 0, 0.342)
+}
+
+.header {
+    margin:0;
+    background-color: #dddddd;
+    border-radius: 20px;
+    padding: 20px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    text-align: center;
+}
+
+.main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.component {
+    background-color: #ffffff;
+    border-radius: 20px;
+    margin: 20px;
+    padding: 20px;
+
+    box-shadow: 0 10px 20px 0px rgba(0, 0, 0, 0.342);
+
+    cursor: pointer;
+    transition: 200ms;
+
+    max-width: 400px;
+    overflow:hidden;
+    min-width: 140px;
+}
+
+.component:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 20px 0 rgba(0, 0, 0, 0.342)
+}
+
+.component h2 {
+    font-size: 25px;
+    margin:0;
+}
+
+.component p {
+    font-size: 20px;
+}
