@@ -85,10 +85,30 @@ var i = 0;
 var counter = document.getElementById('counter');
 var j = 0;
 var counterCPU = document.getElementById('counterCPU');
-/*let functionInterval = setInterval(function() {
-    updateCounters();
-    checkForWinner();
-},100)*/
+button.addEventListener('click', function () {
+  updateCounters();
+  checkForWinner();
+  goalFunction();
+});
+
+function updateCounters() {
+  if (probabillity() === 'major') {
+    i = i + getRandomInt(20);
+    counter.innerHTML = i;
+    j = j + getRandomInt(10);
+    counterCPU.innerHTML = j;
+  } else if (probabillity() === 'regular') {
+    i = i + getRandomInt(15);
+    counter.innerHTML = i;
+    j = j + getRandomInt(10);
+    counterCPU.innerHTML = j;
+  } else {
+    i = i + getRandomInt(10);
+    counter.innerHTML = i;
+    j = j + getRandomInt(10);
+    counterCPU.innerHTML = j;
+  }
+}
 
 var yourScore = document.getElementById('yourScore');
 var cpuScore = document.getElementById('cpuScore');
@@ -126,53 +146,53 @@ function goalFunction() {
     document.getElementById('number').innerHTML = goal;
   }, 10);
 }
-
-function autoInit() {
-  var functionInterval = setInterval(function () {
-    updateCounters();
-    checkForWinner();
-    autoStop();
-  }, 100);
-
-  function autoStop() {
-    if (i > 500 || j > 500) {
-      clearInterval(functionInterval);
+/*function autoInit() {
+    let functionInterval = setInterval(function() {
+        updateCounters();
+        checkForWinner();
+        autoStop();
+    },100);
+    function autoStop() {
+        if (i > 500 || j > 500) {
+            clearInterval(functionInterval);
+        }
     }
-  }
-}
+}*/
+
 
 var autoBox = document.getElementById('auto');
 
 oninput = function oninput() {
   goalFunction();
+  /*if (autoBox.checked === true) {
+      let autoButton = document.getElementById('autoInit');
+      autoButton.style.display = 'block';
+      autoButton.addEventListener('click', function() {
+          autoInit();
+          autoButton.style.display = 'none';
+      })
+      document.getElementById('sliderContainer').style.display = 'inline';
+  } else if (autoBox.checked === false) {
+      document.getElementById('sliderContainer').style.display = 'none';
+      autoButton.style.display = 'none';
+  }*/
 
-  if (autoBox.checked === true) {
-    var autoButton = document.getElementById('autoInit');
-    autoButton.style.display = 'block';
-    autoButton.addEventListener('click', function () {
-      autoInit();
-      this.style.display = 'none';
-    });
-  }
+  probabillity();
 };
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * max + 1);
 }
 
-button.addEventListener('click', function () {
-  updateCounters();
-  checkForWinner();
-  goalFunction();
-});
-var slideXP = document.getElementById('sliderXP');
-var slideXPValue = document.getElementById('xpValue');
+function probabillity() {
+  var slight = document.getElementById('slightProb');
+  var major = document.getElementById('majorProb');
 
-function updateCounters() {
-  i = i + getRandomInt(slideXP.value);
-  counter.innerHTML = i;
-  j = j + getRandomInt(slideXP.value);
-  counterCPU.innerHTML = j;
+  if (major.checked === true) {
+    return 'major';
+  } else if (slight.checked === true) {
+    return 'slight';
+  } else {
+    return 'regular';
+  }
 }
-
-slideXPValue.innerHTML = slideXP.value;
