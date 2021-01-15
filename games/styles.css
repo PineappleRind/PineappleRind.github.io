@@ -106,6 +106,8 @@ button:active {
 
 .settings-modal {
   bottom: 10%;
+  top: 10%;
+  overflow: scroll;
 }
 
 .settings-modal-bg {

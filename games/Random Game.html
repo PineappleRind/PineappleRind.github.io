@@ -32,7 +32,7 @@
         </div>
     </div>
 
-    <button style="display: none;" id="autoInit">Start Auto</button>
+    <!--<button style="display: none;" id="autoInit">Start Auto</button>-->
     
     <div class="settings-modal-bg">
         <div class="settings-modal">
@@ -40,14 +40,20 @@
             <h1 style="margin-top: -20px;">Settings</h1>
             <hr>
             <p style="display: inline-block">First to <input id="goal" value="500"></p><br>
-            <input type="checkbox" id="auto">
-            <label for="auto">Autoclick</label>
+            <!--<input type="checkbox" id="auto">-->
+            <!--<label for="auto">Autoclick</label>-->
             <br>
-            <p style="display: inline;">XP gained per click between 0 and</p>
-            <input id="xpValue" style="display: inline; width: 20px; box-shadow: 0 0 10px 2px rgba(0,0,0,0.5)">
-            <br>
-            <input type="range" value="10" id="sliderXP" style="width: 300px;"max="100" step="5">
+            <div style="display:inline" id="sliderContainer"></div>
+            <p>Probabillity (winning:notwinning)</p>
+            <input type="radio" name="probs" id="regularProb">
+            <label for="regularProb">1:1 (even)</label><br>
+            <input type="radio" name="probs" id="slightProb">
+            <label for="slightProb">3:2 (slight advantage)</label><br>
+            <input type="radio" name="probs" id="majorProb">
+            <label for="majorProb">2:1 (big advantage)</label>
+        </div>
     </div>
+
     <script src="index.js"></script>
 </body>
 </html>
