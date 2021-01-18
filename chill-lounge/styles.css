@@ -2,9 +2,10 @@
     box-sizing: border-box;
     margin:0;
 }
-body {
+body, html {
     margin:0;
-    font-family: Inter, Thonburi, Arial, Helvetica, sans-serif
+    font-family: Inter, Thonburi, Arial, Helvetica, sans-serif;
+    scroll-behavior: smooth;
 }
 
 nav {
@@ -27,7 +28,7 @@ nav ul {
     padding:0;
 }
 
-nav ul li, nav a {
+nav ul li, nav ul a, nav a.left {
     float: right;
     display: inline;
     padding: 24px 28px;
@@ -37,13 +38,23 @@ nav ul li, nav a {
     margin:0;
 }
 
-nav a {
+nav a.left {
     float: left;
     margin-left: 40px;
 }
 
+nav ul a {
+    margin:0;
+    padding:0;
+    color: black;
+    text-decoration: none;
+}
 nav ul li:hover {
     box-shadow: inset 0px -100px rgba(0, 0, 0, 0.479);
+    color: white;
+}
+
+nav ul li:hover a {
     color: white;
 }
 
@@ -58,22 +69,16 @@ nav ul li:hover {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    background-image: linear-gradient(to top, #161618 0%, transparent 50%), url("image0.jpg");
+    background-size: cover;
 }
 
-.fullpage img {
-    height: 100%;
-    background-size:cover;
-    animation: fade 1s;
-    position: absolute;
-    top:0;
-    bottom:0;
-    right:0;
-    left:0;
-    z-index: -1;
-    background-color: black;
+.fullpage.second {
+    background:#161618
 }
 
-.fullpage h1 {
+.fullpage:not(.second) h1 {
     color: white;
     text-shadow: 0 0 10px black;
     font-size: 150px;
@@ -104,6 +109,10 @@ nav ul li:hover {
 .container {
     display: flex;
     align-items: center;
+}
+
+.fullpage.second h1 {
+    color: white;
 }
 
 @keyframes navload {
