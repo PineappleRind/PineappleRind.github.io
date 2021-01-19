@@ -11,7 +11,7 @@
     <nav>
         <a class="left">Chill Lounge</a>
         <ul>
-            <li class="special" onclick="window.location.href = 'https://discord.gg/wxPNgwuQ3Z'">Join the server</li>
+            <li class="special" onclick="linkConfirm('https://discord.gg/vJMPAErdVa')">Join the server</li>
             <li><a href="#about-us">About us</a></li>        
         </ul>
     </nav>
@@ -24,8 +24,23 @@
         </div>
     </div>
     <div class="fullpage second" id="about-us">
-        <h1>help what do i put here</h1>
+        <div target="_blank" data-aos="zoom-in" class="discord-wrap">
+            <img class="logo" src="logo.png"><br>
+            <h1 style="color: black;">Join the Chill Lounge Discord Server!</h1><br>
+            <p style="color: black;">Check out the Chill Lounge community on Discord - hang out with other members and enjoy free voice and text chat.</p>
+        </a>
     </div>
+    <div id="overlay" style="display:none;">
+            <div id="modal">
+            <h1>Link Confirmation</h1>
+            <p>Are you sure you want to go to this link?</p>
+            <div class="buttonalign">
+                <button class="no">No</button>
+                <button id="link">Yes</button>
+            </div>
+        </div>
+    </div>
+    <script src="index.js"></script>
     <script> </script>
 </body>
 </html>

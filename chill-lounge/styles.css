@@ -115,6 +115,126 @@ nav ul li:hover a {
     color: white;
 }
 
+.discord-wrap {
+    border-radius: 10px;
+    background-color: #fff;
+    color: black;
+    box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.37);
+    margin: 40px;
+    overflow: hidden;
+    padding: 20px;
+    transition:.2s;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.discord-wrap:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 20px 5px rgba(255, 255, 255, 0.412);
+}
+
+div div h1 {
+    font-weight: 800;
+    font-size: 30px;
+    width: 300px;
+    color: black;
+    text-align: center;
+}
+
+.discord-wrap p {
+    font-size: 20px;
+    color: black;
+    width: 300px;
+    text-align: center;
+}
+
+.discord-wrap img {
+    height: 340px;
+    background-position: center;
+    border-radius: 10px;
+}
+
+#overlay {
+    position: fixed;
+    top:0;
+    bottom:0;
+    right:0;
+    left:0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.712);
+    transform: scale(1.4);
+
+    z-index: 11;
+    transition: 0.3s cubic-bezier(0,.01,.51,1.46);
+}
+#modal {
+    position: relative;
+    background: rgba(55, 57, 62);
+    color: white;
+    border-radius: 5px;
+    height: 200px;
+}
+
+#modal h1 {
+    margin:0;
+    width: 100%;
+    padding: 20px;
+}
+
+#modal p {
+    margin: 10px;
+    font-size: 20px;
+}
+
+#modal button {
+    margin: 10px;
+    border:0;
+    outline:0;
+    background: rgb(135, 153, 255);
+    padding: 10px 22px;
+    min-height: 33px;
+    min-width: calc(50px);
+    border-radius: 2px;
+    color: white;
+    font-size: 18px;
+    transition: 200ms;
+}
+
+#modal button.no {
+    background: transparent;
+}
+
+
+#modal button.no:hover {
+    text-decoration: underline white;
+    background: transparent;
+}
+
+.buttonalign {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    left:0;
+    background-color: rgb(42, 43, 48);
+    display: flex;
+    margin:0;
+    flex-direction: row;
+    align-items: center;
+    justify-content:flex-end;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+#modal button:hover {
+    background-color: rgb(113, 128, 216);
+}
+
 @keyframes navload {
     from {top: -10%;}
 }
