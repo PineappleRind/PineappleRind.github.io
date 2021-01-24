@@ -54,6 +54,8 @@ hr {
 	outline: 0;
 	transition: all .1s;
 	margin: 15px;
+	background-color: #fff;
+	color: #777;
 }
 
 .btn:hover {
@@ -66,14 +68,15 @@ hr {
 	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
-.btn-white {
-	background-color: #fff;
-	color: #777;
-}
-
 .is-not-showing {
 	transform: translateY(30px);
 	opacity: 0;
+}
+
+.btn[disabled="true"] {
+	opacity:0.5;
+	cursor: not-allowed;
+	pointer-events:none;
 }
 
 #overlay {

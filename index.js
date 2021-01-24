@@ -28,8 +28,9 @@ let contact = 'Email: pineapplerind.info@gmail.com'
 
 console.log(intro + author + contact);
 
-function redirect(link, method) { 
-    window.open(link, method); 
+function redirect(link) { 
+    document.body.style.animationName = 'load-out'
+    setTimeout(function(){window.location.href = link; document.body.style.display = 'none'},1000)
 }
 
 const g = document.getElementById('navButtons');
@@ -46,7 +47,7 @@ for (let i = 0, len = g.children.length; i < len; i++) {
 }
 
 onmousemove = e => {
-    let y = e.clientY/200 - 2
-    let x = e.clientX/100 - 3
+    let y = e.clientY/150 - 2
+    let x = e.clientX/75 - 4
     title.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
 }
