@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Page Title</title>
+<title>Trivia Challenge</title>
+<link rel="stylesheet" href="trivia.css">
 </head>
 <body>
 <div id="overlay"><h1>Loading... <span id="loadingNumber"></span></h1></div>
@@ -14,9 +15,10 @@
 <script>
 let overlay = document.getElementById('overlay');
 onload = () => {
-setTimeout(function(){overlay.style.opacity = '0'}, 1000)
-setTimeout(function(){overlay.style.display = 'none'}, 2000)
+	setTimeout(function(){overlay.style.opacity = '0'}, 1000)
+	setTimeout(function(){overlay.style.display = 'none'}, 2000)
 }
 </script>
+	<script src="trivia.js"></script>
 </body>
 </html>
