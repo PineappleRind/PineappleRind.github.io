@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord Webhook Tutorial</title>
+    <style>
+        p {
+            position: fixed;
+            bottom:0;
+            color: grey;
+        }
+    </style>
+  </head>
+  <body>
+      <h1>Send messages via webhook to the Chill Lounge discord server.</h1>
+      
+      <input id="input" placeholder="Type...">
+      <p>Made by pr#1951</p>
+    <button onclick="sendMessage()">Send</button>
+  </body>
+
+  <script>
+    let input = document.getElementById('input')
+    function sendMessage() {
+      var request = new XMLHttpRequest();
+      request.open("POST", "https://discord.com/api/webhooks/805162885704843335/o9Fi4RWjNOB0AebI_gE-hjWgEIUZDWvKGEPKgbZqvj48lvz-teduR6qDWgKleSC2wOjG");
+
+      request.setRequestHeader('Content-type', 'application/json');
+
+      var params = {
+        username: "test",
+        avatar_url: "",
+        content: input.value
+      }
+
+      request.send(JSON.stringify(params));
+    }
+  </script>
+</html>
