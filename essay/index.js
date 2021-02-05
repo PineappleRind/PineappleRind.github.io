@@ -1,17 +1,19 @@
-function $(id) {
-    return document.getElementById(id)
+function $(e) {
+    return document.getElementById(e)
 }
+let o = window,
+    i = $("dark"),
+    b = $("body");
 
-let input = $('dark')
-let theBody = $('body')
-function darkmode() {
-    if (input.checked === false) {
-        document.body.classList.remove('dark')
-    } else {
-        document.body.classList.add('dark')
-    }
+function p() {
+    !1 === i.checked ? b.classList.remove("dark") : b.classList.add("dark")
 }
-
-input.onclick = () => {
-    darkmode()
-}
+i.onclick = (() => {
+    p()
+}), onscroll = (() => {
+    const e = o.innerHeight,
+        t = o.pageYOffset,
+        d = document.body.offsetHeight,
+        n = parseInt(t / (d - e) * 100);
+    $("progress").style.width = n + "%"
+});
