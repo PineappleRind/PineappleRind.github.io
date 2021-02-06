@@ -7,22 +7,40 @@
     <title>Home | pineapplerind</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/CSSRulePlugin.min.js"></script>
 </head>
 
-<body id="body">
-        <div class="title">
+<body id="body" data-barba="wrapper">
+        <main data-barba="container"><div class="title">
             <h1>PineappleRind</h1>
             <hr>
             <p>frontend web developer</p>
         </div>
     <nav id="navButtons">
         <button onclick="window.location.href = 'https://github.com/pineapplerind'">GitHub</button>
-        <button onclick="redirect('/projects.html')">Projects</button>
-        <button onclick="redirect('/discord.html')">Discord</button>
+        <button onclick="window.location.href = 'https://pineapplerind.github.io/projects'">Projects</button>
+        <!--<button onclick="window.location.href = 'https://github.com/pineapplerind'">Discord</button>-->
     </nav>
+    </main>
+    <script src="https://unpkg.com/@barba/core"></script>
+    <script src="https://unpkg.com/gsap@latest/dist/gsap.min.js"></script>
     <script src="index.js"></script>
+        <script type="text/javascript">
+      barba.init({
+        transitions: [{
+          name: 'opacity-transition',
+          leave(data) {
+            return gsap.to(data.current.container, {
+              opacity: 0
+            });
+          },
+          enter(data) {
+            return gsap.from(data.next.container, {
+              opacity: 0
+            });
+          }
+        }]
+      });
+    </script>
     <script> </script>
 </body>
 
