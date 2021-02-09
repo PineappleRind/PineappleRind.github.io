@@ -98,7 +98,7 @@
     let input = document.getElementById('input')
     function sendMessage() {
       var request = new XMLHttpRequest();
-      request.open("POST", "https://discord.com/api/webhooks/805609821851090984/SOliT9viXi3FCfyzeIwDj1ywheryDg6jRjTV_dbKG8jcahIfOQSG-cKM4KnClVr0TI8i");
+      request.open("POST", "https://discord.com/api/webhooks/808817904086548490/FW9cLl5LD2yoS6cl4_eP_uU0rVkrtAzrz5tl4EiK4EDDAzHaVbwA-i0_CD3Nw6wd4LHc");
 
       request.setRequestHeader('Content-type', 'application/json');
 
@@ -118,5 +118,23 @@
             error.style.display = 'none';
         }
     }
+    
+    window.addEventListener("keydown", function(e) {
+    if (e.key === 's') {
+        window.addEventListener("keydown", function(e) {
+            if (e.key === 't') {
+                window.addEventListener("keydown", function(e) {
+                    if (e.key === 'o') {
+                        window.addEventListener("keydown", function(e) {
+                            if (e.key === 'p') {
+                                document.querySelector('.overlay').style.display = 'none'
+                            }
+                        })
+                    }
+                })
+            }
+        })
+    }
+})
   </script>
 </html>
