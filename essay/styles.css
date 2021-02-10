@@ -62,15 +62,20 @@ div.darkmode {
   position: fixed;
   bottom: 10px;
   left: 10px;
-  background: rgba(255, 255, 255, 0.342);
+  background: rgba(255, 255, 255, 0.938);
   padding: 10px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.342);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.342);
+  transition: 1s;
 }
 
+body.dark div.darkmode {
+  background: rgba(37, 37, 37, 0.938);
+  color: white;
+}
 .switch {
   position: relative;
   display: inline-block;
