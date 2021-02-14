@@ -322,9 +322,9 @@ function updateCount() {
 document.addEventListener("input", function() {
 	updateCount()
 }), updateCount();
-let btn = document.getElementById("generate"),
+let genbtn = document.getElementById("generate"),
 	mBtn = document.getElementById("mGenerate");
-btn.addEventListener("click", function() {
+genbtn.addEventListener("click", function() {
 	randomPass()
 }), mBtn.addEventListener("click", function() {
 	randomPass()
