@@ -143,7 +143,7 @@ function goalFunction() {
     setTimeout(function(){document.getElementById('number').innerHTML = goal;},10)
 }
 
-/*function autoInit() {
+function autoInit() {
     let functionInterval = setInterval(function() {
         updateCounters();
         checkForWinner();
@@ -154,24 +154,12 @@ function goalFunction() {
             clearInterval(functionInterval);
         }
     }
-}*/
+}
 let autoBox = document.getElementById('auto');
 oninput = () => {
     goalFunction();
-    /*if (autoBox.checked === true) {
-        let autoButton = document.getElementById('autoInit');
-        autoButton.style.display = 'block';
-        autoButton.addEventListener('click', function() {
-            autoInit();
-            autoButton.style.display = 'none';
-        })
-        document.getElementById('sliderContainer').style.display = 'inline';
-    } else if (autoBox.checked === false) {
-        document.getElementById('sliderContainer').style.display = 'none';
-        autoButton.style.display = 'none';
-    }*/
+    autoIfs();
     probabillity();
-
 }
 function getRandomInt(max) {
     return Math.floor((Math.random() * max) + 1);
@@ -188,4 +176,31 @@ function probabillity() {
     } else {
         return 'regular';
     }
+}
+
+function autoIfs() {
+    if (autoBox.checked === true) {
+        let autoButton = document.getElementById('autoInit');
+        autoButton.style.display = 'block';
+        autoButton.addEventListener('click', function() {
+            autoInit();
+            autoButton.style.display = 'none';
+        })
+        document.getElementById('sliderContainer').style.display = 'inline';
+    } else if (autoBox.checked === false) {
+        document.getElementById('sliderContainer').style.display = 'none';
+        autoButton.style.display = 'none';
+    }
+}
+
+function lazyFunction() {
+    goalFunction();
+    autoIfs();
+    probabillity();
+}
+
+function lazyAuto() {
+    updateCounters();
+    checkForWinner();
+    autoStop();
 }

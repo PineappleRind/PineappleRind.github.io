@@ -101,14 +101,11 @@ var settingsBtn = document.getElementById("settings");
 settingsBtn.addEventListener("click", function () {
   settings();
 });
-var calc = document.querySelector('.calculator');
-var color = document.getElementById('bgColor');
-
+var calc = document.querySelector(".calculator"),
+    color = document.getElementById("bgColor");
 oninput = function oninput(e) {
   calc.style.backgroundColor = color.value;
-};
-
-onclick = function onclick(e) {
+}, onclick = function onclick(e) {
   var t = equation;
   setTimeout(function () {
     "" === equation && (t = "No equation"), console.log("Current equation: " + t);
@@ -147,27 +144,8 @@ box.addEventListener("click", function () {
       pogChamp();
     });
   });
-});
-
-document.onkeypress = function (e) {
-  e = e || window.event;
-  var charCode = e.keyCode || e.which;
-  var charStr = String.fromCharCode(charCode);
-
-  if (charStr == '1' || charStr == '2' || charStr == '3' || charStr == '4' || charStr == '5' || charStr == '6' || charStr == '7' || charStr == '8' || charStr == '9' || charStr == '+' || charStr == '-') {
-    output.value += charStr;
-    equation += charStr;
-  } else if (charCode == '13' || charStr == '=') {
-    output.value = evaluateInts(equation);
-    equation = output.value;
-  } else if (charStr == '*') {
-    equation += '*';
-    output.value += '×';
-  } else if (charStr == '/') {
-    equation += '/';
-    output.value += '÷';
-  } else if (charStr == 'Backspace') {
-    removeLastDigit(equation);
-    removeLastDigit(output.value);
-  }
+}), document.onkeypress = function (e) {
+  var t = (e = e || window.event).keyCode || e.which,
+      n = String.fromCharCode(t);
+  "1" == n || "2" == n || "3" == n || "4" == n || "5" == n || "6" == n || "7" == n || "8" == n || "9" == n || "+" == n || "-" == n ? (output.value += n, equation += n) : "13" == t || "=" == n ? (output.value = evaluateInts(equation), equation = output.value) : "*" == n ? (equation += "*", output.value += "×") : "/" == n ? (equation += "/", output.value += "÷") : "Backspace" == n && (removeLastDigit(equation), removeLastDigit(output.value));
 };

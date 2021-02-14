@@ -6,6 +6,7 @@ body, html {
     margin:0;
     font-family: Inter, Thonburi, Arial, Helvetica, sans-serif;
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 nav {
@@ -66,11 +67,11 @@ nav ul li:hover a {
     position: relative;
 
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
 
-    background-image: linear-gradient(to top, #161618 0%, transparent 50%), url("image0.jpg");
+    background-image: linear-gradient(to top, #46466b 0%, rgba(39, 35, 44, 0.774) 40%), url("image0.jpg");
     background-size: cover;
 }
 
@@ -84,76 +85,22 @@ nav ul li:hover a {
     font-size: 150px;
     font-family: Cabin;
     animation: fade-in 1s;
+    text-align: center;
 }
 
 .fullpage h2 {
     color: white;
     text-shadow: 0 0 10px black;
-    font-size: 50px;
+    font-size: 40px;
     font-style: oblique;
     font-family: Bitter, serif;
     animation: skew-in 1s;
-}
-
-.line {
-    height: 4px;
-    width: 50px;
-    background-color: white;
-    box-shadow: 0 0 10px black;
-    margin-left: 20px;
-    margin-right: 20px;
-
-    animation: width 1s;
-}
-
-.container {
-    display: flex;
-    align-items: center;
+    text-align: center;
+    width:500px;
 }
 
 .fullpage.second h1 {
     color: white;
-}
-
-.discord-wrap {
-    border-radius: 10px;
-    background-color: #fff;
-    color: black;
-    box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.37);
-    margin: 40px;
-    overflow: hidden;
-    padding: 20px;
-    transition:.2s;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.discord-wrap:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 14px 20px 5px rgba(255, 255, 255, 0.412);
-}
-
-div div h1 {
-    font-weight: 800;
-    font-size: 30px;
-    width: 300px;
-    color: black;
-    text-align: center;
-}
-
-.discord-wrap p {
-    font-size: 20px;
-    color: black;
-    width: 300px;
-    text-align: center;
-}
-
-.discord-wrap img {
-    height: 340px;
-    background-position: center;
-    border-radius: 10px;
 }
 
 #overlay {
@@ -197,6 +144,7 @@ div div h1 {
     letter-spacing: .3px;
     padding:0;
     text-align: left;
+    color: white;
 }
 
 #modal p {
@@ -224,10 +172,20 @@ div div h1 {
     border-radius: 3px;
     border:0;
     outline:0;
+    transition: 0.2s;
 }
 
 #modal button.no {
     background: transparent;
+}
+
+.title {
+    animation: move-left 5s;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 600px;
 }
 
 button:focus {
@@ -236,7 +194,7 @@ button:focus {
 
 
 #modal button.no:hover {
-    text-decoration: underline white;
+    text-decoration: underline ;
     background: transparent;
 }
 
@@ -260,6 +218,10 @@ button:focus {
     background-color: rgb(113, 128, 216);
 }
 
+.buttons {
+    min-width: 600px;
+}
+
 @keyframes navload {
     from {top: -10%;}
 }
@@ -271,7 +233,7 @@ button:focus {
     from {transform: translatey(20px); opacity:0;}
 }
 @keyframes skew-in {
-    from {transform: skew(10deg); opacity:0;}
+    from {transform: rotateY(30deg); opacity:0;}
 }
 @keyframes width {
     from {width:0;}
