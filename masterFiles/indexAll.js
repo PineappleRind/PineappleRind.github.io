@@ -228,7 +228,7 @@ function settings() {
     }, 100)
 }
 
-function settingsClose() {
+function settingsCloser() {
     close(document.getElementById("settingsModal"), 500);
     var e = document.getElementById("overlayBlack");
     e.style.opacity = "0", setTimeout(function() {
@@ -238,7 +238,7 @@ function settingsClose() {
 num > 1e10 && (output.value = "Error code: 1"), num < -1e9 && (output.value = "Error code: 2");
 var closeButton = document.querySelector(".modal-close");
 closeButton.addEventListener("click", function() {
-    settingsClose()
+    settingsCloser()
 });
 var settingsBtn = document.getElementById("settings");
 settingsBtn.addEventListener("click", function() {
