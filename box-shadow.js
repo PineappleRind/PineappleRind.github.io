@@ -1,64 +1,51 @@
-function main() {
-    let y = document.getElementById('yCoords');
-    let x = document.getElementById('xCoords');
-    let b = document.getElementById('blur');
-    let c = document.getElementById('color');
-
-    let r = document.getElementById('div');
-
-    let px = 'px ';
-    let yy = y.value - 50 + px;
-    let xx = x.value - 50 + px;
-    let bb = b.value/1.5 + px;
-    let cc = c.value;
-
-    r.style.boxShadow = xx + yy + bb + cc;
+function $(e) {
+    return document.getElementById(e)
 }
 
-function showCode() {
-    let o = document.getElementById('overlay');
-    o.style.display = 'flex';
-    o.style.opacity = '1';
-    o.style.width = '100%';
+function a() {
+    let e = $("yCoords"),
+        o = $("xCoords"),
+        l = $("blur"),
+        t = $("color"),
+        n = $("div"),
+        c = "px ",
+        i = e.value - 50 + c,
+        u = o.value - 50 + c,
+        a = l.value / 1.5 + c,
+        d = t.value;
+    n.style.boxShadow = u + i + a + d
 }
 
-function hideCode() {
-    let o = document.getElementById('overlay');
-    o.style.opacity = '0';
-    o.style.width = '0%';
+function b() {
+    let e = $("overlay");
+    e.style.display = "flex", e.style.opacity = "1", e.style.width = "100%"
 }
 
-function updateCode() {
-    let y = document.getElementById('yCoords');
-    let x = document.getElementById('xCoords');
-    let b = document.getElementById('blur');
-    let c = document.getElementById('color');
-
-    let yC = document.getElementById('ycode');
-    let xC = document.getElementById('xcode');
-    let bC = document.getElementById('blurcode');
-    let cC = document.getElementById('colorcode');
-
-    let px = 'px ';
-
-    yC.innerHTML = Math.ceil(y.value - 50) + px;
-    xC.innerHTML = Math.ceil(x.value - 50) + px;
-    bC.innerHTML = Math.ceil(b.value/1.5) + px;
-    cC.innerHTML = c.value;
+function c() {
+    let e = $("overlay");
+    e.style.opacity = "0", e.style.width = "0%"
 }
 
-function wrap() {
-    main();
-    updateCode();
+function d() {
+    let e = $("yCoords"),
+        o = $("xCoords"),
+        l = $("blur"),
+        t = $("color"),
+        n = $("ycode"),
+        c = $("xcode"),
+        i = $("blurcode"),
+        u = $("colorcode"),
+        a = "px ";
+    n.innerHTML = Math.ceil(e.value - 50) + a, c.innerHTML = Math.ceil(o.value - 50) + a, i.innerHTML = Math.ceil(l.value / 1.5) + a, u.innerHTML = t.value
 }
 
-oninput = e => {
-    wrap();
+function e() {
+    a(), d()
 }
-
-let button = document.getElementById('showCode');
-button.addEventListener("click", function() {
-    showCode();
+oninput = (o => {
+    e()
 });
-
-wrap();
+let f = $("showCode");
+f.addEventListener("click", function() {
+    b()
+}), e();
