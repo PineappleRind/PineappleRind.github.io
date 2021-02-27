@@ -1,7 +1,6 @@
 function $(e) {
     return document.getElementById(e)
 }
-<<<<<<< Updated upstream
 let o = window,
     i = $("dark"),
     b = $("body");
@@ -18,7 +17,6 @@ i.onclick = (() => {
         n = parseInt(t / (d - e) * 100);
     $("progress").style.width = n + "%"
 });
-=======
 function setCookie(cname,cvalue,exdays) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays*24*60*60*1000));
@@ -63,4 +61,3 @@ input.onclick = () => {
 if (getCookie('darkmodetrue') === 'true') {
     document.body.classList.add('dark')
 }
->>>>>>> Stashed changes

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Generator</title>
+    <style>
+
+@font-face {
+  font-family: ui;
+  src: url(.././../fonts/AndersonGrotesk-Ultrabold.woff2);
+  font-weight:500
+}
+
+@font-face {
+  font-family: ui-light;
+  src: url(.././../fonts/AndersonGrotesk-Light.woff2);
+  font-weight:200
+}
+        *{transition:1s;margin:0; font-family: ui;
+    }
+
+    #ee {
+        line-height: 30px;
+        display:block;
+        white-space: pre;
+        font-family: ui-light
+    }
+
+    .snackie {
+        position: fixed;
+        padding-left: 50px;
+        padding-bottom: 20px;
+        padding-top: 20px;
+        background: #222;
+        color: white;
+        bottom:0;
+        font-size: 20px;
+        width: 100%;
+        height:0;
+    }
+
+    .flexbottom {
+        position: fixed;
+        bottom:0;
+        left:0;
+        right:0;
+        display: flex;
+        justify-content: center;
+        margin:0;
+        padding:0;
+    }
+    </style>
+</head>
+<body>
+    <h1>Number Generator</h1>
+    <label>Generate a range of numbers between: </label><input type="number" id="e"><label> and </label><input type="number" id="r">
+    <p id="ee" style="font-family: sans-serif; background: #7799ff; padding: 10px; width: fit-content; color: white"></p>
+    <div class="flexbottom">
+        <div class="snackie">Input cannot be over 20000</div>
+    </div>
+    <script>
+        function $(id) {
+            return document.querySelector(id)
+        }
+        let j = 0;
+        let number1, number2;
+        onclick = () => {
+            if (number2 >= 20000) {
+                open($('.snackie'));
+                setTimeout(function(){
+                    close($('.snackie'))
+                    return;
+                },3000)
+                
+            }
+            number1 = $('#e').value;
+            number2 = $('#r').value;
+            main();
+        }
+
+        function close(e) {
+                e.style.height = "0"
+                    setTimeout(()=> {
+                        e.style.display = 'none'
+                    },1000)
+        } 
+
+        function open(e) {
+            e.style.display = 'block'
+            setTimeout(()=> {
+                e.style.height = "100px"
+            },100)
+        } 
+
+        function range(start, end) {
+  return Array.from({ length: end - start + 1 }, (_, i) => i)
+}
+
+        function main() {
+            let splitted = range(number1,number2)
+
+            let final = splitted.join()
+
+            let it = final.replace(/,/g, '\r\n')
+
+            $('#ee').innerHTML = it;
+        }
+    </script> 
+</body>
+</html>

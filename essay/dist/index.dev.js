@@ -1,8 +1,26 @@
 "use strict";
 
-function $(id) {
-  return document.getElementById(id);
+function $(e) {
+  return document.getElementById(e);
 }
+
+var o = window,
+    i = $("dark"),
+    b = $("body");
+
+function p() {
+  !1 === i.checked ? b.classList.remove("dark") : b.classList.add("dark");
+}
+
+i.onclick = function () {
+  p();
+}, onscroll = function onscroll() {
+  var e = o.innerHeight,
+      t = o.pageYOffset,
+      d = document.body.offsetHeight,
+      n = parseInt(t / (d - e) * 100);
+  $("progress").style.width = n + "%";
+};
 
 function setCookie(cname, cvalue, exdays) {
   var d = new Date();
