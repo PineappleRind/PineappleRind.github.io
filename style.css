@@ -46,7 +46,7 @@ h1 {
 .loader {
   position: fixed;
   width: 100vw;
-  height: 200vh;
+  height: 300vh;
   pointer-events: none;
   background-color: #0300cc;
   z-index: 3;
