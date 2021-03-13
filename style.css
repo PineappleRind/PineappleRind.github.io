@@ -50,7 +50,7 @@ h1 {
   pointer-events: none;
   background-color: #0300cc;
   z-index: 3;
-  opacity: 0;
+  left:100%
 }
 a {
   padding: 11px 16px;

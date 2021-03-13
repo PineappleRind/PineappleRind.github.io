@@ -30,23 +30,7 @@
   
   <!-- init barba with a simple opacity transition -->
   <script type="text/javascript">
-const timeline = gsap.timeline({paused: true})
-timeline.to('.loader', {left: '100%',  ease: 'power2.out'})
- 
-barba.init({
-    transitions: [
-        {
-            leave: () => {
-                var done = this.async()
-                timeline.play().then(() => done())
-            },
-            enter: ({next}) => {
-                var done = this.async()
-                next.container && timeline.reverse().then(() => done())
-            }
-        }
-    ]
-})
+
   </script>
     </body>
 </html>
