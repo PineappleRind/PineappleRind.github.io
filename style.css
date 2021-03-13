@@ -78,23 +78,3 @@ a:hover {
     opacity:0;
   }
 }
-
-@keyframes b {
-  from {
-    transform: translateY(30px);
-    opacity:0;
-  }
-}
-
-@keyframes c {
-  0% {
-    transform: translateY(30px);
-    opacity:0;
-  }
-}
-
-@keyframes d {
-  from {
-    width:0;
-  }
-}
