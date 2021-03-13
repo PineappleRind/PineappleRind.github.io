@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="loader" style="opacity: 1; visibility: inherit; transform-origin: 100% 50% 0px; transform: translate(5%, -50%) rotate(-10deg) scale(0, 1);"></div>
     <div data-barba="wrapper">
         <div class="slice"></div>
         <div class="flex-left" data-barba="container" data-barba-namespace="experience">
@@ -28,22 +29,88 @@
 
 <!-- init barba with a simple opacity transition -->
 <script type="text/javascript">
-  barba.init({
-    transitions: [{
-      name: 'opacity-transition',
-      leave(data) {
-        return gsap.to(data.current.container, {
-          opacity: 0
+  function init(){
+    
+    const loader = document.querySelector('.loader');
+
+    // reset position of the loading screen
+    gsap.set(loader, {
+        scaleX: 0, 
+        rotation: 10, 
+        xPercent: -5,
+        yPercent: -50, 
+        transformOrigin: 'left center', 
+        autoAlpha: 1
+    });
+
+    function loaderIn() {
+        // GSAP tween to strech the loading screen across the whole screen
+        return gsap.fromTo(loader, 
+            {
+                scaleX: 0,
+                xPercent: -5
+            },
+            { 
+                duration: 0.8,
+                xPercent: 0,
+                scaleX: 1, 
+                ease: 'Power4.inOut', 
+                transformOrigin: 'left center'
+            });
+    }
+
+    function loaderAway() {
+        // GSAP tween to hide loading screen
+        return gsap.to(loader, { 
+            duration: 0.8, 
+            scaleX: 0,
+            xPercent: 5, 
+            transformOrigin: 'right center', 
+            ease: 'Power4.inOut'
         });
-      },
-      enter(data) {
-        return gsap.from(data.next.container, {
-          opacity: 0,
-          transform: translateY("30px")
-        });
-      }
-    }]
-  });
+    }
+
+    // do something before the transition starts
+    barba.hooks.before(() => {
+
+        document.querySelector('html').classList.add('is-transitioning');
+        barba.wrapper.classList.add('is-animating');
+
+    });
+
+    // do something after the transition finishes
+    barba.hooks.after(() => {
+
+        document.querySelector('html').classList.remove('is-transitioning');
+        barba.wrapper.classList.remove('is-animating');
+        ga('set', 'page', window.location.pathname);
+        ga('send', 'pageview');
+    });
+
+    // scroll to the top of the page
+    barba.hooks.enter(() => {
+
+        window.scrollTo(0, 0);
+
+    });
+
+    barba.init({
+        transitions: [{
+            async leave() {
+                await loaderIn();
+        
+            },
+            enter() {
+                loaderAway();
+            }
+        }]
+    })
+
+}
+
+window.addEventListener('load', function(){
+    init();
+});
 </script>
 </body>
 </html>

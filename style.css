@@ -39,7 +39,16 @@ h1 {
   font-weight:900;
   animation: b 2s;
 }
-
+.loader {
+  position: fixed;
+  width: 100vw;
+  height: 200vh;
+  pointer-events: none;
+  background-color: #0300cc;
+  z-index: 1;
+  visibility: hidden;
+  opacity: 0;
+}
 a {
   padding: 11px 16px;
   background: #3519d2;
