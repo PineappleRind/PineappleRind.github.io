@@ -39,10 +39,14 @@ h1 {
   font-weight:900;
   animation: b 2s;
 }
+.is-transitioning {
+  pointer-events: none;
+  cursor: progress;
+}
 .loader {
   position: fixed;
   width: 100vw;
-  height: 100vh;
+  height: 200vh;
   pointer-events: none;
   background-color: #0300cc;
   z-index: 3;
