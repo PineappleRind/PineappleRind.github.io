@@ -51,15 +51,18 @@ a {
   color: white;
   border:0;
   outline:0;
-  opacity:0;
-  transition: 2s;
-  transform: translateY(30px);
+  transition: 0.5s;
   display: inline-block;
   margin: 7px;
   margin-left:0;
   font-size: 16px;
   cursor: pointer;
 }
+a.hidden {
+  opacity:0;
+  transform: translateY(30px);
+}
+
 a:hover {
   background: #2519d2ce;
   box-shadow: 0 3px 10px rgba(0,0,0,0.2)
