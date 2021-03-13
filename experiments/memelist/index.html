@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
  <body id="bod">
-
+	 <button id="sortie">Sort Alphabetically</button>
   <script>
    
    var bod = document.querySelector('#bod');
@@ -14,7 +14,7 @@ let things = ['Zhou',
 'Bad dad ad that make me sad, i am crab with a pad',
 'Fat Christina',
 'Maryolin!',
-'ma name\'s BRITNEY',
+'Ma name\'s BRITNEY',
 'Fabian',
 'At the business centre, Mike Hepple',
 'Marcello & Vivian Murphy',
@@ -66,8 +66,14 @@ function merge(left,right){
     return [...list, ...left, ...right];
 }
 let sorted = mergeSort(things)
-let it = '<ul>' + sorted.map(function (things) {
-	return '<li>' + things + '</li>';
+document.getElementById('sortie').onclick = () => {
+	 it = '<ul>' + sorted.map(function (thing) {
+	return '<li>' + thing + '</li>';
+}).join('') + '</ul>'; 
+	bod.innerHTML = it;
+}
+let it = '<ul>' + things.map(function (thing) {
+	return '<li>' + thing + '</li>';
 }).join('') + '</ul>'; 
 bod.innerHTML = it;
   </script>
