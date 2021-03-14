@@ -2,16 +2,6 @@ function $(id) {
     return document.getElementsByClassName(id)
 }
 
-onchange = () => {
-    for (let j = 0; j < $("btn").length; j++) {
-  setTimeout(function(){
-      setTimeout(function(){
-        $("btn")[j].classList.remove('hidden')
-      },500 * j)
-  },1000)
-}
-}
-
 onload = () => {
     for (let j = 0; j < $("btn").length; j++) {
   setTimeout(function(){
@@ -64,6 +54,12 @@ function init(){
           transformOrigin: 'left center', 
           ease: 'Power4.inOut'
       });
+          for (let j = 0; j < $("btn").length; j++) {
+  setTimeout(function(){
+      setTimeout(function(){
+        $("btn")[j].classList.remove('hidden')
+      },500 * j)
+  },100
   }
 
   // do something before the transition starts
