@@ -59,7 +59,8 @@ function init(){
       setTimeout(function(){
         $("btn")[j].classList.remove('hidden')
       },500 * j)
-  },100
+  },100)
+  }
   }
 
   // do something before the transition starts
