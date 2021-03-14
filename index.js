@@ -30,7 +30,7 @@ function init(){
   gsap.set(loader, {
       scaleX: 0, 
       rotation: 10, 
-      xPercent: 5,
+      xPercent: -5,
       yPercent: -50, 
       transformOrigin: 'left center', 
       autoAlpha: 1
@@ -42,7 +42,7 @@ function init(){
           {
               rotation: -10,
               scaleX: 0,
-              xPercent: 5
+              xPercent: -5
           },
           { 
               duration: 0.8,
@@ -50,7 +50,7 @@ function init(){
               scaleX: 1, 
               rotation: 0,
               ease: 'Power4.inOut', 
-              transformOrigin: 'left center'
+              transformOrigin: 'right center'
           });
   }
 
@@ -59,9 +59,9 @@ function init(){
       return gsap.to(loader, { 
           duration: 0.8, 
           scaleX: 0,
-          xPercent: -5, 
+          xPercent: 5, 
           rotation: 10, 
-          transformOrigin: 'right center', 
+          transformOrigin: 'left center', 
           ease: 'Power4.inOut'
       });
   }
