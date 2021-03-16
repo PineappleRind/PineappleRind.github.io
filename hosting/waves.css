@@ -1,0 +1,102 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  color: hsl(0, 0%, 10%);
+  background: hsl(0, 0%, 100%);
+}
+
+.canvas-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.canvas {
+  width: 100vw;
+  height: 100vh;
+}
+
+.controls {
+  background: hsla(0, 0%, 100%, 0.25);
+  z-index: 1;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-radius: 0.5rem;
+  border: 1px solid hsla(0, 0%, 100%, 0.25);
+  opacity: 0;
+  position: fixed;
+  bottom:0;
+  right:0;
+  margin:0;
+}
+
+.controls p {
+  grid-column: -1 / 1;
+  font-style: italic;
+  text-align: center;
+  font-size: 0.75rem;
+}
+
+button {
+  width: 100%;
+  height: 2.25rem;
+  border: 0;
+  font-weight: 500;
+  font-family: inherit;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 2.25rem;
+  background: hsla(0, 0%, 100%, 0.25);
+  cursor: pointer;
+}
+
+button:nth-of-type(1) {
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  display: none;
+  font-size:10px;
+  padding:0;
+  height:10px;
+  overflow:hidden;
+}
+
+button:nth-of-type(2) {
+  background: linear-gradient(to bottom, #287cfe, #0466ff);
+  color: #fff;
+  padding:0;
+  font-size:10px;
+  height:10px;
+  overflow:hidden;
+}
+
+@media only screen and (min-width: 640px) {
+  .controls {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .controls p {
+    display: none;
+  }
+
+  .controls button:nth-of-type(1) {
+    display: block;
+  }
+}
