@@ -22,7 +22,7 @@ function init(){
   // reset position of the loading screen
   gsap.set(loader, {
       scaleX: 0, 
-      rotation: 10, 
+      rotation: 30, 
       xPercent: -5,
       yPercent: -50, 
       transformOrigin: 'left center', 
@@ -33,7 +33,7 @@ function init(){
       // GSAP tween to stretch the loading screen across the whole screen
       return gsap.fromTo(loader, 
           {
-              rotation: 10,
+              rotation: 30,
               scaleX: 0,
               xPercent: -5
           },
@@ -53,7 +53,7 @@ function init(){
           duration: 0.8, 
           scaleX: 0,
           xPercent: 5, 
-          rotation: -10, 
+          rotation: -30, 
           transformOrigin: 'left center', 
           ease: 'Power4.inOut'
       });
