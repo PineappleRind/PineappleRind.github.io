@@ -3,15 +3,18 @@ function $(id) {
 }
 
 onload = () => {
-    for (let j = 0; j < $("btn").length; j++) {
-  setTimeout(function(){
-      setTimeout(function(){
-        $("btn")[j].classList.remove('hidden')
-      },500 * j)
-  },1000)
-}
+    loadBtns()
 }
 
+function loadBtns() {
+    for (let j = 0; j < $("btn").length; j++) {
+        setTimeout(function(){
+            setTimeout(function(){
+                $("btn")[j].classList.remove('hidden')
+            },500 * j)
+        },1000)
+    }
+}
 function init(){
     
   const loader = document.querySelector('.loader');
@@ -30,7 +33,7 @@ function init(){
       // GSAP tween to stretch the loading screen across the whole screen
       return gsap.fromTo(loader, 
           {
-              rotation: -10,
+              rotation: 10,
               scaleX: 0,
               xPercent: -5
           },
@@ -50,17 +53,11 @@ function init(){
           duration: 0.8, 
           scaleX: 0,
           xPercent: 5, 
-          rotation: 10, 
+          rotation: -10, 
           transformOrigin: 'left center', 
           ease: 'Power4.inOut'
       });
-          for (let j = 0; j < $("btn").length; j++) {
-  setTimeout(function(){
-      setTimeout(function(){
-        $("btn")[j].classList.remove('hidden')
-      },500 * j)
-  },100)
-  }
+          loadBtns()
   }
 
   // do something before the transition starts
@@ -76,6 +73,7 @@ function init(){
 
       document.querySelector('html').classList.remove('is-transitioning');
       barba.wrapper.classList.remove('is-animating');
+      loadBtns()
 
   });
 
