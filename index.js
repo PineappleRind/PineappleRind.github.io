@@ -53,7 +53,7 @@ function init(){
           duration: 0.8, 
           scaleX: 0,
           xPercent: 5, 
-          rotation: -30, 
+          rotation: 30, 
           transformOrigin: 'left center', 
           ease: 'Power4.inOut'
       });
