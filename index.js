@@ -40,7 +40,7 @@ function init(){
           { 
               duration: 0.8,
               xPercent: 0,
-              scaleX: 1.5, 
+              scaleX: 1, 
               rotation: 0,
               ease: 'Power4.inOut', 
               transformOrigin: 'right center'
@@ -53,7 +53,7 @@ function init(){
           duration: 0.8, 
           scaleX: 0,
           xPercent: 20, 
-          rotation: 30, 
+          rotation: -30, 
           transformOrigin: 'left center', 
           ease: 'Power4.inOut'
       });
