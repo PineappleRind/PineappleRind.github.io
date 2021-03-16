@@ -33,7 +33,7 @@ function init(){
       // GSAP tween to stretch the loading screen across the whole screen
       return gsap.fromTo(loader, 
           {
-              rotation: 30,
+              rotation: 40,
               scaleX: 0,
               xPercent: -5
           },
@@ -52,9 +52,9 @@ function init(){
       return gsap.to(loader, { 
           duration: 0.8, 
           scaleX: 0,
-          xPercent: -20, 
-          rotation: 0, 
-          transformOrigin: 'left center', 
+          xPercent: -5, 
+          rotation: 40, 
+          transformOrigin: 'right center', 
           ease: 'Power4.inOut'
       });
           loadBtns()
