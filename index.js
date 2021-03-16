@@ -41,7 +41,7 @@ function init(){
               duration: 0.8,
               xPercent: 0,
               scaleX: 1, 
-              rotation: 0,
+              rotation: 5,
               ease: 'Power4.inOut', 
               transformOrigin: 'right center'
           });
@@ -52,8 +52,8 @@ function init(){
       return gsap.to(loader, { 
           duration: 0.8, 
           scaleX: 0,
-          xPercent: 20, 
-          rotation: -30, 
+          xPercent: -20, 
+          rotation: 0, 
           transformOrigin: 'left center', 
           ease: 'Power4.inOut'
       });
