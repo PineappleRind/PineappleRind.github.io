@@ -52,7 +52,7 @@ function init(){
       return gsap.to(loader, { 
           duration: 0.8, 
           scaleX: 0,
-          xPercent: 5, 
+          xPercent: 10, 
           rotation: 30, 
           transformOrigin: 'left center', 
           ease: 'Power4.inOut'
