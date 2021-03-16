@@ -24,7 +24,7 @@ body {
   top: 0;
   position: fixed;
   z-index: -1;
-  background-color: rgb(86, 53, 230);
+  background-color: #5f27cd;
   transform: rotateZ(35deg) scale(2);
   animation: a 2s;
   pointer-events:none;
@@ -48,7 +48,7 @@ h1 {
   width: 100vw;
   height: 300vh;
   pointer-events: none;
-  background-color: #0300cc;
+  background-color: #5f27cd;
   z-index: 3;
   left:0%;
 }
