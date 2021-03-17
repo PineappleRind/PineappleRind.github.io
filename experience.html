@@ -51,11 +51,13 @@ function loadBtns() {
         transitions: [{
           name: 'opacity-transition',
           leave(data) {
+            loadBtns()
             return gsap.to(data.current.container, {
               opacity: 0
             });
           },
           enter(data) {
+            loadBtns()
             return gsap.from(data.next.container, {
               opacity: 0
             });

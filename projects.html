@@ -50,11 +50,13 @@ function loadBtns() {
             return gsap.to(data.current.container, {
               opacity: 0
             });
+            loadBtns()
           },
           enter(data) {
             return gsap.from(data.next.container, {
               opacity: 0
             });
+            loadBtns()
           }
         }]
       });
