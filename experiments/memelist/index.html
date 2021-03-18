@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
  <body id="bod">
-	 <button id="sortie">Sort Alphabetically</button>
   <script>
    
    var bod = document.querySelector('#bod');
@@ -66,16 +65,10 @@ function merge(left,right){
     return [...list, ...left, ...right];
 }
 let sorted = mergeSort(things)
-document.getElementById('sortie').onclick = () => {
 	 it = '<ul>' + sorted.map(function (thing) {
 	return '<li>' + thing + '</li>';
 }).join('') + '</ul>'; 
-	bod.innerHTML = it;
-}
-let it = '<ul>' + things.map(function (thing) {
-	return '<li>' + thing + '</li>';
-}).join('') + '</ul>'; 
-bod.innerHTML += it;
+	bod.innerHTML += it;
   </script>
   </body>
 </html>
