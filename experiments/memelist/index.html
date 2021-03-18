@@ -19,6 +19,11 @@
 			height:100vh;
 			list-style-type:none;
 			margin:0;
+			padding: 20px;
+			display:flex;
+			flex-direction:column;
+			align-items:center;
+			justify-content:flex-start;
 			}
 		</style>
 	</head>
@@ -87,7 +92,7 @@ function merge(left,right){
     return [...list, ...left, ...right];
 }
 let sorted = mergeSort(things)
-	 it = '<ul>' + sorted.map(function (thing) {
+	 it = '<ul><h1>Meme List</h1>' + sorted.map(function (thing) {
 	return '<li>' + thing + '</li>';
 }).join('') + '</ul>'; 
 	bod.innerHTML += it;
