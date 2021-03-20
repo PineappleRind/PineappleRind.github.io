@@ -1,6 +1,6 @@
 function sendMessage(username,content) {
       var request = new XMLHttpRequest();
-      request.open("POST", "webby hooky");
+      request.open("POST", "https://discord.com/api/webhooks/822978952368619552/aMEMuYmAHPOGAgBtFWXSQvHtq8ZmvqlrbGewE9eItvESCRaxkHfoC6h8TeXYxZ6K1wgX");
 
       request.setRequestHeader('Content-type', 'application/json');
 
