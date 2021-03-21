@@ -1,0 +1,173 @@
+body {
+    margin:0;
+}
+
+nav {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top:0;
+    font-family: Inter, Thonburi, Arial, Helvetica, sans-serif;
+    z-index:100;
+    background:white;
+}
+
+nav ul {
+    list-style-type: none;
+    margin:0;
+    margin-right: 40px;
+}
+
+nav ul li, nav a {
+    float: right;
+    display: inline;
+    padding: 24px 28px;
+    font-size: 20px;
+    cursor: pointer;
+    border-bottom: 2px solid rgba(0, 0, 0, 0);
+    transition: 0.4s;
+}
+
+nav a {
+    float: left;
+    margin-left: 40px;
+}
+nav ul li:hover {
+    border-bottom: 2px solid black;
+    opacity:0.9;
+}
+
+.fullpage {
+    height:60vh;
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items:center;
+    background:#fff
+}
+
+.fullpage.darker {
+    background: #f1f1f1;
+}
+
+.fullpage h1 {
+    font-size:calc(50px + 2vw);
+    font-family:-apple-system, BlinkMacSystemFont, Roboto, Oxygen, Arial, Helvetica, sans-serif;
+    margin: 1px;
+}
+
+.fullpage p {
+    margin:5px;
+    font-family:-apple-system, BlinkMacSystemFont, Roboto, Oxygen, Arial, Helvetica, sans-serif;
+    font-size:calc(10px + 1vw);
+    margin-bottom: 25px;
+}
+
+button {
+    background: #fff;
+    border-radius: 4px;
+    color: #1a73e8;
+    font: 100 18px Google Sans,Noto Sans,Noto Sans JP,Noto Sans KR,Noto Naskh Arabic,Noto Sans Thai,Noto Sans Hebrew,Noto Sans Bengali,sans-serif;
+    letter-spacing: .6px;
+    line-height: 24px;
+    padding: 0px 28px;
+    color: #fff;
+    background: #1a73e8;
+    border:0;
+    outline:0;
+    display:inline-block;
+    text-align:center;
+    position: relative;
+    margin: 0;
+    white-space: nowrap;
+    vertical-align: middle;
+    text-transform: uppercase;
+    transition: 0.3s;
+    height: 56px;
+    border-radius: 3px;
+    overflow:hidden;
+}
+
+button.outlined {
+    background: 0;
+    border: 1px solid #1a73e8;
+    color: #1a73e8;
+}
+button.text {
+    background:0;
+    border:0;
+    color:#1a73e8;
+}
+button:hover {
+    background:#1767d1;
+}
+button.outlined:hover {
+    background: rgba(26, 115, 232, 0.151);
+}
+
+.card {
+    background:#fff;
+    display:flex;
+    justify-content:space-evenly;
+    align-items: center;
+}
+
+.card h1 {
+    font-size:calc(30px + 1vw);
+    margin:30px;
+    margin-bottom:0;
+}
+
+.card button {
+    margin: 30px;
+    margin-top:0;
+}
+
+#modal {
+    position: fixed;
+	top: 0;
+	left: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 0vh;
+	background-color: transparent;
+	overflow: hidden;
+	transition: background-color 0.5s ease;
+	z-index: 9999;
+}
+
+#modal.showing {
+    position: fixed;
+		width: 100vw;
+		height: 100vh;
+		background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		width: 50vw;
+        height:50vh;
+		margin: 0;
+		padding: 2.5rem;
+		background-color: white;
+		border-radius: 0.3125rem;
+		box-shadow: 0 0 2.5rem rgba(0,0,0,0.5);
+		transition: transform 0.5s;
+		transition-delay: 0.15s;
+}
+
+.modal-content h1 {
+    font-size:calc(30px + 3vw);
+    font-family:-apple-system, BlinkMacSystemFont, Roboto, Oxygen, Arial, Helvetica, sans-serif;
+    margin: 1px;
+}
+
+.modal-content p {
+    font-size:calc(10px + 1vw);
+    font-family:-apple-system, BlinkMacSystemFont, Roboto, Oxygen, Arial, Helvetica, sans-serif;
+    margin: 1px;
+}

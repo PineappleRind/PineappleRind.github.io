@@ -1,16 +1,42 @@
-function sendMessage(content) {
-      var request = new XMLHttpRequest();
-      request.open("POST", "https://discord.com/api/webhooks/822978952368619552/aMEMuYmAHPOGAgBtFWXSQvHtq8ZmvqlrbGewE9eItvESCRaxkHfoC6h8TeXYxZ6K1wgX");
-
-      request.setRequestHeader('Content-type', 'application/json');
-
-      var params = {
-        username: "Logger",
-        avatar_url: "",
-        content: content
+jQuery(function($) {
+  $(document).on("mousedown", "[data-ripple]", function(e) {
+    
+    var $self = $(this);
+    
+    if($self.is(".btn-disabled")) {
+      return;
+    }
+    if($self.closest("[data-ripple]")) {
+      e.stopPropagation();
+    }
+    
+    var initPos = $self.css("position"),
+        offs = $self.offset(),
+        x = e.pageX - offs.left,
+        y = e.pageY - offs.top,
+        dia = Math.min(this.offsetHeight, this.offsetWidth, 100), // start diameter
+        $ripple = $('<div/>', {class : "ripple",appendTo : $self });
+    
+    if(!initPos || initPos==="static") {
+      $self.css({position:"relative"});
+    }
+    
+    $('<div/>', {
+      class : "rippleWave",
+      css : {
+        background: $self.data("ripple"),
+        width: dia,
+        height: dia,
+        left: x - (dia/2),
+        top: y - (dia/2),
+      },
+      appendTo : $ripple,
+      one : {
+        animationend : function(){
+          $ripple.remove();
+        }
       }
+    });
+  });
 
-      request.send(JSON.stringify(params));
-}
-
-sendMessage('New Visitor!')
+});
