@@ -22,4 +22,4 @@ text('https://www.cloudflare.com/cdn-cgi/trace').then(data => {
   let ip = data.match(ipRegex)[0];
 });
 
-onload = () =>{   sendMessage('New Visitor!', `IP address: `)}
+onload = () =>{   sendMessage('New Visitor!', `IP address: ${ip}`)}
