@@ -1,0 +1,179 @@
+body {
+    background:#fff;
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    margin:0;
+    height:100vh;
+  }
+  ul {
+    background:#f5f5f5;
+    width:50%;
+    border-left: 1px solid #eee;
+    border-right:1px solid #eee;
+    box-shadow: 0 0 50px rgba(0,0,0,0.2);
+    height:100vh;
+    list-style-type:none;
+    margin:0;
+    padding: 60px;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    overflow: scroll;
+  }
+  h1,li {
+    font-family: -apple-system, BlinkMacSystemFont, Roboto, Oxxygen, Arial, Helvetica, sans-serif;
+  }
+  h1{
+    font-size:60px;
+    font-weight:900;
+    margin-bottom: 5px;
+  }
+  li{
+    font-size:20px;
+    margin-top:2px;
+    margin-bottom:2px;
+    transition: 0.5s;
+    overflow:hidden
+  }
+
+  li img {
+    opacity:0;
+    transform: translateX(10px);
+    transition: 0.2s;
+    height:15px;
+  }
+
+  li:hover img {
+    transform: translateX(0px);
+    opacity:1;
+  }
+  
+  hr {
+    height:1px;
+    width: 30%;
+    background: #ccc;
+    border:0;
+    margin:0;
+    margin-bottom: 5px;
+  }
+  button {
+background: #fff;
+border-radius: 4px;
+color: #1a73e8;
+font: 100 18px Google Sans,Noto Sans,Noto Sans JP,Noto Sans KR,Noto Naskh Arabic,Noto Sans Thai,Noto Sans Hebrew,Noto Sans Bengali,sans-serif;
+padding: 17px 23px;
+letter-spacing: .6px;
+color: #fff;
+background: #9d3adf;
+border:0;
+outline:0;
+text-align:center;
+position: relative;
+margin: 0;
+text-transform: uppercase;
+transition: 0.3s;
+border-radius: 999px;
+overflow:hidden;
+}
+
+button#open {
+    position:fixed;
+bottom: 20px;
+right:20px;
+}
+button:not(#open) {
+    margin-left:-110px;
+    margin-top: 5px
+
+}
+button:hover {
+box-shadow: 0 5px 20px rgba(0,0,0,0.2)
+}
+
+#modal {
+    transform:scaleY(0);
+    position:fixed;
+    top:100%;
+    bottom:0;
+    right:0;
+    left:0;
+    background: rgba(90, 117, 190, 0.562);
+    color:white;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height:100vh;
+    width:100vw;
+    transition: 1s;
+    backdrop-filter: blur(20px);
+}
+
+#modal p {
+    position:fixed;
+    font-weight:100;
+    font-size:80px;
+    color:white;
+    top:10px;
+    right:20px;
+    margin:0;
+    padding:0;
+}
+
+#modal h1 {
+    text-shadow: 0 0 10px black
+}
+
+#modal input {
+    padding:20px;
+    border: 2px solid rgba(75, 75, 146, 0.514);
+    border-radius:990px;
+    outline:0;
+    width: 400px;
+    margin:0;
+}
+
+#snackbar {
+    visibility: hidden; /* Hidden by default. Visible on click */
+    min-width: 250px; /* Set a default minimum width */
+    margin-left: -125px; /* Divide value of min-width by 2 */
+    background-color: #333; /* Black background color */
+    color: #fff; /* White text color */
+    text-align: center; /* Centered text */
+    border-radius: 2px; /* Rounded borders */
+    padding: 16px; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: 1; /* Add a z-index if needed */
+    left: 50%; /* Center the snackbar */
+    bottom: 30px; /* 30px from the bottom */
+}
+
+#snackbar.showing {
+    visibility: visible; /* Show the snackbar */
+    /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+    However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  }
+  
+  /* Animations to fade the snackbar in and out */
+  @-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+  }
+  
+  @keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+  }

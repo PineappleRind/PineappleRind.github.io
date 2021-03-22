@@ -1,115 +1,22 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <style>
-      body {
-        background:#fff;
-        display:flex;
-        flex-direction:row;
-        justify-content:center;
-        margin:0;
-        height:100vh;
-        overflow:hidden
-      }
-      ul {
-        background:#f5f5f5;
-        width:50%;
-        border-left: 1px solid #eee;
-        border-right:1px solid #eee;
-        box-shadow: 0 0 50px rgba(0,0,0,0.2);
-        height:100vh;
-        list-style-type:none;
-        margin:0;
-        padding: 60px;
-        display:flex;
-        flex-direction:column;
-        justify-content:flex-start;
-      }
-      h1,li {
-        font-family: -apple-system, BlinkMacSystemFont, Roboto, Oxxygen, Arial, Helvetica, sans-serif;
-      }
-      h1{
-        font-size:60px;
-        font-weight:900;
-        margin-bottom: 5px;
-      }
-      li{
-        font-size:20px;
-        margin-top:2px;
-        margin-bottom:2px;
-      }
-      
-      hr {
-        height:1px;
-        width: 30%;
-        background: #ccc;
-        border:0;
-        margin:0;
-        margin-bottom: 5px;
-      }
-    </style>
-  </head>
-  <body id="bod">
-    <script>
-      var bod = document.querySelector('#bod');
-      let things = ['Zhou',
-                    'Scuzi',
-                    'Grahy',
-                    'Heather\'s Kitchen Party',
-                    'Bad dad ad that make me sad, i am crab with a pad',
-                    'Fat Christina',
-                    'Maryolin!',
-                    'Ma name\'s BRITNEY',
-                    'Fabian',
-                    'At the business centre, Mike Hepple',
-                    'Marcello & Vivian Murphy',
-                    'Maurice',
-                    'John & Gladys',
-                    'Deep Dave',
-                    'Grapey',
-                    'C-H-E-A-P-O-U-L-E-A-R-N-I cheapoulearni',
-                    'Hoooooie',
-                    'Canala! Canala!',
-                    'TITONGO GET NO PAY',
-                    'Chocolo-fudge peanuto-caramel',
-                    'Andrew Chester',
-                    'Region of Prescott',
-                    'Rambleberry',
-                    'Aureara Borealis',
-                    'Guy Sax'
-                   ]
-      function mergeSort(list){
-        // Getting the half part of the list
-        let half = list.length/2;
-        if(list.length < 2){
-          return list;
-        }
-        // Getting the left part of the list, by default the other part will be the right
-        const left = list.splice(0,half);
-        // Call merge function and mergeSort recursively to solve the sorting
-        return merge(mergeSort(left),mergeSort(list));
-      }
-      function merge(left,right){
-        let list = [];
-        // Main loop through the left and right parts to merge them sorted
-        while(left.length && right.length){
-          // Execute the comparison statement
-          if(left[0] < right [0]){
-            list.push(left.shift());
-          }
-          else{
-            list.push(right.shift());
-          }
-        }
-        // Return the list sorted and merged with the rest operator.
-        return [...list, ...left, ...right];
-      }
-      let sorted = mergeSort(things)
-      it = '<ul><h1>Meme List</h1><hr></hr>' + sorted.map(function (thing) {
-        return '<li>' + thing + '</li>';
-      }
-                                                ).join('') + '</ul>';
-      bod.innerHTML += it;
-    </script>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body id="bod">
+  <button id="open">Submit a Meme</button>
+  <div id="modal">
+    <p id="close">&times;</p>
+    <h1>Submit A Meme!</h1>
+    <div>
+      <input id="input" type="text" placeholder="Meme you'd like to submit...">
+      <button id="submit">Submit</button>
+    </div>
+  </div>
+  <div id="snackbar">Submitted!</div>
+  <script src="index.js"></script></body>
 </html>
