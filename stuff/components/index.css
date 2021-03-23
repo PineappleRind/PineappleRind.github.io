@@ -3,13 +3,15 @@ body {
 }
 
 nav {
-    position: fixed;
+    position: absolute;
     left: 0;
     right: 0;
     top:0;
-    font-family: Inter, Thonburi, Arial, Helvetica, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Arial, Helvetica, sans-serif;
     z-index:100;
-    background:white;
+    background:rgba(0, 0, 0, 0.137);
+    color:white;
+    padding:10px;
 }
 
 nav ul {
@@ -21,10 +23,9 @@ nav ul {
 nav ul li, nav a {
     float: right;
     display: inline;
-    padding: 24px 28px;
+    padding: 20px 28px;
     font-size: 20px;
     cursor: pointer;
-    border-bottom: 2px solid rgba(0, 0, 0, 0);
     transition: 0.4s;
 }
 
@@ -33,21 +34,22 @@ nav a {
     margin-left: 40px;
 }
 nav ul li:hover {
-    border-bottom: 2px solid black;
     opacity:0.9;
 }
 
 .fullpage {
-    height:60vh;
+    height:30vh;
     display:flex;
     flex-direction:column;
     justify-content: center;
     align-items:center;
-    background:#fff
+    background:#fff;
+    padding-top: 200px;
+    color:white;
 }
 
-.fullpage.darker {
-    background: #f1f1f1;
+.fullpage.home {
+    background: #0059ff;
 }
 
 .fullpage h1 {
@@ -64,15 +66,13 @@ nav ul li:hover {
 }
 
 button {
-    background: #fff;
     border-radius: 4px;
-    color: #1a73e8;
-    font: 100 18px Google Sans,Noto Sans,Noto Sans JP,Noto Sans KR,Noto Naskh Arabic,Noto Sans Thai,Noto Sans Hebrew,Noto Sans Bengali,sans-serif;
+    color: #ffffff;
+    font: 300 18px -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Arial, Helvetica, sans-serif;
     letter-spacing: .6px;
     line-height: 24px;
     padding: 0px 28px;
     color: #fff;
-    background: #1a73e8;
     border:0;
     outline:0;
     display:inline-block;
@@ -86,6 +86,8 @@ button {
     height: 56px;
     border-radius: 3px;
     overflow:hidden;
+    background: transparent;
+    border: 1px solid white;
 }
 
 button.outlined {
@@ -99,7 +101,7 @@ button.text {
     color:#1a73e8;
 }
 button:hover {
-    background:#1767d1;
+    background:rgba(255, 255, 255, 0.034);
 }
 button.outlined:hover {
     background: rgba(26, 115, 232, 0.151);
