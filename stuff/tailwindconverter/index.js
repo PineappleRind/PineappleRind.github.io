@@ -9,10 +9,11 @@ function translate(e) {
     for (let i = 0; i < cssProperties.length; i++) {
         if (e.includes(cssProperties[i].replace(/\s/g, '')) || e.includes(cssProperties[i])) {
             (r += tailwind[i]);
+            text.value = ''
         }
     }
     r += measures(e)
-    r += width(e)
+    //r += width(e)
     return r;
 }
 function measures(e) {
@@ -27,6 +28,7 @@ function measures(e) {
     } 
     return r;
 }
+
 /*function width(e) {
     let r = ''
     if(e.includes('width')) {
