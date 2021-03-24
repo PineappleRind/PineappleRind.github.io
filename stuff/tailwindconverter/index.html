@@ -10,7 +10,7 @@
         body {
             display:flex;
             flex-direction: column;
-            background:rgb(104, 104, 218);
+            background:rgb(11, 11, 44);
             color:white;
             align-items: center;
             justify-content: center;
@@ -46,19 +46,36 @@
         div.supported b {
             font-size:30px;
         }
+
+        button {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            margin:0;
+            border:0;
+            background:#2b76e7;
+            color:white;
+            outline:0;
+            border-radius: 10px;
+        }
+
+        #output {
+            padding: 20px;
+            margin-bottom: 10px;
+            overflow: auto;
+            overflow-y: hidden;
+            font-size: 20px;
+            background: #1f1838;
+            border-radius:10px;
+            color:white;
+            font-family:'Courier New', Courier, monospace
+        }
     </style>
 </head>
 <body>
     <div class="wrapper"><h1>Tailwind.css Class Converter</h1>
     <p>Enter css properties and it will translate to tailwind.css class names below. Please only include properties/values.</p>
-    <textarea id="text">
-
-    </textarea>
-
-    <p>Output:</p>
-    <pre id="output">
-
-    </pre>
+    <textarea id="text"></textarea>
+    <p id="output">Output will appear here</p>
 <button id="see">See Supported Properties</button></div>
 <div class="supported"></div>
     <script src="index.js"></script>

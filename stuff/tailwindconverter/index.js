@@ -14,7 +14,7 @@ function translate(e) {
 }
 
 onkeypress = () => {
-    $('#output').innerHTML = translate(text.value)
+    $('#output').innerHTML = translate(text.value.toLowerCase())
 }
 let list = cssProperties.toString();
 $('.supported').insertAdjacentHTML('beforeend',`<b>Supported Properties So Far:</b><p>${list.replace(/,/g,'<br/>')}</p>`)
