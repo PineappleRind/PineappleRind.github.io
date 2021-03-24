@@ -8,7 +8,7 @@ function translate(e) {
     r = ''
     
     for (let i = 0; i < cssProperties.length; i++) {
-        if (e.includes(cssProperties[i])) {
+        if (e.includes(cssProperties[i].replace(/\s/g, '') || e.includes(cssProperties[i])) {
             (r += tailwind[i]);
         }
     }
@@ -16,7 +16,7 @@ function translate(e) {
 }
 
 onkeypress = () => {
-    $('#output').innerHTML = translate(text.value.toLowerCase().replace(/\s/g, ''))
+    $('#output').innerHTML = translate(text.value.toLowerCase())
 }
 let list = cssProperties.toString();
 $('.supported').insertAdjacentHTML('beforeend',`<b>Supported Properties So Far:</b><p>${list.replace(/,/g,'<br/>')}</p>`)
