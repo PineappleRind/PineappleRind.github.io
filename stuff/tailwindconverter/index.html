@@ -5,78 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tailwind.css Class Converter</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <style>
         *{font-family:-apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif}
-        
-        body {
-            display:flex;
-            flex-direction: column;
-            background:rgb(11, 11, 44);
-            color:white;
-            align-items: center;
-            justify-content: center;
-            height:100vh;
-            overflow: hidden;
-        }
+        body{background:rgb(12, 12, 49)}
 
-        div.wrapper {
-            display:flex;
-            flex-direction: column;
-            background:#fff;
-            color:black;
-            padding: 20px;
-            border-radius: 14px;
-        }
 
-        div.supported {
-            display:none;
-            position:fixed;
-            top:0;
-            bottom:0;
-            right:0;
-            left:0;
-            background:black;
-            color:white;
-            opacity:0;
-            transition: 0.5s;
-            overflow:scroll;
-        }
-
-        div.supported b {
-            font-size:30px;
-        }
-
-        button {
-            padding-top: 10px;
-            padding-bottom: 10px;
-            margin:0;
-            border:0;
-            background:#2b76e7;
-            color:white;
-            outline:0;
-            border-radius: 10px;
-        }
-
-        #output {
-            padding: 20px;
-            margin-bottom: 10px;
-            overflow: auto;
-            overflow-y: hidden;
-            font-size: 20px;
-            background: #1f1838;
-            border-radius:10px;
-            color:white;
-            font-family:'Courier New', Courier, monospace
-        }
     </style>
 </head>
-<body>
-    <div class="wrapper"><h1>Tailwind.css Class Converter</h1>
+<body class="h-screen flex flex-col text-white overflow-hidden items-center justify-center">
+    <div class="flex flex-col bg-white text-black p-6 rounded-xl"><h1 class="font-extrabold text-4xl">Tailwind.css Class Converter</h1>
     <p>Enter css properties and it will translate to tailwind.css class names below. Please only include properties/values.</p>
-    <textarea id="text"></textarea>
-    <p id="output">Output will appear here</p>
+    <textarea class="border-2 my-4 h-20 p-4" placeholder="Type CSS here" id="text"></textarea>
+    <p class="p-6 mb-4 overflow-auto overflow-y-hidden text-lg rounded-lg font-mono text-white bg-black" id="output">Output will appear here</p>
+    <div class="w-full flex">
+        <button class="text-white py-3 my-3 mx-1 outline-none rounded w-6/12 bg-red-600 transition duration-300 hover:bg-red-700">Clear</button>
+        <button class="text-white py-3 my-3 mx-1  outline-none rounded w-6/12 bg-blue-500 transition duration-500 hover:bg-blue-600 hover:shadow-lg" id="translate">Translate</button>
+    </div>
 </div>
-<div class="supported"></div>
     <script src="index.js"></script>
 </body>
 </html>
