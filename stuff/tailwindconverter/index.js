@@ -7,7 +7,11 @@ function translate(e) {
     let r;
     r = ''
     
-    for (let i = 0; i < cssProperties.length; i++) e.includes(cssProperties[i]) && (r += tailwind[i]);
+    for (let i = 0; i < cssProperties.length; i++) {
+        if (e.includes(cssProperties[i])) {
+            (r += tailwind[i]);
+        }
+    }
     return r;
 }
 
