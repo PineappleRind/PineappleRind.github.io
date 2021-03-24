@@ -8,7 +8,7 @@ function translate(e) {
     r = ''
     
     for (let i = 0; i < cssProperties.length; i++) {
-        if (e.includes(cssProperties[i].replace(/\s/g, '') || e.includes(cssProperties[i])) {
+        if (e.includes(cssProperties[i].replace(/\s/g, '')) || e.includes(cssProperties[i])) {
             (r += tailwind[i]);
         }
     }
