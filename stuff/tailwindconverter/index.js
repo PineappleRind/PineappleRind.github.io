@@ -1,8 +1,8 @@
-function $(e){return document.getElementById(e)}
+function $(e){return document.querySelector(e)}
 
-let text = $('text')
-let cssProperties = ['display: block;','display: none;','display: inline;','display: flex;','position: static;','position: fixed;','position: absolute;','position: relative;','position: sticky;','text-align: left;','text-align: right;','text-align: justify;','text-align: center;','float: right;', 'float: left;', 'float: none;']
-    let tailwind = ['block ', 'hidden ', 'inline ', 'flex ','static ','fixed ', 'absolute ', 'relative ', 'sticky ', 'text-left ','text-right ','text-justify ','text-center ','float-right','float-left','float-none']
+let text = $('#text')
+let cssProperties = ['display: block;','display: none;','display: inline;','display: flex;','position: static;','position: fixed;','position: absolute;','position: relative;','position: sticky;','text-align: left;','text-align: right;','text-align: justify;','text-align: center;','float: right;', 'float: left;', 'float: none;','font-weight: 100;','font-weight: 200;','font-weight: 300;','font-weight: 400;','font-weight: 500;','font-weight: 600;','font-weight: 700;','font-weight: 800;','font-weight: 900;']
+let tailwind = ['block ', 'hidden ', 'inline ', 'flex ','static ','fixed ', 'absolute ', 'relative ', 'sticky ', 'text-left ','text-right ','text-justify ','text-center ','float-right ','float-left ','float-none ','font-thin ','font-extralight ','font-light ','font-normal ', 'font-medium ','font-semibold ','font-bold ','font-extrabold ','font-black ']
 function translate(e) {
     let r;
     r = ''
@@ -10,20 +10,26 @@ function translate(e) {
     for(let i = 0; i < cssProperties.length; i++) {
         if (e.includes(cssProperties[i])) r += tailwind[i]
     }
-    /*
-    if (e.includes()) r += 'absolute '
-    if (e.includes()) r += 'relative '
-    if (e.includes('position: sticky;')) r += 'sticky '
-    if (e.includes()) r += 'text-left '
-    if (e.includes()) r += 'text-right '
-    if (e.includes()) r += 'text-justify '
-    if (e.includes()) r += 'text-center '
-    if (e.includes('text-align: center;')) r += 'text-center '*/
     return r;
 }
 
 onkeypress = () => {
-    $('output').innerHTML = translate(text.value)
+    $('#output').innerHTML = translate(text.value)
 }
 let list = cssProperties.toString();
-document.body.insertAdjacentHTML('beforeend',`<b>Supported Properties So Far:</b><p>${list.replace(/,/g,'<br/>')}</p>`)
+$('.supported').insertAdjacentHTML('beforeend',`<b>Supported Properties So Far:</b><p>${list.replace(/,/g,'<br/>')}</p>`)
+$('#see').onclick = () => {
+    open($('.supported'))
+}
+function open(e) {
+    e.style.display = 'flex'
+    setTimeout(()=> {
+        e.style.opacity = "1"
+    },10)
+    setTimeout(()=>{
+        e.style.opacity = "0";
+        setTimeout(()=> {
+            e.style.display = "none"
+        },500)
+    },4000)
+} 

@@ -4,12 +4,52 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fractals</title>
+    <title>Tailwind.css Class Converter</title>
     <style>
+        *{font-family:-apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif}
+        body {
+            display:flex;
+            flex-direction: column;
+            background:rgb(104, 104, 218);
+            color:white;
+            align-items: center;
+            justify-content: center;
+            height:100vh;
+            overflow: hidden;
+        }
+
+        div.wrapper {
+            display:flex;
+            flex-direction: column;
+            background:#fff;
+            color:black;
+            padding: 20px;
+            border-radius: 14px;
+        }
+
+        div.supported {
+            display:none;
+            position:fixed;
+            top:0;
+            bottom:0;
+            right:0;
+            left:0;
+            background:black;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color:white;
+            opacity:0;
+            transition: 0.5s;
+        }
+
+        div.supported b {
+            font-size:30px;
+        }
     </style>
 </head>
 <body>
-    <h1>Tailwind.css Class Generator</h1>
+    <div class="wrapper"><h1>Tailwind.css Class Converter</h1>
     <p>Enter css properties and it will translate to tailwind.css class names below. Please only include properties/values.</p>
     <textarea id="text">
 
@@ -19,6 +59,8 @@
     <pre id="output">
 
     </pre>
+<button id="see">See Supported Properties</button></div>
+<div class="supported"></div>
     <script src="index.js"></script>
 </body>
 </html>
