@@ -7,12 +7,12 @@ function translate(e) {
     let r;
     r = ''
     
-    for (let i = 0; i < cssProperties.length; i++) t.includes(cssProperties[i]) && (e += tailwind[i]);
+    for (let i = 0; i < cssProperties.length; i++) e.includes(cssProperties[i]) && (r += tailwind[i]);
     return r;
 }
 
 onkeypress = () => {
-    $('#output').innerHTML = translate(text.value.toLowerCase())
+    $('#output').innerHTML = translate(text.value.toLowerCase().replace(/\s/g, '')))
 }
 let list = cssProperties.toString();
 $('.supported').insertAdjacentHTML('beforeend',`<b>Supported Properties So Far:</b><p>${list.replace(/,/g,'<br/>')}</p>`)
