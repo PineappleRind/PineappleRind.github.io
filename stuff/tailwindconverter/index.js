@@ -26,7 +26,7 @@ $('#see').onclick = () => {
     open($('.supported'))
 }
 function open(e) {
-    e.style.display = 'flex'
+    e.style.display = 'block'
     setTimeout(()=> {
         e.style.opacity = "1"
     },10)
