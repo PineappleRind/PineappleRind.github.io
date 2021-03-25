@@ -33,45 +33,35 @@
 let text = $('#text')
 let cssProperties = ['display: block;','display: none;','display: inline;','display: flex;','position: static;','position: fixed;','position: absolute;','position: relative;','position: sticky;','text-align: left;','text-align: right;','text-align: justify;','text-align: center;','float: right;', 'float: left;', 'float: none;','font-weight: 100;','font-weight: 200;','font-weight: 300;','font-weight: 400;','font-weight: 500;','font-weight: 600;','font-weight: 700;','font-weight: 800;','font-weight: 900;','overflow: hidden;','overflow: visible;','overflow: scroll;','overflow: auto;','overflow-y: hidden;','overflow-y: visible;','overflow-y: scroll;','overflow-y: auto;','overflow-x: hidden;','overflow-x: visible;','overflow-x: scroll;','overflow-x: auto;','flex-direction: column;','flex-direction: column-reverse;','flex-direction: row;','flex-direction: row-reverse;','align-items: center;','align-items: flex-start;','align-items: flex-end;','align-items: baseline;','align-items: stretch;','justify-content: flex-start;','justify-content: flex-end;','justify-content: center;','justify-content: space-between;','justify-content: space-around;','justify-content: space-evenly;']
 let tailwind = ['block ', 'hidden ', 'inline ', 'flex ','static ','fixed ', 'absolute ', 'relative ', 'sticky ', 'text-left ','text-right ','text-justify ','text-center ','float-right ','float-left ','float-none ','font-thin ','font-extralight ','font-light ','font-normal ', 'font-medium ','font-semibold ','font-bold ','font-extrabold ','font-black ','overflow-hidden ','overflow-visible ','overflow-scroll ','overflow-auto ','overflow-y-hidden ','overflow-y-visible ','overflow-y-scroll ','overflow-y-auto ','overflow-x-hidden ','overflow-x-visible ','overflow-x-scroll ','overflow-x-auto ','flex-col ','flex-col-reverse ','flex-row ','flex-row-reverse ','items-center ','items-start ','items-end ','items-baseline ','items-stretch ','justify-start ','justify-end ','justify-center ','justify-between ','justify-around ','justify-evenly ']
+
 let tailwindM = [0,0.125,0.25,0.375,0.5,0.625,0.75,0.875,1,1.25,1.5,1.75,2,2.25,2.5,2.75,3,3.5,4,5,6,7,8,9,10,11,12,13,14,15,16,18,20,24]
-var tailwindColors =[/* Gray */"F9FAFB","F3F4F6","E5E7EB","D1D5DB","9CA3AF","6B7280","4B5563","374151","1F2937","111827",/* Red */"FEF2F2","FEE2E2","FECACA","FCA5A5","F87171","EF4444","DC2626","B91C1C","991B1B","7F1D1D",/*Yellow*/"FFFBEB","FEF3C7","FDE68A","FCD34D","FBBF24","F59E0B","D97706","B45309","92400E","78350F"/*Green*/,"ECFDF5","D1FAE5","A7F3D0","6EE7B7","34D399","10B981","059669","047857","065F46","064E3B",/*Blue*/"EFF6FF","DBEAFE","BFDBFE","93C5FD","60A5FA","3B82F6","2563EB","1D4ED8","1E40AF","1E3A8A",/*Indigo*/"EEF2FF","E0E7FF","C7D2FE","A5B4FC","818CF8","6366F1","4F46E5","4338CA","3730A3","312E81",/*Purple*/"F5F3FF","EDE9FE","DDD6FE","C4B5FD","A78BFA","8B5CF6","7C3AED","6D28D9","5B21B6","4C1D95",/*pink*/"FDF2F8","FCE7F3","FBCFE8","F9A8D4","F472B6","EC4899","DB2777","BE185D","9D174D","831843"];
+
+var tailwindColors =[/* Gray */"F9FAFB","F3F4F6","E5E7EB","D1D5DB","9CA3AF","6B7280","4B5563","374151","1F2937","111827",/* Red */"FEF2F2","FEE2E2","FECACA","FCA5A5","F87171","EF4444","DC2626","B91C1C","991B1B","7F1D1D",/*Yellow*/"FFFBEB","FEF3C7","FDE68A","FCD34D","FBBF24","F59E0B","D97706","B45309","92400E","78350F"/*Green*/,"ECFDF5","D1FAE5","A7F3D0","6EE7B7","34D399","10B981","059669","047857","065F46","064E3B",/*Blue*/"EFF6FF","DBEAFE","BFDBFE","93C5FD","60A5FA","3B82F6","2563EB","1D4ED8","1E40AF","1E3A8A",/*indigo*/"EEF2FF","E0E7FF","C7D2FE","A5B4FC","818CF8","6366F1","4F46E5","4338CA","3730A3","312E81",/*Purple*/"F5F3FF","EDE9FE","DDD6FE","C4B5FD","A78BFA","8B5CF6","7C3AED","6D28D9","5B21B6","4C1D95",/*pink*/"FDF2F8","FCE7F3","FBCFE8","F9A8D4","F472B6","EC4899","DB2777","BE185D","9D174D","831843"];
+let tailwindColorNames = [/*Gray*/"gray-50",'gray-100','gray-200','gray-300','gray-400','gray-500','gray-600','gray-700','gray-800','gray-900',/*Red*/"red-50",'red-100','red-200','red-300','red-400','red-500','red-600','red-700','red-800','red-900',/*yellow*/"yellow-50",'yellow-100','yellow-200','yellow-300','yellow-400','yellow-500','yellow-600','yellow-700','yellow-800','yellow-900',/*Green*/"green-50",'green-100','green-200','green-300','green-400','green-500','green-600','green-700','green-800','green-900',/*Blue*/"blue-50",'blue-100','blue-200','blue-300','blue-400','blue-500','blue-600','blue-700','blue-800','blue-900',/*indigo*/"indigo-50",'indigo-100','indigo-200','indigo-300','indigo-400','indigo-500','indigo-600','indigo-700','indigo-800','indigo-900',/*pink*/"pink-50",'pink-100','pink-200','pink-300','pink-400','pink-500','pink-600','pink-700','pink-800','pink-900']
 function translate(e) {
     let r = '';
     for (let i = 0; i < cssProperties.length; i++) {
         if (e.includes(cssProperties[i].replace(/\s/g, '')) || e.includes(cssProperties[i])) {
-            (r += tailwind[i]);
-            text.value = ''
+            r += tailwind[i];
         }
     }
-    r += measures(e)
-    //r += width(e)
-    console.log(color(e))
+    if (e.includes('height')) r += measures(e)
+    r += color(e)
     return r;
 }
-function chip(e) {
-    var tag = document.createElement("div");
-    var text = document.createTextNode(e);
-    tag.appendChild(text);
-    tag.classList.add('rounded-full')
-    tag.classList.add('bg-gray-100')
-    tag.classList.add('py-3')
-    tag.classList.add('px-4')
-    tag.classList.add('text-black')
-    tag.classList.add('shadow-lg')
-    tag.classList.add('m-1')
-    var element = document.getElementById("chips");
-    element.appendChild(tag);
+function chip(d) {
+    var s = document.createElement("div"),
+        a = document.createTextNode(d);
+    s.appendChild(a), s.classList.add("rounded-full"), s.classList.add("bg-gray-100"), s.classList.add("py-3"), s.classList.add("px-4"), s.classList.add("text-black"), s.classList.add("shadow-lg"), s.classList.add("m-1"), document.getElementById("chips").appendChild(s)
 }
 function measures(e) {
     let r = ''
-    if(e.includes('height')) {
         let y = e.substring(e.indexOf('height') + 7,e.indexOf(';'));
         if (y.includes('px')) {
             let p = getClosest(tailwindM,(parseInt(y) / 16))
             let final = remToTailwind(p)
              r += `h-${final}`
         }
-    } 
     return r;
 }
 
@@ -79,80 +69,36 @@ function color(e) {
     let r = ''
     if(e.includes('color')) {
         let y = e.substring(e.indexOf('color') + 7,e.indexOf('color') + 14);
-        console.log(y)
-            let p = getClosestColor(y)
-             r += `text-${p}`
+        let p = hexToTailwind(getClosestColor(y))
+      r += `text-${p} `
     } 
     return r;
 }
 
-function getClosestColor(color) {
-    //Convert to RGB, then R, G, B
-    var color_rgb = hex2rgb(color);
-    var color_r = color_rgb.split(',')[0];
-    var color_g = color_rgb.split(',')[1];
-    var color_b = color_rgb.split(',')[2];
-
-    //Create an emtyp array for the difference betwwen the colors
-    var differenceArray=[];
-
-    //Function to find the smallest value in an array
-    Array.min = function( array ){
-           return Math.min.apply( Math, array );
-    };
-
-
-    //Convert the HEX color in the array to RGB colors, split them up to R-G-B, then find out the difference between the "color" and the colors in the array
-    $.each(tailwindColors, function(index, value) { 
-        var base_color_rgb = hex2rgb(value);
-        var base_colors_r = base_color_rgb.split(',')[0];
-        var base_colors_g = base_color_rgb.split(',')[1];
-        var base_colors_b = base_color_rgb.split(',')[2];
-
-        //Add the difference to the differenceArray
-        differenceArray.push(Math.sqrt((color_r-base_colors_r)*(color_r-base_colors_r)+(color_g-base_colors_g)*(color_g-base_colors_g)+(color_b-base_colors_b)*(color_b-base_colors_b)));
+function getClosestColor(t) {
+    var r = h(t),
+        a = r.split(",")[0],
+        n = r.split(",")[1],
+        i = r.split(",")[2],
+        s = [];
+    Array.min = function(t) {
+        return Math.min.apply(Math, t)
+    }, $.each(tailwindColors, function(t, r) {
+        var l = h(r),
+            c = l.split(",")[0],
+            p = l.split(",")[1],
+            o = l.split(",")[2];
+        s.push(Math.sqrt((a - c) * (a - c) + (n - p) * (n - p) + (i - o) * (i - o)))
     });
+    var l = Array.min(s),
+        c = s.indexOf(l);
 
-    //Get the lowest number from the differenceArray
-    var lowest = Array.min(differenceArray);
-
-    //Get the index for that lowest number
-    var index = differenceArray.indexOf(lowest);
-
-    //Function to convert HEX to RGB
-    function hex2rgb( colour ) {
-        var r,g,b;
-        if ( colour.charAt(0) == '#' ) {
-            colour = colour.substr(1);
-        }
-
-        r = colour.charAt(0) + colour.charAt(1);
-        g = colour.charAt(2) + colour.charAt(3);
-        b = colour.charAt(4) + colour.charAt(5);
-
-        r = parseInt( r,16 );
-        g = parseInt( g,16 );
-        b = parseInt( b ,16);
-        return r+','+g+','+b;
+    function h(t) {
+        var r, a, n;
+        return "#" == t.charAt(0) && (t = t.substr(1)), r = t.charAt(0) + t.charAt(1), a = t.charAt(2) + t.charAt(3), n = t.charAt(4) + t.charAt(5), (r = parseInt(r, 16)) + "," + (a = parseInt(a, 16)) + "," + (n = parseInt(n, 16))
     }
-
-    //Return the HEX code
-    return tailwindColors[index];
+    return tailwindColors[c]
 }
-
-/*function width(e) {
-    let r = ''
-    if(e.includes('width')) {
-        let t = e.indexOf('width') + 6;
-        let yt = e.substring(t, t + 3);
-        if (yt.includes('px')) {
-            let pt = getClosest(tailwindM,(parseInt(yt) / 16))
-            let finalt = remToTailwind(pt)
-            r += `w-${finalt}`
-            return r;
-        }
-    }
-}*/
 function getClosest(e,r) {
     var closest = e.reduce(function(prev, curr) {
     return (Math.abs(curr - r) < Math.abs(prev - r) ? curr : prev);
@@ -168,10 +114,20 @@ function remToTailwind(e) {
         }
     }
 }
-
+function hexToTailwind(e) {
+    for (let i = 0; i < tailwindColors.length; i++) {
+        if (tailwindColors[i] === e) {
+            let final = tailwindColorNames[tailwindColors.indexOf(e)];
+            return final;
+        }
+    }
+}
+$('#output').innerHTML = translate(text.value.toLowerCase())
 $('#translate').onclick = () => {
+    
+    console.log(translate(text.value.toLowerCase()))
     $('#output').innerHTML = translate(text.value.toLowerCase())
-    chip('w.i.p. ;)')
+    //chip('w.i.p. ;)')
 }
 $('#output').insertAdjacentHTML('afterend',`<p id="supported">Tailwind.css classes supported (so far): ${cssProperties.length + tailwindM.length * 2}</p>`)
 let list = cssProperties.toString();
