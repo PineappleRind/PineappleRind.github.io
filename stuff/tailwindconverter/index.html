@@ -50,8 +50,6 @@ function translate(e) {
     return r;
 }
 $('#translate').onclick = () => {
-    console.log(translate(text.value.toLowerCase()))
-    
     $('#output').innerHTML = translate(text.value.toLowerCase())
     setTimeout(function(){chip(text.value.toLowerCase().split(/\r\n|\r|\n/),text.value.toLowerCase().split(/\r\n|\r|\n/).length)},100)
     var node= document.getElementById("chips");node.querySelectorAll('*').forEach(n => n.remove());
@@ -80,6 +78,7 @@ function color(e) {
         let y = e.substring(e.indexOf('color') + 7,e.indexOf('color') + 14);
         let p = hexToTailwind(getClosestColor(y))
       r += `text-${p} `
+      console.log(p)
     } 
     return r;
 }
