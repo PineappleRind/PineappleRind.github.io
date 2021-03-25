@@ -49,10 +49,19 @@ function translate(e) {
     r += color(e)
     return r;
 }
-function chip(d) {
-    var s = document.createElement("div"),
-        a = document.createTextNode(d);
-    s.appendChild(a), s.classList.add("rounded-full"), s.classList.add("bg-gray-100"), s.classList.add("py-3"), s.classList.add("px-4"), s.classList.add("text-black"), s.classList.add("shadow-lg"), s.classList.add("m-1"), document.getElementById("chips").appendChild(s)
+$('#translate').onclick = () => {
+    console.log(translate(text.value.toLowerCase()))
+    
+    $('#output').innerHTML = translate(text.value.toLowerCase())
+    setTimeout(function(){chip(text.value.toLowerCase().split(/\r\n|\r|\n/),text.value.toLowerCase().split(/\r\n|\r|\n/).length)},100)
+    var node= document.getElementById("chips");node.querySelectorAll('*').forEach(n => n.remove());
+}
+function chip(d,e) {
+    for (let i = 0; i < e; i++) {
+        var s = document.createElement("div"),
+        a = document.createTextNode(d[i]);
+        s.appendChild(a), s.classList.add("rounded-full"), s.classList.add("bg-gray-200"), s.classList.add("py-3"), s.classList.add("px-4"), s.classList.add("text-black"), s.classList.add("m-1"), document.getElementById("chips").appendChild(s)
+    }
 }
 function measures(e) {
     let r = ''
@@ -122,14 +131,7 @@ function hexToTailwind(e) {
         }
     }
 }
-$('#output').innerHTML = translate(text.value.toLowerCase())
-$('#translate').onclick = () => {
-    
-    console.log(translate(text.value.toLowerCase()))
-    $('#output').innerHTML = translate(text.value.toLowerCase())
-    //chip('w.i.p. ;)')
-}
-$('#output').insertAdjacentHTML('afterend',`<p id="supported">Tailwind.css classes supported (so far): ${cssProperties.length + tailwindM.length * 2}</p>`)
+$('#output').insertAdjacentHTML('afterend',`<p id="supported">Currently Translated:</p>`)
 let list = cssProperties.toString();
 function open(e) {
     e.style.display = 'block'
