@@ -10,7 +10,13 @@
         *{font-family:-apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif}
         body{background:rgb(12, 12, 49)}
 
+        chip {
+            animation: fade 1s;
+        }
 
+        @keyframes fade {
+            from {transform:translateY(-10px); opacity:0;}
+        }
     </style>
 </head>
 <body class="h-screen flex flex-col text-white overflow-hidden items-center justify-center">
@@ -50,15 +56,24 @@ function translate(e) {
     return r;
 }
 $('#translate').onclick = () => {
-    $('#output').innerHTML = translate(text.value.toLowerCase())
-    setTimeout(function(){chip(text.value.toLowerCase().split(/\r\n|\r|\n/),text.value.toLowerCase().split(/\r\n|\r|\n/).length)},100)
-    var node= document.getElementById("chips");node.querySelectorAll('*').forEach(n => n.remove());
+    document.getElementById('output').innerText = translate(text.value.toLowerCase())
+    
+    if (document.getElementById('output').innerText === '') {
+        document.getElementById("chips").querySelectorAll('*').forEach(n => n.remove());
+    } else {
+        setTimeout(()=>{chip(text.value.toLowerCase().split(/\r\n|\r|\n/),text.value.toLowerCase().split(/\r\n|\r|\n/).length)},1)
+        document.getElementById("chips").querySelectorAll('*').forEach(n => n.remove());
+    }
 }
 function chip(d,e) {
     for (let i = 0; i < e; i++) {
-        var s = document.createElement("div"),
+        setTimeout(function(){
+            var s = document.createElement("chip"),
         a = document.createTextNode(d[i]);
-        s.appendChild(a), s.classList.add("rounded-full"), s.classList.add("bg-gray-200"), s.classList.add("py-3"), s.classList.add("px-4"), s.classList.add("text-black"), s.classList.add("m-1"), document.getElementById("chips").appendChild(s)
+        s.appendChild(a);
+        s.classList.add("rounded-full"), s.classList.add("bg-gray-200"), s.classList.add("py-3"), s.classList.add("px-4"), s.classList.add("text-black"), s.classList.add("m-1");
+            document.getElementById("chips").appendChild(s)
+        },i * 200)
     }
 }
 function measures(e) {
