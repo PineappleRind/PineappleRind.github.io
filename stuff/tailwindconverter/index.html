@@ -14,17 +14,22 @@
             animation: fade 1s;
         }
 
+        #chips {
+            max-width:800px;
+            overflow: hidden;
+        }
+
         @keyframes fade {
             from {transform:translateY(-10px); opacity:0;}
         }
     </style>
 </head>
 <body class="h-screen flex flex-col text-white overflow-hidden items-center justify-center">
-    <div class="flex flex-col bg-white text-black p-6 rounded-xl"><h1 class="font-extrabold text-4xl">Tailwind.css Class Converter</h1>
+    <div class="flex flex-col max-w-24 bg-white text-black p-6 rounded-xl"><h1 class="font-extrabold text-4xl">Tailwind.css Class Converter</h1>
     <p>Enter css properties and it will translate to tailwind.css class names below. Please only include properties/values.</p>
     <textarea class="border-2 my-4 h-20 p-4" placeholder="Type CSS here" id="text"></textarea>
     <p class="p-6 mb-4 overflow-auto overflow-y-hidden text-lg rounded-lg font-mono text-white bg-black" id="output">Output will appear here</p>
-    <div id="chips" class="flex flex-wrap w-full">
+    <div id="chips" class="flex flex-wrap max-w-24">
 
     </div>
     <div class="w-full flex">
@@ -32,13 +37,15 @@
         <button class="text-white py-3 my-3 mx-1  outline-none rounded w-6/12 bg-blue-500 transition duration-500 hover:bg-blue-600 hover:shadow-lg" id="translate">Translate</button>
     </div>
 </div>
-
+<button class="fixed bottom-0 right-0 m-6 hover:underline" id="see">See Supported</button>
+<div class="fixed inset-0 bg-black overflow-scroll" style="display: none; opacity:0; transition: 0.5s;" id="over">
+    <p id="push">Loading..</p></div>
 <script>
     function $(e){return document.querySelector(e)}
 
 let text = $('#text')
-let cssProperties = ['display: block;','display: none;','display: inline;','display: flex;','position: static;','position: fixed;','position: absolute;','position: relative;','position: sticky;','text-align: left;','text-align: right;','text-align: justify;','text-align: center;','float: right;', 'float: left;', 'float: none;','font-weight: 100;','font-weight: 200;','font-weight: 300;','font-weight: 400;','font-weight: 500;','font-weight: 600;','font-weight: 700;','font-weight: 800;','font-weight: 900;','overflow: hidden;','overflow: visible;','overflow: scroll;','overflow: auto;','overflow-y: hidden;','overflow-y: visible;','overflow-y: scroll;','overflow-y: auto;','overflow-x: hidden;','overflow-x: visible;','overflow-x: scroll;','overflow-x: auto;','flex-direction: column;','flex-direction: column-reverse;','flex-direction: row;','flex-direction: row-reverse;','align-items: center;','align-items: flex-start;','align-items: flex-end;','align-items: baseline;','align-items: stretch;','justify-content: flex-start;','justify-content: flex-end;','justify-content: center;','justify-content: space-between;','justify-content: space-around;','justify-content: space-evenly;']
-let tailwind = ['block ', 'hidden ', 'inline ', 'flex ','static ','fixed ', 'absolute ', 'relative ', 'sticky ', 'text-left ','text-right ','text-justify ','text-center ','float-right ','float-left ','float-none ','font-thin ','font-extralight ','font-light ','font-normal ', 'font-medium ','font-semibold ','font-bold ','font-extrabold ','font-black ','overflow-hidden ','overflow-visible ','overflow-scroll ','overflow-auto ','overflow-y-hidden ','overflow-y-visible ','overflow-y-scroll ','overflow-y-auto ','overflow-x-hidden ','overflow-x-visible ','overflow-x-scroll ','overflow-x-auto ','flex-col ','flex-col-reverse ','flex-row ','flex-row-reverse ','items-center ','items-start ','items-end ','items-baseline ','items-stretch ','justify-start ','justify-end ','justify-center ','justify-between ','justify-around ','justify-evenly ']
+let cssProperties = ['display: block;','display: none;','display: inline;','display: flex;','display: inline-block;','position: static;','position: fixed;','position: absolute;','position: relative;','position: sticky;','text-align: left;','text-align: right;','text-align: justify;','text-align: center;','float: right;', 'float: left;', 'float: none;','font-weight: 100;','font-weight: 200;','font-weight: 300;','font-weight: 400;','font-weight: 500;','font-weight: 600;','font-weight: 700;','font-weight: 800;','font-weight: 900;','overflow: hidden;','overflow: visible;','overflow: scroll;','overflow: auto;','overflow-y: hidden;','overflow-y: visible;','overflow-y: scroll;','overflow-y: auto;','overflow-x: hidden;','overflow-x: visible;','overflow-x: scroll;','overflow-x: auto;','flex-direction: column;','flex-direction: column-reverse;','flex-direction: row;','flex-direction: row-reverse;','align-items: center;','align-items: flex-start;','align-items: flex-end;','align-items: baseline;','align-items: stretch;','justify-content: flex-start;','justify-content: flex-end;','justify-content: center;','justify-content: space-between;','justify-content: space-around;','justify-content: space-evenly;','box-sizing: border-box;','display: inline-flex;','display: table;','display: table-caption;','display: table-cell;','display: table-column;','display: table-column-group;']
+let tailwind = ['block ', 'hidden ', 'inline ', 'flex ','inline-block','static ','fixed ', 'absolute ', 'relative ', 'sticky ', 'text-left ','text-right ','text-justify ','text-center ','float-right ','float-left ','float-none ','font-thin ','font-extralight ','font-light ','font-normal ', 'font-medium ','font-semibold ','font-bold ','font-extrabold ','font-black ','overflow-hidden ','overflow-visible ','overflow-scroll ','overflow-auto ','overflow-y-hidden ','overflow-y-visible ','overflow-y-scroll ','overflow-y-auto ','overflow-x-hidden ','overflow-x-visible ','overflow-x-scroll ','overflow-x-auto ','flex-col ','flex-col-reverse ','flex-row ','flex-row-reverse ','items-center ','items-start ','items-end ','items-baseline ','items-stretch ','justify-start ','justify-end ','justify-center ','justify-between ','justify-around ','justify-evenly ','box-border ','box-content ','inline-flex ','table ','table-caption ','table-cell ','table-column ','table-column-group ']
 
 let tailwindM = [0,0.125,0.25,0.375,0.5,0.625,0.75,0.875,1,1.25,1.5,1.75,2,2.25,2.5,2.75,3,3.5,4,5,6,7,8,9,10,11,12,13,14,15,16,18,20,24]
 
@@ -159,7 +166,12 @@ function open(e) {
         },500)
     },4000)
 } 
-
+let o = document.getElementById('over')
+$('#see').onclick = () => {
+    open(document.getElementById('over'))
+}
+let sorted = cssProperties.sort()
+o.innerHTML = sorted.join('<br/>')
 </script>
 <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
 
