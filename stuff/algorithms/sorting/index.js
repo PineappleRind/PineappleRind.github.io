@@ -34,14 +34,11 @@ function generate() {
 
     }
     document.getElementById('sort').onclick = () => {
-        let y = sort()
-        for (let i = 0; i < 8; i++) {
+        sortItems(document.getElementsByClassName('bar'))
+    /* for (let i = 0; i < 8; i++) {
                 let g = document.getElementsByClassName('bar');
                 let j = document.getElementsByClassName('barlabel');
-                let u = y[i] + 'px'
-                j[i].innerHTML = y[i]
-                g[i].style.height = u
-        }
+        }*/
     }
 }
 
@@ -53,25 +50,25 @@ function change(h, r) {
     }, 200)
 }
 
-  
-  function sortItems(array) { 
-    var length = array.length; 
-
-    for(var i = 1, j; i < length; i++) { 
-      var temp1 = array[i]; 
-      for(var j = i - 1; j >= 0 && array[j] > temp1; j--) { 
-        array[j+1] = array[j]; 
-      } 
-      array[j+1] = temp1; 
-    } 
-  return array; 
-  } 
-
-function sort() {
+  function sortItems(g) { 
     let array = new Array()
+    let numArray = new Array()
     for (let i = 0; i < 8; i++) {
-        let g = document.getElementsByClassName('bar');
-        array.push(parseInt(g[i].innerText));
+        console.log(numArray)
+        let r = parseInt(g[i].innerText)
+        numArray.push(r)
+        var u = numArray.sort(function(a, b){return a-b})
+        console.log(u)
+        let y = g[i].style.backgroundColor
+        array.push(`<div class="bar" style="height: ${u[i]}px; background-color: ${y};" id="bar1"><p class="barlabel">${u[i]}</p></div>`);
+        setTimeout(function(){
+            document.querySelector('.bars').innerHTML = ''
+    setTimeout(function(){
+        document.querySelector('.bars').innerHTML = array.join('')
+    },1)
+    },1)
+        if (i >= 8) {
+            return
+        }
     }
-    return sortItems(array)
-}
+  } 
