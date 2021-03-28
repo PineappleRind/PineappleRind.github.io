@@ -19,15 +19,15 @@ html {
     position: fixed;
     bottom:0;
     overflow: visible;
+    transition: 0.5s;
 }
 .bar {
     display: inline-block;
     width:100px;
     height:100px;
-    background:violet;
+    background:linear-gradient(red,#222);
     margin-left:3px;
     margin-right:3px;
-    box-shadow: 0 10px 10px black;
     transition: 0.5s cubic-bezier(.81,0,.11,.98);
     position: relative;
 }

@@ -1,12 +1,3 @@
-function getRandomColor() {
-    var letters = '0123456789ABCDEF';
-    var color = '#';
-    for (var i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-}
-
 function getRandomHeight() {
     let r
     r = Math.floor((Math.random() * 300) + 10);
@@ -26,7 +17,6 @@ function generate() {
         let g = document.getElementsByClassName('bar')[i];
         let r = getRandomHeight();
         g.style.height = r;
-        g.style.backgroundColor = getRandomColor();
         g.number = r
 
         let j = document.getElementsByClassName('barlabel')[i];
@@ -60,13 +50,16 @@ function change(h, r) {
         var u = numArray.sort(function(a, b){return a-b})
         console.log(u)
         let y = g[i].style.backgroundColor
-        array.push(`<div class="bar" style="height: ${u[i]}px; background-color: ${y};" id="bar1"><p class="barlabel">${u[i]}</p></div>`);
-        setTimeout(function(){
-            document.querySelector('.bars').innerHTML = ''
-    setTimeout(function(){
-        document.querySelector('.bars').innerHTML = array.join('')
-    },1)
-    },1)
+        setTimeout(function() {
+            setTimeout(function() {
+                document.querySelector('.bars').innerHTML = ''
+                array.push(`<div class="bar" style="height: ${u[i]}px" id="bar1"><p class="barlabel">${u[i]}</p></div>`);
+                document.querySelector('.bars').innerHTML = array.join('')
+                document.querySelector('.bars').style.opacity = '1'
+            }, 500)
+            document.querySelector('.bars').style.opacity = '0'
+        }, 1)
+       
         if (i >= 8) {
             return
         }
