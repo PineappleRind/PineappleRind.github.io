@@ -8,7 +8,7 @@ body {
     margin:0;
     flex-direction: column;
     color:white;
-    font-weight:900;
+    font-weight:300;
     overflow:hidden;
 }
 
@@ -49,5 +49,10 @@ hr {
     width: 80%;
 }
 p {
-    margin: 5px;
+    margin: 10px;
+    margin-left:0;
+}
+
+p#close {
+    font-weight:600;
 }
