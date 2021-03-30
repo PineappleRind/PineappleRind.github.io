@@ -7,7 +7,9 @@ let canvas = document.getElementById("canvas"),
     x = 1 + t,
     y = canvas.height + t,
     speed = parseInt(document.getElementById('speed').value),
-    equationY = document.getElementById('equationY').value;
+    equationY = document.getElementById('equationY').value,
+    equationX = document.getElementById('equationX').value,
+    numSpeed = document.getElementById('numSpeed');
 
 function draw(t, e) {
 let a = new Path2D;
@@ -27,15 +29,18 @@ setTimeout(function(){
 }
 function increment() {
     y = canvas.height / 2 - 200 * eval(equationY);
-    x = canvas.width / 2 - 300 * Math.sin(t);
+    x = canvas.width / 2 - 300 * eval(equationX);
      t += .01;
     draw(x, y)
 }
 function open(t) {
-    t.style.opacity = 1, t.style.transform = "translatey(0px)"
+    setTimeout(function(){t.style.opacity = 1, t.style.transform = "translatey(0px)";},10)
+    t.style.display = 'flex'
 }
-function close(t) {
-    t.style.opacity = 0, t.style.transform = "translatey(300px) scale(0.5,0.5)"
+function close(t,e) {
+    t.style.opacity = 0
+    if (e == true) {t.style.transform = "translatey(300px)"}
+    setTimeout(()=>{t.style.display = 'none'},500)
 }
 canvas.width = 1408
 canvas.height = 739 * 1.1;
@@ -45,14 +50,18 @@ setInterval(function(){increment()}, speed)
 oninput = () => {
     radius = parseInt(document.getElementById("radius").value);
     speed = parseInt(document.getElementById('speed').value);
+    numSpeed.innerHTML = speed
     equationY = document.getElementById('equationY').value;
-     restart()
+    equationX = document.getElementById('equationX').value;
+    restart()
 }
 
 document.getElementById("open").onclick = () => {
     open(document.querySelector(".controls"))
+    open(document.getElementById('overlay'))
 }
 
 document.getElementById("close").onclick = () => {
-    close(document.querySelector(".controls"))
+    close(document.querySelector(".controls"),true)
+    close(document.getElementById('overlay'),false)
 }
