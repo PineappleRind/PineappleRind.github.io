@@ -7,8 +7,8 @@ let canvas = document.getElementById("canvas"),
     x = 1 + t,
     y = canvas.height + t,
     speed = parseInt(document.getElementById('speed').value),
-    equationY = document.getElementById('equationY').value,
-    equationX = document.getElementById('equationX').value,
+    equationY = `Math.sin(${document.getElementById('equationY').value})`,
+    equationX = `Math.sin(${document.getElementById('equationX').value})`,
     numSpeed = document.getElementById('numSpeed');
 
 function draw(t, e) {
@@ -29,13 +29,13 @@ setTimeout(function(){
 }
 function increment() {
     y = canvas.height / 2 - 200 * eval(equationY);
-    x = canvas.width / 2 - 300 * eval(equationX);
+    x = canvas.width / 2 - 200 * eval(equationX);
      t += .01;
     draw(x, y)
 }
 function open(t) {
     setTimeout(function(){t.style.opacity = 1, t.style.transform = "translatey(0px)";},10)
-    t.style.display = 'flex'
+    t.style.display = 'block'
 }
 function close(t,e) {
     t.style.opacity = 0
@@ -51,8 +51,8 @@ oninput = () => {
     radius = parseInt(document.getElementById("radius").value);
     speed = parseInt(document.getElementById('speed').value);
     numSpeed.innerHTML = speed
-    equationY = document.getElementById('equationY').value;
-    equationX = document.getElementById('equationX').value;
+    equationY = `Math.sin(${document.getElementById('equationY').value})`;
+    equationX = `Math.sin(${document.getElementById('equationX').value})`;
     restart()
 }
 
