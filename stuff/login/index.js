@@ -103,3 +103,8 @@ toRegularTime = (militaryTime) => {
 }
 
 handleNext()
+
+
+$('cancel').onclick = () => {
+  $('black').style.display = 'block'
+}
