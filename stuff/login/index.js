@@ -52,6 +52,9 @@ $('input').onkeydown = e => {
       setTimeout(function(){
         $('inputContainer').style.display = 'none'
         $('loading').style.display = 'block'
+        setTimeout(function(){
+          macOpen()
+        },1200)
       },500)
   }}
    else {
@@ -107,4 +110,9 @@ handleNext()
 
 $('cancel').onclick = () => {
   $('black').style.display = 'block'
+}
+
+function macOpen() {
+  document.querySelector('.login').style.display = 'none'
+  document.querySelector('.home').style.display = 'flex'
 }
