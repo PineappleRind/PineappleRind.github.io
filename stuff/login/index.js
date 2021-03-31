@@ -35,16 +35,17 @@ setInterval(function(){
         mins = currentDate.getMinutes()
     }
 let time = currentDate.getHours() + ":" + mins + ":" + secs
-document.getElementById('time').innerHTML = `${time}`
+document.getElementById('time').innerHTML = `${toRegularTime(time)}`
 let cDay = currentDate.getDate()
 var weekdayFinal = weekdays[currentDate.getDay()];
 var theMonth = month[currentDate.getMonth()];
 document.getElementById('date').innerHTML = `${weekdayFinal} ${theMonth} ${cDay}`
 },100)
 function $(t) {return document.getElementById(t)}
-$('input').onkeypress = e => {
+$('input').onkeydown = e => {
     var key = keyPressed(e);
-  if (key == 'Enter') {
+  if ($('input').value === 'mamaobama111') {
+    if (key == 'Enter') {
       $('inputContainer').style.opacity = 0.9
       $('inputContainer').style.pointerEvents = 'none'
       $('input').setAttribute('disabled','')
@@ -52,6 +53,37 @@ $('input').onkeypress = e => {
         $('inputContainer').style.display = 'none'
         $('loading').style.display = 'block'
       },500)
+  }}
+   else {
+      if (key == 'Enter') {
+        $('inputContainer').style.opacity = 0.9
+          $('inputContainer').style.pointerEvents = 'none'
+          $('input').setAttribute('disabled','')
+          setTimeout(function(){
+            $('inputContainer').style.animationName = 'bounce'
+            $('inputContainer').style.opacity = 1
+          $('inputContainer').style.pointerEvents = 'all'
+          $('input').removeAttribute('disabled')
+            setTimeout(function(){
+              $('inputContainer').style.animationName = ''
+            },500)
+          },500)
+        }
+    }
+  
+
+  handleNext()
+}
+
+oninput = () => {
+  handleNext()
+}
+
+function handleNext() {
+  if ($('input').value == '') {
+    $('next').style.visibility = 'hidden'
+  } else {
+    $('next').style.visibility = 'visible'
   }
 }
 
@@ -65,4 +97,9 @@ function keyPressed(e) {
     return key;
   }
 
-  document.addEventListener('load', function() {alert("good")});
+toRegularTime = (militaryTime) => {
+    const [hours, minutes, seconds] = militaryTime.split(':');
+    return `${(hours > 12) ? hours - 12 : hours}:${minutes}${seconds ? `:${seconds}` : ''} ${(hours >= 12) ? 'PM' : 'AM'}`;
+}
+
+handleNext()

@@ -5,229 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        * {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI ', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
-        }
-        body {
-            background: url('bigsur.jpg');
-            height:100vh;
-            background-size:cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            font-size:15px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        nav {
-            position: fixed;
-            top:0;
-            right:0;
-            margin:0;
-            display: flex;
-            align-items: center;
-            justify-content: space-evenly;
-            padding:7px;
-        }
-
-        nav * {
-            margin-left:5px;
-            margin-right:5px;
-        }
-        nav .keyboard {
-            margin-left:4px;
-        }
-        p {
-            color:white;
-            margin-top:0;
-            margin-bottom:0;
-        }
-        .keyboard {
-            height:12px;
-            background-size:contain;
-            background-repeat: no-repeat;
-            filter:invert(100%) contrast(100);
-            padding:0;
-        }
-
-        .wifi {
-            filter:invert(0%) contrast(100);
-            height:12px;
-        }
-
-        .pfp {
-            height:130px;
-        }
-
-        main {
-            display: flex;
-            align-items: center;
-            flex-direction:column;
-            justify-content: center;
-        }
-
-        main h1 {
-            font-size:20px;
-            margin:0;
-            margin-top:15px;
-            color:white;
-            font-weight:400;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI ', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        }
-
-        input {
-            padding: 6px;
-            background: rgba(255, 255, 255, 0.329);
-            border-radius:900px;
-            border:0;
-            backdrop-filter: blur(20px);
-            padding-left:15px;
-            padding-right:14px;
-            outline:0;
-            width: 140px;
-            margin:0;
-            margin-top: 12px;
-            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.262);
-            -webkit-text-security: disc;
-            color:white;
-
-        }
-        input::placeholder {
-            color:white;
-            opacity:0.5;
-        }
-
-        .inner-addon { 
-    position: relative; 
-}
-.inner-addon img {
-  position: absolute;
-  padding: 10px;
-  pointer-events: none;
-}
-
-.right-addon img { right: 0px;}
-
-        .footer-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center; 
-            margin:40px;    
-            font-size:12px;   
-        }
-
-        footer {
-            position: fixed;
-             bottom:0;
-             display: flex;
-             right:0;
-             left:0;
-             justify-content: center;
-             align-items: center;
-             height:100px;
-             color:white;
-        }
-
-        .footer-img {
-            height:40px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.116);
-            backdrop-filter: blur(4px);
-        }
-
-        img[src="next.png"] {
-            position: absolute;
-            right:-35px;
-            margin:0;
-            height:22px;
-            z-index:100;
-            top:5px;
-            cursor:pointer
-        }
-        main div#inputContainer {
-            width:140px;
-            position: relative;
-            padding:0;
-            display: flex;
-            align-items: center;
-            margin:0;         
-        }
-
-        .loadingimg {
-            height:25px;
-            filter:contrast(0.5) brightness(150%);
-            opacity:0.5;
-        }
-
-        #loading {
-            margin-top: 17px;
-        }
-
-        notif {
-            padding: 13px;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.543);
-            backdrop-filter: blur(20px);
-            position: fixed;
-            top:50px;
-            right:10px;
-            display: flex;
-            flex-direction: column;
-            height: 60px;
-            justify-content: center;
-            width: 320px;
-        }
-
-        notif .notif-top {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        notif .notif-top .notif-top-left h1 {
-            margin:0;
-            color: black;
-            font-size:14px;
-            text-transform: uppercase;
-            font-weight:300;
-        }
-
-        notif .notif-top .notif-top-right h1 {
-            text-transform: capitalize;
-            margin:0;
-            color: rgb(67, 67, 67);
-            font-size:12px;
-            font-weight: 400;
-        }
-
-        notif .notif-bottom h1 {
-            margin:0;
-            color: black;
-            font-size:15px;
-            font-weight:500;
-            margin-top: 5px;
-        }
-
-        notif .notif-bottom h2 {
-            margin:0;
-            color: rgb(29, 29, 29);
-            font-size:14px;
-            font-weight:400;
-            margin-top: 5px;
-        }
-
-        notif .notif-top .notif-top-left,notif .notif-top {
-            display: flex;
-            align-items: center;
-        }
-
-        notif .notif-top img {
-            height: 20px;
-            margin-right: 5px;
-        }
-    </style>
+    <link rel="stylesheet" href="bigsur.css">
 </head>
 <body id="bod">
     <notif>
@@ -242,10 +20,11 @@
         </div>  
         <div class="notif-bottom">
             <h1>Screen Time</h1>
-            <h2>You have reached your Screen Time limit.</h2>
+            <h2>Your Screen Time was down 15% over the last week, for an average of 4 hours, 14 minutes a day.</h2>
         </div>    
     </notif>
-    <nav id="body">
+    <div class="login">
+        <nav id="body">
         <p>Unicode Hex Input</p>
         <img src="keyboard.png" class="keyboard">
         <img src="battery.png" class="wifi">
@@ -257,7 +36,7 @@
         <img class="pfp" src="pfp.png">
         <h1 class="username">Username</h1>
         <div id="inputContainer" class="inner-addon right-addon">
-            <img src="next.png">
+            <img id="next" src="next.png" style="visibility: hidden;">
             <input type="text" id="input" placeholder="Enter Password" />
         </div>
         <div id="loading"  style="display: none;">
@@ -274,6 +53,8 @@
             Switch User
         </div>   
     </footer>
+</div>
+
     <script src="index.js"></script>
 </body>
 </html>
