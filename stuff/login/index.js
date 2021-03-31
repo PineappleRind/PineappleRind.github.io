@@ -1,3 +1,25 @@
+var weekdays = new Array(7);
+        weekdays[0] = "Sun";
+        weekdays[1] = "Mon";
+        weekdays[2] = "Tue";
+        weekdays[3] = "Wed";
+        weekdays[4] = "Thu";
+        weekdays[5] = "Fri";
+        weekdays[6] = "Sat";
+var month = new Array();
+        month[0] = "Jan";
+        month[1] = "Feb";
+        month[2] = "Mar";
+        month[3] = "Apr";
+        month[4] = "May";
+        month[5] = "Jun";
+        month[6] = "Jul";
+        month[7] = "Aug";
+        month[8] = "Sep";
+        month[9] = "Oct";
+        month[10] = "Nov";
+        month[11] = "Dec";
+
 setInterval(function(){
     let currentDate = new Date();
     let secs;
@@ -12,35 +34,35 @@ setInterval(function(){
     } else {
         mins = currentDate.getMinutes()
     }
-    let time = currentDate.getHours() + ":" + mins + ":" + secs
-    document.getElementById('time').innerHTML = `${time}`
-
+let time = currentDate.getHours() + ":" + mins + ":" + secs
+document.getElementById('time').innerHTML = `${time}`
 let cDay = currentDate.getDate()
-
-var month = new Array();
-month[0] = "Jan";
-month[1] = "Feb";
-month[2] = "Mar";
-month[3] = "Apr";
-month[4] = "May";
-month[5] = "Jun";
-month[6] = "Jul";
-month[7] = "Aug";
-month[8] = "Sep";
-month[9] = "Oct";
-month[10] = "Nov";
-month[11] = "Dec";
-var weekdays = new Array(7);
-        weekdays[0] = "Sun";
-        weekdays[1] = "Mon";
-        weekdays[2] = "Tue";
-        weekdays[3] = "Wed";
-        weekdays[4] = "Thu";
-        weekdays[5] = "Fri";
-        weekdays[6] = "Sat";
-        var weekdayFinal = weekdays[currentDate.getDay()];
-
+var weekdayFinal = weekdays[currentDate.getDay()];
 var theMonth = month[currentDate.getMonth()];
-
 document.getElementById('date').innerHTML = `${weekdayFinal} ${theMonth} ${cDay}`
 },100)
+function $(t) {return document.getElementById(t)}
+$('input').onkeypress = e => {
+    var key = keyPressed(e);
+  if (key == 'Enter') {
+      $('inputContainer').style.opacity = 0.9
+      $('inputContainer').style.pointerEvents = 'none'
+      $('input').setAttribute('disabled','')
+      setTimeout(function(){
+        $('inputContainer').style.display = 'none'
+        $('loading').style.display = 'block'
+      },500)
+  }
+}
+
+function keyPressed(e) {
+    var key;
+    if (window.event) {
+      key = e.code;
+    } else if (e.which) {
+      key = e.which;
+    }
+    return key;
+  }
+
+  document.addEventListener('load', function() {alert("good")});
