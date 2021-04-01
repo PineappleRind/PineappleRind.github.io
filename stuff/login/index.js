@@ -128,3 +128,14 @@ setInterval(function(){
   document.querySelector('.notif').style.transform = `translateX(${currentPos}px)`
   }
 },6)
+
+
+for (let i = 0; i < document.getElementsByClassName('dropdown-trig').length; i++) {
+  let t = document.getElementsByClassName('dropdown-trig')[i]
+  t.onclick = () => {
+    document.getElementsByClassName('dropdown-content')[i].style.display = 'block'
+  }
+  document.body.onclick = () => {
+    document.getElementsByClassName('dropdown-content')[i].style.display = 'none'
+  }
+}
