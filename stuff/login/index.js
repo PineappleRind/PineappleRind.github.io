@@ -40,6 +40,9 @@ let cDay = currentDate.getDate()
 var weekdayFinal = weekdays[currentDate.getDay()];
 var theMonth = month[currentDate.getMonth()];
 document.getElementById('date').innerHTML = `${weekdayFinal} ${theMonth} ${cDay}`
+
+document.getElementById('dateMenu').innerHTML = `${weekdayFinal} ${theMonth} ${cDay}`
+document.getElementById('timeMenu').innerHTML = `${toRegularTime(time)}`
 },100)
 function $(t) {return document.getElementById(t)}
 $('input').onkeydown = e => {
