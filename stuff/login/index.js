@@ -116,3 +116,12 @@ function macOpen() {
   document.querySelector('.login').style.display = 'none'
   document.querySelector('.home').style.display = 'flex'
 }
+
+var currentPos = 900;
+
+setInterval(function(){
+  if (currentPos > (0.1)) { 
+  currentPos = ((currentPos+currentPos))/2.1
+  document.querySelector('.notif').style.transform = `translateX(${currentPos}px)`
+  }
+},6)

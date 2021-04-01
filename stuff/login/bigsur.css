@@ -41,6 +41,9 @@ p {
     color:white;
     margin-top:0;
     margin-bottom:0;
+    word-wrap: normal;
+    overflow-wrap: normal;
+    white-space:nowrap;
 }
 .keyboard {
     height:12px;
@@ -169,7 +172,7 @@ main div#inputContainer {
     margin-top: 17px;
 }
 
-notif {
+.notif {
     padding: 13px;
     border-radius: 10px;
     background: rgba(255, 255, 255, 0.543);
@@ -181,15 +184,14 @@ notif {
     flex-direction: column;
     justify-content: center;
     width: 340px;
-    animation: comein 1s;
 }
 
-notif .notif-top {
+.notif .notif-top {
     display: flex;
     justify-content: space-between;
 }
 
-notif .notif-top .notif-top-left h1 {
+.notif .notif-top .notif-top-left h1 {
     margin:0;
     color: black;
     font-size:12px;
@@ -197,7 +199,7 @@ notif .notif-top .notif-top-left h1 {
     font-weight:300;
 }
 
-notif .notif-top .notif-top-right h1 {
+.notif .notif-top .notif-top-right h1 {
     text-transform: capitalize;
     margin:0;
     color: rgb(67, 67, 67);
@@ -205,7 +207,7 @@ notif .notif-top .notif-top-right h1 {
     font-weight: 400;
 }
 
-notif .notif-bottom h1 {
+.notif .notif-bottom h1 {
     margin:0;
     color: black;
     font-size:14px;
@@ -213,7 +215,7 @@ notif .notif-bottom h1 {
     margin-top: 5px;
 }
 
-notif .notif-bottom h2 {
+.notif .notif-bottom h2 {
     margin:0;
     color: rgb(29, 29, 29);
     font-size:14px;
@@ -221,12 +223,12 @@ notif .notif-bottom h2 {
     margin-top: 2px;
 }
 
-notif .notif-top .notif-top-left,notif .notif-top {
+.notif .notif-top .notif-top-left,.notif .notif-top {
     display: flex;
     align-items: center;
 }
 
-notif .notif-top img {
+.notif .notif-top img {
     height: 20px;
     margin-right: 5px;
 }
@@ -248,16 +250,33 @@ notif .notif-top img {
     justify-content: center;
     right:0;
     left:0;
+    height:100px;
 }
-dock {
+.dock {
     position: fixed;
     bottom:0;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.173);
+    background: rgba(255, 255, 255, 0.342);
     backdrop-filter: blur(10px);
-    padding: 12px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-right: 6px;
+    padding-left: 6px;
+    margin:0;
+    border-radius: 20px;
+    margin-bottom: 6px;
+}
+
+.dock img {
+    height: 70px;
+    margin-right: 6px;
+    margin-left: 6px;
+    pointer-events:all;
+}
+.dock img:active {
+    filter: brightness(80%)
 }
 
 @keyframes bounce {
@@ -267,5 +286,15 @@ dock {
 }
 
 @keyframes comein {
+    from {transform: translateX(900px);}
+}
+
+@-webkit-keyframes bounce {
+    20% {transform: translateX(10px)}
+    40% {transform: translateX(-10px)}
+    60% {transform: translateX(10px)}
+}
+
+@-webkit-keyframes comein {
     from {transform: translateX(900px);}
 }
