@@ -25,7 +25,7 @@
             <h2>Your Screen Time was down 15% over the last week, for an average of 4 hours, 14 minutes a day.</h2>
         </div>    
     </div>
-    <div class="login">
+    <div class="login" style="display: none;">
         <nav id="body">
         <p>Unicode Hex Input</p>
         <img src="keyboard.png" class="keyboard">
@@ -59,7 +59,7 @@
 <div id="black" style="display: flex; opacity:1; ">
     <img src="apple.png" id="loading-apple">
 </div>
-<div class="home" style="display: none;">
+<div class="home">
     <div class="menu-top">
         <div class="left">
             <img src="apple.png" class="apple">
@@ -84,15 +84,25 @@
         <img src="disc.png" class="app">
         <p>Macintosh HD</p>
     </div>
+
+    
     <div class="dock-container">
         <div class="dock">
             <div class="apps">
-                <img id="finder" src="./apps/finder.png">
-                <img id="launchpad" src="./apps/launchpad.png">
+                <div data-tooltip="Finder" data-flow="top" class="app-dock">
+                    <img id="finder" src="./apps/finder.png">
+                </div>
+                <div data-tooltip="Launchpad" data-flow="top" class="app-dock">
+                    <img id="launchpad" src="./apps/launchpad.png">
+                </div>
+                <div data-tooltip="Minesweeper" data-flow="top" class="app-dock">
+                    <img id="minesweeper" src="./apps/minesweeper.png">
+                </div>
             </div>
             <div class="dots">
                 <p>•</p>
-                <p>•</p>
+                <p></p>
+                <p></p>
             </div>
         </div>
     </div>
