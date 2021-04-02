@@ -131,7 +131,7 @@ let increment = 1
 function dialog() {
   let html = `
   <div class="dialog" style="left: ${(increment * 20) + 200}px; top: ${((increment + 30)* (increment/2))+ 300}px" id="dialog${increment}">
-    <h1 class="header">App... not found.</h1>
+    <h1 id="dialog-header-${increment}" class="header">App... not found.</h1>
     <div class="dialog-main">
       <p>I didn't code Finder, maybe I will in the future?</p>
       <div class="dialog-buttons">
@@ -148,6 +148,9 @@ function dialog() {
       document.getElementById(`dialog${e}`).remove()
     }
     increment = increment + 1
+
+      dragElement(document.getElementById(`dialog${e}`),true);
+      headerNum++
   },10)
 }
 
@@ -172,9 +175,47 @@ function load() {
   o.style.display = 'flex'
   o.style.opacity = '1'
   let a = $('loading-apple');
-  wait(a.style.display = 'block',1000)
+  a.style.display = 'block'
   setTimeout(function(){o.style.opacity = '0'},1100)
   setTimeout(function(){o.style.display = 'none'},1600)
 }
 
 load()
+
+for (let i = 0; i < document.getElementsByClassName("app-container").length; i++) {
+  dragElement(document.getElementsByClassName("app-container")[i],false);
+}
+
+for (let i = 0; i < document.getElementsByClassName('dialog').length;i++) {
+  
+}
+var headerNum = 0;
+function dragElement(e,r) {
+  var n = 0,
+      t = 0,
+      o = 0,
+      u = 0;
+
+  function l(e) {
+      (e = e || window.event).preventDefault(), o = e.clientX, u = e.clientY;
+       document.onmouseup = c, document.onmousemove = m
+  }
+
+  function m(l) {
+      (l = l || window.event).preventDefault(), n = o - l.clientX;
+      t = u - l.clientY, o = l.clientX, u = l.clientY;
+       e.style.top = e.offsetTop - t + "px";
+       e.style.left = e.offsetLeft - n + "px"
+  }
+
+  function c() {
+      document.onmouseup = null, document.onmousemove = null
+  }
+
+  if (r === false) {
+    e.onmousedown = l;
+  } else {
+    document.getElementsByClassName("header")[headerNum].onmousedown = l;
+  }
+  console.log(headerNum)
+}
