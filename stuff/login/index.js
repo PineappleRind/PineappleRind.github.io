@@ -1,24 +1,5 @@
-var weekdays = new Array(7);
-        weekdays[0] = "Sun";
-        weekdays[1] = "Mon";
-        weekdays[2] = "Tue";
-        weekdays[3] = "Wed";
-        weekdays[4] = "Thu";
-        weekdays[5] = "Fri";
-        weekdays[6] = "Sat";
-var month = new Array();
-        month[0] = "Jan";
-        month[1] = "Feb";
-        month[2] = "Mar";
-        month[3] = "Apr";
-        month[4] = "May";
-        month[5] = "Jun";
-        month[6] = "Jul";
-        month[7] = "Aug";
-        month[8] = "Sep";
-        month[9] = "Oct";
-        month[10] = "Nov";
-        month[11] = "Dec";
+var weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+var month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 setInterval(function(){
     let currentDate = new Date();
@@ -44,7 +25,10 @@ document.getElementById('date').innerHTML = `${weekdayFinal} ${theMonth} ${cDay}
 document.getElementById('dateMenu').innerHTML = `${weekdayFinal} ${theMonth} ${cDay}`
 document.getElementById('timeMenu').innerHTML = `${toRegularTime(time)}`
 },100)
+
 function $(t) {return document.getElementById(t)}
+
+
 $('input').onkeydown = e => {
     var key = keyPressed(e);
   if ($('input').value === 'mamaobama111') {
@@ -113,6 +97,8 @@ handleNext()
 
 $('cancel').onclick = () => {
   $('black').style.display = 'block'
+  $('black').style.opacity = '1'
+  $('loading-apple').style.display = 'none'
 }
 
 function macOpen() {
@@ -122,15 +108,17 @@ function macOpen() {
 
 var currentPos = 900;
 
-setInterval(function(){
+setTimeout(function(){
+  setInterval(function(){
   if (currentPos > (0.1)) { 
-  currentPos = ((currentPos+currentPos))/2.1
+  currentPos = ((currentPos+currentPos))/2.5
   document.querySelector('.notif').style.transform = `translateX(${currentPos}px)`
   }
-},6)
+},30)
+},2000)
 
 
-for (let i = 0; i < document.getElementsByClassName('dropdown-trig').length; i++) {
+/*for (let i = 0; i < document.getElementsByClassName('dropdown-trig').length; i++) {
   let t = document.getElementsByClassName('dropdown-trig')[i]
   t.onclick = () => {
     document.getElementsByClassName('dropdown-content')[i].style.display = 'block'
@@ -138,4 +126,55 @@ for (let i = 0; i < document.getElementsByClassName('dropdown-trig').length; i++
   document.body.onclick = () => {
     document.getElementsByClassName('dropdown-content')[i].style.display = 'none'
   }
+}*/
+let increment = 1
+function dialog() {
+  let html = `
+  <div class="dialog" style="left: ${(increment * 20) + 200}px; top: ${((increment + 30)* (increment/2))+ 300}px" id="dialog${increment}">
+    <h1 class="header">App... not found.</h1>
+    <div class="dialog-main">
+      <p>I didn't code Finder, maybe I will in the future?</p>
+      <div class="dialog-buttons">
+        <button class="contained" id="ok${increment}">OK</button>
+      </div>
+    </div>
+  </div>
+  `
+
+  document.body.insertAdjacentHTML('beforeend',html)
+  setTimeout(function(){
+    let e = increment;
+    $(`ok${e}`).onclick = () => {
+      document.getElementById(`dialog${e}`).remove()
+    }
+    increment = increment + 1
+  },10)
 }
+
+$('finder').onclick = () => {dialog()}
+function wait(e,r){
+  setTimeout(function(){
+    e;
+  },r)
+}
+$('launchpad').onclick = () => {
+  openLaunchpad
+}
+document.querySelector('.close-notif').onclick = () => {
+  let u = document.querySelector('.close-notif').parentElement
+  u.style.opacity = '0'
+  setTimeout(function(){
+    u.remove()
+  },200)
+}
+function load() {
+  let o = $('black')
+  o.style.display = 'flex'
+  o.style.opacity = '1'
+  let a = $('loading-apple');
+  wait(a.style.display = 'block',1000)
+  setTimeout(function(){o.style.opacity = '0'},1100)
+  setTimeout(function(){o.style.display = 'none'},1600)
+}
+
+load()
