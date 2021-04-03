@@ -2,9 +2,10 @@ function $(e) {
     return document.getElementById(e)
 }
 const delay = x => new Promise(res => setTimeout(res, x));
+
 (async () => {
     for (let i = 0; i < 100; i++) {
-        let bar = `<div class="bar" id="bar${i}" style="height:${Math.floor(Math.random() * 700)}px;"></div>`
+        let bar = `<div class="bar" id="bar${i}" style="height:${Math.floor(Math.random() * i*6 + 10)}px;"></div>`
         document.body.insertAdjacentHTML('afterbegin', bar)
         await delay(2);
         if (i == 99) {
@@ -24,7 +25,7 @@ async function sort() {
                     if (parseInt(r.style.height.replace('px', '')) < parseInt(s.style.height.replace('px', ''))) {
                         swapDiv(s);
                         comparisons++
-                        await delay(0.0000000000000000001)
+                        await delay(10)
                         $('comparisons').innerHTML = 'Comparisons: <span id="number">' + comparisons + '</span>';
                         $('number').innerHTML = comparisons;
                     }
