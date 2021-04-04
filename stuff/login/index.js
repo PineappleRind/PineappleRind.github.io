@@ -144,12 +144,47 @@ function dialog(html) {
 }
 
 function openLaunchpad() {
+  let r = $('launchpadOverlay')
+  r.style.opacity = '1'
+  r.style.pointerEvents = 'all'
+  r.style.transform = 'scale(1)'
+}
 
+function closeLaunchpad() {
+  let r = $('launchpadOverlay')
+  r.style.opacity = '0'
+  r.style.pointerEvents = 'none'
+  r.style.transform = 'scale(1.1)'
 }
 
 $('finder').onclick = () => {dialog(`<div class="dialog" style="left: ${(increment * 20) + 200}px; top: ${((increment + 30)* (increment/2))+ 300}px" id="dialog${increment}"><h1 id="dialog-header-${increment}" class="header">App... not found.</h1><div class="dialog-main"><p>I didn't code Finder, maybe I will in the future?</p><div class="dialog-buttons"><button class="contained" id="ok${increment}">OK</button></div></div></div>`)}
 $('launchpad').onclick = () => {
   openLaunchpad()
+}
+$('launchpadOverlay').onclick = () => {
+  closeLaunchpad()
+}
+$('minesweeperLaunchpad').onclick = () => {
+
+  if (minesweeperI > 0) {
+    return;
+  } else {
+    dialog(`<div class="system-window" id="dialog${increment}" style="left: ${(increment * 20)}px; top: ${((increment + 30)* (increment/2)) + 30}px">
+    <h1 id="dialog-header-${increment}">Minesweeper</h1>
+    <div id="minesweeper-box">
+        <h2>MINESWEEPER!</h2><hr><br><br>
+        <div id="field"></div>
+        <br>
+        <div id="lost" style="display: none;">
+        <h3>You got bombed!</h3>
+        <button id="new-game-button" type="button" onclick="reload()">Start Again</button>
+        </div>         
+    </div>
+    </div>`)
+    document.getElementById('lost').style.display="none";
+    startGame();
+    minesweeperI++
+  }
 }
 let minesweeperI = 0
 $('minesweeper').onclick = () => {

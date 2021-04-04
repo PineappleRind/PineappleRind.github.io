@@ -303,6 +303,8 @@ main div#inputContainer {
     right:0;
     left:0;
     height:100px;
+    z-index:40;
+    box-sizing: content-box;
 }
 .dock {
     display: flex;
@@ -320,6 +322,8 @@ main div#inputContainer {
 
     margin:0;
     margin-bottom: 10px;
+    min-height:95px;
+    box-sizing: content-box;
 }
 
 .dock img {
@@ -337,7 +341,9 @@ main div#inputContainer {
     padding-top: 12px;
     padding-right: 6px;
     padding-left: 6px;
+    padding-bottom:3px;
     display: flex;
+    box-sizing: content-box;
 }
 .dock .dots {
     display: flex;
@@ -345,16 +351,18 @@ main div#inputContainer {
     align-items: center;
     margin:0;
     padding:0;
+    margin-top:10px;
 }
 
 .dock .dots p {
     font-size: 16px;
     margin:0;
-    margin-left: 39px;
-    margin-right: 39px;
+    margin-left: 40px;
+    margin-right: 40px;
     line-height:17px;
     color: black;
     margin-bottom: -3px;
+    box-sizing: content-box;
 }
 
 .menu-top {
@@ -661,6 +669,29 @@ button:active {
     height: 30px;
     min-height: 10px;
     border: 1px solid black;    
+}
+#launchpadOverlay {
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background:rgba(255, 255, 255, 0.007);
+    height:100vh;
+    width:100vw;
+    z-index:20;
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+    margin:0;
+    padding:30px;
+    position: fixed;
+    display:flex;transition: 0.5s;
+}
+
+#launchpadOverlay * {
+    height:140px;
+    width:140px;
+    margin:20px;
+    pointer-events: all;
 }
 
 @keyframes bounce {
