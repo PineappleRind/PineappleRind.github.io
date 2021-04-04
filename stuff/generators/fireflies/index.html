@@ -1,18 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fireflies</title>
-    <style>
-        body{background:black;}
-        .dot{position:fixed;background:white;width:5px;height:5px;border-radius:50%;}
-    </style>
-</head>
-<body>
-    <canvas width="960" height="500"></canvas>
-<script src="https://d3js.org/d3.v6.min.js"></script>
+<html><head><meta charset="utf-8">
+</head><body><canvas width="960" height="500"></canvas>
+<script src="//d3js.org/d3.v3.min.js"></script>
 <script>
 
 var canvas = d3.select("canvas"),
@@ -20,7 +8,7 @@ var canvas = d3.select("canvas"),
     width = canvas.property("width"),
     height = canvas.property("height");
 
-var worker = new Worker("generate-prims.js");
+var worker = new Worker("fireflies.js");
 worker.postMessage({width: width, height: height});
 worker.addEventListener("message", function(event) {
   worker.terminate();
@@ -71,6 +59,4 @@ worker.addEventListener("message", function(event) {
 });
 
 </script>
-    <script src="fireflies.js"></script>
-</body>
-</html>
+</body></html>
