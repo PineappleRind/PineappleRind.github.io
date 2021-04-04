@@ -4,11 +4,11 @@ function $(e) {
 const delay = x => new Promise(res => setTimeout(res, x));
 
 (async () => {
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 200; i++) {
         let bar = `<div class="bar" id="bar${i}" style="height:${Math.floor(Math.random() *500)}px;"></div>`
         document.body.insertAdjacentHTML('afterbegin', bar)
         await delay(2);
-        if (i == 99) {
+        if (i == 199) {
             $('comparisons').innerHTML = 'Sorting...';
             setTimeout(function() {
                 sort()
@@ -19,8 +19,8 @@ const delay = x => new Promise(res => setTimeout(res, x));
 })();
 let comparisons = 0;
 async function sort() {
-    for (let p = 0; p < 100; p++) {
-        for (let i = 0; i < 99; i++) {
+    for (let p = 0; p < 200; p++) {
+        for (let i = 0; i < 199; i++) {
                     let r = document.getElementsByClassName('bar')[i];
                     let s = document.getElementsByClassName('bar')[i + 1];
                     if (parseInt(r.style.height.replace('px', '')) < parseInt(s.style.height.replace('px', ''))) {
@@ -30,7 +30,7 @@ async function sort() {
                         $('comparisons').innerHTML = 'Comparisons: <span id="number">' + comparisons + '</span>';
                         $('number').innerHTML = comparisons;
                     }
-                    if (i >= 99) {
+                    if (i >= 199) {
                         $('number').style.animationName = 'bounce'
                         for (let o = 0; o < document.getElementsByClassName('bar').length; o++) {
                             document.getElementsByClassName('bar')[i].style.background = 'lime'
