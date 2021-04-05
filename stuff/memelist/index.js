@@ -1,5 +1,5 @@
 var bod = document.querySelector("#bod");
-let things = ["Zhou", "Scuzi", "Grahy", "Heather's Kitchen Party", "Bad dad ad that make me sad, i am crab with a pad", "Fat Christina", "Maryolin!", "Ma name's BRITNEY", "Fabian", "At the business centre, Mike Hepple", "Marcello & Vivian Murphy", "Maurice", "John & Gladys", "Deep Dave", "Grapey", "C-H-E-A-P-O-U-L-E-A-R-N-I cheapoulearni", "Hoooooie", "Canala! Canala!", "TITONGO GET NO PAY", "Chocolo-fudge peanuto-caramel", "Andrew Chester", "Region of Prescott", "Rambleberry", "Aureara Borealis", "Guy Sax"];
+let things = ["Zhou", "Scuzi", "Grahy", "Heather's Kitchen Party", "Be One with the Pie Crust","Bad dad ad that make me sad, i am crab with a pad", "Fat Christina", "Maryolin!", "Ma name's BRITNEY", "Fabian", "At the business centre, Mike Hepple", "Marcello & Vivian Murphy", "Maurice", "John & Gladys", "Deep Dave", "Grapey", "C-H-E-A-P-O-U-L-E-A-R-N-I cheapoulearni", "Hoooooie", "Canala! Canala!", "TITONGO GET NO PAY", "Chocolo-fudge peanuto-caramel", "Andrew Chester", "Region of Prescott", "Rambleberry", "Aureara Borealis", "Guy Sax"];
 function $(e) {
     return document.getElementById(e)
 }
@@ -22,7 +22,7 @@ for (let e = 0; e < document.getElementsByClassName("item").length; e++) {
     let t = document.getElementsByClassName("item")[e],
         n = t.firstElementChild;
     n.onclick = (() => {
-        removeElement(n.parentElement), sendMessage(`User deleted ${t.textContent}`)
+        removeElement(n.parentElement)
     })
 }
 
@@ -32,16 +32,6 @@ function removeElement(e) {
     }, 500)
 }
 
-function sendMessage(e) {
-    var t = new XMLHttpRequest;
-    t.open("POST", "https://discord.com/api/webhooks/822978952368619552/aMEMuYmAHPOGAgBtFWXSQvHtq8ZmvqlrbGewE9eItvESCRaxkHfoC6h8TeXYxZ6K1wgX"), t.setRequestHeader("Content-type", "application/json");
-    var n = {
-        username: "Logger: Meme List",
-        avatar_url: "",
-        content: e
-    };
-    t.send(JSON.stringify(n))
-}
 document.getElementById("open").onclick = (() => {
     document.getElementById("modal").style.transform = "scaley(1)", document.getElementById("modal").style.top = "0"
 }), document.getElementById("close").onclick = (() => {
@@ -49,7 +39,7 @@ document.getElementById("open").onclick = (() => {
 });
 let snackbar = document.getElementById("snackbar");
 document.getElementById("submit").onclick = (() => {
-    sendMessage(`User submitted meme: ${document.getElementById("input").value}`), snackbar.classList.add("showing"), setTimeout(function() {
+    snackbar.classList.add("showing"), setTimeout(function() {
         snackbar.classList.remove("showing")
     }, 3e3)
 });
