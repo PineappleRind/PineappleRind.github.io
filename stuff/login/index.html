@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bigsur.css">
+</head>
+<body id="bod">
+<div class="bg"></div>
+    <div class="notif" style="transform: translateX(900.0981394px);">
+        <div class="close-notif">&times;</div>
+        <div class="notif-top">
+            <div class="notif-top-left">
+                <img src="screentime.png">
+                <h1>Screen Time</h1>
+            </div>
+            <div class="notif-top-right">
+                <h1>Yesterday, 1:01 PM</h1>
+            </div>        
+        </div>  
+        <div class="notif-bottom">
+            <h1>Screen Time</h1>
+            <h2>Your Screen Time was down 15% over the last week, for an average of 4 hours, 14 minutes a day.</h2>
+        </div>    
+    </div>
+    <div class="login" style="display:none;">
+        <nav id="body">
+        <p>Unicode Hex Input</p>
+        <img src="keyboard.png" class="keyboard">
+        <img src="battery.png" class="wifi">
+        <img src="wifi.png" class="wifi">
+        <p id="date">Tue Mar 30</p>
+        <p id="time"></p>
+    </nav>
+    <main>
+        <img class="pfp" src="pfp.png">
+        <h1 class="username">Username</h1>
+        <div id="inputContainer" class="inner-addon right-addon">
+            <img id="next" src="next.png" style="visibility: hidden;">
+            <input id="input" placeholder="Enter Password" />
+        </div>
+        <div id="loading"  style="display: none;">
+            <img class="loadingimg" src="loading_apple.gif">
+        </div>
+    </main>
+    <footer>
+        <div class="footer-item" id="cancel">
+            <img src="close.png" class="footer-img">
+            Cancel
+        </div>    
+        <div class="footer-item">
+            <img src="switch.png" class="footer-img">
+            Switch User
+        </div>   
+    </footer>
+</div>
+<div id="black" style="display: flex; opacity:1; ">
+    <img src="apple.png" id="loading-apple">
+</div>
+
+<div class="home" style="display: flex;">
+    <div class="menu-top">
+        <div class="left">
+            <img src="apple.png" class="apple">
+            <b>Finder</b>
+            <p class="dropdown-trig">File</p>
+            <p class="dropdown-trig">Edit</p>
+            <p class="dropdown-trig">View</p>
+            <p class="dropdown-trig">Go</p>
+            <p class="dropdown-trig">Window</p>
+            <p class="dropdown-trig">Help</p>
+        </div>
+        <div class="right">
+            <p>Unicode Hex Input</p>
+        <img src="keyboard.png" class="menu-img">
+        <img src="battery.png"  class="menu-img">
+        <img src="wifi.png" class="menu-img">
+            <p id="dateMenu"></p>
+            <p id="timeMenu"></p>
+        </div>
+    </div>
+    <div class="app-container">
+        <img src="disc.png" class="app">
+        <p>Macintosh HD</p>
+    </div>
+
+    
+    <div class="dock-container">
+        <div class="dock">
+            <div class="apps">
+                <div data-tooltip="Finder" data-flow="top" class="app-dock">
+                    <img id="finder" src="./apps/finder.png">
+                </div>
+                <div data-tooltip="Launchpad" data-flow="top" class="app-dock">
+                    <img id="launchpad" src="./apps/launchpad.png">
+                </div>
+                <div data-tooltip="Minesweeper" data-flow="top" class="app-dock">
+                    <img id="minesweeper" src="./apps/minesweeper.png">
+                </div>
+            </div>
+            <div class="dots">
+                <p>•</p>
+                <p></p>
+                <p></p>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="launchpadOverlay" style="opacity:0;pointer-events: none;transform:scale(1.1);">
+    <div>
+        <img id="finderLaunchpad" src="./apps/finder.png">
+        <p>Finder</p>
+    </div>
+    <div>
+        <img id="minesweeperLaunchpad" src="./apps/minesweeper.png">
+        <p>Minesweeper</p>
+    </div>
+</div>
+    <script src="index.js"></script>
+</body>
+</html>

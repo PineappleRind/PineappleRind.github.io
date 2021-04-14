@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{display:flex;background:black;height:100vh;align-items: flex-end; justify-content: center;}
+        .bar {background:radial-gradient(rgb(0, 255, 42),rgb(16, 160, 11));min-width:1px;width:1%;transition: 0.5s;}
+        #comparisons {
+            position: fixed;
+            top: 20%;
+
+            font-size:100px;
+            font-family:'Courier New', Courier, monospace;
+            color:lime;
+            display:flex;
+            text-align: center;
+        }
+        #number {
+            display:block;
+            animation-duration:2s;
+            animation-iteration-count: infinite;
+        }
+        @keyframes bounce {
+            50% {transform:scale(1.1)}
+        }
+    </style>
+</head>
+<body>
+    <p id="comparisons">Generating bars...<span id="number"></span></p>
+    <script src="sorting.js"></script>
+</body>
+</html>
