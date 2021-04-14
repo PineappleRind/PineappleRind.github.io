@@ -1,0 +1,103 @@
+* {
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    transition: 0.2s;
+    box-sizing: border-box;
+}
+body{
+    background:#fafafa;
+    display:flex;
+    height: 100vh;
+    overflow: auto;
+    justify-content: center;
+}
+nav {
+    position: fixed;
+    top: 0; left:0; right: 0;
+    padding:5px;
+    display:flex;
+    flex-direction:row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style-type: none;
+    margin:0;
+}
+
+nav ul.right {
+    float:right;
+}
+
+nav ul li a img {
+    height:50px;
+}
+
+nav ul li {
+    float:left;
+    padding:10px;
+    padding-left:20px;
+    padding-right:20px;
+    cursor:pointer
+}
+
+nav ul li:hover {
+    opacity:0.6;
+}
+
+main {
+    margin-top:100px;
+    display:flex;
+    justify-content: center;
+    padding:20px;
+}
+
+main h1 {
+    font-weight:900;
+    margin:0;
+}
+main p {
+    margin:0;
+    font-weight:300;
+    margin-bottom:20px;
+}
+
+.anim-container {
+    background:white;
+    border-radius:20px;
+    padding:20px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height:max-content;
+    padding-bottom:20px;
+
+}
+
+.anim {
+    border-radius:10px;
+}
+
+.anim-buttons {
+    display:flex;
+    width:100%;
+}
+
+.anim-buttons button {
+    background:url('imgs/like.png');
+    background-size:80%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border-radius:50%;
+    border:0;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding:10px;
+    height:60px;
+    width:60px;
+    font-size:30px;
+    filter:drop-shadow(0 2px 5px rgba(0, 0, 0, 0.253));
+    margin:10px;
+}
