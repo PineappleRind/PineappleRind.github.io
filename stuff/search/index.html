@@ -10,6 +10,16 @@
   <input type="radio" name="method" id="wikipedia" checked="true"><label for="wikipedia">Wikipedia</label><br>
   <input type="radio" name="method" id="google" checked="false"><label for="google">Google</label>
 <script>
+  let website = 'wikipedia'
+  oninput = () => {
+    if ($('wikipedia').checked === true) {
+      website = 'wikipedia'
+    } else if ($('google').checked === true) {
+      website = 'google'
+    }
+    $('url').value='';
+    $('url').placeholder=website;
+  }
   function $(e) {
   return document.getElementById(e)
   }
