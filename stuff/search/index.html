@@ -6,15 +6,31 @@
 <body>
 
 <input id="url" placeholder="Search wikipedia...">
-<button id="search">Search</button>
-  <input type="radio" name="method" id="Wikipedia" checked="true"><label for="Wikipedia">Wikipedia</label>
+<button id="search">Search</button><br>
+  <input type="radio" name="method" id="wikipedia" checked="true"><label for="wikipedia">Wikipedia</label><br>
+  <input type="radio" name="method" id="google" checked="false"><label for="google">Google</label>
 <script>
+  function $(e) {
+  return document.getElementById(e)
+  }
 function searchWikipedia(e){
 window.open('https://en.wikipedia.org/w/index.php?search=' + e, '_blank');
 }
+  
+  function searchGoogle(e){
+window.open('https://www.google.com/search?q=' + e, '_blank');
+}
+  
+  function search(query) {
+    if ($('wikipedia').checked === true) {
+      searchWikipedia(query)
+    } else if ($('google').checked === true) {
+      searchGoogle(query)
+    }
+  }
 
 document.getElementById('search').onclick = () => {
-searchWikipedia(document.getElementById('url').value)
+search(document.getElementById('url').value)
 }
 </script>
 
