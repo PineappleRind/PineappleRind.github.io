@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+<input id="url" placeholder="Search wikipedia...">
+<button id="search">Search</button>
+<script>
+function searchWikipedia(e){
+window.open('https://en.wikipedia.org/w/index.php?search=' + e, '_blank');
+}
+
+document.getElementById('search').onclick = () => {
+searchWikipedia(document.getElementById('url').value)
+}
+</script>
+
+</body>
+</html>
