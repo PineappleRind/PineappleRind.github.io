@@ -8,7 +8,7 @@
 <input id="url" placeholder="Search wikipedia...">
 <button id="search">Search</button><br>
   <input type="radio" name="method" id="wikipedia" checked="true"><label for="wikipedia">Wikipedia</label><br>
-  <input type="radio" name="method" id="google" checked="false"><label for="google">Google</label>
+  <input type="radio" name="method" id="google" checked="true"><label for="google">Google</label>
 <script>
   let website = 'wikipedia'
   oninput = () => {
@@ -18,7 +18,7 @@
       website = 'google'
     }
     $('url').value='';
-    $('url').placeholder=website;
+    $('url').placeholder='Search ' + website;
   }
   function $(e) {
   return document.getElementById(e)
