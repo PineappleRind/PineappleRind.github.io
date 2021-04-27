@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAha ga haha papa ka yaya</title>
+    <style>
+        * {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            animation-duration: 400ms;
+        }
+        body {
+            background-color:rgb(197, 201, 236);
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            height:100vh;
+            justify-content: center;
+        }
+
+        div {
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.219);
+            padding:20px;
+            background-color:rgb(226, 218, 245);
+            min-width:300px;
+            border-radius: 5px;
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        h1 {
+            font-size:20px;
+            margin:0;
+        }
+
+        button {
+            padding: 8px 13px;
+            border:0;
+            background:rgb(83, 127, 248);
+            color:white;
+            border-radius:3px;
+            transition: 200ms
+        }
+
+        button:hover{
+            background:rgb(73, 114, 226);
+        }
+
+        #output {
+            font-weight: 300;
+            margin:10px;
+        }
+
+        @keyframes opacity {
+            50% {transform:scale(1.1)}
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>pr nonsense generator</h1>
+        <p id="output">loading hehe</p>
+        <button id="regen">
+        regenerate
+        </button>
+    </div>
+    <script>
+        var consonants = ['b','d','f','g','h','k','l','m','n','p','r','s','t']
+        var vowels = ['a','e','i','o','u']
+        function random(inp) {
+            return inp[Math.floor(Math.random() * inp.length)]
+        }
+
+        function generate() {
+            var consone = random(consonants)
+            var vowsone = random(vowels)
+            var constwo = random(consonants)
+            var vowstwo = random(vowels)
+            var consthr = random(consonants)
+            var vowsthr = random(vowels)
+            var consfou = random(consonants)
+            var vowsfou = random(vowels)
+            var consfiv = random(consonants)
+            var vowsfiv = random(vowels)
+            var conssix = random(consonants)
+            var vowssix = random(vowels)
+
+            var final = `${consone}${vowsone}${consone}${vowsone} ${constwo}${vowstwo} ${consthr}${vowsthr}${consthr}${vowsthr} ${consfou}${vowsfou}${consfou}${vowsfou} ${consfiv}${vowsfiv} ${conssix}${vowssix}${conssix}${vowssix}`
+
+            document.getElementById('output').innerHTML = final
+            document.getElementById('output').style.animationName = 'opacity'
+            setTimeout(function(){
+                document.getElementById('output').style.animationName = ''
+            },300)
+        }
+        generate()
+
+        document.getElementById('regen').onclick = () => {
+            generate()
+        }
+        </script>
+</body>
+</html>
