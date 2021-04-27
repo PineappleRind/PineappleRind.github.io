@@ -69,25 +69,20 @@
     <script>
         var consonants = ['b','d','f','g','h','k','l','m','n','p','r','s','t']
         var vowels = ['a','e','i','o','u']
-        function random(inp) {
-            return inp[Math.floor(Math.random() * inp.length)]
+        function random(inp,num) {
+            let final = []
+            for (let i = 0; i <= num; i++) {
+                final.push(inp[Math.floor(Math.random() * inp.length)])
+                if (i === num) {
+                    return final
+                }
+            }
         }
 
         function generate() {
-            var consone = random(consonants)
-            var vowsone = random(vowels)
-            var constwo = random(consonants)
-            var vowstwo = random(vowels)
-            var consthr = random(consonants)
-            var vowsthr = random(vowels)
-            var consfou = random(consonants)
-            var vowsfou = random(vowels)
-            var consfiv = random(consonants)
-            var vowsfiv = random(vowels)
-            var conssix = random(consonants)
-            var vowssix = random(vowels)
-
-            var final = `${consone}${vowsone}${consone}${vowsone} ${constwo}${vowstwo} ${consthr}${vowsthr}${consthr}${vowsthr} ${consfou}${vowsfou}${consfou}${vowsfou} ${consfiv}${vowsfiv} ${conssix}${vowssix}${conssix}${vowssix}`
+            let cons = random(consonants,6)
+            let vows = random(vowels,6)
+            let final = `${cons[1]}${vows[1]}${cons[1]}${vows[1]}  ${cons[2]}${vows[2]}  ${cons[3]}${vows[3]}${cons[3]}${vows[3]}  ${cons[4]}${vows[4]}${cons[4]}${vows[4]}  ${cons[5]}${vows[5]}  ${cons[1]}${vows[6]}${cons[1]}${vows[6]}`
 
             document.getElementById('output').innerHTML = final
             document.getElementById('output').style.animationName = 'opacity'
