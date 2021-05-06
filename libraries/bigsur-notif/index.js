@@ -9,10 +9,14 @@ class Notif {
 function getid(e) {
     return document.getElementById(e)
 }
+
+
+  var id = 0
 function createNotif(a,b,c,d,e) {
+    id++
     let notifBase = `
-        <div class="notif">
-            <div class="close-notif">&times;</div>
+        <div class="notif" id="notif-${id}">
+            <div class="close-notif" id="notif-close-${id}">&times;</div>
             <div class="notif-top">
                 <div class="notif-top-left">
                     <img src="${e}">
@@ -31,8 +35,28 @@ function createNotif(a,b,c,d,e) {
     if (!getid('notifs')) {
         document.body.insertAdjacentHTML('afterbegin', '<div id="notifs"></div>')
         getid('notifs').insertAdjacentHTML('afterbegin', notifBase)
+        console.log('notif-close-'+id)
+            getid('notif-close-'+id).onclick = () => {
+                closeNotif(getid('notif-' + id),getid('notifs'))
+                console.log('notif-' + id)
+            }
     }
     else {
         getid('notifs').insertAdjacentHTML('afterbegin', notifBase)
+        getid('notif-close-'+id).onclick = () => {
+            closeNotif(getid('notif-' + id),getid('notifs'))
+            console.log('notif-' + id)
+        }
     }
+}
+
+function closeNotif(notif,notifcont) {
+    notifcont.style.transform = 'translateY(-' +(notif.offsetHeight + 13) + 'px)'
+    notif.style.transform = 'translateY(' + (notif.offsetHeight + 13) + 'px)'
+    notif.style.opacity = '0'
+    setTimeout(function(){
+        notif.remove()
+        notifcont.style.transition = '0s'
+        notifcont.style.transform = 'translateY(0px)'
+    },500)
 }
