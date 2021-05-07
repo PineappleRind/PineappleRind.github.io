@@ -10,6 +10,10 @@ function getid(e) {
     return document.getElementById(e)
 }
 
+var sibNum = function(n) {
+    for (var e = [], i = n.parentNode.firstChild; i;) 1 === i.nodeType && i !== n && e.push(i), i = i.nextSibling;
+    return e.length
+};
 
   var id = 0
 function createNotif(a,b,c,d,e) {
@@ -32,28 +36,26 @@ function createNotif(a,b,c,d,e) {
             </div>  
         </div>
         `
-    if (!getid('notifs')) {
-        document.body.insertAdjacentHTML('afterbegin', '<div id="notifs"></div>')
+    if (!getid('notifs')) document.body.insertAdjacentHTML('afterbegin', '<div id="notifs"></div>')
         getid('notifs').insertAdjacentHTML('afterbegin', notifBase)
-        console.log('notif-close-'+id)
-            getid('notif-close-'+id).onclick = () => {
-                closeNotif(getid('notif-' + id),getid('notifs'))
-                console.log('notif-' + id)
-            }
-    }
-    else {
-        getid('notifs').insertAdjacentHTML('afterbegin', notifBase)
-        getid('notif-close-'+id).onclick = () => {
-            closeNotif(getid('notif-' + id),getid('notifs'))
+        let one = 'notif-close-'+id
+        let two = getid(one).parentElement
+        getid(one).onclick = () => {
+            closeNotif(two,getid('notifs'))
             console.log('notif-' + id)
         }
-    }
 }
 
 function closeNotif(notif,notifcont) {
-    notifcont.style.transform = 'translateY(-' +(notif.offsetHeight + 13) + 'px)'
-    notif.style.transform = 'translateY(' + (notif.offsetHeight + 13) + 'px)'
-    notif.style.opacity = '0'
+    setTimeout(function(){
+        if (notif.nextElementSibling) {
+            notifcont.style.transform = 'translateY(-' + (notif.offsetHeight + 13) + 'px)'
+            notif.style.transform = 'translateY(' + (notif.offsetHeight + 13) + 'px)'
+        }
+
+        notif.style.opacity = '0'
+    })
+    notifcont.style.transition = 'all 0.5s ease 0s'
     setTimeout(function(){
         notif.remove()
         notifcont.style.transition = '0s'
