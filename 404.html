@@ -8,153 +8,135 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <style>
         body {
-            background: #fff;
+            background: rgb(33, 54, 86);
             display:flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             height:100vh;
             margin:0;
-            animation: opacity 2s;
+            animation: opacity 0.5s;
         }
         h1 {
             font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            font-size: calc(40px + 3vw);
+            font-size: calc(20px + 3vw);
             margin:0;
             color:white;
             text-shadow: 0 0 10px black;
-            font-weight:900;
-        }
-        p {
-            margin:0;
-            font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            font-size: calc(10px + 1vw);
-            color:white;
-            text-shadow: 0 0 10px black;
-            font-weight:100;
+            font-weight:600;
+            display:flex;
+            white-space: pre;
         }
 
-        h2 {
-            position:fixed;
-            bottom:3px;
-            font-size:14px;
-            color: #ccc;
-            font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.384);
-            font-weight:100;
-        }
+       button {
+         padding: 10px 16px;
+         border-radius: 6px;
+         background:rgb(48, 141, 255);
+         color:white;
+         border:0;
+         margin-top:10px;
+         transition: 500ms;
+         box-shadow: 0 0 0 0px rgba(255, 255, 255, 0.164);
+       }
+       button:hover {
+box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.116);
+transform:scale(0.9)
+       }
 
-        h2 a {
-            font-weight:300;
-        }
-        .canvas {
-            height:100vh;
-            width:100vw;
-            position:fixed;
-            top:0;
-            bottom:0;
-            left:0;
-            z-index: -1;
-            
-        }
+       button:focus {
+          box-shadow: 0 0 0 2000px rgba(255, 255, 255, 0.116);
+          transform:scale(0.9) rotate(360deg)
+       }
+
+       button#redir2 {
+         background:rgb(255, 17, 0);
+         opacity:0.1;
+         max-width: 100vw;
+         word-wrap: break-word;
+       }
+
+       button#redir2:hover {
+         opacity:1;
+         transform:translateX(-50px) translateY(-20px) scale(2);
+         box-shadow: 0 0 0 2000px rgba(255, 255, 255, 0.116);
+         z-index:6;
+       }
+       button#redir2:active {
+        transform:translateX(-50px) translateY(-20px) scale(1.9);
+       }
+
+       span {
+         transition: 1s cubic-bezier(0.19, 2, 0.22, 2)
+       }
 
         @keyframes opacity {
-            from {opacity:0;transform:scale(1.1)}
+            from {opacity:0;}
+        }
+
+        .wasted {
+          height:100vh;
+          width:100vw;
+          display:flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          position:fixed;
+          z-index:100;
+          pointer-events: none;
         }
     </style>
 </head>
 <body>
-    <h1>404</h1>
-    <p>page not found</p>
-    <h2>credit to <a href="https://codepen.io/georgedoescode">georgedoescode</a> for the background</h2>
-    <div class="canvas-wrapper">
-        <svg class="canvas" viewBox="0 0 1920 1080" preserveAspectRatio="xMaxYMid slice"></svg>
-      </div>
-    <script type="module">
-        console.clear();
+    <h1 id="flingy">
+      <span>p</span><span>a</span><span>g</span><span>e </span><span>n</span><span>o</span><span>t </span><span>f</span><span>o</span><span>u</span><span>n</span><span>d</span>
+    </h1>
+    <div>
+      <button id="redir">to homepage</button>
+      <button id="redir2">no u</button>
+    </div>
+    <div class="wasted"></div>
+    <script>
+      var arr = ['Roman Candles ','Plum ','Plum Pudding ', 'bad','nooo','bada','tatatititata','puputi','Hep bah ']
+      for (let i = 0; i < 12; i++) {
+        document.getElementById('flingy').children[i].setAttribute('id',i)
+        document.getElementById('flingy').children[i].style.opacity = '0'
+        document.getElementById('flingy').children[i].style.transform = 'translateY(10px)'
+        setTimeout(function(){
+          document.getElementById('flingy').children[i].style.opacity = '1'
+        document.getElementById('flingy').children[i].style.transform = 'translateY(0px)'
+        },i*100)
+      }
+      document.getElementById('redir').onclick = () => {
+        setTimeout(function(){
+          window.location.href = 'https://pineapplerind.tk'
+        },500)
+      }
 
-import { SVG } from "https://cdn.skypack.dev/@svgdotjs/svg.js";
-import {
-  random,
-  map,
-  spline,
-  pointsInPath
-} from "https://cdn.skypack.dev/@georgedoescode/generative-utils@1.0.0";
-import tinycolor from "https://cdn.skypack.dev/tinycolor2@1.4.2";
-import "https://cdn.skypack.dev/@svgdotjs/svg.filter.js";
-import copy from "https://cdn.skypack.dev/copy-to-clipboard@3.3.1";
-import { gsap } from "https://cdn.skypack.dev/gsap@3.6.0";
+      function random(e) {
+        return e[Math.floor(Math.random()*e.length)]
+      }
 
-const svg = SVG(".canvas");
-const { width, height } = svg.viewbox();
+      document.getElementById('redir2').onclick = () => {
+        document.getElementById('redir2').innerHTML = ''
+        let rand = random(arr);
+        for (let i = 0; i < 10000; i++) {
+          setTimeout(function(){
+            document.getElementById('redir2').innerHTML += rand
+          },i)
+        }
 
-const regenerateBtn = document.querySelector(".regenerate");
-const downloadBtn = document.querySelector(".download");
+        fadeSlowly()
+      }
 
-function wave(start, end, gradient) {
-  const numSteps = random(4, 8, true);
-  const step = 1 / numSteps;
-  const randomRange = random(32, 64);
-
-  const points = [];
-  let pointPosition = 0;
-
-  for (let i = 0; i <= numSteps; i++) {
-    const step = map(i, 0, numSteps, 0, 1);
-
-    let x = lerp(start.x, end.x, step);
-    let y = lerp(start.y, end.y, step);
-
-    if (i !== 0 && i !== numSteps) {
-      x += random(-randomRange, randomRange);
-      y += random(-randomRange, randomRange);
-    }
-
-    points.push({ x, y });
-  }
-
-  const pathData =
-    spline(points, 1, false) + `L ${end.x} ${height} L ${start.x} ${height} Z`;
-
-  const path = svg.path(pathData).attr("fill", gradient);
-}
-
-function lerp(v0, v1, t) {
-  return v0 * (1 - t) + v1 * t;
-}
-
-function generate() {
-  const numWaves = 7;
-  const base = tinycolor(`hsl(${random(0, 360)}, 65%, 55%)`);
-  const colors = base.analogous(6);
-
-  svg.rect(width, height).fill(random(colors).clone().darken(40).toString());
-
-  for (let i = 0; i < numWaves; i++) {
-    const randomOffset = random(-50, 50);
-    const originY = map(i, 0, numWaves, -height / 2, height / 3) + randomOffset;
-    const endY = map(i, 0, numWaves, 0, 1000) + randomOffset;
-
-    const color = random(colors).clone();
-
-    if (i < 3) {
-      color.darken(10);
-    }
-
-    const gradientOffset = map(i, 0, numWaves, 0.1, 1);
-
-    let gradient = svg.gradient("linear", function (add) {
-      add.stop(0, color.clone().lighten(30).toHexString());
-      add.stop(gradientOffset, color.clone().spin(60).toHexString());
-    });
-
-    gradient.from(0.5, 0).to(0, 1);
-
-    wave({ x: 0, y: originY }, { x: width, y: endY }, gradient);
-  }
-}
-
-generate();
+      function fadeSlowly() {
+        document.body.style.transition = '100s'
+        document.body.style.filter = 'blur(100px)'
+        setTimeout(function(){
+         let t = document.createElement('IMG')
+         t.src = 'https://static1.textcraft.net/data1/6/7/6750541394d49d2ed434ef28202cad53ed2af567da39a3ee5e6b4b0d3255bfef95601890afd80709da39a3ee5e6b4b0d3255bfef95601890afd8070916dd4327e863ff003cad463f90e2947d.png'
+         document.querySelector('.wasted').appendChild(t)
+        },3000)
+      }
     </script>
 </body>
 </html>
