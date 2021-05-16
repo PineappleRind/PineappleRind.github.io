@@ -1,0 +1,31 @@
+*{margin:0;
+
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+
+body {
+    display:flex;
+    height:100vh;
+    align-items:center;
+    justify-content: center;
+    background: #f1f1f1;
+}
+
+.cont {
+    border-radius: 10px;
+    background: #fff;
+    padding:30px;
+}
+
+button {
+    padding: 10px 20px;
+    border:0;
+    background: #b258f2;
+    border-radius: 5px;color:white;
+    margin-top:20px;
+transition: 0.2s;
+}
+button:hover{
+    background: #b968f4;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.144);
+}
