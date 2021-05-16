@@ -11,7 +11,11 @@ body {
     flex-direction: column;
     background: #f1f1f1;
 }
-
+h2{
+    font-size:20px;
+    font-weight:200;
+    margin-bottom:10px;
+}
 .cont {
     border-radius: 10px;
     background: #fff;
@@ -37,4 +41,10 @@ input {
     padding: 10px 20px;
     border:0;
     margin-top:20px;
+}
+#gen {
+    cursor:pointer;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    padding:10px;
+    border-radius:10px;
 }
