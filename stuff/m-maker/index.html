@@ -12,6 +12,8 @@
 <body>
     <h2>m maker</h2>
     <h1 id="gen">click this to generate</h1>
+    <p>pick a color first!</p>
+    <input type="color" id="custom" value="#cc0000">
     <div class="fl"><input placeholder="suggestions" id="sug">
     <button id="sub">submit suggestion</button></div>
     <script>
@@ -80,7 +82,7 @@
     }
 
         document.getElementById('gen').onclick = () => {
-            createM()
+            createM(document.getElementById('custom').value)
         }
     </script>
 </body>

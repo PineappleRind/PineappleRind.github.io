@@ -37,7 +37,13 @@ button:hover{
 .fl {
     display:flex;
 }
-input {
+
+p {
+    margin-top:14px;
+    font-weight:300;
+    margin-bottom:4px;
+}
+input#sug {
     padding: 10px 20px;
     border:0;
     margin-top:20px;
@@ -47,4 +53,10 @@ input {
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     padding:10px;
     border-radius:10px;
+    transition: 0.2s;
+}
+
+#gen:hover {
+    box-shadow: 0 0 10px 10px rgba(0,0,0,0.1);
+    transform:scale(1.3)
 }
