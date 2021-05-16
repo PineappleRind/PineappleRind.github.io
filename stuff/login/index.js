@@ -154,6 +154,7 @@ function closeLaunchpad() {
   let r = $('launchpadOverlay')
   r.style.opacity = '0'
   r.style.pointerEvents = 'none'
+  r.style.userSelect = 'none'
   r.style.transform = 'scale(1.1)'
 }
 
