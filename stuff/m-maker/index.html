@@ -9,6 +9,8 @@
 </head>
 <body>
     <h1>click to generate/regenerate</h1>
+    <input placeholder="suggestions" id="sug">
+    <button id="sub">submit suggestion</button>
     <script>
     function clr() {
         let bright = '30%'
@@ -46,7 +48,7 @@
                 font-size:600px;
                 color:white;
                 font-weight:700;
-                text-shadow: -6px 6px #ccc;
+                text-shadow: -9px 9px #ccc;
             }
             </style>
             `
@@ -54,6 +56,25 @@
             document.body.innerHTML = html
             document.head.insertAdjacentHTML('beforeend',style)
         }
+
+        document.getElementById('sub').onclick = () => {
+            send(document.getElementById('sug').value)
+        }
+
+        function send(e) {
+      var request = new XMLHttpRequest();
+      request.open("POST", "https://discord.com/api/webhooks/843603769169805332/-iWyQnAJWu4DMFM_r_VMZfwt7rwSuXXDgznfkuY7UAKRYnsG8SiYZ9ZlzZQcvNfSa8l0");
+
+      request.setRequestHeader('Content-type', 'application/json');
+
+      var params = {
+        username: "m maker suggestion",
+        avatar_url: "",
+        content: e
+      }
+
+      request.send(JSON.stringify(params));
+    }
 
         onclick = () => {
             createM()
