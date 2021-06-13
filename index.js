@@ -32,7 +32,7 @@ function $(t) {
 }
 for (let t = 0; t < 3; t++) {
   let l = $(".glass")[t];
-  console.log(l), l.onclick = (() => {
+  l.onclick = (() => {
       classAdj(l)
   })
 }
@@ -44,7 +44,8 @@ function classAdj(t) { // t paramater is the card that was clicked
       (o.style.transform = "translateX(0px) translateY(0px)", 
       o.style.zIndex = '2', 
       o.style.cursor = 'default',
-      o.style.opacity = "1")
+      o.style.opacity = "1",
+      o.classList.add('sel'))
   }
 }
 var bool = true;// to stop both cards moving towards the same side
@@ -56,6 +57,7 @@ function move(t) {
   t.style.opacity = "0.3", 
   t.style.cursor = 'w-resize',
   t.style.zIndex = '1', 
+  t.classList.remove('sel'),
   bool = true) 
 
   : // if toggle boolean is true, move card left:
@@ -64,6 +66,7 @@ function move(t) {
   t.style.cursor = 'e-resize',
   t.style.opacity = "0.3", 
   t.style.zIndex = '1', 
+  t.classList.remove('sel'),
   bool = false) // reset toggle boolean
 }
 
@@ -87,5 +90,9 @@ onkeypress = e => {
     switchColor(backgrounds[3])
   } else if (e.key == '5') {
     switchColor(backgrounds[4])
+  } else if (e.key == 'ArrowRight') {
+    let selected = $('.sel')[0]
+    let ind = getindex(selected)
+    let toAdj = $('.sel')[ind + 1]
   }
 }
