@@ -5,9 +5,9 @@
 }
 body {
     background:
-    linear-gradient(rgb(18, 102, 249), transparent),
-    linear-gradient(to top left, rgb(88, 31, 222), transparent),
-    linear-gradient(to top right, rgb(28, 161, 184), transparent), black;
+    linear-gradient(rgb(4, 0, 227), transparent),
+    linear-gradient(to top left, rgb(128, 0, 255), transparent),
+    linear-gradient(to top right, rgb(0, 121, 196), transparent), black;
     background-blend-mode: screen;
     height:100vh;
 
