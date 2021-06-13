@@ -73,7 +73,19 @@ function getindex(t) {
 }
 
 
-function chooseColor() {
-  return backgrounds[Math.floor(Math.random() * backgrounds.length)]
+function switchColor(colorToSwitchTo) {
+  document.body.style.background = colorToSwitchTo
 }
-document.body.style.background = chooseColor()
+onkeypress = e => {
+  if (e.key == '1') {
+    switchColor(backgrounds[0])
+  } else if (e.key == '2') {
+    switchColor(backgrounds[1])
+  } else if (e.key == '3') {
+    switchColor(backgrounds[2])
+  } else if (e.key == '4') {
+    switchColor(backgrounds[3])
+  } else if (e.key == '5') {
+    switchColor(backgrounds[4])
+  }
+}
