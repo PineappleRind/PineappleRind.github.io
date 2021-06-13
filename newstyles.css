@@ -37,21 +37,23 @@ body {
     font-weight:800;
     font-size:30px;
     margin-bottom:10px;
+    text-shadow: 0 0 5px black;
 }
 .glass p {
     font-weight:200;
     font-size:18px;
+    text-shadow: 0 0 5px black;
 }
 .glass#contact {
-    background: rgba(230,255,230,0.4);
+    background: rgba(220,255,220,0.4);
     border: 1px solid rgba(230,255,230,0.6);
-    color: rgb(240,255,240);
+    color: rgb(230,255,230);
     animation: left 1.2s;
 }
 .glass#projects {
-    background: rgba(243, 230, 255, 0.4);
-    border: 1px solid rgba(240, 230, 255, 0.6);
-    color: rgb(252, 240, 255);
+    background: rgba(220, 220, 255, 0.4);
+    border: 1px solid rgba(220, 220, 255, 0.6);
+    color: rgb(220, 240, 255);
     animation: right 1.2s;
 }
 @keyframes left {
