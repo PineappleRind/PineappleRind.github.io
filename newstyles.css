@@ -30,7 +30,8 @@ body {
     max-width:200px;
     transition: 0.5s;
     z-index:2;
-    cursor:pointer
+    cursor:pointer;
+    animation: center 1.2s;
 }
 .glass h1 {
     font-weight:800;
@@ -44,10 +45,21 @@ body {
 .glass#contact {
     background: rgba(230,255,230,0.4);
     border: 1px solid rgba(230,255,230,0.6);
-    color: rgb(240,255,240)
+    color: rgb(240,255,240);
+    animation: left 1.2s;
 }
 .glass#projects {
     background: rgba(243, 230, 255, 0.4);
     border: 1px solid rgba(240, 230, 255, 0.6);
-    color: rgb(252, 240, 255)
+    color: rgb(252, 240, 255);
+    animation: right 1.2s;
+}
+@keyframes left {
+    from {transform:translateX(-70px) translateY(20px);opacity:0;}
+}
+@keyframes right {
+    from {transform:translateX(70px) translateY(20px);opacity:0;}
+}
+@keyframes center {
+    from {transform:translateX(0px) translateY(20px);opacity:0;}
 }
