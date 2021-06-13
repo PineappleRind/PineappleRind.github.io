@@ -1,55 +1,26 @@
-function $(id) {
-  return document.getElementsByClassName(id)
+function $(t) {
+  return document.querySelectorAll(t)
+}
+for (let t = 0; t < 3; t++) {
+  let l = $(".glass")[t];
+  console.log(l), l.onclick = (() => {
+      classAdj(l)
+  })
 }
 
-let home = `
-                <h1>PineappleRind</h1>
-                <h3>frontend web developer</h3>
-                <div class="button-wrap">
-                    <a href="experience.html" class="btn hidden">EXPERIENCE</a>
-                    <a href="projects.html" class="btn hidden">PROJECTS</a>
-                    <a class="btn hidden">CONTACT</a>
-                    </div>
-`
-
-let projects = `
-    <h1>Projects</h1>
-    <h3>working on this one</h3>
-    <div class="button-wrap">
-        <a href="/" class="btn hidden">HOME</a>
-        <a href="experience.html" class="btn hidden">EXPERIENCE</a>
-        <a class="btn hidden">CONTACT</a>
-        </div>`
-
-let experience = `
-            <h1>Experience</h1>
-            <ul>
-                <li>2 years of experience in HTML</li>
-                <li>1 year of experience in JavaScript & CSS</li>
-                <li>6 months of experience with React & Node.js</li>
-                <li>2 months of experience with Next.js & tailwindcss</li>
-            </ul>
-            <div class="button-wrap">
-                <a onclick="changeContent(home)" class="btn hidden">HOME</a>
-                <a class="btn hidden">PROJECTS</a>
-                <a class="btn hidden">CONTACT</a>
-                </div>`
-
-        function changeContent(e) {
-          let cont = document.querySelector('.flex-left')
-          cont.innerHTML = ''
-          cont.innerHTML = e
-        }
-onload = () => {
-  loadBtns()
-}
-
-function loadBtns() {
-  for (let j = 0; j < 3; j++) {
-      setTimeout(function(){
-          setTimeout(function(){
-              $("btn")[j].classList.remove('hidden')
-          },500 * j)
-      },1000)
+function classAdj(t) {
+  for (let l = 0; l < $(".glass").length; l++) {
+      let o = $(".glass")[l];
+      o !== t && move(o), o === t && (o.style.transform = "translateX(0px) translateY(0px)", o.style.zIndex = '2', o.style.opacity = "1")
   }
+}
+var bool = !1;
+
+function move(t) {
+  0 == bool ? (t.style.transform = "translateX(170px) translateY(-5px)", t.style.opacity = "0.3", t.style.zIndex = '1', bool = !0) : (t.style.transform = "translateX(-170px) translateY(5px)", t.style.opacity = "0.3", t.style.zIndex = '1', bool = !1)
+}
+
+function getindex(t) {
+  for (var l = 0; null != (t = t.previousSibling);) l++;
+  return Math.floor(l / 2)
 }
