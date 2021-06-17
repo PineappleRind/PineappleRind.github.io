@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+background:url('triangles.png');
+background-size:cover;
+background-position:center center;
+height:100vh;
+width:100vh;
+}
+nav {
+width:100vw;
+margin:0;
+padding:10px;
+border-radius: 20px;
+background:rgba(255,255,255,0.1);
+backdrop-filter: blur(7px);
+}
+nav a {
+margin:5px;
+padding:10px;
+border-radius:10px;
+color:white;
+}
+nav a:hover {
+background: dodgerblue;
+color:white;
+}
+<body>
+
+<nav>
+<a href="https://c19ivermectin.com/">Ivermectin</a>
+<a href="https://c19vitamind.com/">Vitamin D</a>
+<a href="https://c19hcq.com/">HCQ</a>
+</nav>
+
+</body>
+</html>
