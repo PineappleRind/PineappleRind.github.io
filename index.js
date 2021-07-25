@@ -90,9 +90,9 @@ onkeypress = e => {
     switchColor(backgrounds[3])
   } else if (e.key == '5') {
     switchColor(backgrounds[4])
-  } else if (e.key == 'ArrowRight') {
+  } /*else if (e.key == 'ArrowRight') {
     let selected = $('.sel')[0]
     let ind = getindex(selected)
     let toAdj = $('.sel')[ind + 1]
-  }
+  }  WIPP */
 }
