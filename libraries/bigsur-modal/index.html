@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bigsur-modal Docs</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        html{scroll-behavior: smooth;}
+        code {
+            padding:10px;border-radius:10px;background:#000020;
+            display:block;
+            border: 1px solid rgba(255,255,255,0.3);
+            overflow-x:scroll;
+            margin:10px;
+        }
+        hr {margin:30px 0}
+        pre {display:inline;font-size:13px}
+        .html-tag,.js-key {color:#8383e3}
+        .html-attr,.js-var {color:#d386ff}
+        .js-func,.html-attrVal {color:#78ee78}
+        .js-com {opacity:0.4}
+        .js-str {color: #e3e36f;}
+        .js-bool {color: #4949ba}
+    </style>
+    <link rel="stylesheet" href="src/style.css">
+</head>
+<body class="bg-gray-900 text-white flex justify-between">
+    <div class="w-1/4 fixed z-10 right-0 hidden flex-col bg-gray-700 m-8 mt-16 pl-8 py-8 rounded-lg shadow-xl md:flex">
+        <a href="#home" class="transition duration-200 m-0.5 w-full hover:opacity-70 transform hover:-translate-y-px block">
+            <div class="font-light rounded-lg">Home</div>
+        </a>
+        <a href="#installation" class="transition duration-200 m-0.5 w-full hover:opacity-70 transform hover:-translate-y-px block">
+            <div class="font-light rounded-lg">Installation</div>
+        </a>
+        <a href="#usage" class="transition duration-200 m-0.5 w-full hover:opacity-70 transform hover:-translate-y-px block">
+            <div class="font-light rounded-lg">Usage</div>
+        </a>
+        <a href="#customization" class="transition duration-200 m-0.5 w-full hover:opacity-70 transform hover:-translate-y-px block">
+            <div class="font-light rounded-lg">Customization</div>
+        </a> 
+        <a href="#changelog" class="transition duration-200 m-0.5 w-full hover:opacity-70 transform hover:-translate-y-px block">
+            <div class="font-light rounded-lg">Changelog</div>
+        </a> 
+    </div>
+    <div class="w-3/4 p-12">
+        <h1 class="text-gray-100 font-black text-5xl">Big Sur Modal Docs</h1>
+        <br><br>
+        <div id="home">
+            <h2 class="text-gray-100 font-extralight text-3xl">Home</h2>
+            <p>Big Sur Modal is a lightweight <b>(2.1KB minified)</b> library that you can use to make modals in the style of MacOS Big sur.
+                Click here for a demo:
+            </p>
+            <button class="bg-blue-500 text-white px-4 py-2 rounded-xl" onclick="modal.show()">Show</button>
+            <br>
+        </div>
+        <hr>
+        <div id="installation">
+            <h2 class="text-gray-100 font-extralight text-3xl">Installation</h2>
+                <p>The code for Big Sur Modal is hosted <a class="underline" href="https://pineapplerind.ga/libraries/bigsur-modal">here.</a></p>
+                <p>You can put the JS and CSS files in your project like this:</p>
+                <code class="code">
+<pre>
+<span>&lt;</span><span class="html-tag">link</span> <span class="html-attr">rel</span>=<span class="html-attrVal">"stylesheet"</span> <span class="html-attr">src</span>=<span class="html-attrVal">"https://pineapplerind.ga/libraries/bigsur-modal/src/style.css"</span>&gt;
+<span>&lt;</span><span class="html-tag">script</span> <span class="html-attr">src</span>=<span class="html-attrVal">"https://pineapplerind.ga/libraries/bigsur-modal/src/index.min.js"</span><span>&gt;&lt;/</span><span class="html-tag">script</span>>
+</pre>
+                </code>
+        </div>
+        <hr>
+        <div id="usage">
+            <h2 class="text-gray-100 font-extralight text-3xl">Usage</h2>
+            <p>
+                To use Big Sur Modal, declare a variable containing the BigSurModal object:</p>
+                <code class="code">
+                    <pre>
+<span class="js-key">var </span><span class="js-var">modal </span>= <span class="js-key">new </span><span class="js-func">BigSurModal</span>({
+    <span class="js-com">//arguments here, more info in customization section</span>
+})</pre></code>
+                <p>Then initialize it with the .show() function:</p>
+                <code>
+                    <pre>
+<span class="js-var">modal</span>.<span class="js-func">show</span>()</pre></code>
+                <p>
+                    Similarly, you can remove any open modal with the .close() function:
+                </p>
+                <code>
+                    <pre>
+<span class="js-var">modal</span>.<span class="js-func">close</span>()</pre></code>
+                    </pre>
+                </code>
+        </div>
+        <hr>
+        <div id="customization">
+            <h2 class="text-gray-100 font-extralight text-3xl">Customization</h2>
+            <p>Pass an object into the BigSurModal function with title, description, and buttons.</p>
+            <br>
+            <h3 class="text-gray-100 font-extralight text-2xl">Arguments</h3>
+            <b>title: </b> The modal title. String.<br>
+            <b>description: </b> The modal description. String.<br>
+            <b>appIcon: </b><br>
+            <b>buttons: Array of objects. Object arguments are below. Optional.</b>
+            <br><br>
+            <h3 class="text-gray-100 font-extralight text-2xl">Button Arguments</h3>
+            <b>Name: </b> Button name. String.<br>
+            <b>Default: </b> If true: makes the button blue; can get clicked by pressing Enter key; and is the "default" button. Boolean. Optional.<br>
+            <b>Function: </b> If included, specifies the function to call when the button is pressed ALONG WITH CLOSING THE MODAL. If not included, the button on click just closes the modal. String. Optional.<br>
+    <code class="code">
+        <pre>
+<span class="js-key">var </span><span class="js-var">modal </span>= <span class="js-key">new </span><span class="js-func">BigSurModal</span>({
+    <span>title: </span><span class="js-str">'Modal Title!'</span>, 
+    <span>description: </span><span class="js-str">'Modal description!'</span>,
+    <span>appIcon: </span><span class="js-str">'https://data.tooliphone.net/iskin/themes/14241/15260/preview-256.png'</span>,  
+    buttons: [
+        {name: <span class="js-str">'Cancel'</span>, function: <span class="js-str">'alert("Are you sure?")'</span>}, 
+        {name: <span class="js-str">'OK'</span>, default: <span class="js-bool">true</span>}
+    ],
+})</pre></code>
+        </div>
+        <hr>
+        <div id="changelog">
+            <h2 class="text-gray-100 font-extralight text-3xl">Changelog</h2>
+            <ul>
+                <li><b>Wed, Aug 18</b> Initial commit. Version 1.0.0.</li>
+            </ul>
+        </div>
+        <hr>
+        <h3 class="text-gray-100 font-extralight text-2xl">About</h3>
+        <p>Written by <a href="https://pineapplerind.ga">PineappleRind</a></p>
+        <p>Current Version: 1.0.0 Public Beta</p>
+    </div>
+    
+    <script src="src/index.js"></script>
+    <script>
+           //setTimeout(function(){
+            var modal = new BigSurModal({
+                title: "A Big Sur Modal!",
+                description: "This is a big sur modal.", 
+                buttons: [
+                    {name: "Cancel",default:false},
+                    {name: "OK",default: true}
+                ],
+                //appIcon: 'console_logo.png'
+            })
+    //}) 
+    </script>
+</body>
+</html>
