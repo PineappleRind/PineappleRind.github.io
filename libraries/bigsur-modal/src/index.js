@@ -35,7 +35,7 @@ function BSM_CreateModal(t,d,bc,ic) {
         try {
             if (!bc[i].name) throw new Error('BIG SUR MODAL: Button ' + i + ' needs a name.')
             if (!bc[i].function) bc[i].function = 'BSM_DestroyModal()'
-            buttons += `<button onclick="${bc[i].function}" class="BSM-btn ${bc[i].default}">${bc[i].name}</button>`
+            buttons += `<button onclick="${bc[i].function};BSM_DestroyModal()" class="BSM-btn ${bc[i].default}">${bc[i].name}</button>`
         } catch(e) {
             console.error(e)
         }
