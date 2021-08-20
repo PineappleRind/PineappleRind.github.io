@@ -13,7 +13,7 @@
     <meta property="og:title" content="Fact of the day">
 </head>
 <body>
-    <button onclick="send(facts[Math.floor(Math.random() * facts.length)]);this.innerHTML = 'Sent!';this.style.pointerEvents = 'none';">Send a Random Fact</button>
+    <button onclick="send(facts[Math.floor(Math.random() * facts.length)]);this.innerHTML = 'Sent!';this.style.pointerEvents = 'none';" ontouchstart="send(facts[Math.floor(Math.random() * facts.length)]);this.innerHTML = 'Sent!';this.style.pointerEvents = 'none';">Send a Random Fact</button>
     <script>
         var facts = 
 [
