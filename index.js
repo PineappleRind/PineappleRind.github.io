@@ -1,98 +1,64 @@
-var backgrounds = [// PRUDENT
-  `
-  linear-gradient(rgb(4, 0, 227), transparent),
-  linear-gradient(to top left, rgb(128, 0, 255), transparent),
-  linear-gradient(to top right, rgb(0, 121, 196), transparent), black
-  `, // Red/orange
-  `
-  linear-gradient(rgb(227, 0, 4), transparent),
-  linear-gradient(to top left, rgb(255, 0, 128), transparent),
-  linear-gradient(to top right, rgb(196, 121, 0), transparent), black
-  `, // Green/blue
-  `
-  linear-gradient(rgb(4, 100, 0), transparent),
-  linear-gradient(to top left, rgb(0, 128, 255), transparent),
-  linear-gradient(to top right, rgb(0, 196, 121), transparent), black
-  `, // Yellow/green
-  `
-  linear-gradient(rgb(4, 100, 0), transparent),
-  linear-gradient(to top left, rgb(128, 130, 0), transparent),
-  linear-gradient(to top right, rgb(0, 170, 121), transparent), black
-  `,
-  // Yellow/orange
-  `
-  linear-gradient(rgb(180, 160, 0), transparent),
-  linear-gradient(to top left, rgb(255, 80, 0), transparent),
-  linear-gradient(to top right, rgb(230, 170, 0), transparent), black
-  `
+var projects = [
+    {
+        name: "Memelist.ml",
+        description: "Funny concepts that you can say or refer to sometimes that will not make sense to most people.",
+        img: 'imgs/memelist.png',
+        link: 'https://memelist.ml',
+        source: false
+    },
+    {
+        name: "bigsur-modal",
+        description: "4kb minified library to make alert dialogs in the style of MacOS Big Sur.",
+        img: 'imgs/bigsur-modal.png',
+        link: 'https://pineapplerind.ga/libraries/bigsur-modal',
+        source: 'https://github.com/pineapplerind/bigsur-modal'
+    }
 ]
+let base = `<div id="body">        <div class="section">
+<h1>pineapplerind</h1>
+<button onclick="toProjects(page)">projects &rarr;</button>
+</div>
 
-function $(t) {
-  return document.querySelectorAll(t)
+</div>`
+var page = ``
+function newt(url) {
+    window.open(url, '_blank').focus();
 }
-for (let t = 0; t < 3; t++) {
-  let l = $(".glass")[t];
-  l.onclick = (() => {
-      classAdj(l)
-  })
+for (let i = 0; i < projects.length; i++) {
+   if (!projects[i].source) {
+    page += `<div class="sectionofboxes">
+    <div class="box">
+    <img src="${projects[i].img}">
+    <h1>${projects[i].name}</h1>
+    <p>${projects[i].description}</p>
+    <div class="box-buttons">
+        <button onclick="newt('${projects[i].link}')">Link</button>
+        <button disabled>Private source</button>
+        </div>
+    </div></div>`
+   } else {
+    page += `<div class="sectionofboxes">
+    <div class="box">
+    <img src="${projects[i].img}">
+    <h1>${projects[i].name}</h1>
+    <p>${projects[i].description}</p>
+    <div class="box-buttons">
+        <button onclick="newt('${projects[i].link}')">Link</button>
+        <button onclick="newt('${projects[i].source}')">Source</button>
+        </div>
+    </div></div>`
+   }
+    if (i == projects.length - 1) {
+        page += `<button style="position:fixed;top:20px;right:20px;" onclick="toProjects(base)">Go back</button>`
+    }
 }
-
-function classAdj(t) { // t paramater is the card that was clicked
-  for (let l = 0; l < $(".glass").length; l++) {
-      let o = $(".glass")[l]; // all of the cards
-      o !== t && move(o), o === t && // if the card selected in the for loop wasn't the card clicked, focus card clicked
-      (o.style.transform = "translateX(0px) translateY(0px)", 
-      o.style.zIndex = '2', 
-      o.style.cursor = 'default',
-      o.style.opacity = "1",
-      o.classList.add('sel'))
-  }
-}
-var bool = true;// to stop both cards moving towards the same side
-
-function move(t) {
-  false == bool ? // if toggle boolean is false, move card right:
-  
-  (t.style.transform = "translateX(170px) translateY(-5px)", 
-  t.style.opacity = "0.3", 
-  t.style.cursor = 'w-resize',
-  t.style.zIndex = '1', 
-  t.classList.remove('sel'),
-  bool = true) 
-
-  : // if toggle boolean is true, move card left:
-
-  (t.style.transform = "translateX(-170px) translateY(5px)", 
-  t.style.cursor = 'e-resize',
-  t.style.opacity = "0.3", 
-  t.style.zIndex = '1', 
-  t.classList.remove('sel'),
-  bool = false) // reset toggle boolean
-}
-
-function getindex(t) {
-  for (var l = 0; null != (t = t.previousSibling);) l++;
-  return Math.floor(l / 2)
-}
-
-
-function switchColor(colorToSwitchTo) {
-  document.body.style.background = colorToSwitchTo
-}
-onkeypress = e => {
-  if (e.key == '1') {
-    switchColor(backgrounds[0])
-  } else if (e.key == '2') {
-    switchColor(backgrounds[1])
-  } else if (e.key == '3') {
-    switchColor(backgrounds[2])
-  } else if (e.key == '4') {
-    switchColor(backgrounds[3])
-  } else if (e.key == '5') {
-    switchColor(backgrounds[4])
-  } /*else if (e.key == 'ArrowRight') {
-    let selected = $('.sel')[0]
-    let ind = getindex(selected)
-    let toAdj = $('.sel')[ind + 1]
-  }  WIPP */
+function toProjects(e) {
+    document.body.classList.add('transitioning');
+    console.log('transitioning')
+    setTimeout(function(){
+        console.log('transitionoint out')
+        document.body.classList.remove('transitioning');
+        document.getElementById('body').innerHTML = e;
+        window.scrollTo(0,0)
+    },500)
 }
