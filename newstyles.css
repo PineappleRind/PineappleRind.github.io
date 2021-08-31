@@ -58,7 +58,7 @@ button:hover {
 }
 
 .section {
-    height:90vh !important;
+    height:100vh !important;
     width:100vw!important;
     display:flex;
     flex-direction: column;
