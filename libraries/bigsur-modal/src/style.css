@@ -69,6 +69,7 @@
 .BSM-modal .BSM-btns button{
     width:100%;
     margin:5px;
+    border:0;
     font-size:14px;
     padding-top:5px;
     padding-bottom:5px;
