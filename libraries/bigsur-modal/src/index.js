@@ -6,24 +6,31 @@ function BigSurModal(obj) {
     try{this.description = obj.description;if (!obj.description) throw new Error('BIG SUR MODAL: Modal needs a description.')} catch(e){return console.error(e)}
     try{this.buttonContent = obj.buttons;if (!obj.buttons) throw new Error('BIG SUR MODAL: Modal needs buttons.')} catch(e){return console.error(e)}
 
+    if (obj.theme) this.theme = obj.theme
+    else {
+        this.theme = 'BSM_theme_light'
+        obj.theme = 'BSM_theme_light'
+    }
     if (obj.appIcon) this.appIcon = obj.appIcon
-    else obj.appIcon = 'console_logo.png';
+    else {
+        this.appIcon = 'console_logo.png'
+        obj.appIcon = 'console_logo.png'
+    }
     this.show = function() {
-         this.createdModal = BSM_CreateModal(obj.title,obj.description,obj.buttons,obj.appIcon)
+         this.createdModal = BSM_CreateModal(obj.title,obj.description,obj.buttons,obj.appIcon,obj.theme)
     }
     this.close = function() {
         try {
             BSM_DestroyModal(this.createdModal)
-            if (!this.createdModal) throw new Error('BIG SUR MODAL: Modal does not exist.')
+            if (!this.createdModal) throw new Error('BIG SUR MODAL: There are no modals currently open to close.')
         } catch (e) {
             console.error(e)
         }
     }
 }
 var cont = document.getElementById('BIGSURMODAL-CONTAINER')
-function BSM_CreateModal(t,d,bc,ic) {
+function BSM_CreateModal(t,d,bc,ic,theme) {
     let buttons = ``
-    var html = ``
 
     for (let i = 0; i < bc.length; i++) {
         if (bc.length >= 3) {
@@ -49,18 +56,18 @@ function BSM_CreateModal(t,d,bc,ic) {
     <div class="BSM-btns ${vertical}">
         ${buttons}
     </div>
-
     `
     if (BSM_modalShowing == false) BSM_modalShowing = true
     else if (BSM_modalShowing= true) return BSM_queue.push(html)
-    let modal = BSM_CreateModalHelper(html)
+    let modal = BSM_CreateModalHelper(html,theme)
     BSM_SetClose(modal)
     return modal
 }
-function BSM_CreateModalHelper(html) {
+function BSM_CreateModalHelper(html,theme) {
     let BSM_modal = document.createElement('DIV')
     BSM_modal.innerHTML = html
     BSM_modal.classList.add('BSM-modal')
+    BSM_modal.classList.add('BSM_theme_' + theme)
     cont.appendChild(BSM_modal)
     cont.classList.add('overlay')
     console.log(BSM_modal)
