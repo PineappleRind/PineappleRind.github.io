@@ -1,1 +1,111 @@
-#BIGSURMODAL-CONTAINER{position:fixed;display:flex;align-items:center;justify-content:center;top:0;z-index:90909;height:100vh;width:100vw;pointer-events:none;}#BIGSURMODAL-CONTAINER.overlay{background:rgba(255,255,255,.5)}.BSM-modal{border-radius:10px;background:rgba(228,227,227);color:#000;padding:20px;margin:0;border:1px solid #a2a2a2;font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,Helvetica,sans-serif;min-width:265px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 10px 50px rgba(0,0,0,.2);animation:comein .1s linear}.BSM-modal .BSM-title{font-weight:700;color:#1c1c1c;line-height:18px;text-align:center;margin:0;max-width:265px;font-size:14px}.BSM-modal .BSM-description{font-size:12px;color:#2d2d2d;margin-top:4px;letter-spacing:-.3px}.BSM-modal .BSM-btns{width:100%;display:flex;margin-top:5px;margin-bottom:0;pointer-events:all}.BSM-modal .BSM-btns.vertical{flex-direction:column}.BSM-modal .BSM-btns button{width:100%;margin:5px;font-size:14px;padding-top:5px;padding-bottom:5px;border-radius:10px;pointer-events:all}.BSM-modal .BSM-btns button.true{background:linear-gradient(#2891ff,#027aff);color:#fff}.BSM-modal .BSM-btns button.false{background:#b5b5b5;color:#575757}.BSM-modal .BSM-btns button:active{filter:brightness(96%)}.BSM-modal .BSM-btns.vertical button{width:100%}.BSM-modal .BSM-appicon img{height:80px;margin-bottom:5px}@keyframes comein{from{transform:scale(.9);opacity:0}}@keyframes comeout{to{transform:scale(.9);opacity:0}}
+#BIGSURMODAL-CONTAINER{
+    position:fixed;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    top:0;
+    z-index:90909;
+    height:100vh;
+    width:100vw;
+    pointer-events:none;
+}
+#BIGSURMODAL-CONTAINER.overlay{
+    background:rgba(255,255,255,.5);
+    pointer-events: all;
+}
+.BSM-modal{
+    border-radius:10px;
+    background:rgba(228,227,227);
+    color:#000;
+    padding:20px;
+    margin:0;
+    border:1px solid #a2a2a2;
+    font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,Helvetica,sans-serif;
+    min-width:265px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 10px 50px rgba(0,0,0,.2);
+    animation:comein .1s linear
+}
+.BSM-modal.BSM_theme_dark {
+    color: white;
+    border: 1px solid rgb(75,75,75);
+    background:rgb(44,44,44)
+}
+
+.BSM-modal .BSM-title{
+    font-weight:700;
+    color:#1c1c1c;
+    line-height:18px;
+    text-align:center;
+    margin:0;
+    max-width:265px;
+    font-size:14px
+}
+.BSM-modal.BSM_theme_dark .BSM-title {
+    color: #e3e3e3;
+}
+.BSM-modal .BSM-description{
+    font-size:12px;
+    color:#2d2d2d;
+    margin-top:4px;
+    letter-spacing:-.3px
+}
+.BSM-modal.BSM_theme_dark .BSM-description {
+    color: #d4d4d4;
+}
+.BSM-modal .BSM-btns{
+    width:100%;
+    display:flex;
+    margin-top:5px;
+    margin-bottom:0;
+    pointer-events:all
+}
+.BSM-modal .BSM-btns.vertical{
+    flex-direction:column
+}
+.BSM-modal .BSM-btns button{
+    width:100%;
+    margin:5px;
+    font-size:14px;
+    padding-top:5px;
+    padding-bottom:5px;
+    border-radius:10px;
+    pointer-events:all
+}
+.BSM-modal .BSM-btns button.true{
+    background:linear-gradient(#2891ff,#027aff);
+    color:#fff
+}
+.BSM-modal .BSM-btns button.false{
+    background:rgb(181, 181, 181);
+    color:#575757
+}
+.BSM-modal.BSM_theme_dark button.false {
+    color: white !important;
+    background:rgb(126, 126, 126);
+}
+.BSM-modal .BSM-btns button:active{
+    filter:brightness(96%)
+}
+.BSM-modal .BSM-btns.vertical button{
+    width:100%
+}
+.BSM-modal .BSM-appicon img{
+    height:80px;
+    margin-bottom:5px
+}
+@keyframes comein{
+    from{
+        transform:scale(.9);
+        opacity:0
+    }
+}
+@keyframes comeout{
+    to{
+        transform:scale(.9);
+        opacity:0
+    }
+}
