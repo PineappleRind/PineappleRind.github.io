@@ -15,6 +15,13 @@
             overflow-x:scroll;
             margin:10px;
         }
+        inlinecode {
+            padding:5px;border-radius:10px;background:#000020;
+            display:inline;
+            font-family: monospace;
+            border: 1px solid rgba(255,255,255,0.3);
+            overflow-x:scroll;
+        }
         hr {margin:30px 0}
         pre {display:inline;font-size:13px}
         .html-tag,.js-key {color:#8383e3}
@@ -39,7 +46,7 @@
         </a>
         <a href="#customization" class="transition duration-200 m-0.5 w-full hover:opacity-70 transform hover:-translate-y-px block">
             <div class="font-light rounded-lg">Customization</div>
-        </a> 
+        </a>  
         <a href="#changelog" class="transition duration-200 m-0.5 w-full hover:opacity-70 transform hover:-translate-y-px block">
             <div class="font-light rounded-lg">Changelog</div>
         </a> 
@@ -98,7 +105,8 @@
             <h3 class="text-gray-100 font-extralight text-2xl">Arguments</h3>
             <b>title: </b> The modal title. String.<br>
             <b>description: </b> The modal description. String.<br>
-            <b>appIcon: </b><br>
+            <b>appIcon: </b> The application icon to show. Can be URL OR path. String. Optional.<br>
+            <b>theme: </b> The modal theme. Defaults are <inlinecode>light</inlinecode> and <inlinecode>dark</inlinecode>. String. Optional.<br>
             <b>buttons: Array of objects. Object arguments are below. Optional.</b>
             <br><br>
             <h3 class="text-gray-100 font-extralight text-2xl">Button Arguments</h3>
@@ -110,7 +118,9 @@
 <span class="js-key">var </span><span class="js-var">modal </span>= <span class="js-key">new </span><span class="js-func">BigSurModal</span>({
     <span>title: </span><span class="js-str">'Modal Title!'</span>, 
     <span>description: </span><span class="js-str">'Modal description!'</span>,
-    <span>appIcon: </span><span class="js-str">'https://data.tooliphone.net/iskin/themes/14241/15260/preview-256.png'</span>,  
+    <span>theme: </span><span class="js-str">'dark'</span>,  
+    <span>appIcon: </span><span class="js-str">'https://data.tooliphone.net/iskin/themes/14241/15260/preview-256.png'</span>,
+      
     buttons: [
         {name: <span class="js-str">'Cancel'</span>, function: <span class="js-str">'alert("Are you sure?")'</span>}, 
         {name: <span class="js-str">'OK'</span>, default: <span class="js-bool">true</span>}
@@ -122,12 +132,13 @@
             <h2 class="text-gray-100 font-extralight text-3xl">Changelog</h2>
             <ul>
                 <li><b>Wed, Aug 18</b> Initial commit. Version 1.0.0.</li>
+                <li><b>Wed, Aug 22</b>Added dark mode. Version 1.1.0.</li>
             </ul>
         </div>
         <hr>
         <h3 class="text-gray-100 font-extralight text-2xl">About</h3>
         <p>Written by <a href="https://pineapplerind.ga">PineappleRind</a></p>
-        <p>Current Version: 1.0.0 Public Beta</p>
+        <p>Current Version: 1.1.0 Public Beta</p>
     </div>
     
     <script src="src/index.js"></script>
@@ -136,9 +147,10 @@
             var modal = new BigSurModal({
                 title: "A Big Sur Modal!",
                 description: "This is a big sur modal.", 
+                theme: 'dark',
                 buttons: [
                     {name: "Cancel",default:false},
-                    {name: "OK",default: true,function:'alert(\'sm\')'}
+                    {name: "OK",default: true,function:'alert(\'You can add a JavaScript function to be called on each button click!\')'}
                 ],
                 //appIcon: 'console_logo.png'
             })
