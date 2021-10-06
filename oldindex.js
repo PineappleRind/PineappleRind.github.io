@@ -79,7 +79,7 @@ function getindex(t) {
 function switchColor(colorToSwitchTo) {
   document.body.style.background = colorToSwitchTo
 }
-onkeypress = e => {
+onkeydown = e => {
   if (e.key == '1') {
     switchColor(backgrounds[0])
   } else if (e.key == '2') {
