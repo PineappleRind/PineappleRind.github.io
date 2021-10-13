@@ -1,5 +1,5 @@
 * {
-    margin: 5px;
+    margin: 0;
     color: #ffffffd5;
     font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
@@ -13,10 +13,14 @@ body {
     flex-direction: column;
     height: 100vh;
     perspective: 200px;
+    margin:0;
 }
 i {
     font-family: serif;
     opacity: 0.7;
+}
+label {
+    font-size: 10px;
 }
 .body {
     position: absolute;
@@ -130,4 +134,33 @@ button:hover {
   b {
       font-size: 30px;
       font-weight: 200;
+  }
+.banner {
+    position: fixed;
+    z-index: 10;
+    top:0;
+    left:0;
+    right:0;
+    width: 100%;
+    text-align: center;
+    background: coral;
+    color: white;
+    display: none;
+    padding: 5px;
+
+    flex-wrap: nowrap;
+}
+  @media only screen and (max-width: 500px) {
+      .banner {
+        display: flex;
+      }
+      .body {
+          margin:0;
+          position: fixed;
+          top:0;
+          left:0;
+          right:5px;
+          bottom:0;
+          max-width: unset;
+      }
   }
