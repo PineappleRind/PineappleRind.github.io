@@ -1,0 +1,133 @@
+* {
+    margin: 5px;
+    color: #ffffffd5;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}
+
+body {
+    background: #000030;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    perspective: 200px;
+}
+i {
+    font-family: serif;
+    opacity: 0.7;
+}
+.body {
+    position: absolute;
+    background: #8989ff2f;
+    width: fit-content;
+    border: 1px solid rgba(122, 228, 255, 0.3);
+    color: white;
+    padding: 30px;
+    border-radius: 40px;
+    transition: 0.4s cubic-bezier(.17,.67,.47,1.54);
+    transform-origin: top center;
+    transform-style: preserve-3d;
+    transform: rotateX(-0deg);
+    max-width: 50%;
+}
+
+h1 {
+    color: #fff;
+    width: 50vw;
+    font-weight: 900;
+    font-family: 'Comic Sans MS', cursive;
+}
+
+small {
+    font-size: 10px;
+    margin-top: 14px;
+    padding-top: 3px;
+    color: rgba(255, 255, 255, 0.3);
+    width: 100%;
+    display: block;
+}
+
+button {
+    padding: 10px 30px;
+    color: rgb(255, 255, 255);
+    border: 0;
+    font-weight: 700;
+    border-radius: 100px;
+    margin: 10px;
+    background: rgb(64, 64, 197);
+    border: 1px solid rgb(157, 157, 255, 0.2);
+    cursor: pointer;
+    transition: 0.2s;
+    width: 100%;
+}
+
+button:hover {
+    border: 1px solid rgb(157, 157, 255);
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.411);
+}
+
+.going {
+    opacity: 0;
+    transform: rotateX(4deg) translateY(-20px)
+}
+
+
+
+
+
+
+.slidecontainer {
+    width: 100%; /* Width of the outside container */
+    background:rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    white-space: pre;
+    justify-content: center;
+    padding: 5px;
+    border-radius: 100px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  
+  /* The slider itself */
+  .slider {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    border-radius: 100px;
+    width: 100%; /* Full-width */
+    height: 25px; /* Specified height */
+    background: #ffffff3b; /* Grey background */
+    outline: none; /* Remove outline */
+    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+  }
+  
+  /* Mouse-over effects */
+  .slider:hover {
+    opacity: 1; /* Fully shown on mouse-over */
+  }
+  
+  /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+  .slider::-webkit-slider-thumb {
+      border-radius: 10px;
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: #ffffff; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: #04AA6D; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+  }
+
+  b {
+      font-size: 30px;
+      font-weight: 200;
+  }
