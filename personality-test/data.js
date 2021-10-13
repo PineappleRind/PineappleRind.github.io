@@ -33,7 +33,7 @@ var kaomoji = [
           <h1>#${inc + 1} out of ${questions.length}</h1>
           <p>${questions[inc]}</p>
           <div class="slidecontainer">
-              <label>A little like me</label><input step="25" type="range" min="1" max="100" value="50" class="slider" id="myRange"><label>A lot like me</label>
+              <label>A little like me</label><input oninput="check(this)"  min="0" type="range" value="50" class="slider" max="100" id="myRange"><label>A lot like me</label>
           </div>
           <button onclick="PQ.next()">Next</button>
           <small>${kaomoji[Math.floor(Math.random() * kaomoji.length)]}</small>
@@ -44,6 +44,7 @@ var kaomoji = [
         description:
           "You're like Michael Jackson. You make really dumb performances with really weird dance moves and a really weird style.",
         pro: ["Dumb", "Reckless", "Shallow", "Bubbly"],
+        word: "reckless "
       },
       {
         type: "ESFJ",
@@ -55,6 +56,7 @@ var kaomoji = [
           "Fuzzy",
           "Will break down with the slightest touch",
         ],
+        word: "overly emotional "
       },
       {
         type: "ENTJ",
@@ -66,6 +68,7 @@ var kaomoji = [
           "Yells a lot",
           "Probably is a politician?",
         ],
+        word: "stubborn "
       },
     ];
   
@@ -75,12 +78,14 @@ var kaomoji = [
       description:
         "You're a chaotic robot who hates everyone around you. When anyone does anything, you lash out on them and attack them with logic.",
       pro: ["Whiny", "Emotionless", "Probably has OCD", "Evil"],
+      word: "evil "
     },
     {
       type: "ISFP",
       description:
         "You're a reckless person who is definitely an artist. You become moody easily, and are dumb, lazy, and unmotivated.",
       pro: ["Lazy", "Over-competitive", "Crazy", "Overly emotional"],
+      word: "crazy "
     },
   ];
   

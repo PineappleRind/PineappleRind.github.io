@@ -1,50 +1,56 @@
-if (localStorage.getItem('res')) {
-    switchit(`<h1>don\'t take this again, </h1><p>don\'t try to beat me.</p>`)
+if (localStorage.getItem("result")) {
+  switchit(
+    `<h1>don\'t take this again </h1><p>don\'t try to beat me, you ${localStorage.getItem(
+      "resultWord"
+    )} ${localStorage.getItem("result")}</p>`
+  );
 }
-onkeydown = e => {
-    if (e.key == 'A') localStorage.clear()
-} 
+onkeydown = (e) => {
+  if (e.key == "A") localStorage.clear();
+};
 
-var introvert = undefined
-let already = false
-let ind = Math.floor(Math.random() * 12)
+var introvert = undefined;
+let already = false;
+let ind = Math.floor(Math.random() * 13);
 var PQ = {
-    start: function () {
-        startQuiz()
-    },
-    next: function () {
-        if (inc == questions.length) return PQ.finish()
-        inc++;
-        if (inc != ind) switchit(base);
-        else {
-            switchit(`
+  start: function () {
+    startQuiz();
+  },
+  next: function () {
+    if (inc == questions.length) return PQ.finish();
+    inc++;
+    if (inc != ind) switchit(base);
+    else {
+      switchit(`
 <h1>#${inc} out of ${questions.length}</h1>
 <p>You need time to recharge after a social event.</p>
 <div class="slidecontainer">
-<label>Not like me</label><input oninput="check(this)" step="24" type="range" value="50" class="slider" id="myRange"><label>A lot like me</label>
+<label>Not like me</label><input oninput="check(this)"  min="0" type="range" value="50" class="slider" max="100" id="myRange"><label>A lot like me</label>
 </div>
 <button onclick="PQ.next()">Next</button>
 <small>${kaomoji[Math.floor(Math.random() * kaomoji.length)]}</small>
-`)
-        }
-    },
-    refresh: function () {
-        base = `
+`);
+    }
+  },
+  refresh: function () {
+    base = `
 <h1>#${inc + 1} out of ${questions.length}</h1>
 <p>${questions[inc]}</p>
 <div class="slidecontainer">
-<label>Not like me</label><input step="24" type="range" value="50" class="slider" id="myRange"><label>A lot like me</label>
+<label>Not like me</label><input oninput="check(this)"  min="0" type="range" value="50" class="slider" max="100" id="myRange"><label>A lot like me</label>
 </div>
 <button onclick="PQ.next()">Next</button>
 <small>${kaomoji[Math.floor(Math.random() * kaomoji.length)]}</small>
 `;
-    },
-    finish: function () {
-        let rand
-        if (introvert == true) rand = exresults[Math.floor(Math.random() * exresults.length)];
-        else rand = inresults[Math.floor(Math.random() * inresults.length)];
-        localStorage.setItem('result', rand.type)
-        switchit(`
+  },
+  finish: function () {
+    let rand;
+    if (introvert == true)
+      rand = exresults[Math.floor(Math.random() * exresults.length)];
+    else rand = inresults[Math.floor(Math.random() * inresults.length)];
+    localStorage.setItem("result", rand.type);
+    localStorage.setItem("resultWord", rand.word);
+    switchit(`
 <h1>Your results</h1>
 <p>You're an <b>${rand.type}</b><p>
 <p>${rand.description}<p>
@@ -56,7 +62,7 @@ var PQ = {
 <li>${rand.pro[3]}</li>
 </ul>
 `);
-    },
+  },
 };
 function startQuiz() {
   inc++;
@@ -100,8 +106,7 @@ function shuffle(array) {
   return array;
 }
 
-
 function check(el) {
-  if (el.value > 55) introvert = true
-  else introvert = false
+  if (el.value > 40) introvert = true;
+  else introvert = false;
 }

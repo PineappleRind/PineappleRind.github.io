@@ -20,7 +20,11 @@ i {
     opacity: 0.7;
 }
 label {
-    font-size: 10px;
+    font-size: 14px;
+    max-width: 50px;
+    word-wrap: break-word;
+    white-space: normal;
+    margin: 5px;
 }
 .body {
     position: absolute;
@@ -45,10 +49,10 @@ h1 {
 }
 
 small {
-    font-size: 10px;
+    font-size: 15px;
     margin-top: 14px;
     padding-top: 3px;
-    color: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.493);
     width: 100%;
     display: block;
 }
@@ -99,13 +103,15 @@ button:hover {
     -webkit-appearance: none;  /* Override default CSS styles */
     appearance: none;
     border-radius: 100px;
-    width: 100%; /* Full-width */
+    width: 120%; /* Full-width */
     height: 25px; /* Specified height */
-    background: #ffffff3b; /* Grey background */
+    background: #ffc7c73b; /* Grey background */
     outline: none; /* Remove outline */
     opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
     -webkit-transition: .2s; /* 0.2 seconds transition on hover */
     transition: opacity .2s;
+    padding: 0;
+    min-width: 256px;
   }
   
   /* Mouse-over effects */
