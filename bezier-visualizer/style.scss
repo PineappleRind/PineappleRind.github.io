@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+}
+
+body {
+    background: #000020;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+canvas {
+    position: fixed;
+    top: 0;
+    opacity: 2;
+}
+
+#canvas2 {
+    opacity: 0.5;
+}
+
+.banner {
+    z-index: 6;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: dodgerblue;
+    color: white;
+
+    transition: 0.5s;
+    cursor: pointer;
+    text-align: center;
+    padding: 10px;
+    font-family: Inter, sans-serif;
+}
+
+.hidden {
+    transform: translateY(-80px)
+}
