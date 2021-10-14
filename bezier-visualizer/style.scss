@@ -1,5 +1,7 @@
 * {
     margin: 0;
+    font-family: Inter, sans-serif;
+    color: white;
 }
 
 body {
@@ -29,15 +31,38 @@ canvas {
     left: 0;
     right: 0;
     background: dodgerblue;
-    color: white;
-
     transition: 0.5s;
     cursor: pointer;
     text-align: center;
     padding: 10px;
-    font-family: Inter, sans-serif;
+
 }
 
 .hidden {
     transform: translateY(-80px)
+}
+
+#controls {
+    right: 0;
+    top: 0;
+    margin: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    position: fixed;
+    z-index: 2;
+    border-radius: 20px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3)
+}
+
+button {
+    padding: 10px 13px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    transition: 0.4s;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+button:hover {
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.1);
 }
