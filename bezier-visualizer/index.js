@@ -15,14 +15,30 @@ function exponentialEaseInOut(x) {
 function linear(x) {
   return x
 }
-if (localStorage.getItem('bezierBannerState')) document.querySelector('.banner').remove()
-var points = [
-  [731, 551],
-  [338, 551],
-  [731, 214],
-  [338, 214]
-]
+var points = {
+  "data": [
+    [531, 351],
+    [138, 351],
+    [531, 14],
+    [138, 14]
+  ]
+}
+var save = {
+    get: function() {
+        return JSON.parse(localStorage.getItem('bezierSaveData'))
+    },
+    set: function() {
+        return localStorage.setItem('bezierSaveData',JSON.stringify(points))
+    }
+}
 
+if (localStorage.getItem('bezierBannerState')) document.querySelector('.banner').remove()
+
+if (!save.get()) {
+  save.set()
+} else {
+  points = save.get()
+}
 var playing = true
 let canv = document.getElementById("canvas"),
   ctx = canv.getContext("2d"),
@@ -72,7 +88,7 @@ function strt(refresh) {
   clearCanvas()
   if (!refresh) clearTrail()
   inter = setInterval(function () {
-    advance(exponentialEaseInOut);
+    advance(quadraticEaseInOut);
   }, 10);
 
 }
@@ -83,39 +99,39 @@ function evaluatePlaying() {
 function advance(ease) {
   clearCanvas();
   if (t >= 1) stp();
-  t = t + 0.0015;
+  t = t + 0.001;
   easedT = ease(t);
 
-  new Point(points[0][0], points[0][1], 10, 'coral'); // Anchor dot
-  new Point(points[1][0], points[1][1], 10, 'magenta'); // Right side anchor dot
-  new Point(points[2][0], points[2][1], 10, 'dodgerblue'); // bottom side anchor dot
-  new Point(points[3][0], points[3][1], 10, 'mint'); // bottom right side anchor dot
+  new Point(points.data[0][0], points.data[0][1], 10, 'coral'); // Anchor dot
+  new Point(points.data[1][0], points.data[1][1], 10, 'magenta'); // Right side anchor dot
+  new Point(points.data[2][0], points.data[2][1], 10, 'dodgerblue'); // bottom side anchor dot
+  new Point(points.data[3][0], points.data[3][1], 10, 'mint'); // bottom right side anchor dot
 
-  line(points[2][0], points[2][1], points[3][0], points[3][1]);
-  line(points[0][0], points[0][1], points[2][0], points[2][1]);
-  line(points[1][0], points[1][1], points[3][0], points[3][1]);
+  line(points.data[2][0], points.data[2][1], points.data[3][0], points.data[3][1]);
+  line(points.data[0][0], points.data[0][1], points.data[2][0], points.data[2][1]);
+  line(points.data[1][0], points.data[1][1], points.data[3][0], points.data[3][1]);
 
   let topMiddlePointX = lerp(
-    points[0][0], points[2][0], easedT
+    points.data[0][0], points.data[2][0], easedT
   )
   let topMiddlePointY = lerp(
-    points[0][1], points[2][1], easedT
+    points.data[0][1], points.data[2][1], easedT
   )
   new Point(topMiddlePointX, topMiddlePointY, 5)
 
   let middleBottomPointX = lerp(
-    points[2][0], points[3][0], easedT
+    points.data[2][0], points.data[3][0], easedT
   )
   let middleBottomPointY = lerp(
-    points[2][1], points[3][1], easedT
+    points.data[2][1], points.data[3][1], easedT
   )
   new Point(middleBottomPointX, middleBottomPointY, 5)
 
   let bottomRightPointX = lerp(
-    points[3][0], points[1][0], easedT
+    points.data[3][0], points.data[1][0], easedT
   )
   let bottomRightPointY = lerp(
-    points[3][1], points[1][1], easedT
+    points.data[3][1], points.data[1][1], easedT
   )
   new Point(bottomRightPointX, bottomRightPointY, 5)
 
@@ -178,7 +194,7 @@ function clearTrail() {
 
 
 let mouseIsDown = false
-let draggingPoint = false
+let dragging = -1
 onmousedown = () => {
   mouseIsDown = true
   console.log(mouseIsDown)
@@ -194,28 +210,35 @@ onmousemove = windowEvent => {
   if (mouseIsDown == true) {
     var x = windowEvent.clientX
     var y = windowEvent.clientY
-    for (let i = 0; i < points.length; i++) {
+    for (let i = 0; i < points.data.length; i++) {
       if (
         (
           (
-            (x >= points[i][0] && x <= points[i][0] + 30) || (x <= points[i][0] && x >= points[i][0] - 30))
+            (x >= points.data[i][0] && x <= points.data[i][0] + 30) || (x <= points.data[i][0] && x >= points.data[i][0] - 30))
             &&
-            ((y >= points[i][1] && y <= points[i][1] + 30) || (y <= points[i][1] && y >= points[i][1] - 30))
+            ((y >= points.data[i][1] && y <= points.data[i][1] + 30) || (y <= points.data[i][1] && y >= points.data[i][1] - 30))
           ) || dragging == i) {
         dragging = i
-        points[i][0] = x
-        points[i][1] = y
+        if (x < 0) break;
+        if (y < 0) break;
+        points.data[i][0] = x
+        points.data[i][1] = y
         clearCanvas();
-        new Point(points[0][0], points[0][1], 10, 'coral'); // Anchor dot
-        new Point(points[1][0], points[1][1], 10, 'magenta'); // Right side anchor dot
-        new Point(points[2][0], points[2][1], 10, 'dodgerblue'); // bottom side anchor dot
-        new Point(points[3][0], points[3][1], 10, 'mint'); // bottom right side anchor dot
+        new Point(points.data[0][0], points.data[0][1], 10, 'coral'); // Anchor dot
+        new Point(points.data[1][0], points.data[1][1], 10, 'magenta'); // Right side anchor dot
+        new Point(points.data[2][0], points.data[2][1], 10, 'dodgerblue'); // bottom side anchor dot
+        new Point(points.data[3][0], points.data[3][1], 10, 'mint'); // bottom right side anchor dot
 
-        line(points[2][0], points[2][1], points[3][0], points[3][1]);
-        line(points[0][0], points[0][1], points[2][0], points[2][1]);
-        line(points[1][0], points[1][1], points[3][0], points[3][1]);
+        line(points.data[2][0], points.data[2][1], points.data[3][0], points.data[3][1]);
+        line(points.data[0][0], points.data[0][1], points.data[2][0], points.data[2][1]);
+        line(points.data[1][0], points.data[1][1], points.data[3][0], points.data[3][1]);
+
+        save.set()
+
         break;
       }
     }
   }
 }
+
+
