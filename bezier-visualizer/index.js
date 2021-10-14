@@ -24,12 +24,12 @@ var points = {
   ]
 }
 var save = {
-    get: function() {
-        return JSON.parse(localStorage.getItem('bezierSaveData'))
-    },
-    set: function() {
-        return localStorage.setItem('bezierSaveData',JSON.stringify(points))
-    }
+  get: function () {
+    return JSON.parse(localStorage.getItem('bezierSaveData'))
+  },
+  set: function () {
+    return localStorage.setItem('bezierSaveData', JSON.stringify(points))
+  }
 }
 
 if (localStorage.getItem('bezierBannerState')) document.querySelector('.banner').remove()
@@ -197,7 +197,9 @@ let mouseIsDown = false
 let dragging = -1
 onmousedown = () => {
   mouseIsDown = true
-  console.log(mouseIsDown)
+}
+ontouchstart = () => {
+  mouseIsDown = true
 }
 
 onmouseup = () => {
@@ -205,8 +207,18 @@ onmouseup = () => {
   dragging = -1
   console.log(mouseIsDown)
 }
-
-onmousemove = windowEvent => {
+ontouchend = () => {
+  mouseIsDown = false
+  dragging = -1
+  console.log(mouseIsDown)
+}
+onmousemove = e => {
+  pointHandler(e)
+}
+ontouchmove = e => {
+  pointHandler(e)
+}
+function pointHandler(windowEvent) {
   if (mouseIsDown == true) {
     var x = windowEvent.clientX
     var y = windowEvent.clientY
@@ -215,9 +227,9 @@ onmousemove = windowEvent => {
         (
           (
             (x >= points.data[i][0] && x <= points.data[i][0] + 30) || (x <= points.data[i][0] && x >= points.data[i][0] - 30))
-            &&
-            ((y >= points.data[i][1] && y <= points.data[i][1] + 30) || (y <= points.data[i][1] && y >= points.data[i][1] - 30))
-          ) || dragging == i) {
+          &&
+          ((y >= points.data[i][1] && y <= points.data[i][1] + 30) || (y <= points.data[i][1] && y >= points.data[i][1] - 30))
+        ) || dragging == i) {
         dragging = i
         if (x < 0) break;
         if (y < 0) break;
@@ -242,5 +254,3 @@ onmousemove = windowEvent => {
     }
   }
 }
-
-
