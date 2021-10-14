@@ -99,7 +99,7 @@ function evaluatePlaying() {
 function advance(ease) {
   clearCanvas();
   if (t >= 1) stp();
-  t = t + 0.001;
+  t = t + 0.002;
   easedT = ease(t);
 
   new Point(points.data[0][0], points.data[0][1], 10, 'coral'); // Anchor dot
@@ -221,6 +221,8 @@ onmousemove = windowEvent => {
         dragging = i
         if (x < 0) break;
         if (y < 0) break;
+        if (x > window.innerWidth) break;
+        if (y > window.innerHeight) break;
         points.data[i][0] = x
         points.data[i][1] = y
         clearCanvas();
