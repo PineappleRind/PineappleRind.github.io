@@ -12,48 +12,22 @@ const projects = [
         link: 'https://pineapplerind.ga/libraries/bigsur-modal'
     },
     {
-        name: "Radium (Soon)",
+        name: "Radium",
         description: "A fresh-looking theme for VSCode. Almost radioactive.",
-        img: 'imgs/comingsoon.png',
-        link: false
+        img: 'https://radium-theme.github.io/example.png',
+        link: 'https://radium-theme.github.io'
     }
 ]
-let base = `<div id="body">        <div class="section">
-<h1>pineapplerind</h1>
-<button onclick="toProjects(page)">projects</button>
-</div>
-
-</div>`
 var page = ``
 function newt(url) {
     window.open(url, '_blank').focus();
 }
 for (let i = 0; i < projects.length; i++) {
-    let link = `<button onclick="newt('${projects[i].link}')">Link</button>`
-   if (!projects[i].link) {
-       link = `<button disabled>No website</button>`
-   }
-   page += `<div class="sectionofboxes">
-    <div class="box">
+   page += `
+    <div class="box" onclick="newt(${projects[i].link})">
     <img src="${projects[i].img}">
     <div><h1>${projects[i].name}</h1>
     <p>${projects[i].description}</p>
-    <div class="box-buttons">
-        ${link}
-        </div>
-    </div></div></div>`
-
-    if (i == projects.length - 1) {
-        page += `<button style="position:fixed;top:20px;right:20px;" onclick="toProjects(base)">Go back</button>`
-    }
+    </div></div>`
 }
-function toProjects(e) {
-    document.body.classList.add('transitioning');
-    console.log('transitioning')
-    setTimeout(function(){
-        console.log('transitionoint out')
-        document.body.classList.remove('transitioning');
-        document.getElementById('body').innerHTML = e;
-        window.scrollTo(0,0)
-    },500)
-}
+document.querySelector('.inner').innerHTML += page
