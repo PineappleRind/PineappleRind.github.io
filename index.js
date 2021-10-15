@@ -1,9 +1,9 @@
 const projects = [
     {
-        name: "Memelist.ml",
-        description: "Funny concepts that you can say or refer to sometimes that will not make sense to most people.",
-        img: 'imgs/memelist.png',
-        link: 'https://memelist.ml', // Memelist
+        name: "Bezier Visualizer",
+        description: "A site to visualize manipulable, animated Cubic Bezier curves.",
+        img: "bezier-visualizer/thumb.png",
+        link: "https://pineapplerind.ga/bezier-visualizer"
     },
     {
         name: "bigsur-modal",
@@ -16,6 +16,12 @@ const projects = [
         description: "A fresh-looking theme for VSCode. Almost radioactive.",
         img: 'https://radium-theme.github.io/example.png',
         link: 'https://radium-theme.github.io'
+    },
+    {
+        name: "Memelist.ml",
+        description: "Funny concepts that you can say or refer to sometimes that will not make sense to most people.",
+        img: 'imgs/memelist.png',
+        link: 'https://memelist.ml', // Memelist
     }
 ]
 var page = ``
@@ -30,4 +36,4 @@ for (let i = 0; i < projects.length; i++) {
     <p>${projects[i].description}</p>
     </div></div>`
 }
-document.querySelector('.inner').innerHTML += page
+document.querySelector('.projects').innerHTML += page

@@ -82,14 +82,15 @@ function line(startx, starty, finishx, finishy) {
   ctx.lineTo(finishx, finishy);
   ctx.stroke(); // Bottom side line
 }
-function stp() {
+function stp(y) {
   clearInterval(inter);
-  if (t >= 1) t = 0, playing = false, evaluatePlaying()
+  if (t >= 1 || y == true) t = 0, playing = false, evaluatePlaying()
 }
 strt(true)
 function strt(refresh) {
+
   clearCanvas()
-  if (!refresh) clearTrail()
+  if (!refresh) clearTrail(), stp(true)
   inter = setInterval(function () {
     advance(easeSelected);
   }, 10);
@@ -98,6 +99,12 @@ function strt(refresh) {
 function evaluatePlaying() {
   if (playing == true) strt(true), document.getElementById('playBtn').innerHTML = 'Stop';
   else stp(), document.getElementById('playBtn').innerHTML = 'Play';
+}
+function replay() {
+  clearInterval(inter)
+  t = 1
+  strt(), document.getElementById('playBtn').innerHTML = 'Stop';
+  playing = true
 }
 function advance(ease) {
   clearCanvas();

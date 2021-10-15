@@ -5,7 +5,36 @@
 * {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif!important;
     margin: 0;
+    box-sizing: border-box;
     color: #fff
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    position: absolute;
+    right: 15px;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+    background: #f1f1f123;
+    padding: 3px;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+    margin: 13px;
+    display: block;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.596);
+}
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.555);
 }
 
 body {
@@ -24,12 +53,12 @@ body {
     max-width: 900px;
     margin: 40px;
     position: fixed;
-    overflow:hidden;
-    
+    overflow: hidden;
     border-radius: 30px;
     border: 1px solid rgba(255, 255, 255, .4);
     background: rgba(255, 255, 255, .1)
 }
+
 .body-box .inner {
     padding: 40px;
     overflow-y: auto;
@@ -105,10 +134,12 @@ h1 {
     border: 1px solid rgba(255, 255, 255, .253);
     transition: .2s;
     cursor: pointer;
+    flex-shrink: 1;
 }
+
 .box:hover {
- background: #21216cc2;
- border: 1px solid rgba(255, 255, 255, .8)
+    background: #21216cc2;
+    border: 1px solid rgba(255, 255, 255, .8)
 }
 
 .box h1 {
@@ -123,7 +154,7 @@ h1 {
 }
 
 .box img {
-    max-width: 500px;
+    max-width: 300px;
     width: 100%;
     margin-bottom: 10px;
     margin-right: 10px;
@@ -160,6 +191,13 @@ h1 {
     height: 100%
 }
 
+.projects {
+    display: flex;
+    flex-wrap: wrap;
+    flex-flow: wrap;
+    width: 100%;
+}
+
 button[disabled] {
     opacity: .5;
     cursor: not-allowed
@@ -184,13 +222,38 @@ button[disabled]:hover {
     justify-content: space-evenly
 }
 
+.links a {
+    position: relative;
+}
+
 .links svg {
     transition: .1s
 }
 
+.links a::after {
+    position: absolute;
+    bottom: -80%;
+    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.301);
+    right: 50%;
+    pointer-events: none;
+    transform: translateX(50%) translateY(-20px);
+    opacity: 0;
+    transition: 0.2s;
+    text-align: center;
+    background: rgba(255, 255, 255, .1);
+    border: 1px solid rgba(255, 255, 255, .253);
+    padding: 5px 7px;
+    border-radius: 30px;
+    content: 'GitHub';
+}
+
 .links svg:hover {
-    transform: translateY(-2px);
     filter: drop-shadow(0 2px 3px rgba(255, 255, 255, .377))
+}
+
+.links a:hover::after {
+    transform: translateX(50%) translateY(-10px);
+    opacity: 1;
 }
 
 @keyframes goup {
@@ -200,12 +263,14 @@ button[disabled]:hover {
     }
 }
 
-@media only screen and (min-width: 1000px) {
-    .box {
-        width: 80%;
-        display: flex;
+@media only screen and (min-width: 700px) {
+    .projects {
+        flex-flow: wrap;
+        flex-wrap: wrap;
         flex-direction: row;
-        align-items: center;
         justify-content: center;
+    }
+    .box {
+        width: 46% !important;
     }
 }
