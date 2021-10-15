@@ -45,14 +45,17 @@ let canv = document.getElementById("canvas"),
   canv2 = document.getElementById("canvas2"),
   ctx2 = canv2.getContext("2d"),
   background = "#000020",
-  t = 0, easedT, inter;
+  t = 0, easedT, inter,
+  easeSelected = window['quadraticEaseInOut'];
 
 
 (canv.height = window.innerHeight), (canv.width = window.innerWidth);
 (canv2.height = window.innerHeight), (canv2.width = window.innerWidth);
 onresize = () => {
-  (canv.height = window.innerHeight), (canv.width = window.innerWidth);
+  canv.height = window.innerHeight;
+  canv.width = window.innerWidth;
   (canv2.height = window.innerHeight), (canv2.width = window.innerWidth);
+  advance(easeSelected);
 }
 class Point {
   constructor(x, y, radius) {
@@ -88,7 +91,7 @@ function strt(refresh) {
   clearCanvas()
   if (!refresh) clearTrail()
   inter = setInterval(function () {
-    advance(quadraticEaseInOut);
+    advance(easeSelected);
   }, 10);
 
 }
@@ -253,4 +256,8 @@ function pointHandler(windowEvent) {
       }
     }
   }
+}
+
+document.getElementById('easeOption').onclick = () => {
+  easeSelected = window[document.getElementById('easeOption').value]
 }

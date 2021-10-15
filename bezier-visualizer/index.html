@@ -29,6 +29,17 @@
 </head>
 
 <body>
+    <div id="controls">
+        <h1>Controls</h1>
+        <button id="playBtn" onclick="playing = !playing;if (t <= 0.01) clearTrail();evaluatePlaying()">Stop</button>
+        <hr>
+        <p>Easing Function (In the animation)</p>
+        <select id="easeOption">
+            <option>linear</option>
+            <option selected>quadraticEaseInOut</option>
+            <option>exponentialEaseInOut</option>
+        </select>
+    </div>
     <div class="banner"
         onclick="this.classList.add('hidden');setTimeout(function(){this.remove},500);localStorage.setItem('bezierBannerState','doNotShowAgain')">
         Hey there! This is a <b>cubic bezier curve visualizer.</b> I'll add more functionality such as
@@ -36,10 +47,7 @@
     </div>
     <canvas id="canvas"></canvas>
     <canvas id="canvas2"></canvas>
-    <div id="controls">
-        <h1>Controls</h1>
-        <button id="playBtn" onclick="playing = !playing;if (t <= 0.01) clearTrail();evaluatePlaying()">Stop</button>
-    </div>
+
     <script src="index.js"></script>
     <script>
 
