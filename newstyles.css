@@ -103,7 +103,12 @@ h1 {
     padding: 30px;
     border-radius: 25px;
     border: 1px solid rgba(255, 255, 255, .253);
-    transition: .2s
+    transition: .2s;
+    cursor: pointer;
+}
+.box:hover {
+ background: #21216cc2;
+ border: 1px solid rgba(255, 255, 255, .8)
 }
 
 .box h1 {

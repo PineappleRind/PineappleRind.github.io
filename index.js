@@ -24,7 +24,7 @@ function newt(url) {
 }
 for (let i = 0; i < projects.length; i++) {
    page += `
-    <div class="box" onclick="newt(${projects[i].link})">
+    <div class="box" onclick="newt('${projects[i].link}')">
     <img src="${projects[i].img}">
     <div><h1>${projects[i].name}</h1>
     <p>${projects[i].description}</p>
