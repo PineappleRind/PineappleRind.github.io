@@ -52,6 +52,8 @@ canvas {
 }
 
 #controls {
+    max-height: 200px;
+    overflow-y: scroll;
     right: 0;
     bottom: 0;
     margin: 20px;
@@ -101,3 +103,4 @@ hr {
     height: 1px;
     background: rgba(255, 255, 255, 0.342);
 }
+
