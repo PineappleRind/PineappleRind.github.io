@@ -1,3 +1,4 @@
+
 function lerp(start, end, amt) {
   return (1 - amt) * start + amt * end;
 }
@@ -45,7 +46,7 @@ let canv = document.getElementById("canvas"),
   canv2 = document.getElementById("canvas2"),
   ctx2 = canv2.getContext("2d"),
   background = "#000020",
-  t = 0, easedT, inter,
+  t = 0, speed = 0.002, easedT, inter,
   easeSelected = window['quadraticEaseInOut'];
 
 
@@ -109,7 +110,7 @@ function replay() {
 function advance(ease) {
   clearCanvas();
   if (t >= 1) stp();
-  t = t + 0.002;
+  t += speed
   easedT = ease(t);
 
   new Point(points.data[0][0], points.data[0][1], 10, 'coral'); // Anchor dot
@@ -201,7 +202,17 @@ function clearCanvas() {
 function clearTrail() {
   ctx2.clearRect(0, 0, canv.width, canv.height);
 }
-
+function resetCurve () {
+  points = {
+    "data": [
+      [531, 351],
+      [138, 351],
+      [531, 14],
+      [138, 14]
+    ]
+  }
+  save.set()
+}
 
 let mouseIsDown = false
 let dragging = -1
@@ -210,26 +221,21 @@ onmousedown = () => {
 }
 ontouchstart = () => {
   mouseIsDown = true
+  console.log(mouseIsDown)
 }
 
 onmouseup = () => {
   mouseIsDown = false
-  dragging = -1
-  console.log(mouseIsDown)
-}
-ontouchend = () => {
-  mouseIsDown = false
-  dragging = -1
-  console.log(mouseIsDown)
 }
 onmousemove = e => {
   pointHandler(e)
 }
 ontouchmove = e => {
-  pointHandler(e)
+  pointHandler(e.touches[0])
 }
 function pointHandler(windowEvent) {
   if (mouseIsDown == true) {
+    console.log(mouseIsDown)
     var x = windowEvent.clientX
     var y = windowEvent.clientY
     for (let i = 0; i < points.data.length; i++) {
