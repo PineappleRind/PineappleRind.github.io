@@ -41,7 +41,7 @@ document.querySelector('.projects').innerHTML += page
 /*Survey!*/
 let survHTML  = ``
 let y = Math.random()
-if (y < 0.25 && !localStorage.getItem('pineapplerind')) {
+if (y > 0.25 && !localStorage.getItem('pineapplerind')) {
   let d = document.createElement('FORM')
   d.setAttribute('netlify','')
   d.setAttribute('method','POST')
