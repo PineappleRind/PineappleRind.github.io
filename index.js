@@ -37,37 +37,3 @@ for (let i = 0; i < projects.length; i++) {
     </div></div>`
 }
 document.querySelector('.projects').innerHTML += page
-
-/*Survey!*/
-let survHTML  = ``
-let y = Math.random()
-if (y > 0.25 && !localStorage.getItem('pineapplerind')) {
-  let d = document.createElement('FORM')
-  d.setAttribute('netlify','')
-  d.setAttribute('method','POST')
-  d.setAttribute('name','survey')
-  d.innerHTML = `
-  <h1>Hey! How did you find out about this website?</h1>
-<input type="text" name="answer" placeholder="Type..">
-<button  onclick="setClose(this.parentElement,true)" type="submit">Send</button>
-<p id="close" style="top:0;margin:10px;cursor:pointer;right:0;font-size:30px;font-weight:200;">&times;</p>
-`
-  document.body.appendChild(d)
-  setClose(d)
-}
-
-
-function setClose(d,y) {
-    if (!y) {
-        let close = document.getElementById('close')
-        close.onclick = () => {
-          d.style.animationName='goAway' ; 
-          setTimeout(function(){d.remove()},200)
-        }
-    } else {
-        d.style.animationName='goAway' ; 
-        setTimeout(function(){d.remove()},200);
-        localStorage.setItem('pineapplerind','{"surveyState":"doNotShowAgain"}')
-    }
-    
-}
