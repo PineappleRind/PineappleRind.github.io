@@ -226,6 +226,7 @@ ontouchstart = () => {
 
 onmouseup = () => {
   mouseIsDown = false
+  dragging = false
 }
 onmousemove = e => {
   pointHandler(e)
@@ -245,7 +246,7 @@ function pointHandler(windowEvent) {
             (x >= points.data[i][0] && x <= points.data[i][0] + 30) || (x <= points.data[i][0] && x >= points.data[i][0] - 30))
           &&
           ((y >= points.data[i][1] && y <= points.data[i][1] + 30) || (y <= points.data[i][1] && y >= points.data[i][1] - 30))
-        ) || dragging == i) {
+        )) {
         dragging = i
         if (x < 0) break;
         if (y < 0) break;
@@ -254,7 +255,7 @@ function pointHandler(windowEvent) {
         points.data[i][0] = x
         points.data[i][1] = y
         clearCanvas();
-        new Point(points.data[0][0], points.data[0][1], 10, 'coral'); // Anchor dot
+        new Point(points.data[0][0], points.data[0][1], 10, '#000000'); // Anchor dot
         new Point(points.data[1][0], points.data[1][1], 10, 'magenta'); // Right side anchor dot
         new Point(points.data[2][0], points.data[2][1], 10, 'dodgerblue'); // bottom side anchor dot
         new Point(points.data[3][0], points.data[3][1], 10, 'mint'); // bottom right side anchor dot
@@ -271,6 +272,6 @@ function pointHandler(windowEvent) {
   }
 }
 
-document.getElementById('easeOption').onclick = () => {
+document.getElementById('easeOption').oninput = () => {
   easeSelected = window[document.getElementById('easeOption').value]
 }
