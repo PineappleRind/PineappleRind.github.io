@@ -202,7 +202,7 @@ function clearCanvas() {
 function clearTrail() {
   ctx2.clearRect(0, 0, canv.width, canv.height);
 }
-function resetCurve () {
+function resetCurve() {
   points = {
     "data": [
       [531, 351],
