@@ -37,3 +37,7 @@ for (let i = 0; i < projects.length; i++) {
     </div></div>`
 }
 document.querySelector('.projects').innerHTML += page
+
+if (Math.random() < 0.8) {
+    document.querySelector('form').style.display = 'none'
+}
