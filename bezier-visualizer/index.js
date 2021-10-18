@@ -41,7 +41,7 @@ if (!save.get()) {
   points = save.get()
 }
 var playing = true
-let canv = document.getElementById("canvas"),
+var canv = document.getElementById("canvas"),
   ctx = canv.getContext("2d"),
   canv2 = document.getElementById("canvas2"),
   ctx2 = canv2.getContext("2d"),
@@ -122,26 +122,26 @@ function advance(ease) {
   line(points.data[0][0], points.data[0][1], points.data[2][0], points.data[2][1]);
   line(points.data[1][0], points.data[1][1], points.data[3][0], points.data[3][1]);
 
-  let topMiddlePointX = lerp(
+  var topMiddlePointX = lerp(
     points.data[0][0], points.data[2][0], easedT
   )
-  let topMiddlePointY = lerp(
+  var topMiddlePointY = lerp(
     points.data[0][1], points.data[2][1], easedT
   )
   new Point(topMiddlePointX, topMiddlePointY, 5)
 
-  let middleBottomPointX = lerp(
+  var middleBottomPointX = lerp(
     points.data[2][0], points.data[3][0], easedT
   )
-  let middleBottomPointY = lerp(
+  var middleBottomPointY = lerp(
     points.data[2][1], points.data[3][1], easedT
   )
   new Point(middleBottomPointX, middleBottomPointY, 5)
 
-  let bottomRightPointX = lerp(
+  var bottomRightPointX = lerp(
     points.data[3][0], points.data[1][0], easedT
   )
-  let bottomRightPointY = lerp(
+  var bottomRightPointY = lerp(
     points.data[3][1], points.data[1][1], easedT
   )
   new Point(bottomRightPointX, bottomRightPointY, 5)
@@ -155,18 +155,18 @@ function advance(ease) {
     bottomRightPointX, bottomRightPointY
   )
 
-  let midpoint1X = lerp(
+  var midpoint1X = lerp(
     topMiddlePointX, middleBottomPointX, easedT
   )
-  let midpoint1Y = lerp(
+  var midpoint1Y = lerp(
     topMiddlePointY, middleBottomPointY, easedT
   )
   new Point(midpoint1X, midpoint1Y, 5)
 
-  let midpoint2X = lerp(
+  var midpoint2X = lerp(
     middleBottomPointX, bottomRightPointX, easedT
   )
-  let midpoint2Y = lerp(
+  var midpoint2Y = lerp(
     middleBottomPointY, bottomRightPointY, easedT
   )
   new Point(midpoint2X, midpoint2Y, 5)
@@ -174,12 +174,12 @@ function advance(ease) {
     midpoint1X, midpoint1Y,
     midpoint2X, midpoint2Y
   )
-  let finalMidPointX = lerp(
+  var finalMidPointX = lerp(
     midpoint1X,
     midpoint2X,
     easedT
   )
-  let finalMidPointY = lerp(
+  var finalMidPointY = lerp(
     midpoint1Y,
     midpoint2Y,
     easedT
@@ -214,8 +214,8 @@ function resetCurve() {
   save.set()
 }
 
-let mouseIsDown = false
-let dragging = -1
+var mouseIsDown = false
+var dragging = -1
 onmousedown = () => {
   mouseIsDown = true
 }
@@ -238,7 +238,7 @@ function pointHandler(windowEvent) {
     console.log(mouseIsDown)
     var x = windowEvent.clientX
     var y = windowEvent.clientY
-    for (let i = 0; i < points.data.length; i++) {
+    for (var i = 0; i < points.data.length; i++) {
       if (
         (
           (
