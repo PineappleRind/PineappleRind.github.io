@@ -38,6 +38,6 @@ for (let i = 0; i < projects.length; i++) {
 }
 document.querySelector('.projects').innerHTML += page
 
-if (Math.random() < 0.8) {
+if (Math.random() < 0.8 || localStorage.getItem('pineapplerindSurveyState')) {
     document.querySelector('form').style.display = 'none'
 }

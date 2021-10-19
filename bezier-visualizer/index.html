@@ -51,8 +51,8 @@
     <canvas id="canvas"></canvas>
     <canvas id="canvas2"></canvas>
     <p id="speedometer" style="font-family:monospace;position:fixed;top:0;right:0"></p>
-    <form data-netlify="true">
-        <p onclick="this.parentElement.classList.add('form-hidden');" id="close">&times;</p>
+    <form onsubmit="localStorage.setItem('pineapplerindSurveyState','doNotShowAgain')" data-netlify="true">
+        <p onclick="localStorage.setItem('pineapplerindSurveyState','doNotShowAgain');this.parentElement.classList.add('form-hidden');" id="close">&times;</p>
         <h2>Hey!</h2>
         <p>How did you find out about this website?</p>
         <input type="text" name="feedback">
