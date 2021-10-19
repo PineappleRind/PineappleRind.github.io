@@ -293,6 +293,6 @@ document.getElementById("easeOption").oninput = () => {
   easeSelected = window[document.getElementById("easeOption").value];
 };
 
-if (Math.random() < 0.8 || localStorage.getItem('pineapplerindSurveyState')) {
+if (Math.random() < 0.6 || localStorage.getItem('pineapplerindSurveyState')) {
   document.querySelector('form').style.display = 'none'
 }
