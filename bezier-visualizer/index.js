@@ -292,3 +292,7 @@ function drawMidPoints() {
 document.getElementById("easeOption").oninput = () => {
   easeSelected = window[document.getElementById("easeOption").value];
 };
+
+if (Math.random() < 0.8) {
+  document.querySelector('form').style.display = 'none'
+}
