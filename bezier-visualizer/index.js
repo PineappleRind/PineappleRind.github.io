@@ -204,7 +204,7 @@ ontouchstart = () => {
 
 onmouseup = () => {
   mouseIsDown = false;
-  dragging = false;
+  dragging = -1;
 };
 onmousemove = (e) => {
   pointHandler(e);
@@ -223,6 +223,7 @@ function pointHandler(windowEvent) {
           (x <= points.data[i][0] && x >= points.data[i][0] - 30)) &&
         ((y >= points.data[i][1] && y <= points.data[i][1] + 30) ||
           (y <= points.data[i][1] && y >= points.data[i][1] - 30))
+          || dragging == i
       ) {
         dragging = i;
         if (dragging == i) {
