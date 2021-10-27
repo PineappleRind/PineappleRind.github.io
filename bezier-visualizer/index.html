@@ -30,12 +30,20 @@
 
 <body>
     <div id="controls">
-        <div id="minimize" onclick="this.parentElement.classList.toggle('hidden')">&minus;</div>
+        <div id="minimize" onclick="this.parentElement.classList.toggle('hidden')">&times;</div>
         <h1 style="width:300px">Bezier Curve Visualizer</h1>
+        <h2 style="font-weight:200;font-size:25px;">how to use</h2>
+        <p>You can:
+            <ul>
+<li><p>drag points and replay the animation to see how the curve changes</p></li>
+<li><p>add a new point with the Add Point button</p></li>
+<li><p>double tap/click on a point to remove it</p></li>
+            </ul> 
+            <hr>
         <h2 style="font-weight:200;font-size:25px;">controls</h2>
         <button id="playBtn" onclick="playing = !playing;if (t <= 0.01) clearTrail();evaluatePlaying()">Stop</button>
         <button onclick="replay()">Restart</button>
-        <hr>
+        <br>
         <p>Easing Function (In the animation)</p>
         <select id="easeOption">
             <option>linear</option>
@@ -43,7 +51,8 @@
             <option>exponentialEaseInOut</option>
             <option>bounce</option>
         </select>
-        <hr>
+        <br>
+        <button onclick="addPoint()">Add Point</button>
         <button onclick="resetCurve()">Reset Curve</button>
     </div>
     <!--<div class="banner"

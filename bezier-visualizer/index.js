@@ -30,20 +30,20 @@ function bounce(x) {
 function linear(x) {
   return x;
 }
-var colors = ["red", "blue", "lime", "yellow", "purple", "orange", "green", "pink", "white"];
+var colors = ["red", "blue", "lime", "yellow", "purple", "orange", "green", "pink", "rebeccapurple", "yellowgreen", "dodgerblue", "magenta", "indianred", "darkblue", "darkkhaki", "darksalmon", "darkslategray", "orangered", "seagreen"];
 var points = {
   data: [
-    [100, 100],
-    [300, 100],
-    [300, 300],
-    [100, 300],
+      [331, 351],
+      [38, 351],
+      [331, 14],
+      [38, 14],
   ],
 
   computed: [],
 };
 
-let iteration = points.data.length - 1;
-for (var o = 0; o < iteration; o++) points.computed.push([])
+
+
 var save = {
   get: function () {
     return JSON.parse(localStorage.getItem("bezierSaveData"));
@@ -54,13 +54,14 @@ var save = {
 };
 
 //if (localStorage.getItem("bezierBannerState"))
-  //document.querySelector(".banner").remove();
+//document.querySelector(".banner").remove();
 
 if (!save.get()) {
   save.set();
 } else {
   points = save.get();
 }
+let iteration = points.data.length - 1;
 var playing = true;
 var canv = document.getElementById("canvas"),
   ctx = canv.getContext("2d"),
@@ -72,7 +73,11 @@ var canv = document.getElementById("canvas"),
   easedT,
   inter,
   easeSelected = window.quadraticEaseInOut;
-
+function addPoint() {
+  points.data.push([0, 0])
+  iteration = points.data.length - 1;
+  drawAndConnectInitialPoints()
+}
 function com(easedT) {
   points.computed = []
   for (let o = 0; o < iteration; o++) points.computed.push([])
@@ -112,16 +117,17 @@ function com(easedT) {
   }
 }
 
-canv.height = window.innerHeight;
-canv.width = window.innerWidth;
-canv2.height = window.innerHeight;
-canv2.width = window.innerWidth;
-// onresize = function () {
-//   canv.height = window.innerHeight;
-//   canv.width = window.innerWidth;
-//   (canv2.height = window.innerHeight), (canv2.width = window.innerWidth);
-//   advance(easeSelected);
-// };
+canv.setAttribute('height', window.innerHeight)
+canv.setAttribute('width', window.innerWidth)
+canv2.setAttribute('height', window.innerHeight)
+canv2.setAttribute('width', window.innerWidth)
+onresize = () => {
+  canv.setAttribute('height', window.innerHeight)
+  canv.setAttribute('width', window.innerWidth)
+  canv2.setAttribute('height', window.innerHeight)
+  canv2.setAttribute('width', window.innerWidth);
+  drawAndConnectInitialPoints()
+}
 
 function point(x, y, rad, col) {
   ctx.beginPath();
@@ -142,7 +148,7 @@ function line(startx, starty, finishx, finishy) {
 
 function evaluatePlaying() {
   if (playing == true) window.requestAnimationFrame(advance), (document.getElementById("playBtn").innerHTML = "Stop");
-  else window.cancelAnimationFrame(advance), (document.getElementById("playBtn").innerHTML = "Play");
+  else window.cancelAnimationFrame(advance), (document.getElementById("playBtn").innerHTML = "Play")
 }
 window.requestAnimationFrame(advance)
 function replay() {
@@ -151,20 +157,20 @@ function replay() {
   clearCanvas(
   )
   clearTrail()
-  window.requestAnimationFrame(advance),(document.getElementById("playBtn").innerHTML = "Stop");
+  window.requestAnimationFrame(advance), (document.getElementById("playBtn").innerHTML = "Stop");
   playing = true;
 }
 function advance() {
   clearCanvas();
   document.getElementById("speedometer").innerHTML =
-    "t=" + easeSelected(t).toFixed(1);
+    "t=" + easeSelected(t).toFixed(3);
   t += speed;
   easedT = easeSelected(t);
   com(easedT);
   let final = drawMidPoints();
-  drawTrail(final[0],final[1])
+  drawTrail(final[0], final[1])
   drawAndConnectInitialPoints();
-  if (t >= 1) window.cancelAnimationFrame(advance);
+  if (t >= 1 || playing == false) window.cancelAnimationFrame(advance);
   else window.requestAnimationFrame(advance);
 }
 
@@ -177,11 +183,11 @@ function clearTrail() {
 function resetCurve() {
   points = {
     data: [
-      [531, 351],
-      [138, 351],
-      [531, 14],
-      [138, 14],
-    ],
+      [331, 351],
+      [38, 351],
+      [331, 14],
+      [38, 14],
+    ], computed:  []
   };
   save.set();
 }
@@ -211,11 +217,7 @@ function pointHandler(windowEvent) {
     var y = windowEvent.clientY;
     for (var i = 0; i < points.data.length; i++) {
       if (
-        (((x >= points.data[i][0] && x <= points.data[i][0] + 30) ||
-          (x <= points.data[i][0] && x >= points.data[i][0] - 30)) &&
-          ((y >= points.data[i][1] && y <= points.data[i][1] + 30) ||
-            (y <= points.data[i][1] && y >= points.data[i][1] - 30))) ||
-        dragging == i
+        intersectingPoints(x,y,i) == true
       ) {
         dragging = i;
         if (dragging == i) {
@@ -235,6 +237,54 @@ function pointHandler(windowEvent) {
       }
     }
   }
+}
+function removePointHandler(evt) {
+    var x = evt.clientX;
+    var y = evt.clientY;
+    for (var i = 0; i < points.data.length; i++) {
+      if (intersectingPoints(x,y,i) && points.data.length <= 2) {
+        alert('You can\'t have less than 2 points!')
+        break;
+      }
+      if (
+        intersectingPoints(x,y,i) == true
+        &&
+        points.data.length > 2
+      ) {
+        dragging = i;
+        if (dragging == i) {
+          points.data = arrRemove(points.data,points.data[i])
+          clearCanvas();
+          
+          save.set();
+          iteration = points.data.length - 1
+          drawAndConnectInitialPoints()
+          
+          break;
+        }
+      } 
+      
+    }
+}
+function arrRemove(arr, value) {
+  var index = arr.indexOf(value);
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  return arr;
+}
+
+ondblclick = e => {
+
+  removePointHandler(e)
+
+}
+function intersectingPoints(x, y, i) {
+  return ((((x >= points.data[i][0] && x <= points.data[i][0] + 20) ||
+    (x <= points.data[i][0] && x >= points.data[i][0] - 20)) &&
+    ((y >= points.data[i][1] && y <= points.data[i][1] + 20) ||
+      (y <= points.data[i][1] && y >= points.data[i][1] - 20))) ||
+    dragging == i)
 }
 function drawAndConnectInitialPoints() {
   for (var i = 0; i < points.data.length - 1; i++) {
@@ -269,10 +319,10 @@ function drawMidPoints() {
     }
   }
 }
-function drawTrail(x,y) {
+function drawTrail(x, y) {
   ctx2.beginPath();
   ctx2.fillStyle = "#ffffff";
- ctx2.arc(x, y, 10, 0, 2 * Math.PI, true);
+  ctx2.arc(x, y, 10, 0, 2 * Math.PI, true);
   ctx2.closePath();
   ctx2.fill();
 }
