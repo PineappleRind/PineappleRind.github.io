@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,8 +11,83 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://pineapplerind.ga/aj-bot/">
     <meta property="og:title" content="Aj Bot">
+    <style>
+        * {
+            margin:0;
+            font-family: "Gilroy", "Roboto", sans-serif;
+        }
+
+        h1 {
+            font-size:4rem;
+            font-weight:900;
+            color:white;
+            margin-bottom: 5px;
+        }
+        html {
+            background: black
+        }
+        body {
+            background-image: conic-gradient( from 
+80deg at 50% 55%, rgba(36, 209, 101, .39) 
+0deg, rgba(226, 214, 54, .39) 
+55.3deg, rgba(254, 108, 91, .39) 
+120deg, rgba(204, 60, 203, .39) 
+165deg, rgba(159, 51, 253, .39) 
+213.75deg, rgba(24, 117, 243, .39) 
+288.12deg, rgba(22, 119, 240, .39) 
+320deg, rgba(36, 209, 101, .39) 
+360deg );
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+            perspective: 150px;
+        }
+
+        button {
+            padding: 15px 30px;
+            border-radius: 15px/14px;
+            border: 1px solid rgba(255, 255, 255, 0.218);
+            background:rgba(255,255,255,0.2);
+            transition: 0.3s;
+            font-weight: 700;
+            color: white;
+            cursor:pointer;
+            font-size: 25px;
+        }
+
+        button:hover {
+            border: 1px solid rgba(255,255,255,0.9);
+            background: rgba(255,255,255,0.3);
+        }
+        button.going {
+            transition: cubic-bezier(.7,-0.7,.83,.67) 0.6s;
+            transform: translateX(70vw);
+            opacity:0
+        }
+        button.notselected {
+            background: 0 !important;
+            font-weight:200 !important;
+        }
+    </style>
 </head>
+
 <body>
     <h1>Aj Bot</h1>
+    <div>
+        <button onclick="redir(this,'https://discord.com/api/oauth2/authorize?client_id=849463790739390464&permissions=0&scope=bot')">Invite Bot</button>
+        <button  class="notselected" onclick="redir(this,'https://discord.gg/3UZmTEPRpD')">Support Server</button>
+    </div>
+    <script>
+        function redir(btn,url) {
+            btn.classList.add('going')
+            setTimeout(function(){
+                window.location.href = url
+            },500)
+        }
+    </script>
 </body>
+
 </html>
