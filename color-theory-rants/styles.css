@@ -95,12 +95,13 @@ article p {
 
 @media only screen and (max-width:800px) {
     .flex-grid {
-        flex-direction: column;
+        display:block;
     }
     body {
         display:block;
+        overflow:scroll;
     }
     .blog-container{
-        width:unset;
+        width:100%;
     }
 }
