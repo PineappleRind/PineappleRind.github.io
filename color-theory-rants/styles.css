@@ -98,7 +98,7 @@ article p {
         display:block;
     }
     body {
-        display:block;
+        display:block !important;
         overflow:scroll;
     }
     .blog-container{
