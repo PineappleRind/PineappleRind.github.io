@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why Light Blue Isn't Actually Light Blue</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body><br><br>
+    <article>
+        <a style="white-space:pre;margin-right:14px;font-size:15px;" href="./index.html">&larr; back</a>
+        <img src="light-blue-isnt-blue.png" alt="Image Comparing Light Blue and Cyan">
+        
+        <h1 style="display:flex;justify-content: center;align-items: center;">Why Light Blue Isn't Actually Light Blue</h1>
+        <sub>Why what people call "light blue" actually isn't blue -- and also why pink isn't light red.</sub>
+        <br><br>
+        <p>What color do you think this is?</p>
+        <div style="border-radius: 5px; height: 50px;width:50%;background: deepskyblue;"></div><br><br>
+        <p>If you answered light blue, <b>you're wrong.</b></p>
+        <p>This color has a completely different hue than blue. It should be considered its own color.</p>
+        <p>What does having a different mean though?</p>
+        <p>Colors can be measured with 3 different values put together:</p>
+        <ul>
+            <li>Hue</li>
+            <li>Saturation</li>
+            <li>Lightness</li>
+        </ul>
+        <p>A combination of these three values can create almost every color the human eye can see.</p>
+        <p>Colors with different hues look different. Drag the slider to see how the color changes based on the hue
+            value:</p>
+        <input value="0" style="width:100%;"
+            oninput="this.nextElementSibling.nextElementSibling.style.background = `hsl(${this.value},100%,50%)`;this.nextElementSibling.children[0].innerHTML = this.value"
+            type="range" min="0" max="360">
+        <p>Hue Value: <span></span></p>
+        <div style="border-radius: 5px; height: 50px;width:50%;background: red;" id="colorChange"></div>
+        <br><br><p>
+            <b>Blue</b> has a hue value of 240.
+        </p>
+        <p>
+            <b>"Light blue"</b> has a hue value of around 200.
+        </p>
+        <p>
+            But this "light blue" is made by decreasing the hue value of blue, which <b>isn't making the color
+                lighter.</b>
+        </p>
+        <p>
+            Shouldn't you make a color lighter by adding white?
+        </p>
+        <p>Try making pure blue lighter by dragging the slider up to around 80. This should make the <b>real</b> light
+            blue.</p>
+        <input value="50" style="width:100%;"
+            oninput="this.nextElementSibling.nextElementSibling.style.background = `hsl(240,100%,${this.value}%)`;this.nextElementSibling.children[0].innerHTML = this.value"
+            type="range" min="0" max="100">
+        <p>Lightness Value: <span>50</span></p>
+        <div style="border-radius: 5px; height: 50px;width:50%;background: blue;" id="colorChange"></div>
+        <p>
+            This looks a lot different than the color above (<span style="display:inline-block;background:deepskyblue;border-radius:50%;width:10px;height:10px;"></span>), doesn't it?
+        </p>
+        <br><br>
+        <p><b>But what about pink?</b></p>
+        <p>I've heard that some people think pink is light red.</p>
+        <p>Try dragging the slider again to around 80 to see what real light red is...</p>
+        <input value="50" style="width:100%;"
+            oninput="this.nextElementSibling.nextElementSibling.style.background = `hsl(0,100%,${this.value}%)`;this.nextElementSibling.children[0].innerHTML = this.value"
+            type="range" min="0" max="100">
+        <p>Lightness Value: <span>50</span></p>
+        <div style="border-radius: 5px; height: 50px;width:50%;background: red;" id="colorChange"></div>
+        <p>Compare this to pure pink:</p>
+        <div style="border-radius: 5px; height: 50px;width:50%;background: rgba(255,0,255);" id="colorChange"></div><br><br>
+        <p>Now you can do your part and call colors by their correct names. =)</p>
+        <hr>
+        <br>
+        <a href="./index.html">More rants</a>
+    </article>
+    <script>
+    </script>
+</body>
+
+</html>

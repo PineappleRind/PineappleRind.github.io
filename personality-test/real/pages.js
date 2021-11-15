@@ -1,4 +1,3 @@
-
 var pages = [
     {
         title: "",
@@ -7,13 +6,13 @@ var pages = [
             {
                 name: "Yes",
                 action: function () {
-                    TestWindow.update(pages[5],5)
+                    TestWindow.update(pages[5], 5)
                 }
             },
             {
                 name: "No",
                 action: function () {
-                    TestWindow.update(pages[1],1)
+                    TestWindow.update(pages[1], 1)
                 }
             }
         ]
@@ -25,13 +24,13 @@ var pages = [
             {
                 name: "Previous",
                 action: function () {
-                    TestWindow.update(pages[0],0)
+                    TestWindow.update(pages[0], 0)
                 }
             },
             {
                 name: "Next",
                 action: function () {
-                    TestWindow.update(pages[2],2)
+                    TestWindow.update(pages[2], 2)
                 }
             }
         ],
@@ -46,13 +45,13 @@ var pages = [
             {
                 name: "Previous",
                 action: function () {
-                    TestWindow.update(pages[1],1)
+                    TestWindow.update(pages[1], 1)
                 }
             },
             {
                 name: "Next",
                 action: function () {
-                    TestWindow.update(pages[3],3)
+                    TestWindow.update(pages[3], 3)
                 }
             }
         ]
@@ -70,13 +69,13 @@ var pages = [
             {
                 name: "Previous",
                 action: function () {
-                    TestWindow.update(pages[2],2)
+                    TestWindow.update(pages[2], 2)
                 }
             },
             {
                 name: "Next",
-                action: function(){
-                    TestWindow.update(pages[4],4)
+                action: function () {
+                    TestWindow.update(pages[4], 4)
                 }
             }
         ]
@@ -84,39 +83,95 @@ var pages = [
         title: "",
         description: `
         The order of the functions in your stack makes up your <b>personality type</b>.<br>
-        Click <a onclick="TestWindow.update(pages[3],3)" href="#">here </a>for how this works.<br><br>
+        Click <a href="#">here</a> for how this works.<br><br>
         Understanding cognitive functions and personality types will help you better understand yourself and others.`,
         buttons: [
             {
                 name: "Previous",
                 action: function () {
-                    TestWindow.update(pages[3],3)
+                    TestWindow.update(pages[3], 3)
                 }
             },
             {
                 name: "Next",
                 action: function () {
-                    TestWindow.update(pages[5],5)
+                    TestWindow.update(pages[5], 5)
                 }
             }
         ]
-    }, {//4
+    }, {//5
         title: "",
-        description: `This test will help you determine your <b>dominant</b> and <b>auxiliary</b> cognitive functions, which can help determine your personality type.`,
+        description: `This test will help you determine your <b>dominant</b> and <b>auxiliary</b> cognitive functions, which can then be used to help determine your personality type.
+        Attributes of 2 functions will be shown at once, and you will choose one over the other.<br>`,
         buttons: [
             {
                 name: "Previous",
                 action: function () {
-                    TestWindow.update(pages[3],3)
+                    TestWindow.update(pages[4], 4)
                 }
             },
             {
                 name: "Begin Test",
                 action: function () {
-                    alert('This test is still under construction =)')
-                    //TestWindow.update(pages[5],5)
+                    TestWindow.beginTest()
                 }
             }
         ]
+    }, {// 6
+        title: "Compare:",
+        description: function(obj) {
+            return TestWindow.getComparisonHTML(obj)
+        },
+        buttons: [
+            {
+                name: "Next",
+                action: function() {
+                    TestWindow.update(pages[6],6)
+                }
+            }
+        ]
+    }, 
+]
+
+var functions = [{
+        name: "Se",
+        long: "Extroverted Sensing",
+        description: `Se-users are interested in the objective, sensory world and want to completely experience it. They are acutely aware of their senses and the world around them and they derive energy from direct contact with items, people, and situations in their surroundings.`,
+        strength: 0,
+    }, {
+        name: "Si",
+        long: "Introverted Sensing",
+        description: `Si compares and contrasts new experiences with prior experiences and memories, focusing on the subjective, internal realm of personal experience. Si-users are more likely to observe patterns that repeat themselves and to recognize changes or discrepancies in their surroundings. They trust personal experience and investigate the impact of current events, actions, and outcomes subjectively.`,
+        strength: 0
+    }, {
+        name: "Ne",
+        long: "Extroverted Intuition",
+        description: `In the world around them, Ne-users can see theoretical possibilities and abstract connections. Ne looks for relationships and patterns between people, things, and events in the objective, external world. The information gathered by Ne-users creates new possibilities and discovers meaning and potential in the universe.`,
+        strength: 0
+    }, {
+        name: "Ni",
+        long: "Introverted Intuition",
+        description: `Ni-users can sort through conscious and unconscious information, providing them with a mental image or vision of the past and future that is meaningful.`,
+        strength: 0
+    }, {
+        name: "Fe",
+        long: "Extroverted Feeling",
+        description: `Fe-users have a broad awareness of other people's feelings and values. They have a natural sense of what is acceptable, polite, and will maintain harmony. They strive to keep morale high and are usually well-versed in other people's emotions and moods.`,
+        strength: 0
+    }, {
+        name: "Fi",
+        long: "Introverted Feeling",
+        description: `Fi involves a thorough understanding of one's own values, morals, ethics, and emotions. Internal harmony is sought by Fi-users, who strive to live in accordance with a very personal set of values that are usually kept very private.`,
+        strength: 0
+    }, {
+        name: "Te",
+        long: "Extroverted Thinking",
+        description: `When making decisions, Te users rely on empirical evidence and consider cause and effect as well as pros and cons. They like to use logical binary judgments to organize, evaluate, and compare things.`,
+        strength: 0
+    }, {
+        name: "Ti",
+        long: "Introverted Thinking",
+        description: `Ti is focused on a set of logical, subjective principles and focuses on impersonal analysis, categorization, and evaluation. Ti users try to remove themselves from situations in order to see different factors, angles, and leverage points that may be useful.`,
+        strength: 0
     }
 ]
