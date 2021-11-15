@@ -95,7 +95,7 @@ article p {
 
 @media only screen and (max-width:800px) {
     .flex-grid {
-        display:block;
+        flex-direction:column;
     }
     body {
         display:block !important;
