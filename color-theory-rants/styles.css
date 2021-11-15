@@ -97,6 +97,9 @@ article p {
     .flex-grid {
         flex-direction: column;
     }
+    body {
+        display:block;
+    }
     .blog-container{
         width:unset;
     }
