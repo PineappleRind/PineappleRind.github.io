@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The real primary colors</title>
+    <link rel="stylesheet" href="styles.css">
+    <meta name="description"
+        content="Why the primary colors you learned in school should not be considered primary colors, and the difference between additive and subtractive color models.">
+    <meta name="keywords" content="color theory, light blue, cyan">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="English">
+</head>
+
+<body class="article">
+    <br><br>
+    <script>function $(id) { return document.getElementById(id) }</script>
+    <article>
+        <a style="white-space:pre;margin-right:14px;font-size:15px;" href="./index.html">&larr; back</a><br>
+        <img src="the-real-primary-colors.png" alt="Image Comparing Light Blue and Cyan">
+
+        <h1 style="display:flex;justify-content: center;align-items: center;">The Real Primary Colors</h1>
+        <sub>Why the primary colors you learned in school should not be considered primary colors, and the difference
+            between additive and subtractive color models</sub>
+        <br><br>
+        <p>Were you taught that the 3 primary colors were <span style="color:red">red</span>, <span
+                style="color:yellow">yellow</span>, and <span style="color:blue">blue?</span></p>
+        <p>This is called the <b>RYB color model</b>.</p>
+        <p>Those three colors supposedly can't be made by mixing other colors, but can make other colors.</p>
+        <p>For example, red + yellow = orange, and blue + red = purple.</p>
+        <p><b>However, this is all false.</b></p>
+        <p>"Why? It works with paint!"</p>
+        <p>Yes, it works with paint. That's actually one of the few applications for it. It's useless unless you're an artist.</p>
+        <p>RYB is a subtractive color model, meaning the more colors you add, the darker color you get. This is why you
+            get a brown when mixing all the paint colors together.</p>
+        <p>Meanwhile, light is an additive color model, meaning the more colors you add (in this case light
+            wavelengths), the lighter the color gets.</p>
+        <p>To help you see colors of light, the red, green, and blue cones in your eyes use the RGB color model, which
+            is additive.</p>
+        <p>Even though RYB is easier to teach (using paint), RGB is what should be taught in schools since it has more
+            use cases. Try playing with it yourself!</p>
+        <br><br>
+        
+        <span>Red Level: 255</span><br>
+        <input id="red" style="width:100%;" value="255"
+            oninput="this.previousElementSibling.previousElementSibling.innerHTML = 'Red Level: ' + this.value;"
+            type="range" min="0" max="255"><br>
+        <span>Green Level: 0</span><br>
+        <input id="green" style="width:100%;" value="0"
+            oninput="this.previousElementSibling.previousElementSibling.innerHTML = 'Green Level: ' + this.value;"
+            type="range" min="0" max="255"><br>
+        <span>Blue Level: 255</span><br>
+        <input id="blue" style="width:100%;" value="255"
+            oninput="this.previousElementSibling.previousElementSibling.innerHTML = 'Blue Level: ' + this.value;"
+            type="range" min="0" max="255"><br>
+        <div id="demo" style="transition: 0.2s;height:50px;width:200px;background:magenta;"></div>
+        <br>
+        <i>The RGB value of this article's background is 28, 31, and 34. See if you can match it!</i>
+        <br>
+        <hr>
+        <br>
+        <a href="./index.html">More rants</a>
+    </article>
+    <script>
+        oninput = () => {
+            $('demo').style.background = `rgb(${$('red').value},${$('green').value},${$('blue').value})`
+        }
+    </script>
+</body>
+
+</html>
