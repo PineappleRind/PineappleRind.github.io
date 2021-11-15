@@ -6,6 +6,12 @@ const projects = [
         link: "https://pineapplerind.ga/bezier-visualizer"
     },
     {
+        name: "Color Theory Rants",
+        description: "Clarifying a few things people learned wrong about color theory.",
+        img: "imgs/color-theory-rants.png",
+        link: "https://pineapplerind.ga/color-theory-rants/"
+    },
+    {
         name: "bigsur-modal",
         description: "2.4kb minified library to make alert dialogs in the style of MacOS Big Sur.",
         img: 'imgs/bigsur-modal.png',
