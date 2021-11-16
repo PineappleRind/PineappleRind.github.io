@@ -240,7 +240,8 @@ function resetCurve() {
 }
 
 var mouseIsDown = false;
-var dragging = -1;
+var dragging = -1,
+	draggingPoint = -1;
 onmousedown = function() {
 	mouseIsDown = true;
 };
@@ -251,6 +252,7 @@ ontouchstart = function() {
 onmouseup = function() {
 	mouseIsDown = false;
 	dragging = -1;
+	draggingPoint = -1;
 };
 onmousemove = function(e) {
 	pointHandler(e);
@@ -260,26 +262,32 @@ ontouchmove = function(e) {
 };
 
 function pointHandler(windowEvent) {
-
 	if (mouseIsDown === true) {
 		var x = windowEvent.clientX;
 		var y = windowEvent.clientY;
+		if (dragging != -1) {
+			updatePoint(dragging);
+			return;
+		}
 		for (var i = 0; i < points.data.length; i++) {
 			if (intersectingPoints(x, y, i) === true) {
-				dragging = i
+				if (dragging == -1) dragging = i
 				if (x < 0) break;
 				if (y < 0) break;
 				if (x > window.innerWidth) break;
 				if (y > window.innerHeight) break;
-				points.data[i][0] = x;
-				points.data[i][1] = y;
-				canvas.clear();
-				initialPoints()
-				save.set();
-
+				updatePoint(i)
 				break;
 			}
 		}
+	}
+
+	function updatePoint(pointIndex) {
+		points.data[pointIndex][0] = x;
+		points.data[pointIndex][1] = y;
+		canvas.clear();
+		initialPoints();
+		save.set();
 	}
 }
 
@@ -291,7 +299,6 @@ function removePointHandler(evt) {
 		if (intersectingPoints(x, y, i) === true && points.data.length <= 2) {
 			alert('You can\'t have less than 2 points!')
 			break;
-
 		}
 		if (intersectingPoints(x, y, i) === true && points.data.length > 2) {
 			dragging = i
@@ -396,7 +403,6 @@ document.getElementById("colorOption").oninput = function() {
 	for (let i = 0; i < points.data.length; i++) {
 		colors.push(settings.colorAlgorithm(i))
 	}
-
 };
 oninput = e => {
 	let target = e.target
@@ -417,4 +423,4 @@ function computeTextColor(bgColor) {
 	else if (final == 'white' && document.body.classList.contains('black')) document.body.classList.remove('black')
 	else document.body.classList.add(final)
 	return
-}//420 lines of code? not a coincidence
+} // 420 lines of code. trust me, this is a coincidence.
