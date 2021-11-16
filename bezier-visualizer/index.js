@@ -10,10 +10,10 @@ function easeInOutExpo(x) {
 	return x === 0 ?
 		0 :
 		x === 1 ?
-			1 :
-			x < 0.5 ?
-				Math.pow(2, 20 * x - 10) / 2 :
-				(2 - Math.pow(2, -20 * x + 10)) / 2;
+		1 :
+		x < 0.5 ?
+		Math.pow(2, 20 * x - 10) / 2 :
+		(2 - Math.pow(2, -20 * x + 10)) / 2;
 }
 
 function easeInOutQuart(x) {
@@ -51,10 +51,10 @@ var points = {
 };
 
 var save = {
-	getData: function () {
+	getData: function() {
 		return JSON.parse(localStorage.getItem("bezierSaveData"));
 	},
-	set: function () {
+	set: function() {
 		return localStorage.setItem("bezierSaveData", JSON.stringify(points));
 	},
 };
@@ -69,9 +69,11 @@ function goldenAngle(number) {
 	const hue = number * 137.50776405; // use golden angle approximation
 	return `hsl(${hue},100%,50%)`;
 }
+
 function rainbow(number) {
 	return (`hsl(${number*20},100%,50%)`)
 }
+
 function grayscale(number) {
 	let newnum = `hsl(0,0%,${number/points.data.length*100}%)`
 	console.log(newnum)
@@ -101,14 +103,14 @@ var playing = true;
 var canvas = {
 	element: document.getElementById("canvas"),
 	context: document.getElementById("canvas").getContext("2d"),
-	clear: function () {
+	clear: function() {
 		canvas.context.clearRect(0, 0, canvas.element.width, canvas.element.height);
 	},
 }
 var trail = {
 	element: document.getElementById("canvas2"),
 	context: document.getElementById("canvas2").getContext("2d"),
-	clear: function () {
+	clear: function() {
 		trail.context.clearRect(0, 0, canvas.element.width, canvas.element.height);
 	}
 }
@@ -239,21 +241,21 @@ function resetCurve() {
 
 var mouseIsDown = false;
 var dragging = -1;
-onmousedown = function () {
+onmousedown = function() {
 	mouseIsDown = true;
 };
-ontouchstart = function () {
+ontouchstart = function() {
 	mouseIsDown = true;
 };
 
-onmouseup = function () {
+onmouseup = function() {
 	mouseIsDown = false;
 	dragging = -1;
 };
-onmousemove = function (e) {
+onmousemove = function(e) {
 	pointHandler(e);
 };
-ontouchmove = function (e) {
+ontouchmove = function(e) {
 	pointHandler(e.touches[0]);
 };
 
@@ -328,9 +330,9 @@ canvas.element.ondblclick = e => {
 
 function intersectingPoints(x, y, i) {
 	return ((((x >= points.data[i][0] && x <= points.data[i][0] + 10) ||
-		(x <= points.data[i][0] && x >= points.data[i][0] - 10)) &&
-		((y >= points.data[i][1] && y <= points.data[i][1] + 10) ||
-			(y <= points.data[i][1] && y >= points.data[i][1] - 10))) ||
+				(x <= points.data[i][0] && x >= points.data[i][0] - 10)) &&
+			((y >= points.data[i][1] && y <= points.data[i][1] + 10) ||
+				(y <= points.data[i][1] && y >= points.data[i][1] - 10))) ||
 		dragging === i)
 }
 
@@ -369,7 +371,7 @@ function drawMidPoints() {
 				)
 			}
 			if (i === points.computed.length - 1) return [points.computed[i][j][0],
-			points.computed[i][j][1]
+				points.computed[i][j][1]
 			]
 		}
 	}
@@ -384,23 +386,24 @@ function drawTrail(x, y) {
 	trail.context.fill();
 }
 
-document.getElementById("easeOption").oninput = function () {
+document.getElementById("easeOption").oninput = function() {
 	settings.ease = window[document.getElementById("easeOption").value];
 };
 
-document.getElementById("colorOption").oninput = function () {
+document.getElementById("colorOption").oninput = function() {
 	settings.colorAlgorithm = window[document.getElementById("colorOption").value];
 	colors = []
 	for (let i = 0; i < points.data.length; i++) {
 		colors.push(settings.colorAlgorithm(i))
 	}
-	
+
 };
 oninput = e => {
 	let target = e.target
 	let toChange = target.getAttribute('id')
 	settings.show[toChange] = !settings.show[toChange]
 }
+
 function computeTextColor(bgColor) {
 	var color = (bgColor.value.charAt(0) === '#') ? bgColor.value.substring(1, 7) : bgColor.value;
 	console.log(color)
@@ -408,10 +411,10 @@ function computeTextColor(bgColor) {
 	var g = parseInt(color.substring(2, 4), 16); // hexToG
 	var b = parseInt(color.substring(4, 6), 16); // hexToB
 	let final = (((r * 0.299) + (g * 0.587) + (b * 0.114)) > 186) ?
-	'black' : 'white';
+		'black' : 'white';
 	if (document.body.classList.contains(final)) return
 	else if (final == 'black' && document.body.classList.contains('white')) document.body.classList.remove('white')
 	else if (final == 'white' && document.body.classList.contains('black')) document.body.classList.remove('black')
 	else document.body.classList.add(final)
-	return 
-}
+	return
+} // 420 lines of code. trust me, this is a coincidence.
