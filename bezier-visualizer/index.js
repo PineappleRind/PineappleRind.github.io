@@ -71,11 +71,11 @@ function goldenAngle(number) {
 }
 
 function rainbow(number) {
-	return (`hsl(${number*20},100%,50%)`)
+	return (`hsl(${number * 20},100%,50%)`)
 }
 
 function grayscale(number) {
-	let newnum = `hsl(0,0%,${number/points.data.length*100}%)`
+	let newnum = `hsl(0,0%,${number / points.data.length * 100}%)`
 	console.log(newnum)
 	return newnum
 }
@@ -417,4 +417,4 @@ function computeTextColor(bgColor) {
 	else if (final == 'white' && document.body.classList.contains('black')) document.body.classList.remove('black')
 	else document.body.classList.add(final)
 	return
-} // 420 lines of code. trust me, this is a coincidence.
+}//420 lines of code? not a coincidence
