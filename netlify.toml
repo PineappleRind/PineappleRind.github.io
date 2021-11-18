@@ -1,6 +1,0 @@
-[[redirects]]
-  from = "/bezier-visualizer"
-  to = "https://quirky-beaver-9fe778.netlify.app"
-  status = 200
-  force = true
-  headers = {X-From = "Netlify"}
