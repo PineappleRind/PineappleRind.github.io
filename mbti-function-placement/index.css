@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,900&display=swap');
+
+* {
+    font-family: Source Code Pro, monospace;
+    color: white;
+margin:0;
+    box-sizing: border-box;
+}
+
+body {
+    background: radial-gradient(rgb(0, 3, 12), rgb(0, 1, 4));
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.custom-select {
+    position: relative;
+    font-family: Arial;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.137);
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.custom-select select {
+    display: none;
+    /*hide original SELECT element: */
+}
+
+
+/* Style the arrow inside the select element: */
+.select-selected:after {
+    position: absolute;
+    transition: 0.2s;
+    content: "";
+    top: 20px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: #fff transparent transparent transparent;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.select-selected.select-arrow-active:after {
+    border-color: transparent transparent #fff transparent;
+    top: 12px;
+}
+
+/* Style items container (options): */
+.select-items {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    background-color: rgba(255, 255, 255, 0.137);
+    border-radius: 10px;
+    padding: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    margin: 4px;
+    opacity: 1;
+    pointer-events: all;
+    transition: 0.2s;
+    height: 50vh;
+    overflow-y:scroll;
+    transform: translateY(0px);
+    backdrop-filter: blur(20px);
+}
+::-webkit-scrollbar {
+    border-radius: 50px;
+    height: 50%;
+    background: rgba(255, 255, 255, 0.137);
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* style the items (options), including the selected item: */
+.select-items div, .select-selected {
+    color: #ffffff;
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    border-radius: 10px;
+    margin: 5px;
+   
+}
+.select-items div{
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255,255,255,0.05)
+}
+
+
+/* Items on hover: */
+.select-items div:hover, .same-as-selected {
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+}
+@supports not (backdrop-filter: blur(10px)) {
+    .select-items {
+        background-color: rgba(50,50,50,0.7)
+    }
+}
+h2 {
+    font-style: italic;
+    font-weight: 400;
+}
+h1 {
+    text-align:center;
+    margin-top: 15px;
+}
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap:wrap;
+    width: 820px;
+}
+.type {
+    background: rgba(0, 50, 255, 0.9);
+    margin: 5px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 90%;
+    transition: 0.5s cubic-bezier(0,.51,.53,1.5);
+}
+.type small {
+    font-size: 50%;
+}
+.xxl {height: 120px;width:120px;background: rgba(0, 50, 255, 0.9);font-size:32px;}
+.xl {height: 110px;width:110px;background: rgba(0, 50, 255, 0.7);font-size:28px;}
+.l {height: 100px;width:100px;background: rgba(0, 50, 255, 0.55);font-size:26px;}
+.m {height:90px;width:90px;background: rgba(0, 50, 255, 0.4);font-size:23px;}
+.s {height: 84px;width:84px;background: rgba(0, 50, 255, 0.35);font-size:22px;}
+.xs {height:75px;width:75px;background: rgba(0, 50, 255, 0.3);font-size:19px;}
+.xxs {height:68px;width:68px;background: rgba(0, 50, 255, 0.22);font-size:18px;}
+.xxxs {height:60px;width:60px;background: rgba(0, 50, 255, 0.1)}
+    @media only screen and (max-width: 800px) {
+        .flex {
+            width: 100%;
+        }
+    }
+
+    .type-hidden {
+        transform:scale(0.8);
+        opacity:0;
+    }
