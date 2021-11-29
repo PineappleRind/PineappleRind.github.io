@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Drawings</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="inner">
+        <h1>Box Drawings</h1>
+        <p>Using the "Box drawings" Unicode block you can draw quite a few types of boxes! This website aims to help draw boxes using these characters.</p>
+        <p>If this following character is not a vertical line, Box Drawings is not compatible with your text encoder: │</p>
+        <br><hr style="opacity:0.5"><br>
+        <p>Enter text to put inside the box</p>
+        <input id="input"><br><br>
+
+        <h3>Select patterns</h3>
+        <p>Top edge</p>
+        <select id="topedge">
+            <option value="─">─</option>
+            <option value="═">═</option>
+            <option value="┄">┄</option>
+        </select><vr></vr>
+        <p>Bottom edge</p>
+        <select id="bottomedge"><vr></vr>
+            <option value="─">─</option>
+            <option value="═">═</option>
+            <option value="┄">┄</option>
+        </select><vr></vr>
+        <p>Right edge</p>
+        <select id="rightedge">
+            <option value="│">│</option>
+            <option value="║">║</option>
+            <option value="┆">┆</option>
+        </select><vr></vr>
+        <p>Left edge</p>
+        <select id="leftedge">
+            <option value="│">│</option>
+            <option value="║">║</option>
+            <option value="┆">┆</option>
+        </select><br><br>
+
+
+        <h3>Select corners</h3>
+        <p>Top left</p>
+        <select id="topleftCorner">
+            <option value="┌">┌</option>
+            <option value="╔">╔</option>
+            <option value="╒">╒</option>
+            <option value="╓">╓</option>
+            <option value="╭">╭</option>
+        </select><vr></vr>
+        <p>Bottom right</p>
+        <select id="bottomrightCorner"><vr></vr>
+            <option value="┘">┘</option>
+            <option value="╝">╝</option>
+            <option value="╛">╛</option>
+            <option value="╜">╜</option>
+            <option value="╯">╯</option>
+        </select><vr></vr>
+        <p>Bottom left</p>
+        <select id="bottomleftCorner">
+            <option value="└">└</option>
+            <option value="╚">╚</option>
+            <option value="╘">╘</option>
+            <option value="╙">╙</option>
+            <option value="╰">╰</option>
+        </select><vr></vr>
+        <p>Top right</p>
+        <select id="toprightCorner">
+            <option value="┐">┐</option>
+            <option value="╗">╗</option>
+            <option value="╕">╕</option>
+            <option value="╖">╖</option>
+            <option value="╮">╮</option>
+        </select><br><br>
+        <br>
+        <h1>Output</h1>
+        <textarea id="output" style="resize:none;width:500px;height:200px;" disabled></textarea>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
