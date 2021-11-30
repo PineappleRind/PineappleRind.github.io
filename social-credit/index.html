@@ -35,26 +35,39 @@
         }
         .container {
             transition: 0.5s;
+            max-width: 90vw;
+            min-width: 50vw;
         }
         .transitioning {
-            transform:rotateY(180deg);
             opacity:0;
         }
         .chinese-emoji {
             height: 300px;
             width:300px;
             position:fixed;
+            opacity: 0.7;
+            z-index:3;
             animation: bigger 2s infinite;
+            pointer-events: none;
         }
         .toast {
             position:fixed;
             bottom: 0;
             left: 0;
+            top:0;
+            z-index:2;
+            backdrop-filter:blur(4px);
             right: 0;
-            background: red;
+            background: rgba(255, 0, 0, 0.308);
             padding: 40px 50px;
             border: 1px solid yellow;
             font-size: 60px;
+        }
+        .passed {
+            background: url(https://acegif.com/wp-content/gifs/chinese-flag-1.gif);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat !important;
         }
         @keyframes bigger {
             50% {transform:scale(0.5)}
@@ -64,7 +77,7 @@
 <body>
     <div class="container">
         <h1>social credit quiz</h1>
-        <p style="width:300px">we have found incriminating evidence of your disloyalty to the CCP, please take this quiz to verify your loyalty. your social credit score will be adjusted as you answer</p>
+        <p style="width:300px">we have discovered incriminating evidence of your alleged hatred toward the CCP. please take this quiz to verify your loyalty. your social credit score will be adjusted as you answer.</p>
         <button onclick="beginTest()">ok</button>
         <button onclick="beginTest()">ok</button>
     </div>
