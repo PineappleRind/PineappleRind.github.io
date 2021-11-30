@@ -15,6 +15,7 @@
             align-items: center;
             justify-content: center;
             flex-direction: column;
+            perspective:10000px;
         }
         button {
             background-color: 0;
@@ -32,16 +33,42 @@
         button:hover {
             transform:Scale(1.4)
         }
+        .container {
+            transition: 0.5s;
+        }
+        .transitioning {
+            transform:rotateY(180deg);
+            opacity:0;
+        }
+        .chinese-emoji {
+            height: 300px;
+            width:300px;
+            position:fixed;
+            animation: bigger 2s infinite;
+        }
+        .toast {
+            position:fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: red;
+            padding: 40px 50px;
+            border: 1px solid yellow;
+            font-size: 60px;
+        }
+        @keyframes bigger {
+            50% {transform:scale(0.5)}
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>social credit quiz</h1>
-        <p style="width:300px">we have found incriminating evidence of your disloyalty to the CCP, please take the social credit quiz to verify your loyalty</p>
-        <button>ok</button>
-        <button>ok</button>
+        <p style="width:300px">we have found incriminating evidence of your disloyalty to the CCP, please take this quiz to verify your loyalty. your social credit score will be adjusted as you answer</p>
+        <button onclick="beginTest()">ok</button>
+        <button onclick="beginTest()">ok</button>
     </div>
-    <script>
+    <script src="index.js">
     </script>
 </body>
 </html>
