@@ -7,7 +7,7 @@ var questions = [
                 score: true
             }, {
                 name: "something",
-                score: false
+                score: "abysmal"
             }
         ]
     }, {
@@ -15,26 +15,29 @@ var questions = [
         answers: [
             {
                 name: "an independent country",
-                score: false
+                score: "abysmal"
             }, {
                 name: "what?",
-                score: true
+                score: false
             }, {
                 name: "a territory of china",
                 score: true
             }
         ]
     }, {
-        name: "when can you play video games?",
+        name: "how long did you play video games last week?",
         answers: [
             {
-                name: "anytime you want",
+                name: "5 hours a day",
                 score: false
             }, {
-                name: "only 5 hours a day",
+                name: "3 hours a day",
                 score: false
             }, {
-                name: "only 1 hour a day",
+                name: "2 hours a day",
+                score: true
+            }, {
+                name: "1 hour a day",
                 score: true
             }
         ]
@@ -53,7 +56,7 @@ var questions = [
             }
         ]
     }, {
-        name: "which company phone do you own?",
+        name: "which phone should you buy?",
         answers: [
             {
                 name: "apple",
@@ -67,7 +70,7 @@ var questions = [
             }
         ]
     }, {
-        name: "what iss the best number of kids to have?",
+        name: "what is the best number of kids to have?",
         answers: [
             {
                 name: "1",
@@ -90,9 +93,10 @@ let quesiter = 0, wrongiter = 0, container = document.querySelector('.container'
         <h1>you have failed the test.</h1><p>your social credit score is ${socCred}. Xi Jinping will personally order you to be banned from China. you are not loyal enough to our glorious nation.`
     } else{
         createChinaEmoji()
-        
+        createChinaEmoji()
+        createChinaEmoji()
         document.body.classList.add('passed')
-        return `<h1>you have been proven to be a loyal citizen.</h1><p>your social credit score is ${socCred}. glory to the ccp!`
+        return `<h1>you have been proven to be a loyal citizen.</h1><p>your social credit score is ${socCred}. glory to the ccp!</p>`
     }
     
 }
@@ -121,10 +125,11 @@ function switchSlides(question) {
 function getQuestionHTML(ind) {
     console.log(ind)
     let questionHTML = `
-    <small>question ${quesiter}</small><br><h1>${questions[ind].name}</h1>`
+    <small>question ${quesiter}</small><br><h1>${questions[ind].name}</h1><div class="buttons">`
     for (let i = 0; i < questions[ind].answers.length; i++) {
         questionHTML += `<button onclick="answer(${questions[ind].answers[i].score},${ind})">${questions[ind].answers[i].name}</button>`
     }
+    questionHTML += `</div>`
     return questionHTML
 }
 function createChinaEmoji() {
@@ -152,10 +157,16 @@ function answer(positive, i) {
     questions.shift()
     if (positive === true) {
         createChinaEmoji()
-        let incnum = (10) + Math.round(Math.random() * 50)
+        let incnum = (100) + Math.round(Math.random() * 50)
         socCred += incnum
         msg(incnum, positive)
-    } else {
+    } else if (positive === false) {
+        wrongiter++
+        createPopEmoji(); 
+        let decnum = (100) + Math.round(Math.random() * 50)
+        socCred += decnum - (decnum * 2)
+        msg(decnum - (decnum * 2), positive)
+    } else if (positive === "abysmal") {
         wrongiter++
         createPopEmoji(); createPopEmoji(); createPopEmoji()
         let decnum = (1000) + Math.round(Math.random() * 50)
@@ -166,9 +177,8 @@ function answer(positive, i) {
 function msg(mesg, pos) {
     let toast = document.createElement('DIV')
     toast.classList.add('toast')
-    if (Math.abs(mesg) == mesg) toast.innerHTML = `+${mesg} SOCIAL CREDIT <br><button onclick="switchSlides(0);purge(${pos})"">NEXT</button>`
-    else toast.innerHTML = `${mesg} SOCIAL CREDIT <br><button onclick="switchSlides(0);purge(${pos})"">NEXT</button>`
-
+    if (pos === true) toast.innerHTML = `+${mesg} SOCIAL CREDIT <br><button onclick="switchSlides(0);purge(${pos})"">NEXT</button>`
+    else if (pos === false || pos === "abysmal") toast.innerHTML = `${mesg} SOCIAL CREDIT <br><button onclick="switchSlides(0);purge(${pos})"">NEXT</button>`
     document.body.appendChild(toast)
 }
 function purge(pos) {
