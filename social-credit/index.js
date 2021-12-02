@@ -1,13 +1,13 @@
 var questions = [
     {
-        name: "what happened on May 20, 1989 in Tianenmen Square?",
+        name: "what happened on May 20, 1989 in Tiananmen Square?",
         answers: [
             {
                 name: "nothing",
                 score: true
             }, {
                 name: "something",
-                score: "abysmal"
+                score: false
             }
         ]
     }, {
@@ -15,7 +15,7 @@ var questions = [
         answers: [
             {
                 name: "an independent country",
-                score: "abysmal"
+                score: false
             }, {
                 name: "what?",
                 score: false
@@ -166,19 +166,13 @@ function answer(positive, i) {
         let decnum = (100) + Math.round(Math.random() * 50)
         socCred += decnum - (decnum * 2)
         msg(decnum - (decnum * 2), positive)
-    } else if (positive === "abysmal") {
-        wrongiter++
-        createPopEmoji(); createPopEmoji(); createPopEmoji()
-        let decnum = (1000) + Math.round(Math.random() * 50)
-        socCred += decnum - (decnum * 2)
-        msg(decnum - (decnum * 2), positive)
-    }
+    } 
 }
 function msg(mesg, pos) {
     let toast = document.createElement('DIV')
     toast.classList.add('toast')
     if (pos === true) toast.innerHTML = `+${mesg} SOCIAL CREDIT <br><button onclick="switchSlides(0);purge(${pos})"">NEXT</button>`
-    else if (pos === false || pos === "abysmal") toast.innerHTML = `${mesg} SOCIAL CREDIT <br><button onclick="switchSlides(0);purge(${pos})"">NEXT</button>`
+    else if (pos === false) toast.innerHTML = `${mesg} SOCIAL CREDIT <br><button onclick="switchSlides(0);purge(${pos})"">NEXT</button>`
     document.body.appendChild(toast)
 }
 function purge(pos) {
