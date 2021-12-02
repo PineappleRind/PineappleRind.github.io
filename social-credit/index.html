@@ -37,6 +37,7 @@
             transition: 0.5s;
             max-width: 90vw;
             min-width: 50vw;
+            display:flex;flex-direction:column;align-items:center;justify-content:center;
         }
         .transitioning {
             opacity:0;
@@ -78,8 +79,10 @@
     <div class="container">
         <h1>social credit quiz</h1>
         <p style="width:300px">we have discovered incriminating evidence of your alleged hatred toward the CCP. please take this quiz to verify your loyalty. your social credit score will be adjusted as you answer.</p>
-        <button onclick="beginTest()">ok</button>
-        <button onclick="beginTest()">ok</button>
+        <div class="buttons">
+            <button onclick="beginTest()">ok</button>
+            <button onclick="beginTest()">ok</button>
+        </div>
     </div>
     <script src="index.js">
     </script>
