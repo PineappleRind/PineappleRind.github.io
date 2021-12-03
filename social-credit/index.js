@@ -86,12 +86,12 @@ var questions = [
     }
 ]
 
-let quesiter = 0, wrongiter = 0, container = document.querySelector('.container'), socCred = 0, endScreen = function () {
-    if (wrongiter > 0) {
+let quesiter = 0,  container = document.querySelector('.container'), socCred = 0, endScreen = function () {
+    if (socCred < 300) {
         createPopEmoji()
         return `
         <h1>you have failed the test.</h1><p>your social credit score is ${socCred}. Xi Jinping will personally order you to be banned from China. you are not loyal enough to our glorious nation.`
-    } else{
+    } else {
         createChinaEmoji()
         createChinaEmoji()
         createChinaEmoji()
@@ -161,12 +161,12 @@ function answer(positive, i) {
         socCred += incnum
         msg(incnum, positive)
     } else if (positive === false) {
-        wrongiter++
         createPopEmoji(); 
         let decnum = (100) + Math.round(Math.random() * 50)
         socCred += decnum - (decnum * 2)
         msg(decnum - (decnum * 2), positive)
     } 
+    document.querySelector('.counter').innerHTML = `social credit: ${socCred}`
 }
 function msg(mesg, pos) {
     let toast = document.createElement('DIV')
@@ -177,7 +177,7 @@ function msg(mesg, pos) {
 }
 function purge(pos) {
     if (pos === false) {
-        for (let i = 0; i < document.getElementsByClassName('chinese-emoji').length + 2; i++) {
+        for (let i = 0; i < document.getElementsByClassName('chinese-emoji').length ; i++) {
             document.getElementsByClassName('chinese-emoji')[0].remove()
         }
     } else {
