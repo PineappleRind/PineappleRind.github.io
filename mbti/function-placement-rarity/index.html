@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="language" content="English">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mbti types sorted by function placement</title>
+    <meta name="title" content="mbti types sorted by function placement">
+    <link rel="stylesheet" href="../index.css">
+</head>
+
+<body>
+    <div class="heading">
+        <h1>what % of the population has </h1>
+        <div class="custom-select" style="width:200px;">
+            <select id="place">
+                <option>Select...</option>
+                <option selected value="0">1st (dominant)</option>
+                <option value="1">2nd (auxiliary)</option>
+                <option value="2">3rd (tertiary)</option>
+                <option value="3">4th (inferior)</option>
+            </select>
+        </div>
+        <div class="custom-select" style="width:200px;">
+            <select id="func">
+                <option>Select...</option>
+                <option selected value="0">se</option>
+                <option value="1">si</option>
+                <option value="2">ne</option>
+                <option value="3">ni</option>
+                <option value="4">te</option>
+                <option value="5">ti</option>
+                <option value="6">fe</option>
+                <option value="7">fi</option>
+            </select>
+        </div>
+        <h1> ?</h1>
+    </div>
+    <div class="flex">
+        <table>
+            <tbody>
+                <tr>
+                    <th>Type</th>
+                    <th>% of population</th>
+                </tr>
+                <tr>
+                    <td>ESFP</td>
+                    <td>8.5</td>
+                </tr>
+                <tr>
+                    <td>ESTP</td>
+                    <td>4.3</td>
+                </tr>
+                <tr>
+                    <td><b>Total</b></td>
+                    <td><b>12.8</b></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <footer style="bottom:0;position: fixed;margin:5px;opacity:0.5;font-size:12px;"><a
+            href="https://www.careerplanner.com/MB2/TypeInPopulation.cfm">source</a></footer>
+    <script src="../dropdown.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
