@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+<style>
+*{margin:0;color:white;font-family: Inter, system-ui,sans-serif;}
+body {
+	display:flex;flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    height:100vh;
+    background: #000020;
+}
+input {
+border:0;
+	border-bottom: 2px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.1);
+    padding: 5px;
+    border-radius:3px;
+    margin:10px;
+    margin-bottom:11px;
+    transition: 0.2s;
+    color:white;
+    cursor: pointer;
+}
+input:focus {
+	border-bottom: 2px solid rgba(0,0,255,1);
+    background: rgba(0,0,255,0.7);
+    outline:0;
+    transform:scale(1.1);
+}
+textarea {
+padding: 10px;
+border-radius:3px;
+transition: 0.2s;
+background: rgba(255,255,255,0.2);
+border:0;
+}
+h1 {font-weight:200;}
+button {margin:10px;padding: 10px 20px;border-radius: 16px;background: rgba(255,255,255,0.2);border: 2px solid transparent;transition: 0.2s;}
+button:hover {background: rgba(0,0,255,0.6);border: 2px solid rgba(0,0,255,1);transform:translateY(-2px);cursor:pointer;}
+</style>
+</head>
+<body>
+<h1>JuiceBug Text Maker</h1>
+<p>Type in anything below to write it in JuiceBugs. It will format correctly on Discord</p>
+<input placeholder="type">
+<textarea placeholder="output" disabled id="output"></textarea>
+<button id="copy">Copy to clipboard</button>
+<script>
+var letters = {
+    e: [`:JuiceBug::JuiceBug::JuiceBug::JuiceBug:       `,
+        `:JuiceBug:                         `,
+        `:JuiceBug: :JuiceBug::JuiceBug::JuiceBug:      `,
+        `:JuiceBug:                          `,
+        `:JuiceBug:                          `,
+        `:JuiceBug::JuiceBug::JuiceBug::JuiceBug:        `
+    ],
+    s: [`:JuiceBug::JuiceBug::JuiceBug::JuiceBug:        `,
+        `:JuiceBug:                          `,
+        `:JuiceBug::JuiceBug::JuiceBug::JuiceBug:        `,
+        `                  :JuiceBug:        `,
+        `                  :JuiceBug:        `,
+        `:JuiceBug::JuiceBug::JuiceBug::JuiceBug:        `
+    ],
+    t: [`:JuiceBug::JuiceBug::JuiceBug:        `,
+        `      :JuiceBug:              `,
+        `      :JuiceBug:              `,
+        `      :JuiceBug:              `,
+        `      :JuiceBug:              `,
+        `      :JuiceBug:              `
+    ],
+
+    p: [`:JuiceBug::JuiceBug::JuiceBug::JuiceBug:       `,
+        `:JuiceBug:             :JuiceBug:      `,
+        `:JuiceBug::JuiceBug::JuiceBug::JuiceBug:       `,
+        `:JuiceBug:                         `,
+        `:JuiceBug:                         `,
+        `:JuiceBug:                         `,
+        `:JuiceBug:                         `
+    ],
+
+    i: [`:JuiceBug::JuiceBug::JuiceBug:      `,
+        `      :JuiceBug:            `,
+        `      :JuiceBug:            `,
+        `      :JuiceBug:            `,
+        `      :JuiceBug:            `,
+        `:JuiceBug::JuiceBug::JuiceBug:      `
+    ],
+
+    n: [`:JuiceBug:             :JuiceBug:      `,
+        `:JuiceBug::JuiceBug:      :JuiceBug:       `,
+        `:JuiceBug:      :JuiceBug::JuiceBug:       `,
+        `:JuiceBug:      :JuiceBug::JuiceBug:       `,
+        `:JuiceBug:            :JuiceBug:       `,
+        `:JuiceBug:            :JuiceBug:       `
+    ],
+
+    f: [`:JuiceBug::JuiceBug::JuiceBug::JuiceBug:     `,
+        `:JuiceBug:                        `,
+        `:JuiceBug::JuiceBug::JuiceBug::JuiceBug:     `,
+        `:JuiceBug:                        `,
+        `:JuiceBug:                        `,
+        `:JuiceBug:                        `
+    ],
+
+    j: [`:JuiceBug::JuiceBug::JuiceBug::JuiceBug::JuiceBug:     `,
+        `            :JuiceBug:                 `,
+        `            :JuiceBug:                 `,
+        `            :JuiceBug:                 `,
+        `            :JuiceBug:                 `,
+        `:JuiceBug::JuiceBug:                        `
+    ]
+}
+let output = document.getElementById('output')
+oninput = () => {
+    output.innerHTML = getThing(document.querySelector('input').value.toLowerCase())
+}
+
+function getThing(str) {
+    let res = ``
+    for (let j = 0; j < 6; j++) {
+        for (let i = 0; i < str.length; i++) {
+            res += letters[
+                str[i]
+            ][j]
+        }
+        res += `
+`
+    }
+    return res
+}
+
+document.getElementById('copy').onclick = () => {
+    navigator.clipboard.writeText(output.value).then(function() {
+        alert('Copied')
+    }, function() {
+        alert('Could not copy')
+    });
+}
+</script>
+</body>
+</html>
