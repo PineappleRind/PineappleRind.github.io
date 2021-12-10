@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta name="title" content="Juice Bug Text Maker">
-<meta name="description" content="only I, S, F, J, E, N, T, and P work">
+<meta name="description" content="Working on adding more letters =)">
 <title>Juice Bug Text Maker</title>
 <style>
 *{margin:0;color:white;font-family: Inter, system-ui,sans-serif;}
@@ -46,7 +46,7 @@ button:hover {background: rgba(0,0,255,0.6);border: 2px solid rgba(0,0,255,1);tr
 <body>
 <h1>JuiceBug Text Maker</h1>
 <p>Type in anything* below to write it in JuiceBugs. It will format correctly on Discord</p>
-<small> *only I, S, F, J, E, N, T, and P work</small>
+	<small> *only some letters work, working on adding more </small>
 <input placeholder="type">
 <textarea placeholder="output" disabled id="output"></textarea>
 <button id="copy">Copy to clipboard</button>
@@ -113,7 +113,15 @@ var letters = {
         `            :JuiceBug:                 `,
         `            :JuiceBug:                 `,
         `:JuiceBug::JuiceBug:                        `
-    ]
+    ],
+	
+    
+     h: [`:JuiceBug:            :JuiceBug:        `,
+	`:JuiceBug:            :JuiceBug:        `,
+	 `:JuiceBug::JuiceBug::JuiceBug::JuiceBug:        `,
+	`:JuiceBug:            :JuiceBug:        `,
+	`:JuiceBug:            :JuiceBug:        `,
+	`:JuiceBug:            :JuiceBug:        `,]
 }
 let output = document.getElementById('output')
 oninput = () => {
