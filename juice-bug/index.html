@@ -37,19 +37,24 @@ border-radius:3px;
 transition: 0.2s;
 background: rgba(255,255,255,0.2);
 border:0;
-}
+}hr {margin:10px;opacity:0.5;width:50vw;background:rgba(255,255,255,0.4);height:1px;border:0;}
 h1 {font-weight:200;}
 button {margin:10px;padding: 10px 20px;border-radius: 16px;background: rgba(255,255,255,0.2);border: 2px solid transparent;transition: 0.2s;}
+button:after {content: 'Copy to clipboard'}
+button.copied:after {content:'Copied!';}
+button.copied-not:after {content:'Could not copy';}
 button:hover {background: rgba(0,0,255,0.6);border: 2px solid rgba(0,0,255,1);transform:translateY(-2px);cursor:pointer;}
 </style>
 </head>
 <body>
 <h1>JuiceBug Text Maker</h1>
-<p>Type in anything* below to write it in JuiceBugs. It will format correctly on Discord</p>
+<p>Type in anything* below to write it in JuiceBugs (or any other emoji name you specify). It will format correctly on Discord</p>
 	<small> *only some letters work, working on adding more </small>
-<input placeholder="type">
+    <hr>
+<div><label>text to write in emojis</label><input id="text" placeholder="type"><br>
+<label>emoji name</label><input id="emoji" value="JuiceBug" placeholder="emoji name"></div>
 <textarea placeholder="output" disabled id="output"></textarea>
-<button id="copy">Copy to clipboard</button>
+<button id="copy"></button>
 <script>
 var letters = {
     e: [`:JuiceBug::JuiceBug::JuiceBug::JuiceBug:       `,
@@ -132,7 +137,7 @@ var letters = {
 }
 let output = document.getElementById('output')
 oninput = () => {
-    output.innerHTML = getThing(document.querySelector('input').value.toLowerCase())
+    output.innerHTML = getThing(document.querySelector('#text').value.toLowerCase())
 }
 
 function getThing(str) {
@@ -146,20 +151,19 @@ function getThing(str) {
         res += `
 `
     }
-    return res
+    let juiceBugs = /:JuiceBug:/g
+    return res.replace(juiceBugs, ':'+document.querySelector('#emoji').value+':')
 }
-
-document.getElementById('copy').onclick = () => {
+let copy = document.getElementById('copy')
+copy.onclick = () => {
     navigator.clipboard.writeText(output.value).then(function() {
-        alert('Copied')
+        copy.classList.add('copied')
+        setTimeout(function(){copy.classList.remove('copied')},2000)
     }, function() {
-        alert('Could not copy')
+        copy.classList.add('copied-not')
+        setTimeout(function(){copy.classList.remove('copied-not')},2000)
     });
 }
 </script>
 </body>
 </html>
-
-
-
-
