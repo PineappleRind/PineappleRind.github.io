@@ -1,12 +1,12 @@
 * {
-    font-family: Public Sans;
+    font-family: Public Sans, Inter, system-ui, sans-serif;
     margin: 0;
     box-sizing: border-box;
     color: white;
 }
 
 body {
-    background-image: url('https://images.unsplash.com/photo-1579548122080-c35fd6820ecb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80');
+    background-image: url(bg.jpg);
     background-size: cover;
     background-color: #000020;
     background-position: center;
@@ -17,19 +17,22 @@ body {
     justify-content: center;
     height: 100vh;
     width: 100vw;
+
 }
 
 .glass {
     padding: 30px;
     border-radius: 40px;
-    background: rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(30px);
+    background: rgba(0, 0, 0, 0.413);
+    backdrop-filter: blur(50px);
+    -webkit-backdrop-filter:blur(50px);
     border: 1px solid rgba(255, 255, 255, 0.3);
 }
-
-pre {
-    max-height: 300px;
-    overflow: scroll;
+h1 {font-size:40px;}
+textarea {
+    height:200px;
+    width:400px;
+    overflow: auto;
     background: rgba(255, 255, 255, 0.1);
     color: white;
     border-radius: 10px;
@@ -90,3 +93,60 @@ input[type=range] {
         transform: rotate(360deg);
     }
 }
+
+input[type="range"]{
+    position: relative;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    display: inline;
+
+    margin:10px;
+    height: 8px;
+    background-color: #ffffff54;
+    border-radius: 8px;
+    outline: none;
+}
+input[type="range"]::-webkit-slider-runnable-track{
+    -webkit-appearance: none;
+    height: 8px;
+}
+input[type="range"]::-moz-track{
+    -moz-appearance: none;
+    height: 8px;
+}
+input[type="range"]::-ms-track{
+    appearance: none;
+    height: 8px;
+}
+input[type="range"]::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    background-color: #ffffff9f;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: -6px;
+    border: none;
+}
+input[type="range"]::-moz-range-thumb{
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    background-color: #ffffff9f;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: -6px;
+    border: none;
+}
+input[type="range"]::-ms-thumb{
+    appearance: none;
+    height: 20px;
+    width: 20px;
+    background-color: #ffffff9f;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: -6px;
+    border: none;
+}
+
+select {color:black;margin-right:5px}

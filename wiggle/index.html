@@ -15,15 +15,23 @@
         <div class="loading"></div>
         <h1>wiggle maker</h1>
         <input id="input" placeholder="input"><br>
-        <input type="range" min="10" max="50" value="10" id="height"><label>Wiggle height (10)</label><br>
-        <input type="range" min="0" max="40" value="8" id="width"><label>Wiggle width (8)</label><br>
+        <div style="display:flex"><input type="range" min="10" max="160" value="30" id="height">
+            <label>Wiggle height (10)</label>
+        </div> <br>
+        <div style="display:flex"><input type="range" min="0" max="480" value="15" id="width"><label>Wiggle width
+                (8)</label></div><br>
         <select id="ease">
-            <option value="linear">Linear</option>
-            <option value="quadratic">Quadratic</option>
-            <option value="Quart"></option>
-            <option value="exponential">Exponential</option>
-        </select>
-        <pre class="output">output</pre>
+            <option value="linear">Pointy (linear)</option>
+            <option value="sine">Mild (Sine)</option>
+            <option selected value="quadratic">Normal (Quadratic)</option>
+            <option value="cubic">Chonky (Cubic)</option>
+            <option value="exponential">Very chonky (Exponential)</option>
+            <option value="quartOut">Bump (Ease out)</option>
+            <option value="quartIn">Mountain (Ease in)</option>
+        </select><label>Curve type (ease function)</label><br>
+        
+            <textarea class="output" placeholder="type in the input above" resize="both"></textarea>
+
         <small></small>
     </div>
 
