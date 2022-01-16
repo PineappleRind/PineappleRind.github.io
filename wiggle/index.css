@@ -1,0 +1,92 @@
+* {
+    font-family: Public Sans;
+    margin: 0;
+    box-sizing: border-box;
+    color: white;
+}
+
+body {
+    background-image: url('https://images.unsplash.com/photo-1579548122080-c35fd6820ecb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80');
+    background-size: cover;
+    background-color: #000020;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.glass {
+    padding: 30px;
+    border-radius: 40px;
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(30px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+pre {
+    max-height: 300px;
+    overflow: scroll;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 10px;
+    font-family: monospace;
+    cursor: pointer;
+    margin: 10px;
+}
+
+#input {
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+#input:focus {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    outline: 0;
+}
+
+input {
+    margin: 10px
+}
+
+input[type=range] {
+    margin: 0 10px
+}
+
+.loading {
+    border: 3px solid #94000000;
+    /* Light grey */
+    border-top: 3px solid #ffffff;
+    /* Blue */
+    border-radius: 50%;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    transition: 0.3s;
+    opacity: 0;
+    width: 20px;
+    height: 20px;
+    animation: spin 0.5s cubic-bezier(.74, .33, .36, .72) infinite;
+}
+
+.loading.showing {
+    opacity: 1
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
