@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Wiggles!</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Make text that seemes to be wiggling">
+    <meta name="keywords" content="Wiggle,Text wiggle, Wiggle text">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div class="glass" style="position:relative">
+        <div class="loading"></div>
+        <h1>wiggle maker</h1>
+        <input id="input" placeholder="input"><br>
+        <input type="range" min="10" max="50" value="10" id="height"><label>Wiggle height (10)</label><br>
+        <input type="range" min="0" max="40" value="8" id="width"><label>Wiggle width (8)</label><br>
+        <select id="ease">
+            <option value="linear">Linear</option>
+            <option value="quadratic">Quadratic</option>
+            <option value="Quart"></option>
+            <option value="exponential">Exponential</option>
+        </select>
+        <pre class="output">output</pre>
+        <small></small>
+    </div>
+
+    </div>
+    <script src="index.js"></script>
+
+</body>
+
+</html>
