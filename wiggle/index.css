@@ -31,14 +31,25 @@ body {
 .glass {
     padding: 30px;
     border-radius: 40px;
-    background: rgba(0, 0, 0, 0.213);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    max-width: 700px;
+    max-height: 95vh;
+    background: rgba(0, 0, 0, 0.513);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
     border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 h1 {
     font-size: 40px;
+}
+
+hr {
+    border: 0;
+    background: rgba(255, 255, 255, 0.2);
+    height: 1px;
+    width: 100%;
+    display: block;
+    margin: 10px 3px;
 }
 
 textarea {
@@ -169,4 +180,44 @@ input[type="range"]::-ms-thumb {
 select {
     color: black;
     margin-right: 5px
+}
+
+.toastcont {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 10px;
+}
+
+.toast {
+    padding: 12px 29px;
+    border-radius: 10px;
+    margin: 4px;
+    display: flex;
+    flex-direction: column;
+    background: rgba(0, 255, 85, 0.3);
+    border: 1px solid rgba(0, 255, 85, 0.735);
+    color: white;
+    backdrop-filter: blur(10px) opacity(0);
+    -webkit-backdrop-filter: blur(10px) opacity(0);
+    transform: translateX(calc(100% + 20px));
+    transition: 1s;
+    opacity: 0;
+}
+
+.toast p {
+    font-size: 15px;
+    opacity: 0.7;
+}
+
+.toast b {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.toast.showing {
+    opacity: 1;
+    backdrop-filter: blur(10px) opacity(1);
+    -webkit-backdrop-filter: blur(10px) opacity(1);
+    transform: translateX(0%)
 }
