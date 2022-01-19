@@ -4,7 +4,7 @@
 <head>
     <title>Wiggles!</title>
     <meta charset="UTF-8">
-    <meta name="description" content="Make text that seems to be wiggling">
+    <meta name="description" content="Make text that seemes to be wiggling">
     <meta name="keywords" content="Wiggle,Text wiggle, Wiggle text">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
@@ -13,12 +13,15 @@
 <body>
     <div class="glass" style="position:relative">
         <div class="loading"></div>
-        <h1>wiggle maker</h1>
+        <h1>text wiggle maker</h1>
+        <p>the best text wiggle maker that has been created at any time in any place</p>
+        <p>yes, I am aware you can resize the output textarea out of bounds of this box</p>
+        </ul><br>
         <input id="input" placeholder="input"><br>
-        <div style="display:flex"><input type="range" min="10" max="60" value="30" id="height">
+        <div style="display:flex"><input type="range" min="5" max="60" value="30" id="height">
             <label>Wiggle height (10)</label>
         </div> <br>
-        <div style="display:flex"><input type="range" min="0" max="70" value="15" id="width"><label>Wiggle width
+        <div style="display:flex"><input type="range" min="2" max="70" value="15" id="width"><label>Wiggle width
                 (8)</label></div><br>
         <select id="ease">
             <option value="linear">Pointy (linear)</option>
@@ -29,14 +32,14 @@
             <option value="quartOut">Bump (Ease out)</option>
             <option value="quartIn">Mountain (Ease in)</option>
         </select><label>Curve type (ease function)</label><br>
+        <hr>
+        <small>0 characters</small><br>
+        <textarea class="output" disabled placeholder="type in the field above" resize="both"></textarea>
 
-        <textarea disabled style="resize: both; cursor: text" class="output" placeholder="type in the input above" resize="both"></textarea>
 
-        <small></small>
     </div>
     <div class="bg"></div>
-
-    </div>
+    <div class="toastcont"></div>
     <script src="index.js"></script>
 
 </body>
