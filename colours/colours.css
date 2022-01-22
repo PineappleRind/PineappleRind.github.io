@@ -1,0 +1,128 @@
+* {
+    margin: 0;
+    color: white;
+    font-family: Public Sans
+}
+
+.colourscont {
+    height: 100vh;
+    width: 100vw;
+    background-color: #111120;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: 2s;
+    top: 0;
+}
+
+body {
+    height: 1000px;
+    overflow: scroll;
+    background-color: #111120;
+}
+
+.bg {
+    background: conic-gradient(rgba(255, 0, 0, 0.3), rgba(255, 125, 0, 0.3), rgba(125, 255, 0, 0.3), rgba(0, 255, 0, 0.3), rgba(0, 255, 125, 0.3), rgba(0, 125, 255, 0.3), rgba(0, 0, 255, 0.3), rgba(125, 0, 255, 0.3), rgba(255, 0, 255, 0.3), rgba(255, 0, 125, 0.3), rgba(255, 0, 0, 0.3));
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    clip-path: polygon(0% 0%, 100% 0, 100% 96%, 66% 100%, 32% 96%, 32% 96%, 0% 99%, 0% 99%);
+}
+
+.colourscont h2 {
+    transition: 2s;
+    transform: translateY(10px);
+    opacity: 0;
+}
+
+.colourscont.showing-lol h1,
+.colourscont.showing-lol h2 {
+    opacity: 1;
+    transform: translateY(0px);
+}
+
+.colourscont.showing-lol h1 {
+    text-shadow: -5px 0 10px red, 5px 0 10px blue, 0px -5px 10px lime, 0px 5px 10px yellow;
+}
+
+.colourscont h1 {
+    font-size: calc(60px + 4vw);
+    text-shadow: -0px 0 0px red, 0px 0 0px blue, 0px -0px 0px lime, 0px 0px 0px yellow;
+    font-family: Inter, system-ui;
+    font-weight: 900;
+    transform: translateY(10px);
+    opacity: 0;
+    transition: 1s;
+    width: fit-content;
+    z-index: 3;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+h2 {
+    font-weight: 400;
+    opacity: 0.7
+}
+
+section {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 70px 50px;
+    background-color: #111120;
+    z-index: 3;
+    clip-path: polygon(0% 0%, 100% 0, 100% 96%, 66% 100%, 32% 96%, 32% 96%, 0% 99%, 0% 99%);
+}
+
+.cards {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 90vw;
+}
+
+.card {
+    padding: 20px;
+    width: 300px;
+    height: 100px;
+    margin: 10px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.07);
+    transition: 0.2s;
+}
+
+.card:hover {
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.13);
+    transform: translateY(-2px);
+}
+
+.card img {
+    max-height: 100px;
+    max-width: 200px;
+    overflow: visible;
+}
+
+@media only screen and (max-width:1000px) {
+    .cards {
+        flex-wrap: wrap;
+    }
+}
+
+@media only screen and (max-width:800px) {
+    .cards {
+        flex-direction: column
+    }
+}
