@@ -14,12 +14,15 @@ function updateStats(input) {
 	$('sentences').innerHTML = input.sentences
 	$('letterswspaces').innerHTML = input.lettersWithoutSpaces
 	$('commonletters').innerHTML = ''
+	let amtToFixed = 1
+	if (input.letters > 1000) amtToFixed = 3
+	else if (input.letters > 300) amtToFixed = 2
 
 	for (let i = 0; i < 8; i++) {
 		let letter = Object.keys(input.mostCommonLetters)[i]
 		let letterAmt = input.mostCommonLetters[Object.keys(input.mostCommonLetters)[i]]
 		if (!letter) continue
-		$('commonletters').innerHTML += `<b>${letter}</b> ${letterAmt} (${Math.round((letterAmt / input.letters * 100) * 100) / 100}%)<br>`
+		$('commonletters').innerHTML += `<b>${letter}</b> ${letterAmt} (${(letterAmt / input.letters * 100).toFixed(amtToFixed)}%)<br>`
 	}
 }
 
