@@ -1,9 +1,13 @@
 .cssNotice {
     display: none
 }
-a {text-decoration: none;}
+
+a {
+    text-decoration: none;
+}
+
 * {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif!important;
+    font-family: 'Public Sans', Inter, system-ui, sans-serif;
     margin: 0;
     box-sizing: border-box;
     color: #fff
@@ -42,40 +46,48 @@ body {
     height: 100vh;
     width: 100vw;
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
-.body-box {
-    backdrop-filter: blur(30px);
-    max-height: 900px;
-    height:94vh;
-    max-width: 900px;
-    margin: 40px;
-    position: fixed;
-    overflow: hidden;
-    border-radius: 30px;
-    border: 1px solid rgba(255, 255, 255, .4);
-    background: rgba(255, 255, 255, .1)
 }
 
 .body-box .inner {
     padding: 40px;
     overflow-y: auto;
+    overflow-x: hidden;
     max-height: 900px;
-    height:94vh;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position:relative;
+    align-items: center;
+}
+
+.inner::after,.inner::before {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+    z-index:2;
+    width: 100vw;
+    background: linear-gradient(to top, #000020, transparent);
+    height: 40px;
+    content: ''
+}
+.inner::before {
+    top:0;
+    bottom:unset;
+    background: linear-gradient(to bottom, #000020, transparent);
 }
 
 .title {
     font-weight: 400;
-    font-size: 3em;
+    width: 100vw;
+    font-size: calc(30px + 3vw);
     margin-bottom: 5px;
     text-align: center;
-}
-
-.title span {
-    font-weight: 200
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 button {
@@ -109,7 +121,7 @@ button::after {
     background: #1b00cb
 }
 
-button:hover::after , button:focus::after{
+button:hover::after, button:focus::after {
     height: 100%
 }
 
@@ -123,36 +135,45 @@ h1 {
     text-align: center
 }
 
+h2 {
+    font-size: 30px;
+    text-align: center;
+    font-weight:100;
+    font-style:normal
+}
+
 .box {
-    background: #21216c96;
+    background: #ffffff1f;
     color: #fff;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin: 10px;
-    padding: 30px;
+    width: fit-content;
+    padding: 20px;
     border-radius: 25px;
-    border: 1px solid rgba(255, 255, 255, .253);
     transition: .2s;
     cursor: pointer;
     flex-shrink: 1;
+    flex-grow: 0;
+    max-width: 400px;
 }
 
-.box:hover,.box:focus {
-    background: #3232ad8c;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.701);
-    border: 1px solid rgba(255, 255, 255);
-    transform:translateY(-3px);
-    outline:0
-}
-.box:hover h1,.box:focus h1 {
-    opacity:1;
+.box:hover, .box:focus {
+    background: #ffffff34;
+    transform: translateY(-2px);
+
 }
 
-.box:hover p,.box:focus p {
-    opacity:1;
+.box:hover h1, .box:focus h1 {
+    opacity: 1;
 }
+
+.box:hover p, .box:focus p {
+    opacity: 1;
+}
+
 .box h1 {
     transition: 0.2s;
     font-weight: 700;
@@ -173,30 +194,6 @@ h1 {
     margin-bottom: 10px;
     margin-right: 10px;
     border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, .3)
-}
-
-.box-buttons {
-    width: 100%;
-    display: flex;
-    margin-top: 10px;
-    align-items: center;
-    justify-content: center
-}
-
-.box-buttons button {
-    margin: 5px;
-    width: 100%;
-    white-space: pre;
-    background: #2114da
-}
-
-.box-buttons button::after {
-    height: 70%;
-    width: 70%;
-    pointer-events: none;
-    opacity: 0;
-    content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABmJLR0QA/wD/AP+gvaeTAAACnklEQVRoge2Zu4sTURSHvxNNFnw0WqgIKj76xcJGELHRRtZF0JRrYemjsLLy31ixENlGhU1YjJW4vaCgjY1YWLgiaKEgrjH+LDK4N8nMZB53JlHnV93cmXvO+eaeO3PvCVSqVKnS3yQr26GkJWBXxuEvzexG2IXN2UPKrOPAgYxjI+OtZTQ4dZrEjNwEto+5pwHcAnYWH05BklSX1FK4VqPGTVVqSWoAD4BzTvfHJGMTp5akI8BJYEeq6Ab1GbhjZgqx3wDuMwjRBh4Dt3P4/ONgn6ROxFSn0SdJRyN8hKVTS1JD0kKS1BoHcUjS2qQgguuJQCJTS1INeAjsdrpfA8+BbymfyaKZvQiDYHRNtIGLZvYjpY9wSZobekpXJXnbCQQzsRwyE/Wh+/KllqRFx0DbF0BgOxFEcG8ikLjX736n/TRP4EOB1em/nead7jZwwcy6We3Ggcw47S9ZHbiKgOgAzTwQUOIHMQbivJmt57Vfyl4rAqJF/+00MhOSamb2K/j5FXgbtNeyOF91FtlCagMbdsIW9iNJMxH3z0q6ktZPoakVMRPLwHxYOkmaBZ6QYddbGEgMROjCzgMBBYFI2gTcIyFEoGvkOH94BwkgloCm0z0OIre8gkwKAjyCTBIC/KeWG3BpEODxg2hmPUmXgp9bKRECPH/ZHZhamRBQwBbFzHpAz7fdcZqqKkoeVSDTpv8CxF2wjaIDYfBE+jPt4DiQD047tCblS0F1xvWR/gAVY/yycxD6LumYN+Ojvq4PHbwOp7URWaeStA14w8a/S+vAXeAVGaY+QluAU8BZp2/FzOY82e9L0hlJXZWn95L2eoVwYE7LT/13nJ5JOpg1zkQlUPXTrAmcAPZkdRaiLvCOflmo41ROKlWqVOkf128JhFKrd34cfQAAAABJRU5ErkJggg==)
 }
 
 .box-buttons button:hover::after {
@@ -207,6 +204,7 @@ h1 {
 
 .projects {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     flex-flow: wrap;
     width: 100%;
@@ -230,43 +228,40 @@ button[disabled]:hover {
     opacity: .5
 }
 
-.links {
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly
-}
-
 .links a {
     position: relative;
+    transition: .1s
 }
 
-.links svg {
-    transition: .1s
+.links {
+    margin-left: 20px;
+    display: flex;
+    width: 100px
 }
 
 .links a::after {
     position: absolute;
-    bottom: -80%;
-    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.301);
+    bottom: -10px;
     right: 50%;
     pointer-events: none;
-    transform: translateX(50%) translateY(-20px);
+    font-size: 15px;
+    transform: translateX(50%) translateY(12px);
     opacity: 0;
     transition: 0.2s;
     text-align: center;
-    background: rgba(255, 255, 255, .1);
-    border: 1px solid rgba(255, 255, 255, .253);
+    background: #4f4f6891;
     padding: 5px 7px;
-    border-radius: 30px;
+    border-radius: 6px;
     content: attr(tooltip);
 }
 
-.links svg:hover {
-    filter: drop-shadow(0 2px 3px rgba(255, 255, 255, .377))
+.links a:hover {
+    transform: translateY(-2px);
+    opacity: 0.8
 }
 
 .links a:hover::after {
-    transform: translateX(50%) translateY(-10px);
+    transform: translateX(50%) translateY(10px);
     opacity: 1;
 }
 
@@ -282,8 +277,8 @@ button[disabled]:hover {
         flex-flow: wrap;
         flex-wrap: wrap;
         flex-direction: row;
-        justify-content: center;
     }
+
     .box {
         width: 46% !important;
     }
@@ -291,7 +286,7 @@ button[disabled]:hover {
 
 form {
     position: fixed;
-    bottom:0;
+    bottom: 0;
     transition: 0.2s;
     padding: 30px;
     border-radius: 20px;
@@ -302,9 +297,11 @@ form {
     align-items: center;
     justify-content: center;
 }
+
 form button {
     font-size: 20px;
 }
+
 form input {
     padding: 10px;
     margin: 5px;
@@ -312,18 +309,21 @@ form input {
     border: 1px solid rgba(255, 255, 255, .3);
     background: rgba(255, 255, 255, .1);
 }
+
 form p#close {
     font-size: 30px;
-    top:0;
-    right:0;
+    top: 0;
+    right: 0;
     position: absolute;
     cursor: pointer;
     margin: 10px;
 }
+
 form p#close:hover {
     transform: scale(1.1)
 }
+
 .form-hidden {
-    opacity:0;
+    opacity: 0;
     transform: translateY(10px)
 }

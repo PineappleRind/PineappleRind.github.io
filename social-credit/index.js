@@ -102,6 +102,7 @@ let quesiter = 0,  container = document.querySelector('.container'), socCred = 0
 }
 
 function beginTest() {
+    document.getElementById('audio').play()
     let switchTo = 0
     if (questions.length != 1) switchSlides(switchTo)
     else switchSlides(endScreen())
