@@ -14,6 +14,13 @@ const projects = [
         level: 'major'
     },
     {
+        name: "Colours",
+        description: "I made an instrumental album. All the song names are colours.",
+        img: 'imgs/colours.png',
+        link: 'https://pineapplerind.ga/colours',
+        level: 'major'
+    },
+    {
         name: "Text Stats",
         link: "https://pineapplerind.ga/text-stats",
         img: false,
@@ -37,22 +44,16 @@ var pages = {
     major: ``,
     minor: ``
 }
-var major = ``
-var minor = ``
+
 function newt(url) {
     window.open(url, '_blank').focus();
 }
-for (let i = 0; i < projects.length; i++) {
-    let img = `<img alt="${projects[i].name}" src="${projects[i].img}">`
-    if (!projects[i].img) img = ''
-    pages[projects[i].level] += `
-   <a >
-   <a class="box" href="${projects[i].link}"">
-   ${img}
-   <div><h1>${projects[i].name}</h1>
-   <p>${projects[i].description}</p>
-   </div></a>
-   </a>`
+
+for (const project of projects) {
+    let { name, img, level, link, description } = project;
+    let imgHTML = `<img alt="${name}" src="${img}">`
+    if (!img) imgHTML = ''
+    pages[level] += `<a><a class="box" href="${link}"">${imgHTML}<div><h1>${name}</h1><p>${description}</p></div></a></a>`
 }
 document.querySelector('.featured').innerHTML += pages.major
 document.querySelector('.lesser').innerHTML += pages.minor
