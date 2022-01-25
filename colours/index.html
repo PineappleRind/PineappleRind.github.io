@@ -9,17 +9,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100;0,300;0,400;0,700;0,800;1,700&display=swap" rel="stylesheet">
     <style>
         .ripple {
-	background: rgba(255,255,255,0.3);
-    border-radius:50%;
-    height:1px;
-    width:1px;
-    position:absolute;
-    animation: ripple ease-out;
-}
-@keyframes ripple {
-	from {transform:scale(0);opacity:1}
-    to{transform:scale(400);opacity:0}
-}
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            height: 1px;
+            width: 1px;
+            position: absolute;
+            animation: ripple ease-out;
+        }
+
+        @keyframes ripple {
+            from {
+                transform: scale(0);
+                opacity: 1
+            }
+
+            to {
+                transform: scale(400);
+                opacity: 0
+            }
+        }
     </style>
 </head>
 
@@ -51,6 +59,7 @@
         <h2 style="opacity:0.6;font-weight:200">by pineapplerind</h2>
         <h2 style="opacity:0.4;font-weight:200">2022</h2>
     </section>
+    <script src="colours.js"></script>
     <script>
         onload = () => {
             let elementsArr = []
