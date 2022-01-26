@@ -10,15 +10,10 @@ function Ripple(obj) {
         el.style.cssText += `overflow: hidden; position: relative;`
         el.onclick = e => {
             let bounds = el.getBoundingClientRect();
-            const rippleStyles = {
-                left: e.clientX - bounds.left + 'px',
-                top: e.clientY - bounds.top + 'px',
-                animationDuration: obj.duration + 's'
-            }
             let ripple = document.createElement('DIV')
             ripple.classList.add('ripple')
-            if (obj.color) rippleStyles.background = obj.color
-            Object.assign(ripple.style)
+            if (obj.color) ripple.cssText += `background: ${obj.color};`
+            ripple.cssText += `left: ${e.clientX - bounds.left}px; top: ${e.clientY - bounds.top}px; animationDuration: ${obj.duration}s;`
             el.appendChild(ripple)
             setTimeout(function() {
                 ripple.remove()
