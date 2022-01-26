@@ -1,0 +1,37 @@
+arrow functions ----------
+!IE
+Edge 97+
+Firefox 22+
+Chrome 45+
+Chrome for Android 97+
+Safari 10+
+Safari on iOS 10+
+Opera 32+
+Samsung Internet 5+
+--------------------------
+
+forEach ------------------
+IE: 9+
+Edge 12+
+Firefox 2+
+Chrome 4+ 
+Chrome for Android 97+
+Safari 3.1+
+Safari on iOS 3.2+
+Opera 10+ 
+Samsung internet 15.0+
+--------------------------
+
+let ----------------------
+IE: 11+ but not in for loops
+Edge 12+
+Firefox 44+
+Chrome 41+ only in strict mode, 49+
+Chrome for Android 97+
+Safari 10+ but not in for loops, 11+
+Safari on iOS 10+ but not in for loops, 11+
+Opera 28+ only in strict mode, 36+
+Samsung internet 4+ only in strict mode, 5+
+
+classList ----------------
+

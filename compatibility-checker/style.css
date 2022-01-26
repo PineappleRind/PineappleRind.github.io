@@ -1,0 +1,45 @@
+* {
+    font-family: Public Sans, Inter, sans-serif;
+    color: white;
+    margin: 3px;
+}
+
+body {
+    background: #111130;
+    padding: 20px;
+}
+
+.browser {
+    margin: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+h1 {
+    font-weight: 300;
+    font-size: 30px;
+    margin-top: 10px;
+}
+
+.browser h1 {
+    font-weight: 900;
+    margin-top: 0;
+    font-size: 25px;
+}
+
+hr {
+    opacity: 0.5;
+    margin: 30px 10px
+}
+
+inlinecode {
+    display: inline-block;
+    font-family: monospace;
+    padding: 7px 10px;
+    width: fit-content;
+    margin: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 7px
+}
