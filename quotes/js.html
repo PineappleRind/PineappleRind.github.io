@@ -1,7 +1,7 @@
-<textarea disabled> <pre>
+<textarea disabled height="600"> <pre>
         // So here i've cleaned up the code a little bit and implemented more efficient ways to do things
         // I also removed the comments, you can add them back if you'd like lol
-        // ...And added my own comments responding to yours which you should remove if you put this version on the website
+        // ...And added my own comments responding to yours which you should remove if you put this version on the website =)
 
         // As for the shipping filter, you could add a tag to the ones that involve shipping (maybe {SHIPPING} or something) 
         // then if the random prompt contains the SHIPPING tag, reroll
@@ -10,13 +10,7 @@
 
         function clear(element) {
             // yes, you can do this.value by passing in this as the function argument up there in the HTML.
-            // This is the HTML you'd use to do this
-            /* <input type="text" id="text1" value="Person A" enabled="true" onfocus="clear(this)">
-        <input type="text" id="text2" value="Person B" disabled="true" onfocus="clear(this)">
-        <input type="text" id="text3" value="Person C" disabled="true" onfocus="clear(this)">
-        <input type="text" id="text4" value="Person D" disabled="true" onfocus="clear(this)">
-        <input type="text" id="text5" value="Person E" disabled="true" onfocus="clear(this)">
-        <input type="text" id="text6" value="Person F" disabled="true" onfocus="clear(this)"> */
+            // You'd have to replace onfocus="clear1()" with onfocus="clear(this)" for every input field for this to work
             // this way, element IS this
             element.value = "";
             element.style.fontStyle = "normal";
