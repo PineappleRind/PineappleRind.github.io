@@ -33,7 +33,7 @@ var Census = { // I put this stuff inside an object just because it looks good, 
     question: function (obj) {
         if (!obj) return Census.submit(Census.data) // If the question is nonexistent, end it all!
         Census.current++
-        let html = `<h1>${obj.title}</h1><br><p>${obj.description}</p><br>${obj.actionItems}<br><div class="button" onclick="Census.question(Questions[${Census.current}])">Next</div>`
+        let html = `<h1>${obj.title}</h1><br><p>${obj.description}</p><br>${obj.actionItems}<br><div class="button" style="width:fit-content" onclick="Census.question(Questions[${Census.current}])">Next</div>`
         Census.switch(html) // Switch the HTML of the page with the new, hot, freshly generated HTML!
     }, 
     
@@ -50,12 +50,14 @@ var Census = { // I put this stuff inside an object just because it looks good, 
 
         // but it works... so... yeah
         // Put the users age in the invisible form:
-        form.children[0][0].value = data.age
+        form.children[0].children[0].value = data.age
         //Put gender...
-        form.children[0][1].value = data.gender
+        form.children[0].children[1].value = data.gender
         // And put follower count!
-        form.children[0][2].value = data.followers
-        form.children[1][0].innerHTML = `<h1>Ready?</h1>
+        form.children[0].children[2].value = data.followers
+        form.children[1].children[0].innerHTML = `<h1>Ready?</h1>
+        <p>If you want to change any of your answers please refresh the page</p>
+        
 <b>Age</b> ${data.age}
 <b>Gender</b> ${data.gender}
 <b>Followers</b> ${data.followers}
