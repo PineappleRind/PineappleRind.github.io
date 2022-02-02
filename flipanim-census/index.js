@@ -12,7 +12,7 @@ var Questions = [
     }, {//Question 2
         title: "What's your gender?",
         description: "Select from the options below. Again, if you don't want to answer, you don't have to :)",
-        actionItems: `<select oninput="Census.recordData('gender',this.value)"><option value="male">Male</option><option value="female">Female</option><option value="other">Other (non-binary)</option></select>`
+        actionItems: `<select oninput="Census.recordData('gender',this.value)"><option selected value="Select..."></option><option value="male">Male</option><option value="female">Female</option><option value="other">Other (non-binary)</option></select>`
     }, {//Question 3
         title: "How many followers do you have?",
         description: "This doesn't have to be an exact number! For example, if you have 291 followers, you can round to 300. What's preferable however is if you don't round, this is just for anonymity",
@@ -50,18 +50,19 @@ var Census = { // I put this stuff inside an object just because it looks good, 
 
         // but it works... so... yeah
         // Put the users age in the invisible form:
-        form.children[0].children[0].value = data.age
+        form.children[0].children[0].value = data.age ? data.age : ''
         //Put gender...
-        form.children[0].children[1].value = data.gender
+        form.children[0].children[1].value = data.gender ? data.gender : ''
         // And put follower count!
-        form.children[0].children[2].value = data.followers
+        form.children[0].children[2].value = data.followers ? data.followers : ''
+        form.children[0].children[3].value = data.comments ? data.comments : ''
         form.children[1].innerHTML = `<h1>Ready?</h1>
         <p>If you want to change any of your answers please refresh the page</p>
         
-<b>Age</b> ${data.age}
-<b>Gender</b> ${data.gender}
-<b>Followers</b> ${data.followers}
-<b>Comments</b> ${data.comments}
+<b>Age</b> ${data.age ? data.age : 'Not specified'}<br>
+<b>Gender</b> ${data.gender ? data.gender : "Not specified"}<br>
+<b>Followers</b> ${data.followers ? data.followers : "Not specified"}<br>
+<b>Comments</b> ${data.comments ? data.comments : "Not specified"}<br>
 <br>
 <button class="button" onclick="Census.switch(thankYou)" type="submit">Submit</button>`
     },
