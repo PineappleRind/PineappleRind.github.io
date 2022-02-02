@@ -33,7 +33,7 @@ var Census = { // I put this stuff inside an object just because it looks good, 
     question: function (obj) {
         if (!obj) return Census.submit(Census.data) // If the question is nonexistent, end it all!
         Census.current++
-        let html = `<h1>${obj.title}</h1><br><p>${obj.description}</p><br>${obj.actionItems}<br><button onclick="Census.question(Questions[${Census.current}])">Next</button>`
+        let html = `<h1>${obj.title}</h1><br><p>${obj.description}</p><br>${obj.actionItems}<br><div class="button" onclick="Census.question(Questions[${Census.current}])">Next</div>`
         Census.switch(html) // Switch the HTML of the page with the new, hot, freshly generated HTML!
     }, 
     
