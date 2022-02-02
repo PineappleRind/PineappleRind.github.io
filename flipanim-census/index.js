@@ -55,7 +55,7 @@ var Census = { // I put this stuff inside an object just because it looks good, 
         form.children[0].children[1].value = data.gender
         // And put follower count!
         form.children[0].children[2].value = data.followers
-        form.children[1].children[0].innerHTML = `<h1>Ready?</h1>
+        form.children[1].innerHTML = `<h1>Ready?</h1>
         <p>If you want to change any of your answers please refresh the page</p>
         
 <b>Age</b> ${data.age}
@@ -63,7 +63,7 @@ var Census = { // I put this stuff inside an object just because it looks good, 
 <b>Followers</b> ${data.followers}
 <b>Comments</b> ${data.comments}
 <br>
-<button onclick="Census.switch(thankYou)" type="submit">Submit</button>`
+<button class="button" onclick="Census.switch(thankYou)" type="submit">Submit</button>`
     },
     recordData: function (key, value) {
        return Census.data[key] = value // Just records the data.. 
