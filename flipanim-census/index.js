@@ -12,7 +12,7 @@ var Questions = [
     }, {//Question 2
         title: "What's your gender?",
         description: "Select from the options below. Again, if you don't want to answer, you don't have to :)",
-        actionItems: `<select oninput="Census.recordData('gender',this.value)"><option selected value="Select..."></option><option value="male">Male</option><option value="female">Female</option><option value="other">Other (non-binary)</option></select>`
+        actionItems: `<select oninput="Census.recordData('gender',this.value)"><option selected value="Select...">Select...</option><option value="male">Male</option><option value="female">Female</option><option value="other">Other (non-binary)</option></select>`
     }, {//Question 3
         title: "How many followers do you have?",
         description: "This doesn't have to be an exact number! For example, if you have 291 followers, you can round to 300. What's preferable however is if you don't round, this is just for anonymity",
