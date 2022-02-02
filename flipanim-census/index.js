@@ -20,7 +20,7 @@ var Questions = [
     }, {//Question 4
         title: "Other comments",
         description: "Is there anything else you want to say? It's fine if you leave this blank!",
-        actionItems: `<input type="text" oninput="Census.recordData('comments',this.value)">`
+        actionItems: `<input type="text" oninput="Census.recordData('comments',this.value);">`
     }
 ]
 var form = document.getElementById('form'), // Form element 
@@ -61,7 +61,7 @@ var Census = { // I put this stuff inside an object just because it looks good, 
         // And put follower count!
         form.children[2].value = data.followers
         // Finally send the form
-        form.children[3].click()
+       form.submit()
     },
     recordData: function (key, value) {
        return Census.data[key] = value // Just records the data.. 
