@@ -25,6 +25,9 @@ var Questions = [
 ]
 var form = document.getElementById('form'), // Form element 
     container = document.querySelector('.glass')//Container!
+
+var submitted = false
+if (localStorage.getItem('FlipAnimCensusSubmitted')) submitted = true
 var thankYou = `
         <h1>Thank you!</h1>
         <p>Your answers have been submitted :D<br> The results will be announced when there are enough submissions, no more than a few weeks. I'll post an anim with the results when they are ready! Thank you for participating in this year's census ^^`
@@ -44,7 +47,7 @@ var Census = { // I put this stuff inside an object just because it looks good, 
             container.classList.remove('transitioning') // Tada! :D
         },500)
     }, submit: function(data) {
-        
+        if (submitted === true) return alert('You\'ve already submitted...')
         // So i dont really know how to send the form other than 
         // making an invisible form and populating it
 
@@ -64,7 +67,7 @@ var Census = { // I put this stuff inside an object just because it looks good, 
 <b>Followers</b> ${data.followers ? data.followers : "Not specified"}<br>
 <b>Comments</b> ${data.comments ? data.comments : "Not specified"}<br>
 <br>
-<button class="button" onclick="Census.switch(thankYou)" type="submit">Submit</button>`
+<button class="button" onclick="Census.switch(thankYou);submitted = true;localStorage.setItem('FlipAnimCensusSubmitted','true')" type="submit">Submit</button>`
     },
     recordData: function (key, value) {
        return Census.data[key] = value // Just records the data.. 
