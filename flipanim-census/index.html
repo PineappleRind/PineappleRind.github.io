@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlipAnim Census 2022</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Martel:wght@200;700;800;900&family=Public+Sans:wght@200;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="glass">
+        <h1>Welcome</h1>
+        <p>Welcome to the FlipAnim Census of 2022 (FAC22)! <br> This census has 3 questions: Your age, your gender, and
+            how many followers you have. <br> Instructions for each question will be on the question itself. <br>
+            Ready?<br></p>
+        <button onclick="Census.question(Questions[0])">Yes!</button>
+    </div>
+    <div id="form" name="FAC22" data-netlify="true" netlify style="display: none;">
+        <input name="age">
+        <input name="gender">
+        <input name="followers">
+        <input type="submit">submit</input>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>

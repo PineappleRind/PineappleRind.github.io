@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Public Sans, Inter, Oxygen, Roboto, system-ui, sans-serif;
+}
+
+body {
+    background: #000020;
+    color: white;
+   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+}
+.glass {
+    padding:20px;
+    transition: 0.5s cubic-bezier(0,.62,.24,.98);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+    margin:10px;
+    width: 90vw;
+    max-width: 630px;
+}
+h1 {
+    font-size: calc(2vw + 20px);
+}
+
+button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: #4A90E2;
+    border: 1px solid #3672B6;
+    color: #fff;
+    border-radius: 125px;
+    box-shadow: inset 0 13px 25px rgba(255, 255, 255, 0.5), 0 3px 5px rgba(0, 0, 0, 0.2), 0 10px 13px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    font-size: 1.5rem;
+    margin: 1rem 1rem;
+    padding: 1rem 3rem;
+    position: relative;
+    transition: all ease .2s;
+}
+
+button:before {
+    background: linear-gradient(rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    border-radius: 125px;
+    content: '';
+    height: 40px;
+    left: 4%;
+    position: absolute;
+    top: 1px;
+    transition: all ease .3s;
+    width: 92%;
+}
+
+button:hover {
+    box-shadow: inset 0 13px 25px rgba(255, 255, 255, 0.8), 0 3px 5px rgba(0, 0, 0, 0.2), 0 10px 13px rgba(0, 0, 0, 0.2);
+    transform: scale(1.02);
+}
+
+button:active:before {
+    background: linear-gradient(rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%);
+}
+input,select {
+    border: 1px solid transparent;
+    padding:10px 20px;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius:20px;
+    background: rgba(255, 255, 255, 0.1);
+}
+option {color: black;}
+button:active {
+    box-shadow: inset 0 13px 25px rgba(255, 255, 255, 0.1), 0 3px 5px rgba(0, 0, 0, 0.1), 0 10px 13px rgba(0, 0, 0, 0.2);
+    transform: scale(0.98);
+}
+
+.transitioning {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.5s cubic-bezier(.73,-0.01,1,.34)
+}
