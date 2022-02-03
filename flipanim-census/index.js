@@ -15,11 +15,11 @@ var Questions = [
         actionItems: `<select oninput="Census.recordData('gender',this.value)"><option selected value="Select...">Select...</option><option value="male">Male</option><option value="female">Female</option><option value="other">Other (non-binary)</option></select>`
     }, {//Question 3
         title: "How many followers do you have?",
-        description: "This doesn't have to be an exact number! For example, if you have 291 followers, you can round to 300. What's preferable however is if you don't round, this is just for anonymity",
+        description: "Enter your follower count on your FlipAnim profile! All the responses for this question will be averaged. (If you want you can round your follower count for anonymity!)",
         actionItems: `<input type="number" oninput="Census.recordData('followers',this.value)">`
     }, {//Question 4
         title: "Other comments",
-        description: "Is there anything else you want to say? It's fine if you leave this blank!",
+        description: "<b>Update: For some reason I can't see responses for this question. So I guess this is a bit useless... <b><br>Is there anything else you want to say? It's fine if you leave this blank!",
         actionItems: `<input type="text" oninput="Census.recordData('comments',this.value);">`
     }
 ]
