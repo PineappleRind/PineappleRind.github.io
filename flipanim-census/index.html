@@ -13,20 +13,28 @@
 </head>
 
 <body>
-    <div class="glass">
-        <h1>Welcome</h1>
-        <p>Welcome to the FlipAnim Census of 2022 (FAC22)! <br> This census has 3 questions: Your age, your gender, and
+    <!--<div class="banner" style="top:0;left:0;right:0;width:100vw;height:fit-content;padding:14px;transition: 0.3s;background:rgba(0,120,255);color: white;font-weight:400;position:fixed;z-index:10">
+        <b>Notice:</b> This census closes at 12:00 PM EST | <a href="#" style="color:white" onclick="this.parentElement.style.opacity = '0';this.parentElement.style.top = '-10px'">Close</a>
+    </div>-->
+    <div id="form" method="POST" name="FAC22" action="/flipanim-census/thankyou" data-netlify="true" netlify class="glass">
+        <div class="hidden" style="display:none">
+            <input name="age">
+            <input name="gender">
+            <input name="followers">
+            <input name="comments">
+        </div>
+        <div class="inner">
+            <h1>Census is over</h1>
+            <p>Thanks for participating this year! The results will be out in a few days, follow Pineapple-Rind if you want to know when that gets posted</p>
+            <div class="button" style="width:fit-content" onclick="window.location.href = 'https://flipanim.com/profile?name=pineapple-rind'">Pineapple-Rind</div>
+            <!--<h1>Welcome</h1>
+            <p>Welcome to the FlipAnim Census of 2022 (FAC22)! <br> This census has 3 questions: Your age, your gender, and
             how many followers you have. <br> Instructions for each question will be on the question itself. <br>
             Ready?<br></p>
-        <button onclick="Census.question(Questions[0])">Yes!</button>
+            <div class="button" style="width:fit-content" onclick="Census.question(Questions[0])">Yes!</div>-->
+        </div>
     </div>
     <input name="form-name" value="FAC22" type="hidden" />
-    <form id="form" method="POST" name="FAC22" data-netlify="true" netlify style="display: none;">
-        <input name="age">
-        <input name="gender">
-        <input name="followers">
-        <button type="submit">submit</button>
-    </form>
     <script src="index.js"></script>
 </body>
 
