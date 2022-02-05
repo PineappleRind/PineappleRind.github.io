@@ -1,0 +1,78 @@
+* {
+    margin: 0;
+    transition: 0.8s opacity cubic-bezier(.9,0,.08,.98), 0.8s transform cubic-bezier(.9,0,.08,.98);
+}
+
+body {
+    background: #000020;
+    color: white;
+    font-family: "Public Sans", "Inter", sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+
+.title {
+    font-size: calc(1vw + 40px);
+    text-align: center;
+}
+
+.sub {
+    font-weight: 300;
+    font-size: calc(1vw + 16px);
+}
+
+
+.fade {
+    transform: translateY(10px);
+    opacity: 0;
+}
+
+button {
+    margin-top:10px;
+    padding: 10px 20px;
+    color: white;
+    border:0;
+    background: rgba(0,120,255);
+    font-weight:900;
+    border-radius:14px;
+    cursor:pointer;
+    transition: 0.2s background, 0.8s opacity, 0.8s transition;
+}
+button:hover {
+    background: rgb(0, 70, 150);
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+canvas {
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius:10px;
+    max-width: 70vh;
+}
+
+.restricted-width {
+    max-width: 400px;
+}
+
+.introvert {
+    transform:translateY(0);
+    font-size: 14px;
+    color: rgba(255,255,255,0.8)
+}
+p {text-align: center}
+
+@media only screen and (max-width: 500px) {
+    canvas {
+        max-width: 70vh;
+    }
+}

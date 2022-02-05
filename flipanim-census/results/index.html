@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlipAnim Census Results</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <script src="libs.js"></script>
+    <script src="charts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+    <script>
+        // 33 Male, 32 other, 41 female
+        // average age 14.1
+        // average followers 612
+        let cont
+        cont = new Element({ type: 'div', id: 'container' }).appendTo(document.body)
+        function ttl(html) {
+            new Element({ type: 'h1', html: html, classes: 'title' }).append()
+        }
+        function p(html, apn, classes) {
+            let opts = { type: 'p', html: html }
+            if (classes) opts.classes = classes
+            new Element(opts).append(apn)
+        }
+        function next(apn) {
+            new Element({ type: 'button', html: 'Next', onclick: function () { Slides.next() } }).append(apn)
+        }
+        function canv() {
+            let canvas = new Element({ type: 'canvas', id: 'statsCanvas' }).append(1000)
+            return canvas
+        }
+        var Slides = {
+            current: 0,
+            data: [
+                function () {
+                    ttl('FlipAnim Census')
+                    new Element({ type: 'h1', html: 'results', classes: ['title', 'sub'] }).append(500)
+                    new Element({ type: 'button', html: 'Start', onclick: function () { Slides.next() } }).append(1000)
+                }, function () {
+                    ttl('Stats')
+                    p('This year, a record-breaking <b>114</b> users entered the census :o', 500)
+                    new Chart(canv().getContext('2d'), charts.subsChart)
+                    next(2000)
+                }, function () {
+                    ttl('Gender')
+                    p('Note: Male, Female, and Other were the only options, so some people possibly chose Other for Prefer not to say. I did add a prefer not to say option later on but it was too late. Mistake on my end =(', 500, ['introvert', 'restricted-width'])
+                    new Chart(canv().getContext('2d'), charts.genderChart)
+                    next(2000)
+                }, function () {
+                    ttl('Age')
+                    p('Average age has increased by 0.9 years to 14.1, probably the result of disabling the register page', 500, 'restricted-width')
+                    new Element({ type: 'p', classes: ['introvert', 'restricted-width'], html: 'This excludes the 2 69-year-olds' }).append(1000)
+                    next(1500)
+                }, function () {
+                    ttl('Follower count')
+                    p('The average follower count is 612', 500)
+                    new Chart(canv().getContext('2d'), charts.followerChart)
+                    next(2000)
+                }, function () {
+                    ttl('Thank you')
+                    p('That concludes this year\'s census',1000)
+                    p('Thank you all for participating!',2000)
+                    p('See you next year ^^',3000)
+                    new Element({ type: 'i', classes: 'introvert', html: '<br>pineapple-rind' }).append(4000)
+                }
+            ], next: function () {
+                Slides.current++
+                cont.fadeOut(false)
+                setTimeout(function () {
+                    cont.element.innerHTML = ''
+                    cont.fadeIn()
+                    return Slides.data[Slides.current]()
+                }, 500)
+            }
+        }
+        Slides.data[0]()
+    </script>
+</body>
+
+</html>
