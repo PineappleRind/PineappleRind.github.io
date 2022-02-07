@@ -1,10 +1,12 @@
 * {
     margin: 0;
+    box-sizing: border-box;
     font-family: PT Sans Mono, 'Courier New', Courier, monospace, system-ui, sans-serif;
 }
 
 body {
     display: flex;
+    flex-direction: column;
     width: 100vw;
     height: 100vh;
 }
@@ -24,57 +26,76 @@ button, select {
     background: rgba(32, 15, 117, 0.6);
     border: 1px solid rgba(44, 17, 180, 0.425);
     color: white;
-    position:relative;
+    position: relative;
     transition: 0.2s;
-    border-radius:10px;min-width: 70px;
+    border-radius: 10px;
+    min-width: 70px;
 }
+
 button:hover, select:hover {
-    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
     border: 1px solid rgb(40, 17, 158);
 }
+
 main {
-    width:100%;
+    max-width: 100vw;
     transition: 0.2s;
-    --border: rgba(0,0,0,0.1);
-    --color: rgba(0,0,0);
+    --border: rgba(0, 0, 0, 0.1);
+    --color: rgba(0, 0, 0);
 }
+
 main.dark {
-    --border: rgba(255,255,255,0.1);
-    --color: rgba(255,255,255);
+    --border: rgba(255, 255, 255, 0.1);
+    --color: rgba(255, 255, 255);
     background: #222;
 }
-.comment ,.inner, .top-comment .top-meta, .name-downarrow {
+
+.comment, .inner, .top-comment .top-meta, .top-comment, .name-downarrow {
     display: flex;
 }
-.comment {
+
+.comment, .top-comment {
     border-top: 1px solid var(--border);
     padding: 10px;
     align-items: center;
-    color:var(--color);
+    color: var(--color);
 }
+
+.top-comment {
+    align-items: unset;
+    border-top: 0;
+}
+
 .comment img, .top-comment img {
     height: 60px;
-    padding-right:5px;
+    padding-right: 5px;
 }
-.comment .inner {
+
+.comment .inner, .top-comment {
     flex-direction: column;
-    margin-left:5px;
-    width:100%;
+    margin-left: 5px;
 }
+
+.comment .inner, .top-meta {
+    width: 100%;
+}
+
 .comment *, .top-comment * {
     font-family: Helvetica Neue, SF Pro, San Francisco, Arial, Arimo, Helvetica, sans-serif !important;
 }
-.inner > .top {
+
+.inner>.top {
     display: flex;
-    width:100%;
+    width: 100%;
     justify-content: space-between;
 }
 
 .name-downarrow {
     justify-content: space-between;
-    width:calc(100% - 73px);
+    width: calc(100% - 73px);
 }
-.comment .name {
+
+.name {
     font-weight: 600;
     margin-bottom: 4px;
 }
@@ -89,16 +110,90 @@ main.dark {
     display: flex;
     align-items: center;
 }
+
 .down-arrow {
     width: 7px;
-    height:7px;
-    margin-bottom:7px;
-    margin-left:5px;
+    height: 7px;
+    margin-bottom: 7px;
+    margin-left: 5px;
     border: 1.4px solid var(--color);
-    border-right:0;border-top:0;
-    transform:rotate(-45deg);
+    border-right: 0;
+    border-top: 0;
+    transform: rotate(-45deg);
 }
 
-.comment-top {
+.top-comment .name {
+    margin-top: 15px;
+    margin-left: 5px;
+}
 
+.top-comment .name p:not(.introverted) {
+    margin-bottom: 3px;
+}
+
+.top-comment {
+    padding: 14px;
+}
+
+.top-comment .introverted {
+    font-size: 13px;
+}
+
+.top-comment .body {
+    font-size: 23px;
+    margin-top: 10px;
+    font-weight: 200;
+    margin-bottom: 15px;
+}
+
+.top-comment .timestamp {
+    opacity: 0.6;
+}
+
+main {
+    margin: 30px;
+    border: 1px solid rgba(0, 0, 0, 0.445);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.comment-model {
+    background: rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    margin: 5px;
+    border-radius: 10px;
+    padding: 10px;
+    position: relative;
+}
+
+.comments {
+    max-height: 40vh;
+    overflow-y: scroll;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    padding: 10px;
+}
+
+.handle {
+    width: 20px;
+    height: 30px;
+    display: inline-block;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    bottom:50%;
+    transform: translateY(50%);
+    line-height: 5px;
+    padding: 3px 4px;
+    cursor: move;
+    vertical-align: middle;
+    margin-right: .3em;
+    font-size: 12px;
+    font-family: sans-serif;
+    letter-spacing: 2px;
+    color: #cccccc;
+    text-shadow: 1px 0 1px black;
+}
+
+.handle::after {
+    content: '.. .. .. ..';
 }

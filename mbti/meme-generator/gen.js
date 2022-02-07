@@ -27,22 +27,22 @@ var Gen = {
         theme: 'light',
         comments: {
             top: {
-                type: 'enfp',
-                content: '*talks*',
-                timestamp: 0
+                type: 'intj',
+                content: 'what\'s the hardest thing for you to say?',
+                timestamp: 1578586380
             },
             bottom: [
                 {
+                    type: 'entj',
+                    content: 'i need help'
+                },
+                {
+                    type: 'enfj',
+                    content: 'i was wrong'
+                },
+                {
                     type: 'enfp',
-                    content: '*talks*'
-                },
-                {
-                    type: 'infj',
-                    content: '*listens*'
-                },
-                {
-                    type: 'infp',
-                    content: '*watches*'
+                    content: 'worcestershire sauce'
                 },
             ]
         }
@@ -74,7 +74,8 @@ var Gen = {
     }, topComment: function(type, com, time) {
         let html = document.createElement('DIV')
         html.classList.add('top-comment')
-        let timeformatted = new Date(time).toLocaleTimeString()
+        time = time*1000
+        let timeformatted = new Date(time).toLocaleTimeString().split(':')
         console.log(timeformatted)
         html.innerHTML = `
         <div class="top-meta">
@@ -88,7 +89,7 @@ var Gen = {
             </div>
         </div>
         <div class="body">${com}</div>
-        <div class="timestamp"></div>
+        <div class="timestamp">${timeformatted[0]}:${timeformatted[1]} - ${new Date(time).toLocaleDateString()}</div>
         <div class="comment-separator"></div>
         <div class="icons"></div>
         `

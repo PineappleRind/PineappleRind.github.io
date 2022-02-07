@@ -1,30 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MBTI Meme Generator</title>
-    <link rel="stylesheet" href="styles.css"><!--
+    <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">-->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
-    <p>ur mom</p>
-    <!--<aside>
+    <aside>
         <h1>MBTI Meme Generator</h1>
         <p>Quite straightforward</p>
         <hr>
-        <b>Mode</b>
+        <b>Theme</b>
         <select oninput="Gen.update('theme',this.value)">
             <option value="light">Light</option>
             <option value="dark">Dark</option>
         </select>
         <hr>
+        <b>Comments</b><br>
+        <div id="comments" class="comments">
+            <div class="comment-model">
+                <div class="handle"></div>
+                From: <select oninput="Gen.updateComment(this.parentElement.index, this.value)">
+                    <option value="infp">infp</option>
+                    <option value="infj">infj</option>
+                    <option value="intp">intp</option>
+                    <option selected value="intj">intj</option>
+                    <option value="isfp">isfj</option>
+                    <option value="isfj">isfj</option>
+                    <option value="istp">istp</option>
+                    <option value="istj">istj</option>
+                    <option value="enfp">enfp</option>
+                    <option value="enfj">enfj</option>
+                    <option value="entp">entp</option>
+                    <option value="entj">entj</option>
+                    <option value="esfp">esfp</option>
+                    <option value="esfj">esfj</option>
+                    <option value="estp">estp</option>
+                    <option value="estj">estj</option>
+                </select><br><br>
+                Content: <input value="what's the hardest thing for you to say?"
+                    oninput="Gen.updateComment(this.parentElement.getAttribute('index'), this.value)"><br>
+            </div>
+            <div class="comment-model">
+                <div class="handle"></div>
+                From: <select oninput="Gen.updateComment(this.parentElement.index, this.value)">
+                    <option value="infp">infp</option>
+                    <option value="infj">infj</option>
+                    <option value="intp">intp</option>
+                    <option value="intj">intj</option>
+                    <option value="isfp">isfj</option>
+                    <option value="isfj">isfj</option>
+                    <option value="istp">istp</option>
+                    <option value="istj">istj</option>
+                    <option value="enfp">enfp</option>
+                    <option value="enfj">enfj</option>
+                    <option value="entp">entp</option>
+                    <option selected value="entj">entj</option>
+                    <option value="esfp">esfp</option>
+                    <option value="esfj">esfj</option>
+                    <option value="estp">estp</option>
+                    <option value="estj">estj</option>
+                </select><br><br>
+                Content: <input value="i need help"
+                    oninput="Gen.updateComment(this.parentElement.getAttribute('index'), this.value)"><br>
+            </div>
+            <div class="comment-model">
+                <div class="handle"></div>
+                From: <select oninput="Gen.updateComment(this.parentElement.index, this.value)">
+                    <option value="infp">infp</option>
+                    <option value="infj">infj</option>
+                    <option value="intp">intp</option>
+                    <option value="intj">intj</option>
+                    <option value="isfp">isfj</option>
+                    <option value="isfj">isfj</option>
+                    <option value="istp">istp</option>
+                    <option value="istj">istj</option>
+                    <option value="enfp">enfp</option>
+                    <option selected value="enfj">enfj</option>
+                    <option value="entp">entp</option>
+                    <option value="entj">entj</option>
+                    <option value="esfp">esfp</option>
+                    <option value="esfj">esfj</option>
+                    <option value="estp">estp</option>
+                    <option value="estj">estj</option>
+                </select><br><br>
+                Content: <input value="i was wrong"
+                    oninput="Gen.updateComment(this.parentElement.getAttribute('index'), this.value)"><br>
+            </div>
+            <div class="comment-model">
+                <div class="handle"></div>
+                From: <select oninput="Gen.updateComment(this.parentElement.index, this.value)">
+                    <option value="infp">infp</option>
+                    <option value="infj">infj</option>
+                    <option value="intp">intp</option>
+                    <option value="intj">intj</option>
+                    <option value="isfp">isfj</option>
+                    <option value="isfj">isfj</option>
+                    <option value="istp">istp</option>
+                    <option value="istj">istj</option>
+                    <option selected value="enfp">enfp</option>
+                    <option value="enfj">enfj</option>
+                    <option value="entp">entp</option>
+                    <option value="entj">entj</option>
+                    <option value="esfp">esfp</option>
+                    <option value="esfj">esfj</option>
+                    <option value="estp">estp</option>
+                    <option value="estj">estj</option>
+                </select><br><br>
+                Content: <input value="worcestershire sauce"
+                    oninput="Gen.updateComment(this.parentElement.getAttribute('index'), this.value)"><br>
+            </div>
+        </div>
+        <hr>
         <button>Save</button>
     </aside>
     <main></main>
-    <script src="gen.js"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <script src="gen.js"></script>
+    <script>
+        new Sortable(document.getElementById('comments'), {
+            animation: 150,
+            ghostClass: 'blue-background-class'
+        });
+    </script>
 </body>
+
 </html>
