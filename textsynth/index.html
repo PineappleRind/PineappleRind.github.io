@@ -36,12 +36,12 @@
             let props = {
                 prompt: contxt
             }
+            let headers = new Headers()
+            headers.append('Authorization', 'Bearer '+apikey)
             let y = await fetch('https://api.textsynth.com/v1/engines/gptj_6B/completions', {
                 method: 'POST',
                 mode: 'no-cors',
-                headers: {
-                    'authorization': 'Bearer '+apikey
-                },
+                headers: headers,
                 body: JSON.stringify(props)
             })
             return JSON.parse(y)
