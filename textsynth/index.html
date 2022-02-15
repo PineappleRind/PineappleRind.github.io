@@ -20,7 +20,9 @@
             apikey = input.value
         }
         document.querySelector('button').onclick = () => {
-            snd(txt.value, callback)
+            snd(txt.value).then(data=>{
+               console.log(data)
+            })
         }
 
         function callback(resp) {
@@ -28,20 +30,21 @@
         }
         let apikey = ``
 
-        function snd(contxt) {
+        async function snd(contxt) {
             if (!apikey) return alert('No api key')
-            let y = new XMLHttpRequest()
-            y.open('POST', 'https://api.textsynth.com/v1/engines/gptj_6B/completions')
+            
             let props = {
                 prompt: contxt
             }
-            y.setRequestHeader('authorization', 'Bearer ' + apikey)
-            y.onreadystatechange = () => {
-                if (y.readyState == 4) {
-                    callback(y.response)
-                }
-            }
-            y.send()
+            let y = await fetch('https://api.textsynth.com/v1/engines/gptj_6B/completions', {
+                method: 'POST',
+                mode: 'cors',
+                headers: {
+                    'authorization': 'Bearer '+apikey
+                },
+                body: JSON.stringify(props)
+            )
+            return JSON.parse(y)
         }
     </script>
 </body>
