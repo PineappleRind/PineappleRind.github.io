@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>TextSynth</h1>
+    <input placeholder="api key"><br>
+    <textarea height="100" width="400"></textarea><br>
+    <button>Send =)</button>
+    <script>
+        let txt = document.querySelector('textarea')
+        let input = document.querySelector('input')
+        oninput = () => {
+            apikey = input.value
+        }
+        document.querySelector('button').onclick = () => {
+            snd(txt.value, callback)
+        }
+
+        function callback(resp) {
+            document.getElementById('stdout').innerHTML = txt.value + JSON.parse(resp).text
+        }
+        let apikey = ``
+
+        function snd(contxt) {
+            if (!apikey) return alert('No api key')
+            let y = new XMLHttpRequest()
+            y.open('POST', 'https://api.textsynth.com/v1/engines/gptj_6B/completions')
+            let props = {
+                prompt: contxt
+            }
+            y.setRequestHeader('authorization', 'Bearer ' + apikey)
+            y.onreadystatechange = () => {
+                if (y.readyState == 4) {
+                    callback(y.response)
+                }
+            }
+            y.send()
+        }
+    </script>
+</body>
+
+</html>
