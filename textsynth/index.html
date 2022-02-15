@@ -40,6 +40,7 @@
             headers.append('Authorization', 'Bearer '+apikey)
             let y = await fetch('https://api.textsynth.com/v1/engines/gptj_6B/completions', {
                 method: 'POST',
+                credentials: 'include',
                 mode: 'no-cors',
                 headers: headers,
                 body: JSON.stringify(props)
