@@ -38,7 +38,7 @@
             }
             let y = await fetch('https://api.textsynth.com/v1/engines/gptj_6B/completions', {
                 method: 'POST',
-                mode: 'cors',
+                mode: 'no-cors',
                 headers: {
                     'authorization': 'Bearer '+apikey
                 },
