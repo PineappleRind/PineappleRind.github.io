@@ -12,7 +12,7 @@
     }
 
     if (window.Worker) {
-        var worker = new Worker('worker.js');
+        var worker = new Worker('/wiggle/worker.js');
     } else return alert('Wiggle maker is not supported on your browser =(')
 
 
