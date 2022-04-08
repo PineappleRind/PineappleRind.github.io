@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOCIAL CREDIT QUIZ</title>
     <style>
-        *{color:yellow;margin:0;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;font-weight:900}
+        * {
+            color: yellow;
+            margin: 0;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-weight: 900
+        }
+
         body {
             background: red;
             width: 100vw;
@@ -15,80 +22,97 @@
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            perspective:10000px;
+            perspective: 10000px;
         }
+
         button {
             background-color: 0;
             background-image: url('https://icons.iconarchive.com/icons/wikipedia/flags/256/CN-China-Flag-icon.png');
-            background-size:cover;
-            background-position:center;
+            background-size: cover;
+            background-position: center;
             padding: 10px 30px;
             margin: 10px;
             border-radius: 20px;
-            cursor:pointer;
+            cursor: pointer;
             border: 1px solid yellow;
             color: yellow;
             box-shadow: inset 3px 3px 15px rgba(255, 255, 255, 0.425);
         }
+
         button:hover {
-            transform:Scale(1.4)
+            transform: Scale(1.4)
         }
+
         .container {
             transition: 0.5s;
             max-width: 90vw;
             min-width: 50vw;
-            display:flex;flex-direction:column;align-items:center;justify-content:center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
+
         .transitioning {
-            opacity:0;
+            opacity: 0;
         }
+
         .chinese-emoji {
             height: 300px;
-            width:300px;
-            position:fixed;
+            width: 300px;
+            position: fixed;
             opacity: 0.93;
-            z-index:3;
+            z-index: 3;
             animation: bigger linear 2s infinite;
             pointer-events: none;
         }
+
         .toast {
-            position:fixed;
+            position: fixed;
             bottom: 0;
             left: 0;
-            top:0;
-            z-index:2;
-            backdrop-filter:blur(4px);
+            top: 0;
+            z-index: 2;
+            backdrop-filter: blur(4px);
             right: 0;
             background: rgba(255, 0, 0, 0.308);
             padding: 40px 50px;
             border: 1px solid yellow;
             font-size: 60px;
         }
+
         .passed {
             background: url(https://acegif.com/wp-content/gifs/chinese-flag-1.gif);
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat !important;
         }
+
         @keyframes bigger {
-            50% {transform:scale(0.3)}
+            50% {
+                transform: scale(0.3)
+            }
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1>social credit quiz</h1>
-        <p style="width:300px">we have discovered incriminating evidence of your alleged hatred toward the CCP. please take this quiz to verify your loyalty. your social credit score will be adjusted as you answer. by the time you are done, if your social credit score is below 300, you fail!</p>
+        <p style="width:300px">we have discovered incriminating evidence of your alleged hatred toward the CCP. please
+            take this quiz to verify your loyalty. your social credit score will be adjusted as you answer. by the time
+            you are done, if your social credit score is below 300, you fail!</p>
         <div class="buttons">
             <button onclick="beginTest()">ok</button>
             <button onclick="beginTest()">ok</button>
         </div>
     </div>
     <audio loop id="audio">
-        <source src="xina.mp3">
+        <source src="/social-credit/xina.mp3">
     </audio>
     <div class="counter" style="position:fixed;top:0;right:0;padding:10px;">social credit: 0</div>
-    <script src="index.js">
+    <script src="/social-credit/index.js">
     </script>
 </body>
+
 </html>
