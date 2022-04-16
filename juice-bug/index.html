@@ -1,205 +1,33 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta name="title" content="Juice Bug Text Maker">
-<meta name="description" content="Working on adding more letters =)">
-<title>Juice Bug Text Maker</title>
-<style>
-*{margin:0;color:white;font-family: Inter, system-ui,sans-serif;}
-body {
-	display:flex;flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    height:100vh;
-    background: #000020;
-}
-input {
-border:0;
-	border-bottom: 2px solid rgba(255,255,255,0.3);
-    background: rgba(255,255,255,0.1);
-    padding: 5px;
-    border-radius:3px;
-    margin:10px;
-    margin-bottom:11px;
-    transition: 0.2s;
-    color:white;
-    cursor: pointer;
-}
-input:focus {
-	border-bottom: 2px solid rgba(0,0,255,1);
-    background: rgba(0,0,255,0.7);
-    outline:0;
-    transform:scale(1.1);
-}
-textarea {
-padding: 10px;
-border-radius:3px;
-transition: 0.2s;
-background: rgba(255,255,255,0.2);
-border:0;
-}hr {margin:10px;opacity:0.5;width:50vw;background:rgba(255,255,255,0.4);height:1px;border:0;}
-h1 {font-weight:200;}
-button {margin:10px;padding: 10px 20px;border-radius: 16px;background: rgba(255,255,255,0.2);border: 2px solid transparent;transition: 0.2s;}
-button:after {content: 'Copy to clipboard'}
-button.copied:after {content:'Copied!';}
-button.copied-not:after {content:'Could not copy';}
-button:hover {background: rgba(0,0,255,0.6);border: 2px solid rgba(0,0,255,1);transform:translateY(-2px);cursor:pointer;}
-</style>
+    <meta name="title" content="Juice Bug Text Maker">
+    <meta name="description" content="Working on adding more letters =)">
+    <title>Juice Bug Text Maker</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<h1>JuiceBug Text Maker</h1>
-<p>Type in anything* below to write it in JuiceBugs (or any other emoji name you specify). It will format correctly on Discord</p>
-	<small> *only some letters work, working on adding more </small>
-    <hr>
-<div><label>text to write in emojis</label><input id="text" placeholder="type"><br>
-<label>emoji name</label><input id="emoji" value="JuiceBug" placeholder="emoji name"></div>
-<textarea placeholder="output" disabled id="output"></textarea>
-<button id="copy"></button>
-<script>
-var letters = {
-    e: [`:JuiceBug::JuiceBug::JuiceBug::JuiceBug:       `,
-        `:JuiceBug:                         `,
-        `:JuiceBug: :JuiceBug::JuiceBug::JuiceBug:      `,
-        `:JuiceBug:                          `,
-        `:JuiceBug:                          `,
-        `:JuiceBug::JuiceBug::JuiceBug::JuiceBug:        `
-    ],
-    s: [`:JuiceBug::JuiceBug::JuiceBug::JuiceBug:        `,
-        `:JuiceBug:                          `,
-        `:JuiceBug::JuiceBug::JuiceBug::JuiceBug:        `,
-        `                  :JuiceBug:        `,
-        `                  :JuiceBug:        `,
-        `:JuiceBug::JuiceBug::JuiceBug::JuiceBug:        `
-    ],
-    t: [`:JuiceBug::JuiceBug::JuiceBug:        `,
-        `      :JuiceBug:              `,
-        `      :JuiceBug:              `,
-        `      :JuiceBug:              `,
-        `      :JuiceBug:              `,
-        `      :JuiceBug:              `
-    ],
-
-    p: [`:JuiceBug::JuiceBug::JuiceBug::JuiceBug:       `,
-        `:JuiceBug:             :JuiceBug:      `,
-        `:JuiceBug::JuiceBug::JuiceBug::JuiceBug:       `,
-        `:JuiceBug:                         `,
-        `:JuiceBug:                         `,
-        `:JuiceBug:                         `,
-        `:JuiceBug:                         `
-    ],
-
-    i: [`:JuiceBug::JuiceBug::JuiceBug:      `,
-        `      :JuiceBug:            `,
-        `      :JuiceBug:            `,
-        `      :JuiceBug:            `,
-        `      :JuiceBug:            `,
-        `:JuiceBug::JuiceBug::JuiceBug:      `
-    ],
-
-    n: [`:JuiceBug:             :JuiceBug:      `,
-        `:JuiceBug::JuiceBug:      :JuiceBug:       `,
-        `:JuiceBug:      :JuiceBug::JuiceBug:       `,
-        `:JuiceBug:      :JuiceBug::JuiceBug:       `,
-        `:JuiceBug:            :JuiceBug:       `,
-        `:JuiceBug:            :JuiceBug:       `
-    ],
-
-    f: [`:JuiceBug::JuiceBug::JuiceBug::JuiceBug:     `,
-        `:JuiceBug:                        `,
-        `:JuiceBug::JuiceBug::JuiceBug::JuiceBug:     `,
-        `:JuiceBug:                        `,
-        `:JuiceBug:                        `,
-        `:JuiceBug:                        `
-    ],
-
-    j: [`:JuiceBug::JuiceBug::JuiceBug::JuiceBug::JuiceBug:     `,
-        `            :JuiceBug:                 `,
-        `            :JuiceBug:                 `,
-        `            :JuiceBug:                 `,
-        `            :JuiceBug:                 `,
-        `:JuiceBug::JuiceBug:                        `
-    ],
-	
-    
-     h: [`:JuiceBug:            :JuiceBug:        `,
-	`:JuiceBug:            :JuiceBug:        `,
-	 `:JuiceBug::JuiceBug::JuiceBug::JuiceBug:        `,
-	`:JuiceBug:            :JuiceBug:        `,
-	`:JuiceBug:            :JuiceBug:        `,
-	`:JuiceBug:            :JuiceBug:        `,],
-
-     k: [`:JuiceBug:         :JuiceBug:         `,
-	`:JuiceBug:     :JuiceBug:            `,
-	`:JuiceBug::JuiceBug:                 `,
-	`:JuiceBug::JuiceBug:                 `,
-	`:JuiceBug:     :JuiceBug:            `,
-	`:JuiceBug:         :JuiceBug:        `],
-	a: [`:JuiceBug::JuiceBug::JuiceBug::JuiceBug:`,
-`:JuiceBug:                            :JuiceBug: `,
-`:JuiceBug::JuiceBug::JuiceBug::JuiceBug:`,
-`:JuiceBug:                            :JuiceBug:`,
-`:JuiceBug:                            :JuiceBug:`,
-`:JuiceBug:                            :JuiceBug:`],
-	b: [`:JuiceBug::JuiceBug::JuiceBug:`,
-`:JuiceBug:                            :JuiceBug:`,
-`:JuiceBug::JuiceBug::JuiceBug::JuiceBug:`,
-`:JuiceBug:                            :JuiceBug:`,
-`:JuiceBug:                            :JuiceBug:`,
-`:JuiceBug::JuiceBug::JuiceBug:`],
-	c: [`:JuiceBug::JuiceBug::JuiceBug::JuiceBug:`,
-`:JuiceBug:`,
-`:JuiceBug:`,
-`:JuiceBug:`,
-`:JuiceBug:`,
-`:JuiceBug::JuiceBug::JuiceBug::JuiceBug:`],
-	d: [`:JuiceBug::JuiceBug::JuiceBug:`,
-`:JuiceBug:                            :JuiceBug:`,
-`:JuiceBug:                            :JuiceBug:`,
-`:JuiceBug:                            :JuiceBug:`,
-`:JuiceBug:                            :JuiceBug:`,
-`:JuiceBug::JuiceBug::JuiceBug:`],
-	g: [`:JuiceBug::JuiceBug::JuiceBug::JuiceBug:`,
-`:JuiceBug:`,
-`:JuiceBug:`,
-`:JuiceBug:             :JuiceBug::JuiceBug:`,
-`:JuiceBug:                            :JuiceBug:`,
-`:JuiceBug::JuiceBug::JuiceBug::JuiceBug:`],
-	l: [`:JuiceBug:`,
-`:JuiceBug:`,
-`:JuiceBug:`,
-`:JuiceBug:`,
-`:JuiceBug:`,
-`:JuiceBug::JuiceBug::JuiceBug::JuiceBug:`]
-}
-let output = document.getElementById('output')
-oninput = () => {
-    output.innerHTML = getThing(document.querySelector('#text').value.toLowerCase())
-}
-
-function getThing(str) {
-    let res = ``
-    for (let j = 0; j < 6; j++) {
-        for (let i = 0; i < str.length; i++) {
-            res += letters[
-                str[i]
-            ][j]
-        }
-        res += `
-`
-    }
-    let juiceBugs = /:JuiceBug:/g
-    return res.replace(juiceBugs, ':'+document.querySelector('#emoji').value+':')
-}
-let copy = document.getElementById('copy')
-copy.onclick = () => {
-    navigator.clipboard.writeText(output.value).then(function() {
-        copy.classList.add('copied')
-        setTimeout(function(){copy.classList.remove('copied')},2000)
-    }, function() {
-        copy.classList.add('copied-not')
-        setTimeout(function(){copy.classList.remove('copied-not')},2000)
-    });
-}
-</script>
+    <div class="📦">
+        <h1 class="💬">JuiceBug Text Maker</h1>
+        <p>Type in anything* below to write it in JuiceBugs (or any other emoji name you specify). It will format
+            correctly
+            on Discord</p>
+        <small> *only some letters work, working on adding more </small>
+        <hr>
+        <div>
+            <label>text to write in emojis</label>
+            <input id="text" placeholder="type"><br>
+            
+            <label>emoji name</label>
+            <input id="emoji" value="JuiceBug" placeholder="emoji name">
+        </div>
+        <textarea placeholder="output" disabled id="output"></textarea>
+        <br>
+        <button class="🔘" id="copy"></button>
+    </div>
+    <script src="script.js"></script>
 </body>
+
 </html>

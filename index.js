@@ -21,6 +21,12 @@ const projects = [
         level: 'major'
     },
     {
+        name: "Social Credit Quiz",
+        link: "https://pineapplerind.ga/social-credit",
+        description: 'Inspired by the Internet meme, this quiz tests your loyalty to the CCP. Zhong Xina failed, will you?',
+        level: 'minor'
+    }, 
+    {
         name: "Text Stats",
         link: "https://pineapplerind.ga/text-stats",
         img: false,
@@ -31,12 +37,6 @@ const projects = [
         name: "Wiggle Text",
         link: "https://pineapplerind.ga/wiggle",
         description: "Make a string of text that appears to be in the shape of a wiggle",
-        level: 'minor'
-    }, 
-    {
-        name: "Social Credit Quiz",
-        link: "https://pineapplerind.ga/social-credit",
-        description: 'Inspired by the Internet meme, this quiz tests your loyalty to the CCP. Zhong Xina failed, will you?',
         level: 'minor'
     }
 ]
