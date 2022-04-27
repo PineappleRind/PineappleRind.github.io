@@ -221,3 +221,4 @@ select {
     -webkit-backdrop-filter: blur(10px) opacity(1);
     transform: translateX(0%)
 }
+.hits:hover {opacity:1}
