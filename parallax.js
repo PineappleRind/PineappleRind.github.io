@@ -20,18 +20,20 @@ let svg = {
 }
 let inner = document.querySelector('.inner')
 loadVisual(svg)
+parallax(inner.scrollTop)
 inner.onscroll = () => {
     // parallax effect for each wave, using scroll Y and scroll height
     parallax(inner.scrollTop)
 }
 function parallax(y) {
     // each wave moves at a different speed
-    let speedY = [0.3, 0.25, 0.2, 0.15, 0.1]
-    // use bezier curve to calculate the position of each wave
+    let speedY = [0.1, 0.08, 0.06, 0.04, 0.02]
+    let speedX = [0.1, 0.08, 0.06, 0.04, 0.02]
     let waves = document.querySelectorAll('.wave')
     for (let i = 0; i < waves.length; i++) {
         let waveY = y * speedY[i]
-        waves[i].setAttribute('transform', `translate(0 ${waveY})`)
+        let waveX = y * speedX[i]
+        waves[i].style.transform = `translateY(${waveY}px) translateX(${waveX}px) scale(1.3)`
     }
 
 }

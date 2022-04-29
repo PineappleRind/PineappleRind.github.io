@@ -3,7 +3,7 @@ a {
 }
 
 * {
-    font-family: 'Public Sans', Inter, system-ui, sans-serif;
+    font-family: 'Public Sans', Inter, Roboto, -apple-system, system-ui, sans-serif;
     margin: 0;
     box-sizing: border-box;
     color: #fff
@@ -44,6 +44,7 @@ body {
     z-index: -1;
     width: 100vw;
     height: 100vh;
+    transition: 0.1s;
     display: block
 }
 
@@ -57,26 +58,6 @@ body {
     flex-direction: column;
     position: relative;
     align-items: center
-}
-
-.inner::after,
-.inner::before {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    pointer-events: none;
-    z-index: 2;
-    width: 100vw;
-    background: linear-gradient(to top, #000020, transparent);
-    height: 40px;
-    content: ''
-}
-
-.inner::before {
-    top: 0;
-    bottom: unset;
-    background: linear-gradient(to bottom, #000020, transparent)
 }
 
 .title {
@@ -172,7 +153,7 @@ h2 {
     color: #fff;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     margin: 10px;
     width: fit-content;
     padding: 20px;
@@ -181,8 +162,9 @@ h2 {
     cursor: pointer;
     flex-shrink: 1;
     flex-grow: 0;
-    max-width: 420px;
+    width: 440px;
     overflow: hidden;
+    height: 160px;
 }
 
 .project:focus,
@@ -192,30 +174,57 @@ h2 {
 
 .project h1 {
     transition: .2s;
-    font-weight: 700;
+    font-weight: 400;
     opacity: .9;
-    font-size: 30px;
+    font-size: 26px;
     width: 100%;
-    text-align:left;
+    text-align: left;
+}
+
+.project h1::after {
+    background: rgba(255, 255, 255, .2);
+    color: #fff;
+    font-size: 15px;
+    padding: 2px 8px;
+    margin: 0 5px;
+    border-radius: 15px;
 }
 
 .project p {
     opacity: .8;
+    font-weight:260;
 }
+
 .project p.small {
-    font-size:12;
-    opacity:0.5;
+    font-size: 12;
+    opacity: 0.5;
 }
+
 .project img {
     max-width: 160px;
-    width: 100%;
     margin-right: 20px;
     border-radius: 20px
+}
+
+.project img~* {
+    width: 100%;
 }
 
 .projects-wrap {
     width: 100vw;
     height: 90vh;
+}
+
+.project h1::after {
+    background: rgba(255, 157, 77, 0.2);
+    content: attr(data-type);
+}
+
+.project-type-site h1::after {
+    background: rgba(77, 181, 255, 0.2);
+}
+.project-type-album h1::after {
+    background: rgba(77, 255, 110, 0.2);
 }
 
 .projects {
@@ -229,22 +238,27 @@ h2 {
     transition: 0.6s cubic-bezier(.83, 0, .25, 1);
     position: absolute;
 }
-.project .music-sub {
+
+.project .album-sub {
     font-weight: 200;
     opacity: 0.7;
+    font-size: 12px;
     text-transform: uppercase;
 }
-.project .music-sub::before {
+
+.project .album-sub::before {
     display: inline-block;
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
     font: var(--fa-font-solid);
     content: "\f017";
-    margin-right:4px;
+    margin-right: 4px;
 }
-.project .music-sub.tracks::before {
+
+.project .album-sub.tracks::before {
     content: "\f03a";
 }
+
 button[disabled] {
     opacity: .5;
     cursor: not-allowed
@@ -320,15 +334,15 @@ button[disabled]:hover {
 .select-project-type-wrap {
     display: flex;
     border-radius: 50px;
-    padding: 0 3px;
+    padding: 0 2px;
     background: rgba(255, 255, 255, .153);
 }
 
 .select-project-type {
     padding: 4px 9px;
-    margin: 3px 0;
+    margin: 3px 1px;
     cursor: pointer;
-    width: 65px;
+    min-width: 65px;
     text-align: center;
     transition: 0.2s;
     border-radius: 50px;
@@ -340,7 +354,6 @@ button[disabled]:hover {
 
 .select-project-type.selected {
     background: rgba(255, 255, 255, .4);
-    font-weight: bold;
 }
 
 .modal-container {
@@ -369,7 +382,7 @@ button[disabled]:hover {
 }
 
 .modal {
-    background:rgba(255, 255, 255, .153);
+    background: rgba(255, 255, 255, .153);
     padding: 20px;
     animation: modal 0.4s;
     border-radius: 20px;
