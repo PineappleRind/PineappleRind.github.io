@@ -8,9 +8,7 @@
     <meta name="title" content="PineappleRind">
     <meta name="description" content="Canadian frontend web developer">
     <title>PineappleRind</title>
-    <link rel="stylesheet" href="newstyles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <!--Stupid google verification-->
     <meta name="google-site-verification" content="oxcBZY-cAk2pug_UaT0mYbdbQfJnACzyXlyXqhL2lgs" />
     <meta name="google-site-verification" content="sXifaNrmBzseFBfkOa1TlZwbv1OaD8-aImRPGkXweNA" />
@@ -19,10 +17,11 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
         rel="stylesheet">
+        <script src="https://kit.fontawesome.com/2485b4b6f4.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <svg id="visual" style="position:fixed;z-index:-1;width:100vw;height:100vh;" viewBox="0 0 900 600" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"><rect x="0" y="0" width="900" height="600" fill="#000020"/><defs><linearGradient id="grad1_0" x1="33.3%" y1="0%" x2="100%" y2="100%"><stop offset="20%" stop-color="#0c0c2a" stop-opacity="1"/><stop offset="80%" stop-color="#0c0c2a" stop-opacity="1"/></linearGradient></defs><defs><linearGradient id="grad1_1" x1="33.3%" y1="0%" x2="100%" y2="100%"><stop offset="20%" stop-color="#0c0c2a" stop-opacity="1"/><stop offset="80%" stop-color="#000020" stop-opacity="1"/></linearGradient></defs><defs><linearGradient id="grad2_0" x1="0%" y1="0%" x2="66.7%" y2="100%"><stop offset="20%" stop-color="#0c0c2a" stop-opacity="1"/><stop offset="80%" stop-color="#0c0c2a" stop-opacity="1"/></linearGradient></defs><defs><linearGradient id="grad2_1" x1="0%" y1="0%" x2="66.7%" y2="100%"><stop offset="20%" stop-color="#000020" stop-opacity="1"/><stop offset="80%" stop-color="#0c0c2a" stop-opacity="1"/></linearGradient></defs><g transform="translate(900, 0)"><path d="M0 513.8C-23.8 386.9 -47.6 259.9 -134.5 233C-221.4 206 -371.2 279.1 -445 256.9C-518.7 234.7 -516.2 117.4 -513.8 0L0 0Z" fill="#060625"/><path d="M0 256.9C-11.9 193.4 -23.8 130 -67.2 116.5C-110.7 103 -185.6 139.5 -222.5 128.4C-259.3 117.4 -258.1 58.7 -256.9 0L0 0Z" fill="#0c0c2a"/></g><g transform="translate(0, 600)"><path d="M0 -513.8C21.7 -383.2 43.4 -252.5 130.5 -226C217.6 -199.5 370.2 -277.2 445 -256.9C519.7 -236.6 516.8 -118.3 513.8 0L0 0Z" fill="#060625"/><path d="M0 -256.9C10.8 -191.6 21.7 -126.3 65.2 -113C108.8 -99.8 185.1 -138.6 222.5 -128.4C259.9 -118.3 258.4 -59.1 256.9 0L0 0Z" fill="#0c0c2a"/></g></svg>
+    <div id="visual"></div>
     <div id="bodyBox" class="body-box">
         <div class="inner">
             <h1 class="title" style="display:flex">pineapplerind
@@ -40,17 +39,26 @@
                     </a>
                 </div>
             </h1>
-            <h2 class="subtitle"><i>featured</i></h2>
-
+            <h2 class="subtitle"><i>projects</i></h2>
+            <div class="select-project-type-wrap">
+                <div class="select-project-type dev selected" data-type="dev">Sites</div>
+                <div class="select-project-type music" data-type="music">Music</div>
+                <div class="select-project-type other"data-type="other">Other</div>
+            </div>
             <br>
-            <div class="projects featured"></div><br><br>
-            <h2 class="subtitle"><i>experiments</i></h2>
-            <div class="projects lesser"></div>
+            
+            <div class="projects-wrap" style="position: relative;">
+                <div class="projects">
+                
+                </div>
+            </div>
+            <br><br>
         </div>
     </div>
+    <div class="modal-container"></div>
+    
     <!--Sitemap for crawlers-->
     <div style="display:none">
-        <a href="stuff/login"></a>
         <a href="color-theory-rants/index.html"></a>
         <a href="color-theory-rants/light-blue-isnt-blue.html"></a>
         <a href="color-theory-rants/the-real-primary-colors.html"></a>
@@ -61,7 +69,8 @@
         <a href="algorithms/sentence/index.html"></a>
         <a href="colours/index.html"></a>
     </div>
-    <script src="index.js"></script>
+    <script src="parallax.js"></script>
+    <script src="main.js"></script>
 </body>
 
 </html>

@@ -38,6 +38,16 @@ body {
     overflow: hidden
 }
 
+#visual,
+#visual svg {
+    position: fixed;
+    z-index: -1;
+    width: 100vw;
+    height: 100vh;
+    display: block
+}
+
+
 .body-box .inner {
     padding: 40px;
     overflow-y: auto;
@@ -86,20 +96,22 @@ body {
     align-items: center;
 }
 
-.subtitle::before, .subtitle::after {
+.subtitle::before,
+.subtitle::after {
     font-family: 'Courier New', Courier, monospace;
     height: 1px;
     width: clamp(50px, 100px, 200px);
     display: inline-block;
-    background: linear-gradient(to right, white, rgba(255,255,255,0.2));
+    background: linear-gradient(to right, white, rgba(255, 255, 255, 0.2));
     vertical-align: middle;
     margin: 0 10px;
     content: '';
     opacity: 0.5;
     font-weight: 100;
 }
+
 .subtitle::before {
-    background: linear-gradient(to left, white, rgba(255,255,255,0.2));
+    background: linear-gradient(to left, white, rgba(255, 255, 255, 0.2));
 }
 
 button {
@@ -155,11 +167,10 @@ h2 {
     font-style: normal
 }
 
-.box {
+.project {
     background: #ffffff1f;
     color: #fff;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     margin: 10px;
@@ -170,45 +181,41 @@ h2 {
     cursor: pointer;
     flex-shrink: 1;
     flex-grow: 0;
-    max-width: 400px
+    max-width: 420px;
+    overflow: hidden;
 }
 
-.box:focus,
-.box:hover {
+.project:focus,
+.project:hover {
     background: #ffffff34;
-    transform: translateY(-2px)
 }
 
-.box:focus h1,
-.box:hover h1 {
-    opacity: 1
-}
-
-.box:focus p,
-.box:hover p {
-    opacity: 1
-}
-
-.box h1 {
+.project h1 {
     transition: .2s;
     font-weight: 700;
     opacity: .9;
     font-size: 30px;
-    text-align: center;
-    width: 100%
-}
-
-.box p {
-    opacity: .8;
-    text-align: center
-}
-
-.box img {
-    max-width: 300px;
     width: 100%;
-    margin-bottom: 10px;
-    margin-right: 10px;
+    text-align:left;
+}
+
+.project p {
+    opacity: .8;
+}
+.project p.small {
+    font-size:12;
+    opacity:0.5;
+}
+.project img {
+    max-width: 160px;
+    width: 100%;
+    margin-right: 20px;
     border-radius: 20px
+}
+
+.projects-wrap {
+    width: 100vw;
+    height: 90vh;
 }
 
 .projects {
@@ -216,9 +223,28 @@ h2 {
     justify-content: center;
     flex-wrap: wrap;
     flex-flow: wrap;
-    width: 100%
+    width: 100vw;
+    left: 0;
+    right: 0;
+    transition: 0.6s cubic-bezier(.83, 0, .25, 1);
+    position: absolute;
 }
-
+.project .music-sub {
+    font-weight: 200;
+    opacity: 0.7;
+    text-transform: uppercase;
+}
+.project .music-sub::before {
+    display: inline-block;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font: var(--fa-font-solid);
+    content: "\f017";
+    margin-right:4px;
+}
+.project .music-sub.tracks::before {
+    content: "\f03a";
+}
 button[disabled] {
     opacity: .5;
     cursor: not-allowed
@@ -279,6 +305,96 @@ button[disabled]:hover {
     opacity: 1
 }
 
+.going-left,
+.coming-left {
+    transform: translateX(-10vw);
+    opacity: 0
+}
+
+.going-right,
+.coming-right {
+    transform: translateX(10vw);
+    opacity: 0
+}
+
+.select-project-type-wrap {
+    display: flex;
+    border-radius: 50px;
+    padding: 0 3px;
+    background: rgba(255, 255, 255, .153);
+}
+
+.select-project-type {
+    padding: 4px 9px;
+    margin: 3px 0;
+    cursor: pointer;
+    width: 65px;
+    text-align: center;
+    transition: 0.2s;
+    border-radius: 50px;
+}
+
+.select-project-type:hover {
+    background: rgba(255, 255, 255, .2);
+}
+
+.select-project-type.selected {
+    background: rgba(255, 255, 255, .4);
+    font-weight: bold;
+}
+
+.modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 4;
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.4);
+    pointer-events: none;
+    transition: 0.4s;
+    backdrop-filter: blur(10px) opacity(0);
+    -webkit-backdrop-filter: blur(10px) opacity(0);
+}
+
+.modal-container.overlay {
+    opacity: 1;
+    backdrop-filter: blur(10px) opacity(1);
+    -webkit-backdrop-filter: blur(10px) opacity(1);
+    pointer-events: all;
+}
+
+.modal {
+    background:rgba(255, 255, 255, .153);
+    padding: 20px;
+    animation: modal 0.4s;
+    border-radius: 20px;
+    transform: scale(0.9);
+    transition: 0.4s;
+    color: var(--body-text-alternate)
+}
+
+.modal.showing {
+    transform: scale(1);
+}
+
+.modal-buttons {
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@keyframes modal {
+    from {
+        transform: scale(0.9)
+    }
+}
+
 @keyframes goup {
     from {
         transform: translateY(15px);
@@ -303,9 +419,18 @@ button[disabled]:hover {
         display: flex;
         flex-direction: column-reverse;
     }
-    .links a svg, .links a img {
+
+    .links a svg,
+    .links a img {
         height: 40px;
         width: 40px;
         opacity: 0.6;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important
     }
 }

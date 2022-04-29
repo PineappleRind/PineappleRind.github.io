@@ -92,9 +92,7 @@ let quesiter = 0,  container = document.querySelector('.container'), socCred = 0
         return `
         <h1>you have failed the test.</h1><p>your social credit score is ${socCred}. Xi Jinping will personally order you to be banned from China. you are not loyal enough to our glorious nation.`
     } else {
-        createChinaEmoji()
-        createChinaEmoji()
-        createChinaEmoji()
+        createChinaEmoji(3)
         document.body.classList.add('passed')
         return `<h1>you have been proven to be a loyal citizen.</h1><p>your social credit score is ${socCred}. glory to the ccp!</p>`
     }
@@ -133,15 +131,21 @@ function getQuestionHTML(ind) {
     questionHTML += `</div>`
     return questionHTML
 }
-function createChinaEmoji() {
-    let x = Math.floor(Math.random() * (window.innerWidth - 300))
-    let y = Math.floor(Math.random() * (window.innerHeight - 300))
-    let emoji = document.createElement('IMG')
-    emoji.src = 'chinese-emoji.png'
-    emoji.style.left = x + 'px'
-    emoji.style.top = y + 'px'
-    emoji.classList.add('chinese-emoji')
-    document.body.appendChild(emoji)
+function createChinaEmoji(num) {
+    let i = 0
+    if (num) do { worker(i) } while (i++ < num - 1)
+    function worker(i) {
+        if (i >= num) return
+        let x = Math.floor(Math.random() * (window.innerWidth - 300))
+        let y = Math.floor(Math.random() * (window.innerHeight - 300))
+        let emoji = document.createElement('IMG')
+        emoji.src = 'eye-china.png'
+        emoji.style.left = x + 'px'
+        emoji.style.top = y + 'px'
+        emoji.classList.add('chinese-emoji')
+        document.body.appendChild(emoji)
+    }
+    worker()
 }
 function createPopEmoji() {
     let x = Math.floor(Math.random() * (window.innerWidth - 300))
