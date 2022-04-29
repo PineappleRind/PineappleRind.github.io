@@ -64,15 +64,13 @@
             var project = projects_1[_i];
             var name_1 = project.name, img = project.img, type = project.type, link = project.link, description = project.description;
             var imgHTML = img ? "<img alt=\"".concat(name_1, "\" src=\"").concat(img, "\">") : " ";
-            var display = projectType ? (isType(type, projectType) ? 'none' : 'flex') : 'flex';
+            var display = isType(type, projectType) ? 'none' : 'flex';
             var descriptionHTML = type === 'album' ? "<p>".concat(description, "</p><p class=\"album-sub tracks\">").concat(project.tracks, " tracks</p><p class=\"album-sub duration\">").concat(project.time, " minutes</p>") : "<p>".concat(description, "</p>");
-            projectsHTML += "\n        <a class=\"project project-type-".concat(type, "\" style=\"display: ").concat(display, "\" href=\"").concat(link, "\" target=\"_blank\">\n        ").concat(imgHTML, "\n        <div>\n            <h1 data-type=\"").concat(type, "\" style=\"").concat(name_1.length >= 25 ? 'font-stretch: 50%;' : 'font-stretch: 90%', "\"> ").concat(name_1, "</h1>\n            ").concat(descriptionHTML, "\n        </div>\n        </a>");
+            projectsHTML += "\n        <a class=\"project project-type-".concat(type, "\" style=\"display: ").concat(display, "\" href=\"").concat(link, "\" target=\"_blank\">\n        ").concat(imgHTML, "\n        <div>\n            <h1 data-type=\"").concat(type, "\"> ").concat(name_1, "</h1>\n            ").concat(descriptionHTML, "\n        </div>\n        </a>");
         }
         return projectsHTML;
     }
     function isType(type, projectType) {
-        if (!projectType)
-            return false;
         var indices = ['all', 'site', 'album', 'other'];
         if (projectType === 'other' && indices.indexOf(type) === -1)
             return false;
@@ -88,7 +86,6 @@
     $('.projects').innerHTML += loadProjects(pType.string);
     function sortProjects(type) {
         var projects = $('.projects');
-        projects.setAttribute('style', 'transition: 0.6s cubic-bezier(.83,0,.25,1)');
         if (pType.string === type)
             return;
         var dir = getdir(pType.string, type);
@@ -96,7 +93,6 @@
         pType.string = type;
         var npDummy = document.createElement('div');
         npDummy.innerHTML = loadProjects(pType.string);
-        console.log(pType.string);
         npDummy.classList.add('projects', "coming-".concat(dir));
         projects.parentElement.insertAdjacentElement('afterbegin', npDummy);
         setTimeout(function () { npDummy.classList.remove("coming-".concat(dir)); });
@@ -105,7 +101,7 @@
         }, 600);
     }
     function getdir(from, to) {
-        var indices = ['all', 'site', 'album', 'other'];
+        var indices = ['site', 'album', 'other'];
         if (indices.indexOf(from) < indices.indexOf(to))
             return 'right';
         return 'left';

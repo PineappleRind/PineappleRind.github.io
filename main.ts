@@ -65,13 +65,13 @@
         for (const project of projects) {
             let { name, img, type, link, description } = project;
             let imgHTML = img ? `<img alt="${name}" src="${img}">` : ` `
-            let display = projectType ? (isType(type,projectType) ? 'none' : 'flex') : 'flex';
+            let display = isType(type,projectType) ? 'none' : 'flex'
             let descriptionHTML = type === 'album' ? `<p>${description}</p><p class="album-sub tracks">${project.tracks} tracks</p><p class="album-sub duration">${project.time} minutes</p>` : `<p>${description}</p>`
             projectsHTML += `
         <a class="project project-type-${type}" style="display: ${display}" href="${link}" target="_blank">
         ${imgHTML}
         <div>
-            <h1 data-type="${type}" style="${name.length >= 25 ? 'font-stretch: 50%;' : 'font-stretch: 90%'}"> ${name}</h1>
+            <h1 data-type="${type}"> ${name}</h1>
             ${descriptionHTML}
         </div>
         </a>`
@@ -79,7 +79,6 @@
         return projectsHTML
     }
     function isType(type: string, projectType: string) {
-        if (!projectType) return false;
         let indices = ['all', 'site', 'album', 'other'];
         if (projectType === 'other' && indices.indexOf(type) === -1) return false;
         return type !== projectType
@@ -95,14 +94,12 @@
 
     function sortProjects(type: string) {
         let projects = $('.projects');
-        projects.setAttribute('style', 'transition: 0.6s cubic-bezier(.83,0,.25,1)')
         if (pType.string === type) return
         let dir = getdir(pType.string, type)
         projects.classList.add(`going-${not(dir)}`)
         pType.string = type;
         var npDummy = document.createElement('div');
         npDummy.innerHTML = loadProjects(pType.string);
-        console.log(pType.string)
         npDummy.classList.add('projects', `coming-${dir}`);
         projects.parentElement.insertAdjacentElement('afterbegin', npDummy);
         setTimeout(function () { npDummy.classList.remove(`coming-${dir}`); })
@@ -111,7 +108,7 @@
         }, 600)
     }
     function getdir(from: string, to: string) {
-        let indices = ['all', 'site', 'album', 'other'];
+        let indices = ['site', 'album', 'other'];
         if (indices.indexOf(from) < indices.indexOf(to)) return 'right'
         return 'left'
     }
