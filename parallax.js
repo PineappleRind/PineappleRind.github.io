@@ -31,8 +31,8 @@ function parallax(y) {
     let speedX = [0.1, 0.08, 0.06, 0.04, 0.02]
     let waves = document.querySelectorAll('.wave')
     for (let i = 0; i < waves.length; i++) {
-        let waveY = y * speedY[i]
-        let waveX = y * speedX[i]
+        let waveY = (y * speedY[i]) - (inner.scrollHeight * speedY[i])
+        let waveX = (y * speedX[i]) - 20
         waves[i].style.transform = `translateY(${waveY}px) translateX(${waveX}px) scale(1.3)`
     }
 

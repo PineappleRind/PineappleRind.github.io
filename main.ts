@@ -1,11 +1,11 @@
 (function () {
-    const transforms: string[] = ['translateY', 'translateX', 'scale', 'rotate', 'rotateX', 'rotateY', 'rotateZ', 'skewX', 'skewY', 'perspective'];
     let hash = window.location.hash.substring(1);
     const $ = document.querySelector.bind(document);
     const $$ = document.querySelectorAll.bind(document);
-    for (let i = 0; i < $$('.select-project-type').length; i++) {
+    if (hash) for (let i = 0; i < $$('.select-project-type').length; i++) {
         const select = $$('.select-project-type')[i];
         if (select.getAttribute('data-type').includes(hash)) {
+            removeActive(select.parentElement);
             select.classList.add('selected');
             break;
         }
@@ -79,12 +79,12 @@
         return projectsHTML
     }
     function isType(type: string, projectType: string) {
-        let indices = ['all', 'site', 'album', 'other'];
+        let indices = ['site', 'album', 'other'];
         if (projectType === 'other' && indices.indexOf(type) === -1) return false;
         return type !== projectType
     }
     var pType = {
-        string: hash ? hash : '',
+        string: hash ? hash : 'site',
         element: hash ? $('.select-project-type.' + hash) : $('.select-project-type.site')
     }
     if (hash) {

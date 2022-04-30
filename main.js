@@ -1,15 +1,16 @@
 (function () {
-    var transforms = ['translateY', 'translateX', 'scale', 'rotate', 'rotateX', 'rotateY', 'rotateZ', 'skewX', 'skewY', 'perspective'];
     var hash = window.location.hash.substring(1);
     var $ = document.querySelector.bind(document);
     var $$ = document.querySelectorAll.bind(document);
-    for (var i = 0; i < $$('.select-project-type').length; i++) {
-        var select = $$('.select-project-type')[i];
-        if (select.getAttribute('data-type').includes(hash)) {
-            select.classList.add('selected');
-            break;
+    if (hash)
+        for (var i = 0; i < $$('.select-project-type').length; i++) {
+            var select = $$('.select-project-type')[i];
+            if (select.getAttribute('data-type').includes(hash)) {
+                removeActive(select.parentElement);
+                select.classList.add('selected');
+                break;
+            }
         }
-    }
     var projects = [
         {
             name: "Bezier Visualizer",
@@ -71,13 +72,13 @@
         return projectsHTML;
     }
     function isType(type, projectType) {
-        var indices = ['all', 'site', 'album', 'other'];
+        var indices = ['site', 'album', 'other'];
         if (projectType === 'other' && indices.indexOf(type) === -1)
             return false;
         return type !== projectType;
     }
     var pType = {
-        string: hash ? hash : '',
+        string: hash ? hash : 'site',
         element: hash ? $('.select-project-type.' + hash) : $('.select-project-type.site')
     };
     if (hash) {
