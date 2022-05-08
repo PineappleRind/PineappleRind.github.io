@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlipAnim Snow</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background: #111;
+            color: white;
+            padding: 20px 50px;
+            font-family: 'Public Sans', sans-serif;
+        }
+
+        pre {
+            background: rgba(255, 255, 255, 0.2);
+            border: 0 !important;
+            border-radius: 10px !important;
+            max-height: 500px;
+            overflow-y: scroll;
+        }
+        P {
+            margin: 10px;
+        }
+        details {
+            margin: 10px;
+            padding:4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+        }
+        details p {
+
+        }
+        summary {
+            border-radius: 10px;
+            font-weight: bold;
+            margin:5px 0;
+            padding: 0 4px;
+            cursor: pointer;
+        }
+        details:hover {
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+        /* Pretty printing styles. Used with prettify.js. */
+/* Vim sunburst theme by David Leibovic */
+
+pre .str, code .str { color: #65B042; } /* string  - green */
+pre .kwd, code .kwd { color: #E28964; } /* keyword - dark pink */
+pre .com, code .com { color: #AEAEAE; font-style: italic; } /* comment - gray */
+pre .typ, code .typ { color: #89bdff; } /* type - light blue */
+pre .lit, code .lit { color: #3387CC; } /* literal - blue */
+pre .pun, code .pun { color: #fff; } /* punctuation - white */
+pre .pln, code .pln { color: #fff; } /* plaintext - white */
+pre .tag, code .tag { color: #89bdff; } /* html/xml tag    - light blue */
+pre .atn, code .atn { color: #bdb76b; } /* html/xml attribute name  - khaki */
+pre .atv, code .atv { color: #65B042; } /* html/xml attribute value - green */
+pre .dec, code .dec { color: #3387CC; } /* decimal - blue */
+    </style>
+</head>
+
+<body>
+    <h1> Want the snow back? </h1>
+    <p> On April 1, 2022 and only April 1, 2022, snowfall was seen on FlipAnim. </p>
+    <p> I wanted to make the snow available once again for people to see (it's nice and calming)</p>
+    <p>Here it is:</p>
+
+      <pre class="prettyprint">
+// code taken from the site on April 1 but modified to increase readability and efficiency
+
+function snowHehe() {
+	var page = document.getElementById("mainDivActive"), // this is where the snow is added
+		flakes = [], // list of the current snowflakes (empty right now)
+		i = 0 // current iteration, kind of like a timer
+
+	function createSnowflake() {
+		if (flakes.length > 15) return // if there are too many snowflakes, don't make any more
+		var snow = document.createElement("div"); // create a new snowflake
+		snow.innerHTML = "*" // snowflake is *
+		snow.position = { // set the initial position of the snowflake
+			x: (window.innerWidth - 100) * Math.random() + 50, // x position
+			y: 50 * Math.random() // y position
+		}
+		snow.velocity = { // set the initial velocity of the snowflake
+			x: 10 * Math.random() + 5,
+			y: 5 * Math.random() + 2
+		}
+
+		// The styling of the snowflake
+		snow.style.position = "absolute" // make it able to freely go around the page
+		snow.style.pointerEvents = "none" // can't be interacted with
+		snow.style.userSelect = "none" // can't be selected
+		snow.style.color = "white" // color is white
+
+		// Initial position of the snowflake
+		snow.startX = snow.position.x
+		snow.position.x = snow.startX + 10 * Math.sin(i / snow.velocity.x)
+		snow.style.left = snow.position.x + "px"
+		snow.style.top = snow.position.y + "px"
+
+		// Add the snowflake to the page
+		page.insertBefore(snow, page.childNodes[0]), flakes.push(snow)
+	}
+
+	function updateFlakePos(snow, index) {
+		snow.position.x = snow.startX + 10 * Math.sin(snow / snow.velocity.x)
+		snow.position.y += snow.velocity.y
+		snow.style.left = snow.position.x + "px"
+		snow.style.left = snow.position.x + "px"
+		snow.style.top = snow.position.y + "px"
+		if (snow.position.y > page.offsetHeight - 50) {
+			flakes.splice(index, 1) // remove the snowflake from the list...
+			page.removeChild(snow) // ...and from the page
+		}
+	}
+	for (var s = 0; s < 5; s++) createSnowflake(); // make 5 snowflakes to start with
+
+	// make a snowflake every 1-2s
+	setInterval(createSnowflake, 1000 + Math.random() * 1000)
+
+	setInterval(() => { // every 0.03 seconds...
+		flakes.forEach(updateFlakePos) // update the position of every snowflake
+		i++; // increase the timer
+	}, 33)
+}
+snowHehe()
+</pre>
+    <p> To run the code, first make sure you're on a desktop browser. Then, right click to bring up the context menu (or "Right-click menu").</p>
+    <p>Click "Inspect" (or "Inspect Element") to open the Developer Tools.</p>
+    <details>
+        <summary><i>If you're on safari</i></summary>
+        <p>Make sure you have "Show develop menu in menu bar" enabled in Preferences (command-comma) > Advanced.</p>
+    </details>
+    <p>Go to the Console tab of the developer tools, paste the code there, and run it. You'll see snowfall from the top of the page.</p>
+
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <script>
+// actual code taken from the site on April 1
+function snowHehe() {
+	var page = document.getElementById("mainDivActive"), // this is where the snow is added
+		flakes = [], // list of the current snowflakes (empty right now)
+		i = 0 // current iteration, kind of like a timer
+
+	function createSnowflake() {
+		if (flakes.length > 15) return // if there are too many snowflakes, don't make any more
+		var snow = document.createElement("div"); // create a new snowflake
+		snow.innerHTML = "*" // snowflake is *
+		snow.position = { // set the initial position of the snowflake
+			x: (window.innerWidth - 100) * Math.random() + 50, // x position
+			y: 50 * Math.random() // y position
+		}
+		snow.velocity = { // set the initial velocity of the snowflake
+			x: 10 * Math.random() + 5,
+			y: 5 * Math.random() + 2
+		}
+
+		// The styling of the snowflake
+		snow.style.position = "absolute" // make it able to freely go around the page
+		snow.style.pointerEvents = "none" // can't be interacted with
+		snow.style.userSelect = "none" // can't be selected
+		snow.style.color = "white" // color is white
+
+		// Initial position of the snowflake
+		snow.startX = snow.position.x
+		snow.position.x = snow.startX + 10 * Math.sin(i / snow.velocity.x)
+		snow.style.left = snow.position.x + "px"
+		snow.style.top = snow.position.y + "px"
+
+		// Add the snowflake to the page
+		page.insertBefore(snow, page.childNodes[0]), flakes.push(snow)
+	}
+
+	function updateFlakePos(snow, index) {
+		snow.position.x = snow.startX + 10 * Math.sin(snow / snow.velocity.x)
+		snow.position.y += snow.velocity.y
+		snow.style.left = snow.position.x + "px"
+		snow.style.left = snow.position.x + "px"
+		snow.style.top = snow.position.y + "px"
+		if (snow.position.y > page.offsetHeight - 50) {
+			flakes.splice(index, 1) // remove the snowflake from the list...
+			page.removeChild(snow) // ...and from the page
+		}
+	}
+	for (var s = 0; s < 5; s++) createSnowflake(); // make 5 snowflakes to start with
+
+	// make a snowflake every 1-2s
+	setInterval(createSnowflake, 1000 + Math.random() * 1000)
+
+	setInterval(() => { // every 0.03 seconds...
+		flakes.forEach(updateFlakePos) // update the position of every snowflake
+		i++; // increase the timer
+	}, 33)
+}
+snowHehe()
+    </script>
+</body>
+
+</html>
