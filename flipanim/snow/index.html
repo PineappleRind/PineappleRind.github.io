@@ -167,7 +167,7 @@ function snowHehe() {
 	}
 
 	function updateFlakePos(snow, index) {
-		snow.position.x = snow.startX + 10 * Math.sin(snow / snow.velocity.x)
+		snow.position.x = snow.startX + (50 * Math.sin(snow.position.y / 100))
 		snow.position.y += snow.velocity.y
 		snow.style.left = snow.position.x + "px"
 		snow.style.left = snow.position.x + "px"
