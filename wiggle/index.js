@@ -1,13 +1,14 @@
-(function() {
+(function () {
     function $(id) { return document.querySelector(id) }
     var Maker = {
         input: $('#input'),
         output: $('.output'),
-        small: $('small'),
+        charCount: $('#charCount'),
         params: {
             height: $('#height'),
             width: $('#width'),
-            ease: $('#ease')
+            ease: $('#ease'),
+            bezier: $('#bezierInput')
         },
     }
 
@@ -20,18 +21,19 @@
     oninput = () => {
         loading = true
         $('.loading').classList.add('showing')
+        const { height, width, ease, bezier } = Maker.params
+        if (ease.value === 'bezier') $('#bezier').style.display = 'block'
+        else $('#bezier').style.display = 'none'
         worker.postMessage([
-            Maker.params.height.value,
-            Maker.params.width.value,
-            Maker.input.value,
-            Maker.params.ease.value
+            height.value, width.value, input.value,
+            ease.value === 'bezier' ? parseBezierObject(bezier.value) : ease.value
         ])
         worker.onmessage = output => {
             output = output.data
-            Maker.params.height.nextElementSibling.innerHTML = `Wiggle height (${Maker.params.height.value})`
-            Maker.params.width.nextElementSibling.innerHTML = `Wiggle width (${Maker.params.width.value})`
+            height.nextElementSibling.innerHTML = `Wiggle height (${height.value})`
+            width.nextElementSibling.innerHTML = `Wiggle width (${width.value})`
             let ccount = output.replaceAll('<br>', ' ').length
-            Maker.small.innerHTML = ccount + ' characters'
+            Maker.charCount.innerHTML = ccount + ' characters'
             Maker.output.innerHTML = output
             if (loading === true) {
                 $('.loading').classList.remove('showing')
@@ -39,6 +41,13 @@
             }
         }
 
+    }
+
+    function parseBezierObject(str) {
+        str = str.replaceAll(' ', '').split(',')
+        return {
+            points: str
+        }
     }
 
     function fallbackCopyTextToClipboard(text) {
@@ -49,7 +58,7 @@
         textArea.select();
 
         try {
-            var successful = document.execCommand("copy");
+            document.execCommand("copy");
         } catch (err) {
             console.error(err)
         }
@@ -63,32 +72,20 @@
             return;
         }
         navigator.clipboard.writeText(text).then(
-            function() {
-                console.log("Async: Copying to clipboard was successful!");
-            },
-            function(err) {
-                console.error("Async: Could not copy text: ", err);
-            }
+            () => console.log("Async: Copying to clipboard was successful!"),
+            err => console.error("Async: Could not copy text: ", err)
         );
     }
     onclick = e => {
         if (e.target.classList.value == 'output') {
-            console.log(e.target.classList)
-            console.log('OUCH')
             copyTextToClipboard($('textarea').value)
             let toast = new Toast({
                 title: 'Copied!',
                 description: 'Successfully copied to clipboard',
                 duration: 5
-            })
-            toast.initialize()
-            setTimeout(function() {
-                toast.show()
-            }, 1)
+            }).initialize()
+            setTimeout(() => toast.show())
         }
-    }
-    $('.output').onclick = () => {
-
     }
     let toastIsShowing = false
 
@@ -96,7 +93,8 @@
         this.title = obj.title
         this.description = obj.description
         this.duration = obj.duration * 1000
-        this.initialize = function() {
+
+        this.initialize = function () {
             toastIsShowing = true
             let toastcont = $('.toastcont')
             let toast = document.createElement('DIV')
@@ -107,15 +105,10 @@
             this.element = toast
             return this
         }
-        this.show = function() {
-            let toaststruct = this
-            setTimeout(function() { toaststruct.element.classList.add('showing') })
-            setTimeout(function() {
-                toaststruct.element.classList.remove('showing')
-                setTimeout(function() {
-                    toaststruct.element.remove()
-                }, 500)
-            }, this.duration)
+        this.show = function () {
+            setTimeout(() => toaststruct.element.classList.add('showing'))
+            setTimeout(() => toaststruct.element.classList.remove('showing'), this.duration)
+            setTimeout(() => toaststruct.element.remove(), 500)
             return this
         }
     }
