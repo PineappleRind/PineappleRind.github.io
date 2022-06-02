@@ -432,7 +432,7 @@
     }
 
     function drawTrail(x, y, prevX, prevY) {
-        if (bits.compare(bits.trail)) return;
+        if (!bits.compare(bits.trail)) return;
         if (!prevX && !prevY || t < 0.03) prevX = x, prevY = y;
         const {
             context
@@ -490,7 +490,13 @@
     function updateCheckboxes() {
         for (let i = 0; i < document.querySelectorAll('.showCheckbox').length; i++) {
             let cur = document.querySelectorAll('.showCheckbox')[i];
-            if (bits.compare(bits[cur.getAttribute('id')])) cur.checked = true;
+            if (bits.compare(bits[cur.getAttribute('id')])) {
+                cur.checked = true;
+                console.log(cur.getAttribute('id'));
+            } else {
+                cur.checked = false;
+            }
+
         }
     }
 
@@ -560,7 +566,7 @@
             evaluatePlaying();
         }
     };
-
+    var psc = $('presetSelectChoice')
     function getPresetSelectHTML() {
         let res = `<select id="presetChoice">
        `,
@@ -578,5 +584,29 @@
         return res;
     }
 
-    $('presetSelectChoice').innerHTML = getPresetSelectHTML();
+    function loadPreset(number) {
+        let toupdate = saveData.presets[number]
+        saveData.data = toupdate.data
+        let newShow
+        if (toupdate.show === null) {
+            newShow = {
+                "lines": true,
+                "midpoints": true,
+                "trail": true,
+                "controlpoints": true,
+                "finalmidpoint": true
+            }
+        } else newShow = toupdate.show
+        saveData.settings.show = newShow
+        replay()
+        save.set()
+        updateCheckboxes()
+    }
+
+    psc.oninput = () => {
+        loadPreset(parseInt(psc.value))
+        save.set()
+    }
+
+    psc.innerHTML = getPresetSelectHTML();
 })();
