@@ -287,9 +287,14 @@
         mouseIsDown = true;
     };
 
-    ontouchstart = function () {
-        mouseIsDown = true;
-    };
+    if (window.ontouchstart) {
+        ontouchstart = function () {
+            mouseIsDown = true;
+        };
+        ontouchmove = function (e) {
+            pointHandler(e.touches[0]);
+        };
+    }
 
     onmouseup = function () {
         mouseIsDown = false;
@@ -301,9 +306,7 @@
         pointHandler(e);
     };
 
-    ontouchmove = function (e) {
-        pointHandler(e.touches[0]);
-    };
+
 
     function pointHandler(windowEvent) {
         if (mouseIsDown === true) {
@@ -487,11 +490,7 @@
     function updateCheckboxes() {
         for (let i = 0; i < document.querySelectorAll('.showCheckbox').length; i++) {
             let cur = document.querySelectorAll('.showCheckbox')[i];
-
-            if (bits.compare(bits[cur.getAttribute('id')])) {
-                console.log('Found that ' + (saveData.settings.show >>> 0).toString(2) + ' has, contained within it, ' + bits[cur.getAttribute('id')].toString(2) + ', so it is checked.');
-                cur.checked = true;
-            }
+            if (bits.compare(bits[cur.getAttribute('id')])) cur.checked = true;
         }
     }
 
