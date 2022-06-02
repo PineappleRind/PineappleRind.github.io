@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bezier Curve Visualizer</title>
-    <link rel="stylesheet" href="/bezier-visualizer/style.css">
+    <link rel="stylesheet" href="css/style.css">
     <meta name="title" content="Bezier Curve Visualizer">
     <meta name="description" content="A site to visualize manipulable, animated Cubic Bezier curves.">
 
@@ -35,78 +35,128 @@
 </head>
 
 <body>
-    <div id="controls">
-        <div id="minimize" onclick="this.parentElement.classList.toggle('hidden')">&times;</div>
-        <div class="inner">
-
-            <h1 style="width:300px">Bezier Curve Visualizer</h1>
-            <h2 style="font-weight:200;font-size:25px;">how to use</h2>
-            <p>You can:
-            <ul>
-                <li>
-                    <p>drag points and see how the curve changes</p>
-                </li>
-                <li>
-                    <p>change ease functions for the animation</p>
-                </li>
-                <li>
-                    <p>double tap/click on a point to remove it, or in a blank space to add a point</p>
-                </li>
-            </ul>
-            <hr>
-            <h2 style="font-weight:200;font-size:25px;">controls</h2>
-            <button id="playBtn"
-                onclick="playing = !playing;if (t <= 0.01) clearTrail();evaluatePlaying()">Stop</button>
-            <button onclick="replay()">Restart</button>
-            <button onclick="resetCurve()">Reset Curve</button>
-            <br>
-            <hr>
-            <p>Easing function in the animation</p>
-            <select id="easeOption">
-                <option>linear</option>
-                <option selected>easeInOutQuad</option>
-                <option>easeInOutQuart</option>
-                <option>easeInOutExpo</option>
-                <option>bounce</option>
-            </select>
-            <hr>
-            <div>
-                <h2 style="font-weight:200;font-size:25px;">view</h2>
-                <input checked type="checkbox" id="lines"><label for="lines">Show Lines</label><br>
-                <input checked type="checkbox" id="midpoints"><label for="midpoints">Show Midpoints</label><br>
-                <input checked type="checkbox" id="trail"><label for="trail">Show Trail</label><br>
-                <input checked type="checkbox" id="controlpoints"><label for="controlpoints">Show Control Points</label><br>
-                <input checked type="checkbox" id="finalmidpoint"><label for="finalmidpoint">Show final midpoint (large white dot)</label>
-            </div>
-            <hr>
-            <div>
-                <p>Control point color scheme</p>
-                <select id="colorOption">
-                    <option selected name="goldenAngle">goldenAngle</option>
-                    <option name="rainbow">rainbow</option>
-                    <option name="grayscale">grayscale</option>
-                </select>
-            </div>
-            <hr>
-            <p>Background color</p>
-            <input type="color" id="bgColorPicker"
-                oninput="document.body.style.backgroundColor = this.value; computeTextColor(this);"><br><br>
-                <button onclick="document.body.style.backgroundColor = '#000020';this.previousElementSibling.value = '000020';computeTextColor(this)">Reset</button>
-            <hr>
-            <a href="https://github.com/PineappleRind/bezier-visualizer/issues"><button>Report bugs or give
-                    feedback</button></a>
-            <br>
-            <a href="https://github.com/PineappleRind/bezier-visualizer/releases"><button>What's new?</button></a>
-            <br>
-            <a href="https://github.com/PineappleRind/bezier-visualizer/releases"><button>Planned features</button></a>
-            <br><br>
-        </div>
-    </div>
     <canvas id="canvas"></canvas>
     <canvas id="canvas2"></canvas>
-    <p id="speedometer" style="font-family:monospace;position:fixed;pointer-events:none;bottom:10px;left:10px;font-size:20px;z-index:59;"></p>
-    <script src="/bezier-visualizer/index.js"></script>
+    <div id="controls">
+        <div id="minimize">
+            &times;</div>
+        <div class="inner">
+            <h1>Bezier Curve Visualizer</h1>
+            <div>
+                <h2>how to use</h2>
+                <p>You can:
+                <ul>
+                    <li>
+                        <p>drag points and see how the curve changes</p>
+                    </li>
+                    <li>
+                        <p>change ease functions for the animation</p>
+                    </li>
+                    <li>
+                        <p>double tap/click on a point to remove it, or in a blank space to add a point</p>
+                    </li>
+                </ul>
+            </div>
+            <div>
 
+                <h2>controls</h2>
+                <button id="playBtn">Stop</button>
+                <button id="replayBtn">Restart</button>
+                <button id="resetCurveBtn">Reset Curve</button>
+                <p>Easing function in the animation</p>
+                <select id="easeOption">
+                    <option>linear</option>
+                    <option selected>easeInOutQuad</option>
+                    <option>easeInOutQuart</option>
+                    <option>easeInOutExpo</option>
+                    <option>bounce</option>
+                </select>
+
+                <p>Animation speed</p>
+                <input id="animationSpeed" type="range" min="0.5" max="20">
+            </div>
+            <div>
+                <h2>view</h2>
+                <div id="showCheckboxes">
+                    <input class="showCheckbox" checked type="checkbox" id="lines"><label for="lines">Show
+                        Lines</label><br>
+                    <input class="showCheckbox" checked type="checkbox" id="midpoints"><label for="midpoints">Show
+                        Midpoints</label><br>
+                    <input class="showCheckbox" checked type="checkbox" id="trail"><label for="trail">Show
+                        Trail</label><br>
+                    <input class="showCheckbox" checked type="checkbox" id="controlpoints"><label
+                        for="controlpoints">Show Control
+                        Points</label><br>
+                    <input class="showCheckbox" checked type="checkbox" id="finalmidpoint"><label
+                        for="finalmidpoint">Show final midpoint (large
+                        white dot)</label><br>
+                </div>
+                <p>Control point color scheme</p>
+                <div id="colorOptionWrapper">
+                    <select id="colorOption">
+                        <option selected name="goldenAngle">goldenAngle</option>
+                        <option name="rainbow">rainbow</option>
+                        <option name="grayscale">grayscale</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <h2 beta>presets</h2>
+                <p>Choose a preset to load:</p>
+
+                <select id="presetSelectChoice">
+                    <option>Loading presets...</option>
+                </select>
+
+               <p>I'll make a custom preset editor soon...</p>
+
+            </div>
+            <div>
+                <h2 beta>data storage</h2>
+                <p>In this section there are a few tools you can use for data storage and management.</p>
+
+                <p>This is your data. It stores your current curve and your presets.</p>
+                <p>This is not cross-browser or cross-device. If you want to have your presets on a different
+                    browser/device, load the data below in the other browser/device.</p>
+                <textarea style="height: 100px;width:100%;" id="saveDataTextarea"></textarea>
+                <p>To load save data, paste your save data into the box above and click the Load Save Data button.</p>
+                <button id="loadSaveDataBtn">Load Save
+                    Data</button>
+            </div>
+            <div>
+                <h2>how it works</h2>
+                <p>This visualizer uses an implementation of DeCasteljau's algorithm. For how this works, see the
+                    Geometric interpretation section of <a
+                        href="https://en.wikipedia.org/wiki/De_Casteljau%27s_algorithm#Geometric_interpretation">this
+                        Wikipedia page.</a></p>
+            </div>
+            <div>
+                <h2>contribute</h2>
+                <a href="https://github.com/PineappleRind/bezier-visualizer/issues"><button>Report bugs or give
+                        feedback</button></a>
+                <a href="https://github.com/PineappleRind/bezier-visualizer/releases"><button>What's new?</button></a>
+                <a href="https://github.com/PineappleRind/bezier-visualizer/projects"><button>Planned
+                        features</button></a>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div style="z-index: 5" id="quickActions" class="quickActions hidden">
+        <a id="quickPlay" class="quickAction">Stop</a>
+        <a id="quickReplay" class="quickAction">Restart</a>
+    </div>
+
+    <div id="modalOverlay"></div>
+    <p id="speedometer"
+        style="font-family:monospace;position:fixed;pointer-events:none;bottom:10px;left:10px;font-size:20px;z-index:59;">
+    </p>
+    <script src="js/index.js"></script>
+    <script> </script>
 </body>
 
 </html>
+
+
+<!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26">-->
