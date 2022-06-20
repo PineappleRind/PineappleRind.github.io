@@ -22,11 +22,9 @@ let inner = document.querySelector('.inner')
 loadVisual(svg)
 parallax(inner.scrollTop)
 inner.onscroll = () => {
-    // parallax effect for each wave, using scroll Y and scroll height
     parallax(inner.scrollTop)
 }
 function parallax(y) {
-    // each wave moves at a different speed
     let speedY = [0.1, 0.08, 0.06, 0.04, 0.02]
     let speedX = [0.1, 0.08, 0.06, 0.04, 0.02]
     let waves = document.querySelectorAll('.wave')
