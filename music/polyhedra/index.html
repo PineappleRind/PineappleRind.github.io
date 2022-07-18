@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="Polyhedra">
+    <meta name="description" content="Single by PineappleRind (2022)">
+
+    <link rel="icon" type="image/x-icon" href="/music/polyhedra/polyhedra.thumb.png">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pineapplerind.ga/music/polyhedra">
+    <meta property="og:title" content="Polyhedra">
+    <meta property="og:description" content="Single by PineappleRind (2022)">
+    <meta property="og:image" content="https://pineapplerind.xyz/music/polyhedra/polyhedra.thumb.png">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://pineapplerind.xyz/music/polyhedra">
+    <meta property="twitter:title" content="Polyhedra">
+    <meta property="twitter:description" content="Single by PineappleRind (2022)">
+    <meta property="twitter:image" content="https://pineapplerind.xyz/music/polyhedra/polyhedra.thumb.png">
+
+    <link rel="stylesheet" href="/music/polyhedra/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wdth,wght@8..144,118.3,100;8..144,118.3,344;8..144,118.3,488;8..144,118.3,618;8..144,118.3,735;8..144,118.3,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="cont">
+        <div class="newsflash">
+            <h1>Polyhedra <small>
+                    <p>by</p> <a href="/">PineappleRind</a>
+                </small></h1>
+            <div class="tech-specs">
+                <!-- 4GB RAM, Intel Core i5 with Intel HD Graphics 6000 -->
+                <!-- lol -->
+                2022-07-18 — Single — 3 min
+            </div>
+        </div>
+        <ul id="platforms">
+            <li disabled value="spotify">Spotify</li>
+            <li disabled value="apple">Apple Music</li>
+            <li value="youtube">YouTube Music</li>
+            <li value="deezer">Deezer</li>
+            <li value="amazon">Amazon Music</li>
+            <li value="tidal">Tidal</li>
+            <li value="qobuz">Qobuz</li>
+        </ul>
+        <script>
+            window.$ = document.querySelectorAll.bind(document);
+            (function () {
+                let links = {
+                    "spotify": false,
+                    "apple": false,
+                    "youtube": "https://music.youtube.com/playlist?list=OLAK5uy_kmEdephWKBZbTCPBhklKYCv1TOqreUpWI",
+                    "deezer": "https://www.deezer.com/us/album/337099147",
+                    "tidal": "https://listen.tidal.com/album/238497792",
+                    "qobuz": "https://open.qobuz.com/album/j84s8nxaz3oqc",
+                    "amazon": "https://music.amazon.com/albums/B0B6WV6FMF"
+                }
+                let plats = $('#platforms li');
+                plats.forEach(el => {
+                    if (!el.getAttribute('disabled')) {
+                        el.onclick = () => {
+                            let val = el.getAttribute('value')
+                            if (!links[val]) return 'Polyhedra is not available yet on this platform'
+                            window.open(links[val], '_blank');
+                        }
+                    }
+                })
+            })()
+        </script>
+    </div>
+    </div>
+</body>

@@ -1,0 +1,190 @@
+:root {
+    --anim-dur: 3s;
+    --bg: rgb(15, 15, 18);
+    --bgh: rgba(15,15,18,0.3);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    color: #eee;
+    font-weight: 300;
+    font-family: Roboto Flex, Roboto, system-ui, sans-serif;
+}
+
+html {
+    background: var(--bg)
+}
+
+body {
+    background: radial-gradient(var(--bgh), var(--bg)), url('./polyhedra.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: load 3s;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
+}
+
+.cont {
+    margin: 30px;
+    padding: 0px;
+    animation: load_inverse 3s;
+    width: 450px;
+    border-radius: 30px;
+    position: relative;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(30px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.tech-specs {
+    margin-bottom: 8px;
+    opacity: 0.6;
+    display: flex;
+    font-weight: 600;
+}
+
+.newsflash {
+    margin: 30px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 45px;
+    font-weight: 600;
+    display: flex;
+    align-items: flex-end;
+}
+
+div p {
+    opacity: 0.6;
+    font-size: 22px;
+}
+
+h1 small {
+    display: flex;
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+h1 small,
+h1 small p {
+    font-size: 16px !important;
+}
+
+h1 p {
+    opacity: 0.6;
+}
+
+h1 a {
+    opacity: 0.9;
+    margin-left: 4px;
+    text-decoration: none;
+}
+
+h1 a:hover {
+    text-decoration: underline;
+}
+
+
+b {
+    font-weight: 500;
+    opacity: 1;
+    display: block;
+    font-size: 22px;
+    margin-left: 5px;
+}
+
+button {
+    border-radius: 20px;
+    padding: 6px 20px;
+    font-size: 20px;
+    margin-top: 10px;
+    border: 0;
+    background: linear-gradient(to right, rgb(180, 75, 220), rgb(230, 80, 200), rgb(226, 60, 101));
+    background-size: 150%;
+    background-position: 0 0;
+    transition: 0.2s;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+button:hover {
+    background-position: 100% 100%;
+    transform: translateY(-1px);
+}
+
+select {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: 0;
+}
+
+[disabled] {
+    opacity: 0.6;
+    user-select: none;
+    cursor: not-allowed !important;
+}
+
+#platforms {
+    display: flex;
+    flex-wrap: wrap;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    position: relative;
+    list-style-type: none;
+    border-radius: 30px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+#platforms li {
+    margin: 3px;
+    padding: 4px 16px;
+    position: relative;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 40px;
+    white-space: pre;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#platforms li:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+#platforms li[disabled]::after {
+    position: absolute;
+    display: none;
+    bottom: calc(50% + 20px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(240, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 2;
+    border-radius: 10px;
+    padding: 4px;
+    content: 'Not available yet'
+}
+
+#platforms li[disabled]:hover::after,
+#platforms li[disabled]:focus::after {
+    display: block
+}
+
+@keyframes load {
+    from {
+        opacity: 0;
+        transform: scale(1.4);
+    }
+}
+
+@keyframes load_inverse {
+    from {
+        opacity: 0;
+        transform: scale(0.6);
+    }
+}
