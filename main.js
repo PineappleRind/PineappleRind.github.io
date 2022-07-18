@@ -50,7 +50,7 @@
             let { name, img, type, link, description } = project;
             let imgHTML = img ? '<img alt="' + name + '" src="' + img + '">' : '';
             let display = isType(type, projectType) ? 'none' : 'flex';
-            let descriptionHTML = type === "music" ? `<p>${description}</p><p class="album-sub tracks">${project.tracks === 1 ? "Single" : `${project.tracks} tracks`}</p><p class="album-sub duration">${project.time} minutes</p>` : '<p>' + description + '</p>';
+            let descriptionHTML = type === "music" ? `<p>${description}</p><p class="music-sub tracks">${project.tracks === 1 ? "Single" : `${project.tracks} tracks`}</p><p class="music-sub duration">${project.time} minutes</p>` : '<p>' + description + '</p>';
             projectsHTML += '<a class="project project-type-' + type + '" style="display: ' + display + '" href="' + link + '" target="_blank">' + imgHTML + '<div><h1 data-type="' + type + '"> ' + name + '</h1>' + descriptionHTML + '</div></a>';
         }
         return projectsHTML;
