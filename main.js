@@ -28,9 +28,9 @@
             type: 'music', tracks: 6, time: 31
         }, {
             name: "Polyhedra", description: "Single (2022)",
-            img: 'imgs/polyhedra',
+            img: '/music/polyhedra/polyhedra.thumb.png',
             type: 'music',
-            link: '/music/polyhedra/polyhedra.thumb.png', tracks: 1, time: 3
+            link: '/music/polyhedra', tracks: 1, time: 3
         }, {
             name: "Social Credit Quiz",
             description: 'Inspired by the Internet meme, this quiz tests your loyalty to the CCP',
