@@ -86,7 +86,7 @@ body {
     vertical-align: middle;
     margin: 0 10px;
     content: '';
-    border-radius:20px;
+    border-radius: 20px;
     opacity: 0.5;
     font-weight: 100;
 }
@@ -174,7 +174,7 @@ h2 {
 .project:focus,
 .project:hover {
     background: #ffffff34;
-    box-shadow: 0 3px 4px rgba(0,0,0,0.2);
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.404);
 }
 
@@ -297,7 +297,7 @@ button[disabled]:hover {
     font-size: 15px;
     transform: translateX(50%) translateY(10px);
     opacity: 0;
-    font-weight:300;
+    font-weight: 300;
     transition: .2s;
     text-align: center;
     content: attr(tooltip)
@@ -328,7 +328,20 @@ button[disabled]:hover {
     display: flex;
     border-radius: 10px;
     padding: 0 2px;
+    position: relative;
     background: rgba(255, 255, 255, .153);
+}
+
+.select-project-type-wrap .indicator {
+    position: absolute;
+    left: 0;
+    margin: 5px;
+    bottom: 0;
+    top: 0;
+    border-radius: 10px;
+    transition: 0.5s;
+    width: 65px;
+    background: rgba(255, 255, 255, .15)
 }
 
 .select-project-type {
@@ -339,17 +352,11 @@ button[disabled]:hover {
     text-align: center;
     transition: 0.2s;
     border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0)
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .select-project-type:hover {
-    background: rgba(255, 255, 255, .1);
-    border: 1px solid rgba(255, 255, 255, .153)
-}
-
-.select-project-type.selected {
-    border: 1px solid rgba(255, 255, 255, .353);
-    background: rgba(255, 255, 255, .2);
+    color: rgba(255, 255, 255, 1);
 }
 
 .modal-container {
@@ -439,7 +446,7 @@ button[disabled]:hover {
 
 @media (prefers-reduced-motion: reduce) {
     * {
-        animation: none !important;
-        transition: none !important
+        animation: 0 !important;
+        transition: 0s !important;
     }
 }

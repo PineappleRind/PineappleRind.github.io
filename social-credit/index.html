@@ -7,6 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOCIAL CREDIT QUIZ</title>
     <style>
+        :root {
+            --bg: red;
+        }
+
         * {
             color: yellow;
             margin: 0;
@@ -14,8 +18,16 @@
             font-weight: 900
         }
 
+        .xi {
+            height: 184px;
+            margin: 10px;
+            border-radius: 10px;
+            width: 504px;
+            min-width: 200px;
+        }
+
         body {
-            background: red;
+            background: var(--bg);
             width: 100vw;
             height: 100vh;
             display: flex;
@@ -81,6 +93,10 @@
             font-size: 60px;
         }
 
+        .toast p {
+            font-size: 15px;
+        }
+
         .passed {
             background: url(https://acegif.com/wp-content/gifs/chinese-flag-1.gif);
             background-size: cover;
@@ -109,10 +125,10 @@
         <footer style="font-size:10px;">warning: sound</footer>
     </div>
     <audio loop id="audio">
-        <source src="/social-credit/xina.mp3">
+        <source src="./xina.mp3">
     </audio>
     <div class="counter" style="position:fixed;top:0;right:0;padding:10px;">social credit: 0</div>
-    <script src="/social-credit/index.js">
+    <script src="./index.dev.js">
     </script>
 </body>
 

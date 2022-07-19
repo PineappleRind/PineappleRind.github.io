@@ -91,6 +91,7 @@
         return 'left';
     }
     let projectTypes = $$('.select-project-type');
+    let indicator = $('.select-project-type-wrap .indicator')
     for (let i = 0; i < projectTypes.length; i++) {
         projectTypes[i].addEventListener('click', function () {
             sortProjects(this.getAttribute('data-type'));
@@ -98,6 +99,12 @@
             pType.element = this;
             window.location.hash = this.getAttribute('data-type');
             this.classList.add('selected');
+            let rect = {
+                parent: this.parentElement.getBoundingClientRect(), 
+                cur: this.getBoundingClientRect()
+            }
+            indicator.style.left = rect.cur.left - rect.parent.left - 5 + 'px';
+            indicator.style.width = rect.cur.width + 'px';
         });
     }
     function removeActive(projectTypes) {
