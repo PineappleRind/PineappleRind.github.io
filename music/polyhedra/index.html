@@ -21,7 +21,7 @@
     <meta property="twitter:description" content="Single by PineappleRind (2022)">
     <meta property="twitter:image" content="https://pineapplerind.xyz/music/polyhedra/polyhedra.thumb.png">
 
-    <link rel="stylesheet" href="/music/polyhedra/styles.css">
+    <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -42,7 +42,7 @@
             </div>
         </div>
         <ul id="platforms">
-            <li disabled value="spotify">Spotify</li>
+            <li value="spotify">Spotify</li>
             <li value="apple">Apple Music</li>
             <li value="youtube">YouTube Music</li>
             <li value="deezer">Deezer</li>
@@ -50,30 +50,7 @@
             <li value="tidal">Tidal</li>
             <li value="qobuz">Qobuz</li>
         </ul>
-        <script>
-            window.$ = document.querySelectorAll.bind(document);
-            (function () {
-                let links = {
-                    "spotify": false,
-                    "apple": "https://music.apple.com/us/album/polyhedra-single/1635208076",
-                    "youtube": "https://music.youtube.com/playlist?list=OLAK5uy_kmEdephWKBZbTCPBhklKYCv1TOqreUpWI",
-                    "deezer": "https://www.deezer.com/us/album/337099147",
-                    "tidal": "https://listen.tidal.com/album/238497792",
-                    "qobuz": "https://open.qobuz.com/album/j84s8nxaz3oqc",
-                    "amazon": "https://music.amazon.com/albums/B0B6WV6FMF"
-                }
-                let plats = $('#platforms li');
-                plats.forEach(el => {
-                    if (!el.getAttribute('disabled')) {
-                        el.onclick = () => {
-                            let val = el.getAttribute('value')
-                            if (!links[val]) return 'Polyhedra is not available yet on this platform'
-                            window.open(links[val], '_blank');
-                        }
-                    }
-                })
-            })()
-        </script>
+        <script>window.$=document.querySelectorAll.bind(document),function(){let a={spotify:"https://open.spotify.com/album/7jLWrTGy80v1LNoc61uTWU",apple:"https://music.apple.com/us/album/polyhedra-single/1635208076",youtube:"https://music.youtube.com/playlist?list=OLAK5uy_kmEdephWKBZbTCPBhklKYCv1TOqreUpWI",deezer:"https://www.deezer.com/us/album/337099147",tidal:"https://listen.tidal.com/album/238497792",qobuz:"https://open.qobuz.com/album/j84s8nxaz3oqc",amazon:"https://music.amazon.com/albums/B0B6WV6FMF"};$("#platforms li").forEach(b=>{b.getAttribute("disabled")||(b.onclick=()=>{let c=a[b.getAttribute("value")];c&&window.open(c,"_blank")})})}()</script>
     </div>
     </div>
 </body>

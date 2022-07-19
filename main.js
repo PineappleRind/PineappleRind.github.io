@@ -30,6 +30,7 @@
             name: "Polyhedra", description: "Single (2022)",
             img: '/music/polyhedra/polyhedra.thumb.png',
             type: 'music',
+            new: true,
             link: '/music/polyhedra', tracks: 1, time: 3
         }, {
             name: "Social Credit Quiz",
@@ -51,7 +52,7 @@
             let imgHTML = img ? '<img alt="' + name + '" src="' + img + '">' : '';
             let display = isType(type, projectType) ? 'none' : 'flex';
             let descriptionHTML = type === "music" ? `<p>${description}</p><p class="music-sub tracks">${project.tracks === 1 ? "Single" : `${project.tracks} tracks`}</p><p class="music-sub duration">${project.time} minutes</p>` : '<p>' + description + '</p>';
-            projectsHTML += '<a class="project project-type-' + type + '" style="display: ' + display + '" href="' + link + '" target="_blank">' + imgHTML + '<div><h1 data-type="' + type + '"> ' + name + '</h1>' + descriptionHTML + '</div></a>';
+            projectsHTML += '<a class="project project-type-' + type + ' '+(project.new ? 'new' : '') + '" style="display: ' + display + '" href="' + link + '" target="_blank">' + imgHTML + '<div><h1 data-type="' + type + '"> ' + name + '</h1>' + descriptionHTML + '</div></a>';
         }
         return projectsHTML;
     }

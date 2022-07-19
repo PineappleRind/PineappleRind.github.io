@@ -13,7 +13,8 @@
 }
 
 html {
-    background: var(--bg)
+    background: var(--bg);
+    overflow: hidden;
 }
 
 body {

@@ -30,6 +30,7 @@
             background: var(--bg);
             width: 100vw;
             height: 100vh;
+            transition: 3s;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -85,11 +86,11 @@
             left: 0;
             top: 0;
             z-index: 2;
-            backdrop-filter: blur(4px);
+            backdrop-filter: blur(10px);
             right: 0;
             background: rgba(255, 0, 0, 0.308);
             padding: 40px 50px;
-            border: 1px solid yellow;
+            border: 10px solid yellow;
             font-size: 60px;
         }
 
@@ -104,9 +105,23 @@
             background-repeat: no-repeat !important;
         }
 
+        .ohnorun {
+            background: radial-gradient(red, black);
+            transform: scale(1.1) rotateZ(5deg)
+        }
+
         @keyframes bigger {
             50% {
                 transform: scale(0.3)
+            }
+        }
+
+        /* if they prefer reduced motion, reduce the motion. */
+        /* i'm not a monster. */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: 0 !important;
+                transition: 0 !important
             }
         }
     </style>
@@ -116,19 +131,25 @@
     <div class="container">
         <h1>social credit quiz</h1>
         <p style="width:300px">we have discovered incriminating evidence of your alleged hatred toward the CCP. please
-            take this quiz to verify your loyalty. your social credit score will be adjusted as you answer.</p>
+            take this quiz to verify your loyalty.</p>
         <div class="buttons">
             <button onclick="beginTest()">ok</button>
             <button onclick="beginTest()">ok</button>
         </div>
         <p> minimum score of 300 </p>
-        <footer style="font-size:10px;">warning: sound</footer>
+        <footer style="font-size:12px;">⚠️WARNING: sound <span style="cursor: pointer;text-decoration: underline"
+                onclick="nosound();this.innerHTML = '(sound muted)'">(disable)</span></footer>
+        <footer style="font-size:10px;cursor: pointer;text-decoration: underline"
+            onclick="document.body.style.setProperty('--bg', '#000')">my eyes hurt</footer>
     </div>
     <audio loop id="audio">
-        <source src="./xina.mp3">
+        <source src="/social-credit/xina.mp3">
+    </audio>
+    <audio loop id="audio">
+        <source src="/social-credit/nuk.mp3">
     </audio>
     <div class="counter" style="position:fixed;top:0;right:0;padding:10px;">social credit: 0</div>
-    <script src="./index.dev.js">
+    <script src="/social-credit/index.js">
     </script>
 </body>
 

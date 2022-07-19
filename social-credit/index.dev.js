@@ -42,7 +42,7 @@ var questions = [
       },
       {
         name: "never heard of it",
-        score: false,
+        score: true,
       },
       {
         name: "a territory of china",
@@ -148,7 +148,9 @@ let quesiter = 0,
   socCred = 0,
   endScreen = function () {
     if (socCred < 300) {
+      play(1);
       emoji(1);
+      document.body.classList.add("ohnorun");
       return `
         <h1>you have failed the test.</h1><p>your social credit score is ${socCred}. ${
         Math.random > 0.5
@@ -161,9 +163,15 @@ let quesiter = 0,
       return `<h1>you have been proven to be a loyal citizen.</h1><p>your social credit score is ${socCred}. glory to the ccp!</p>`;
     }
   };
-
+function play(n) {
+  $("audio")[+!n].pause();
+  $("audio")[n].play();
+}
+function nosound() {
+  window.play = (n) => null;
+}
 function beginTest() {
-  $("audio")[0].play();
+  play(0);
   let switchTo = 0;
   if (questions.length != 1) switchSlides(switchTo);
   else switchSlides(endScreen());
