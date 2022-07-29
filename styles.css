@@ -159,7 +159,7 @@ h2 {
     width: fit-content;
     padding: 20px;
     border-radius: 25px;
-    transition: .3s cubic-bezier(0,.01,0,2.04);
+    transition: .3s cubic-bezier(0, .01, 0, 2.04);
     cursor: pointer;
     width: 440px;
     position: relative;
@@ -182,12 +182,14 @@ h2 {
     font-weight: 800;
     opacity: .9;
     font-size: 26px;
-    width: 100%;
+    width: fit-content;
+    position: relative;
     text-align: left;
 }
 
 
-.project.new h1::after {
+.project.new h1::after,
+.project.soon h1::after {
     background: rgba(0, 94, 255, 0.611);
     color: #fff;
     font-size: 15px;
@@ -195,6 +197,21 @@ h2 {
     margin: 0 5px;
     content: 'New';
     border-radius: 15px;
+    background: rgba(0, 94, 255, 0.611);
+    color: #fff;
+    font-size: 15px;
+    padding: 2px 8px;
+    margin: 0 5px;
+    content: 'New';
+    border-radius: 15px;
+    position: absolute;
+    top: 6px;
+    left: 100%;
+}
+
+.project.soon h1::after {
+    background: rgba(255, 123, 7, 0.389);
+    content: "Soon"
 }
 
 .project p {
@@ -359,7 +376,7 @@ button[disabled]:hover {
 }
 
 .select-project-type:hover {
-    border: 1px dashed rgba(255,255,255,0.2);
+    border: 1px dashed rgba(255, 255, 255, 0.2);
 }
 
 .select-project-type.selected {
