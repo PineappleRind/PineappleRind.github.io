@@ -7,6 +7,7 @@
 * {
     box-sizing: border-box;
     margin: 0;
+    user-select: none;
     color: #eee;
     font-weight: 300;
     font-family: Inter, system-ui, sans-serif;
@@ -61,7 +62,7 @@ footer {
     min-height: 100%;
     width: auto;
     height: auto;
-    z-index: -100;
+    z-index: -1;
 }
 
 .newsflash {
@@ -182,12 +183,14 @@ select {
 
 @keyframes load {
     from {
-        opacity: 0
+        opacity: 0;
+        z-index:-2;
     }
 
     70% {
         opacity: 0;
-        scale: 0.9
+        scale: 0.9;
+        z-index:-2;
     }
 }
 
