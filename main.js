@@ -42,7 +42,7 @@
     {
       name: "Berries",
       description: "EP (08/2022)",
-      img: "/imgs/comingsoon.png",
+      img: "/music/berries/berries.thumb.png",
       type: "music",
       class: "soon",
       link: "https://www.youtube.com/watch?v=5Q9IBtguLu8",

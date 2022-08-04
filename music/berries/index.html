@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berries | PineappleRind</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="icon" type="image/x-icon" href="/music/berries/berries.thumb.png">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pineapplerind.xyz/music/berries">
+    <meta property="og:title" content="Polyhedra">
+    <meta property="og:description" content="EP by PineappleRind (2022)">
+    <meta property="og:image" content="https://pineapplerind.xyz/music/berries/berries.thumb.png">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://pineapplerind.xyz/music/berries">
+    <meta property="twitter:title" content="Polyhedra">
+    <meta property="twitter:description" content="EP by PineappleRind (2022)">
+    <meta property="twitter:image" content="https://pineapplerind.xyz/music/berries/berries.thumb.png">
+
+</head>
+
+<body>
+    <script>window.$ = document.querySelectorAll.bind(document)</script>
+    <div id="video">
+        <video autoplay muted>
+            <source src="Berries.mp4">
+        </video>
+    </div>
+    <div class="cont">
+        <div class="newsflash">
+            <a href="/#music">More Music</a>
+            <h1>Berries</h1>
+            <p>EP — 5 Tracks</p>
+        </div>
+        <ul id="platforms">
+            <li value="spotify">Spotify</li>
+            <li value="apple">Apple Music</li>
+            <li value="youtube">YouTube Music</li>
+            <li value="deezer">Deezer</li>
+            <li value="amazon">Amazon Music</li>
+            <li value="tidal">Tidal</li>
+        </ul>
+        <script>
+                (function () {
+                    let a = {
+                        spotify: "https://open.spotify.com/album/72mS1HrGrn4mPoaKvorLNl",
+                        apple: "https://geo.music.apple.com/album/berries-ep/1637747470?app=music",
+                        deezer: "https://www.deezer.com/album/342483297",
+                        tidal: "http://www.tidal.com/album/241109815",
+                        youtube: "https://music.youtube.com/playlist?list=OLAK5uy_lhuSI_7Qhw5HjDISiLgj0Qkk9dtMgrjaU",
+                        amazon: "https://music.amazon.com/albums/B0B8G2X892?ref=dm_ff_linkfire"
+                    };
+                    $("#platforms li").forEach(b => {
+                        b.getAttribute("disabled") || (b.onclick = () => {
+                            let c = a[b.getAttribute("value")];
+                            c && window.open(c, "_blank")
+                        })
+                    })
+                }())</script>
+    </div>
+    <footer>©2022 PineappleRind</footer>
+    <script>let img = document.createElement('img'); img.classList.add('hero'); img.src = "Berries.png"; let q = window.matchMedia('(prefers-reduced-motion: reduce)'); if (!q || q.matches) { window.$('#video')[0].remove(); document.body.style.backgroundImage = (`radial-gradient(var(--bgh), var(--bg)), url('/music/berries/Berries.png')`); }</script>
+</body>
+
+</html>

@@ -1,0 +1,200 @@
+:root {
+    --anim-dur: 5s;
+    --bg: rgb(15, 15, 18);
+    --bgh: rgba(15, 15, 18, 0.3);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    color: #eee;
+    font-weight: 300;
+    font-family: Inter, system-ui, sans-serif;
+}
+
+html {
+    background: var(--bg);
+    overflow: hidden;
+}
+
+body {
+    background-image: radial-gradient(var(--bgh), var(--bg));
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cont {
+    margin: 30px;
+    padding: 0px;
+    animation: load var(--anim-dur);
+    width: 450px;
+    border-radius: 30px;
+    position: relative;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(30px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+footer {
+    animation: load var(--anim-dur);
+    position: fixed;
+    bottom: 10px;
+    font-size: 14px;
+    opacity: 0.5;
+    font-weight: light;
+}
+#video video, .hero {
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -o-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+}
+
+.newsflash {
+    margin: 30px;
+    margin-bottom: 20px;
+}
+
+a {
+    text-decoration: none;
+    font-weight: light;
+    opacity: 0.4;
+}
+a:hover {text-decoration:underline;opacity:0.6}
+
+h1 {
+    font-size: 45px;
+    font-weight: 600;
+    display: flex;
+    align-items: flex-end;
+}
+
+div p {
+    opacity: 0.6;
+    font-size: 22px;
+}
+
+h1 small {
+    display: flex;
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+h1 small,
+h1 small p {
+    font-size: 16px !important;
+}
+
+h1 p {
+    opacity: 0.6;
+}
+
+h1 a {
+    opacity: 0.9;
+    margin-left: 4px;
+    text-decoration: none;
+}
+
+h1 a:hover {
+    text-decoration: underline;
+}
+
+
+b {
+    font-weight: 500;
+    opacity: 1;
+    display: block;
+    font-size: 22px;
+    margin-left: 5px;
+}
+
+select {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: 0;
+}
+
+[disabled] {
+    opacity: 0.6;
+    user-select: none;
+    cursor: not-allowed !important;
+}
+
+#platforms {
+    display: flex;
+    flex-wrap: wrap;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    position: relative;
+    list-style-type: none;
+    border-radius: 30px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+#platforms li {
+    margin: 3px;
+    padding: 4px 16px;
+    position: relative;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 40px;
+    white-space: pre;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#platforms li:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+#platforms li[disabled]::after {
+    position: absolute;
+    display: none;
+    bottom: calc(50% + 20px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(240, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 2;
+    border-radius: 10px;
+    padding: 4px;
+    content: 'Not available yet'
+}
+
+#platforms li[disabled]:hover::after,
+#platforms li[disabled]:focus::after {
+    display: block
+}
+
+@keyframes load {
+    from {
+        opacity: 0
+    }
+
+    70% {
+        opacity: 0;
+        scale: 0.9
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: 0 !important;
+        transition: 0 !important
+    }
+    video {display: none;}
+}
