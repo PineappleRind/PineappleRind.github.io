@@ -44,7 +44,7 @@
       img: "/music/berries/berries.thumb.png",
       type: "music",
       class: "new",
-      link: "https://www.youtube.com/watch?v=5Q9IBtguLu8",
+      link: "/music/berries",
       tracks: 5,
       time: 17,
     },
