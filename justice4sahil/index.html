@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,300;8..144,400;8..144,500;8..144,600;8..144,800;8..144,900;8..144,1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>#justice4sahil</nav>
+    <section class="gradient">
+        <h1>Free Sahil</h1>
+        <p>Sahil deserves justice. Let's give it to him.</p>
+        <br>
+        <div class="buttons">
+            <button onclick="window.location.hash = '#wrong'" class="special">What happened?</button>
+        </div>
+    </section>
+    <section id="wrong">
+        <h2>Wrongly accused</h2>
+        <p>On <span id="time"></span>, Sahil was <i>wrongly muted.</i></p>
+        <br>
+        <p>He was a good man. He didn't deserve it.</p>
+        <br>
+        <b>What Sahil really deserves is justice.</b>
+    </section>
+    <section>
+        <h2>How you can help</h2>
+        <p>Go to the Lofi Girl server (#general) and type <code>#justice4sahil</code>. That's all you have to do! <br><br><b>#justice4sahil</b></p>
+    </section>
+    <footer>
+        we love you Sahil ❤️
+    </footer>
+    <script>
+        // hey
+        let timeel = document.getElementById('time');
+        let time = new Date(1661129220000)
+
+        // set time
+        timeel.innerHTML = time.toLocaleDateString() + ' at ' + time.toLocaleTimeString().replace(":00",'')
+    </script>
+</body>
+</html>

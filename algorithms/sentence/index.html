@@ -1,66 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sentence Generator</title>
     <style>
-        *{margin:5px;animation-duration: 0.3s;}
-        body{
-            display:flex;
+        * {
+            margin: 5px;
+            animation-duration: 0.3s;
+        }
+
+        body {
+            display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height:100vh;
-            background:rgb(66, 156, 207);
-            font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+            height: 100vh;
+            background: rgb(66, 156, 207);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
         }
-        .box{
-            padding:20px;
-            box-shadow: 0 0px 50px rgba(0, 0, 0, 0.644);
-            background:white;
-            border-radius:5px;
-            display:flex;
+
+        .box {
+            padding: 20px;
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.244);
+            background: white;
+            border-radius: 20px;
+            display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
         }
+
         button {
             position: relative;
-  overflow: hidden;
-  transition: 200ms;
-  color: #fff;
-  background-color: #6200ee;
-  padding: 0.5rem 1rem;
-  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-size: 15px;
-  outline: 0;
-  border: 0;
-  border-radius: 0.25rem;
-  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
-  cursor: pointer;
+            overflow: hidden;
+            transition: 200ms;
+            color: #fff;
+            background-color: #6200ee;
+            padding: 0.5rem 1rem;
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 15px;
+            outline: 0;
+            border: 0;
+            border-radius: 10px;
+            box-shadow: 0 5px 0.5rem rgba(0, 0, 0, 0.3);
+            cursor: pointer;
         }
 
         button:hover {
-            transform:translateY(-1px)
+            transform: translateY(-1px);
+            background-color: #8400ff
         }
+
         button:active {
-            transform:translateY(1px)
+            transform: translateY(1px);
         }
 
         @keyframes bounce {
-            50% {transform:scale(1.05);opacity:0.8}
+            50% {
+                transform: scale(1.05);
+                opacity: 0.8
+            }
         }
     </style>
 </head>
+
 <body>
-    <div class="box"> 
-        <h1>Random Sentence Generator</h1> 
-        <p id="output">Generating...</p>
+    <div class="box">
+        <h1 style="font-weight:300">Random Sentence Generator</h1>
+        <b>Sentence Order</b>
+        <textarea id="sentenceOrder">I {adverb} {verb} a {adjective} {noun}</textarea>
+        <i>Tags: adverb,verb,preposition,noun,adjective</i>
+        <br>
+        <b>Output</b>
+        <p id="output">Click below</p>
         <button id="generate">Generate</button>
-        <b>Sentence order coming soon!</b>
-    </div>  
-    <script src="/algorithms/sentence/sentence.js"></script>
+    </div>
+    <script src="http://unpkg.com/compromise@14.4.5/builds/compromise.js"></script>
+    <script src="./sentence.js"></script>
 </body>
+
 </html>
