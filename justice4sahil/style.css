@@ -2,6 +2,7 @@
     margin: 0;
     box-sizing: border-box;
     color: white;
+    transition: 4s;
     font-family: Roboto Flex, system-ui, sans-serif;
 }
 html {
@@ -73,6 +74,20 @@ footer, nav {
     background: rgba(255, 255, 255, 0.022);
     font-size: 12px;
     font-weight: 100;
-    opacity: 0.7
+    opacity: 0.7;
+    animation: nav 2s;
+}
+footer {animation: nav 2s}
+
+@keyframes nav {
+    from {transform: translateY(-20px)}
+}
+@keyframes footer {
+    from {transform: translateY(20px)}
 }
 
+.animate {
+    opacity: 0;
+    transition: 2s;
+    transform: translateY(-20px)
+}
