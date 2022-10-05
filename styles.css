@@ -163,7 +163,6 @@ h2 {
     cursor: pointer;
     width: 440px;
     position: relative;
-    overflow: hidden;
     height: 160px;
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.104);
@@ -270,6 +269,64 @@ h2 {
 
 .project .music-sub.tracks::before {
     content: "\f03a";
+}
+
+.project .music-sub.date::before {
+    content: '\f073';
+}
+
+.project.coming-soon .music-sub.date::after {
+    content: ' Coming soon';
+    font-weight: 400;
+}
+
+.project.coming-soon {
+    position: relative;
+    cursor: pointer;
+}
+
+.project.coming-soon::before,
+.project.coming-soon::after {
+  line-height: 1;
+  font-size: .9em;
+  pointer-events: none;
+  position: absolute;
+  box-sizing: border-box;
+  opacity: 0;
+  transition: 0.1s;
+  left: 50%;
+  translate: -50% -50%;
+  scale: 0.9;
+}
+.project.coming-soon::before {
+  content: "";
+  bottom: 100%;
+  border-bottom-width: 0;
+  border-top-color: #4621FF;
+  border: 5px solid transparent;
+  z-index: 100;
+}
+.project.coming-soon::after {
+  content: 'Pre-save';
+  text-align: center;
+  min-width: 3em;
+  max-width: 21em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 6px 8px;
+  border-radius: 3px;
+  background: #4621FF;
+  color: #FFFFFF;
+  bottom: 100%;
+  border-bottom-width: 0;
+  border-top-color: #4621FF;
+  z-index: 99;
+}
+.project.coming-soon:hover:before,
+.project.coming-soon:hover:after {
+  opacity: 1;
+  scale: 1;
 }
 
 button[disabled] {

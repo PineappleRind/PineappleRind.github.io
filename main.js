@@ -27,26 +27,39 @@
       link: "https://artists.landr.com/pr",
       type: "music",
       tracks: 6,
+      date: "2022.01.24",
       time: 31,
     },
     {
       name: "Polyhedra",
-      description: "Single (07/2022)",
+      description: "Single",
       img: "/music/polyhedra/polyhedra.thumb.png",
       type: "music",
       link: "/music/polyhedra",
       tracks: 1,
+      date: "2022.07.18",
       time: 3,
     },
     {
       name: "Berries",
-      description: "EP (08/2022)",
+      description: "EP",
       img: "/music/berries/berries.thumb.png",
       type: "music",
-      class: "new",
       link: "/music/berries",
       tracks: 5,
+      date: "2022.08.02",
       time: 17,
+    },
+    {
+      name: "Seaweed",
+      description: "Single",
+      img: "/music/seaweed/seaweed.thumb.jpg",
+      link: "https://artists.landr.com/seaweed",
+      type: "music",
+      class: "new coming-soon",
+      tracks: 1,
+      date: "2022.10.29",
+      time: 4,
     },
     {
       name: "Social Credit Quiz",
@@ -65,36 +78,30 @@
       img: "./imgs/wiggle.png",
     },
   ];
+
+  // Warning — messy code...
   function loadProjects(projectType) {
     var projectsHTML = "";
     for (const project of projects) {
       let { name, img, type, link, description } = project;
-      let imgHTML = img ? '<img alt="' + name + '" src="' + img + '">' : "";
+      let imgHTML = img
+        ? '<img alt="' + name + ' image" src="' + img + '">'
+        : "";
       let display = isType(type, projectType) ? "none" : "flex";
       let descriptionHTML =
         type === "music"
           ? `<p>${description}</p><p class="music-sub tracks">${
               project.tracks === 1 ? "Single" : `${project.tracks} tracks`
-            }</p><p class="music-sub duration">${project.time} minutes</p>`
+            }</p><p class="music-sub duration">${
+              project.time
+            } minutes</p><p class="music-sub date">${project.date}</p>`
           : "<p>" + description + "</p>";
-      projectsHTML +=
-        '<a class="project project-type-' +
-        type +
-        " " +
-        project.class +
-        '" style="display: ' +
-        display +
-        '" href="' +
-        (link ? link + '" target="_blank' : "#") +
-        '">' +
-        imgHTML +
-        '<div><h1 data-type="' +
-        type +
-        '"> ' +
-        name +
-        "</h1>" +
-        descriptionHTML +
-        "</div></a>";
+
+      projectsHTML += `<a class="project project-type-${type} ${
+        project.class
+      }" style="display: ${display}" href="${
+        link ? `${link} target="_blank` : "#"
+      }">${imgHTML}<div><h1 data-type="${type}"> ${name}</h1>${descriptionHTML}</div></a>`;
     }
     return projectsHTML;
   }
