@@ -100,7 +100,7 @@
       projectsHTML += `<a class="project project-type-${type} ${
         project.class
       }" style="display: ${display}" href="${
-        link ? `${link} target="_blank` : "#"
+        link ? `${link}" target="_blank` : "#"
       }">${imgHTML}<div><h1 data-type="${type}"> ${name}</h1>${descriptionHTML}</div></a>`;
     }
     return projectsHTML;
