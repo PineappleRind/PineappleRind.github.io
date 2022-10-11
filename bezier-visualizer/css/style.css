@@ -12,6 +12,9 @@ body {
   --background-color-hover: rgba(198, 214, 255, 0.24);
   --background-color-hover-intense: rgba(198, 214, 255, 0.317);
   --border: 1px solid rgba(151, 158, 255, 0.3);
+  --border-hover: 1px solid rgba(151, 158, 255, 0.588);
+  --accent: rgba(175, 198, 255, 0.798);
+  --accent-hover: rgb(172, 195, 255);
 }
 
 html,
@@ -60,6 +63,16 @@ canvas {
   z-index: -2;
   opacity: 0.5;
   pointer-events: none;
+}
+
+code {
+  padding: 2px;
+  font-family: monospace;
+  background: var(--background-color);
+}
+
+code * {
+  font-family: monospace;
 }
 
 #controls {
@@ -140,22 +153,10 @@ button {
 }
 
 button:hover {
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  border: var(--border-hover);
   background: var(--background-color-hover);
   -webkit-transform: translateY(-1px);
           transform: translateY(-1px);
-}
-
-select *,
-select {
-  border-radius: 10px;
-  padding: 10px;
-  display: block;
-  background: var(--background-color);
-}
-
-select * {
-  color: black;
 }
 
 #controls p {
@@ -230,6 +231,30 @@ form p#close:hover {
           transform: translateY(10px);
 }
 
+.banner {
+  margin: 20px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  position: absolute;
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  bottom: 0;
+  padding: 10px;
+  background: rgba(25, 39, 82, 0.4);
+  border: var(--border);
+  border-radius: 10px;
+}
+
+.banner a {
+  font-size: 12px;
+  opacity: 0.7;
+  margin: 0 5px;
+}
+
+.banner a:hover {
+  opacity: 1;
+}
+
 [construction] {
   position: relative;
   overflow: hidden;
@@ -252,9 +277,9 @@ form p#close:hover {
       -ms-flex-pack: center;
           justify-content: center;
   position: absolute;
-  content: 'Under construction';
+  content: "Under construction";
   font-weight: 900;
-  font-family: 'Bevan', 'Rockwell', 'Impact', sans-serif;
+  font-family: "Bevan", "Rockwell", "Impact", sans-serif;
   cursor: not-allowed;
   background: rgba(30, 38, 105, 0.938);
   border-radius: 10px;
@@ -359,17 +384,19 @@ form p#close:hover {
   padding: 10px;
   z-index: 11;
   color: white;
-  -webkit-transform: translateY(-50px) translateX(-50%);
-          transform: translateY(-50px) translateX(-50%);
+  -webkit-transform: translateY(10px) translateX(-50%);
+          transform: translateY(10px) translateX(-50%);
   opacity: 0;
   -webkit-transition: 0.5s;
   transition: 0.5s;
+  -webkit-animation: show-toast 0.5s;
+          animation: show-toast 0.5s;
   font-size: 25px;
   -webkit-backdrop-filter: blur(14px) opacity(0);
           backdrop-filter: blur(14px) opacity(0);
 }
 
-.toast .showing {
+.toast.showing {
   opacity: 1;
   -webkit-backdrop-filter: blur(14px) opacity(1);
           backdrop-filter: blur(14px) opacity(1);
@@ -378,18 +405,34 @@ form p#close:hover {
   left: 50%;
 }
 
-.toast .error {
+.toast.error {
   background: rgba(255, 0, 0, 0.2);
   border: 1px solid rgba(255, 0, 0, 0.5);
 }
 
-.toast .success {
+.toast.success {
   background: rgba(60, 255, 0, 0.2);
   border: 1px solid rgba(60, 255, 0, 0.5);
 }
 
+@-webkit-keyframes show-toast {
+  from {
+    -webkit-transform: translateY(-10px) translateX(-50%);
+            transform: translateY(-10px) translateX(-50%);
+    opacity: 0;
+  }
+}
+
+@keyframes show-toast {
+  from {
+    -webkit-transform: translateY(-10px) translateX(-50%);
+            transform: translateY(-10px) translateX(-50%);
+    opacity: 0;
+  }
+}
+
 textarea,
-[type=text] {
+[type="text"] {
   border: 1px solid rgba(255, 255, 255, 0.4);
   background: rgba(255, 255, 255, 0.03);
   border-radius: 10px;
@@ -398,12 +441,26 @@ textarea,
   font-family: monospace;
 }
 
-[type=checkbox] {
+[type="checkbox"] {
   display: inline-block;
 }
 
 [beta]::after {
-  content: 'BETA';
+  content: "BETA";
+  margin-left: 5px;
+  padding: 4px 6px;
+  font-size: 12px;
+  border-radius: 30px;
+  font-weight: 300;
+  text-shadow: 0 0 10px #0084ff, 0 0 10px #0084ff;
+}
+
+[beta] [type="checkbox"] {
+  display: inline-block;
+}
+
+[beta] [beta]::after {
+  content: "BETA";
   margin-left: 5px;
   padding: 4px 6px;
   font-size: 12px;
@@ -417,13 +474,14 @@ textarea,
 .quickActions {
   border: var(--border);
   background: var(--background-color);
-  padding: 10px;
+  padding: 0px;
   border-radius: 20px;
   -webkit-backdrop-filter: 20px;
           backdrop-filter: 20px;
   -webkit-transition: 0.5s cubic-bezier(0.04, 0.91, 0.54, 0.99);
   transition: 0.5s cubic-bezier(0.04, 0.91, 0.54, 0.99);
   bottom: 20px;
+  overflow: hidden;
   position: fixed;
   right: 20px;
   z-index: 9;
@@ -438,21 +496,221 @@ textarea,
 }
 
 .quickActions a {
-  margin: 0 10px;
-  padding: 10px;
-  border-radius: 20px;
+  padding: 10px 20px;
   background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.3);
   color: white;
-  font-size: 20px;
+  font-size: 15px;
   text-decoration: none;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
   cursor: pointer;
 }
 
 .quickActions a:hover {
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Custom checkbox styles! */
+input[type="checkbox"] + label {
+  cursor: pointer;
+  font-size: 90%;
+}
+
+input[type="checkbox"] {
+  /* Remove most all native input styles */
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  /* For iOS < 15 */
+  background-color: var(--background-color);
+  /* Not removed via appearance */
+  margin: 0;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font: inherit;
+  color: white;
+  width: 1.15em;
+  height: 1.15em;
+  border: var(--border);
+  margin-right: 5px;
+  border-radius: 0.15em;
+  -webkit-transform: translateY(-0.075em);
+          transform: translateY(-0.075em);
+}
+
+input[type="checkbox"]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  -webkit-clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+          clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  -webkit-transition: 120ms -webkit-transform ease-in-out;
+  transition: 120ms -webkit-transform ease-in-out;
+  transition: 120ms transform ease-in-out;
+  transition: 120ms transform ease-in-out, 120ms -webkit-transform ease-in-out;
+  -webkit-box-shadow: inset 0.5em 0.5em white;
+          box-shadow: inset 0.5em 0.5em white;
+  /* Windows High Contrast Mode */
+  background-color: CanvasText;
+}
+
+input[type="checkbox"]:checked::before {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+input[type="checkbox"]:checked {
+  background: var(--background-color-hover);
+  border: var(--border-hover);
+}
+
+input[type="checkbox"]:focus {
+  outline: 1px solid currentColor;
+}
+
+/* Custom range slider styles! 
+https://www.w3schools.com/howto/howto_js_rangeslider.asp */
+/* The slider itself */
+input[type="range"] {
+  -webkit-appearance: none;
+  /* Override default CSS styles */
+  -moz-appearance: none;
+       appearance: none;
+  width: 100%;
+  /* Full-width */
+  height: 12px;
+  border-radius: 50px;
+  /* Specified height */
+  background: var(--background-color-hover);
+  outline: none;
+  /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: 0.2s;
+  /* 0.2 seconds transition on hover */
+  -webkit-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+}
+
+/* Mouse-over effects */
+input[type="range"]:hover {
+  opacity: 1;
+  /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  /* Override default look */
+  appearance: none;
+  width: 18px;
+  /* Set a specific slider handle width */
+  height: 18px;
+  border-radius: 50%;
+  /* Slider handle height */
+  background: var(--accent);
+  cursor: pointer;
+  /* Cursor on hover */
+}
+
+input[type="range"]:focus-within ::-webkit-slider-thumb {
+  outline: 1px solid white;
+  background: var(--accent-hover);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  /* Set a specific slider handle width */
+  height: 18px;
+  /* Slider handle height */
+  background: var(--accent-hover);
+  /* Green background */
+  cursor: pointer;
+  /* Cursor on hover */
+}
+
+/********
+Speedometer
+*********/
+#speedometer {
+  font-family: monospace;
+  position: fixed;
+  pointer-events: none;
+  bottom: 10px;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  left: 10px;
+  font-size: 20px;
+  z-index: 59;
+}
+
+#speedometer.hidden {
+  left: -100px;
+}
+
+/****************
+* Dropdown Menus *
+*****************/
+.select-wrap {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  border: 0;
+  display: block;
+  position: relative;
+}
+
+select {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background: var(--background-color);
+  border: var(--border);
+  padding: 0 1em 0 0;
+  margin: 0;
+  width: 100%;
+  font-family: inherit;
+  font-size: 13px;
+  cursor: inherit;
+  line-height: inherit;
+  padding: 7px 9px;
+  border-radius: 10px;
+  padding-right: 34px;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+select:hover,
+select:focus {
+  background: var(--background-color-hover);
+  border: var(--border-hover);
+}
+
+.select-wrap::before {
+  position: absolute;
+  border-right: 1px solid white;
+  border-bottom: 1px solid white;
+  padding: 3px;
+  top: calc(50% - 6px);
+  right: 9px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  content: "";
 }
 /*# sourceMappingURL=style.css.map */
