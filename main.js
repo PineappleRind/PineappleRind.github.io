@@ -8,7 +8,7 @@
       name: "Bezier Visualizer",
       description:
         "A site to visualize manipulable, animated Cubic Bezier curves.",
-      img: "/bezier-visualizer/img/thumb",
+      img: "bezier-visualizer/img/thumb",
       link: "/bezier-visualizer",
       type: "site",
     },
@@ -26,7 +26,7 @@
       img: "/music/seaweed/seaweed.thumb",
       link: "https://artists.landr.com/seaweed",
       type: "music",
-      class: "new coming-soon",
+      class: "new",
       tracks: 1,
       date: "2022.10.29",
       time: 4,
@@ -96,7 +96,7 @@
           : "<p>" + description + "</p>";
 
       projectsHTML += `<a class="project project-type-${type} ${
-        project.class
+        project.class || ''
       }" style="display: ${display}" href="${
         link ? `${link}" target="_blank` : "#"
       }">${imgHTML}<div><h1 data-type="${type}"> ${name}</h1>${descriptionHTML}</div></a>`;
@@ -112,11 +112,13 @@
 </picture>`
     } else return ""
   }
+
   function isType(type, projectType) {
     let indices = ["site", "music", "other"];
     if (projectType === "other" && indices.indexOf(type) === -1) return false;
     return type !== projectType;
   }
+
   var pType = {
     string: hash ? hash : "site",
     element: hash
