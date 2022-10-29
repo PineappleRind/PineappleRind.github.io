@@ -8,7 +8,7 @@
       name: "Bezier Visualizer",
       description:
         "A site to visualize manipulable, animated Cubic Bezier curves.",
-      img: "bezier-visualizer/thumb.png",
+      img: "/bezier-visualizer/img/thumb",
       link: "/bezier-visualizer",
       type: "site",
     },
@@ -16,14 +16,14 @@
       name: "Radium",
       description:
         'A fresh-looking theme for VSCode. Almost radioactive.</p><p class="small">Made with a friend',
-      img: "https://radium-theme.github.io/example.png",
+      img: "https://radium-theme.github.io/example",
       link: "https://radium-theme.github.io",
       type: "theme",
     },
     {
       name: "Seaweed",
       description: "Single",
-      img: "/music/seaweed/seaweed.thumb.jpg",
+      img: "/music/seaweed/seaweed.thumb",
       link: "https://artists.landr.com/seaweed",
       type: "music",
       class: "new coming-soon",
@@ -34,7 +34,7 @@
     {
       name: "Berries",
       description: "EP",
-      img: "/music/berries/berries.thumb.png",
+      img: "/music/berries/berries.thumb",
       type: "music",
       link: "/music/berries",
       tracks: 5,
@@ -44,7 +44,7 @@
     {
       name: "Polyhedra",
       description: "Single",
-      img: "/music/polyhedra/polyhedra.thumb.png",
+      img: "/music/polyhedra/polyhedra.thumb",
       type: "music",
       link: "/music/polyhedra",
       tracks: 1,
@@ -54,7 +54,7 @@
     {
       name: "Colours",
       description: "Album (01/2022)",
-      img: "/music/colours/colours.png",
+      img: "/music/colours/colours.thumb",
       link: "https://artists.landr.com/pr",
       type: "music",
       tracks: 6,
@@ -67,7 +67,7 @@
         "Inspired by the Internet meme, this quiz tests your loyalty to the CCP",
       link: "/social-credit",
       type: "site",
-      img: "./social-credit/eye-pop.png",
+      img: "./social-credit/eye-pop",
     },
     {
       name: "Wiggle Text",
@@ -75,7 +75,7 @@
         "Make a string of text that appears to be in the shape of a wiggle",
       link: "/wiggle",
       type: "site",
-      img: "./imgs/wiggle.png",
+      img: "./imgs/wiggle",
     },
   ];
 
@@ -84,9 +84,7 @@
     var projectsHTML = "";
     for (const project of projects) {
       let { name, img, type, link, description } = project;
-      let imgHTML = img
-        ? '<img alt="' + name + ' image" src="' + img + '">'
-        : "";
+      let imgHTML = getImage(name,img);
       let display = isType(type, projectType) ? "none" : "flex";
       let descriptionHTML =
         type === "music"
@@ -104,6 +102,15 @@
       }">${imgHTML}<div><h1 data-type="${type}"> ${name}</h1>${descriptionHTML}</div></a>`;
     }
     return projectsHTML;
+  }
+
+  function getImage(name, src) {
+    if (src) {
+      return `<picture>
+  <source srcset="${src}.webp" type="image/webp"/>
+  <img alt="${name} image" src="${src}.png">
+</picture>`
+    } else return ""
   }
   function isType(type, projectType) {
     let indices = ["site", "music", "other"];
