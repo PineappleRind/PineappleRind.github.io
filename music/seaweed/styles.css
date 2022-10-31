@@ -1,9 +1,4 @@
-*:not(span) {
-    font-family: Inter, system-ui, sans-serif;
-    color: white;
-    margin: 0;
-    transition: opacity 2s, scale 2s;
-}
+
 
 body {
     display: flex;
@@ -41,6 +36,10 @@ body {
     height: 90px !important;
     transition: 4s !important;
     height: fit-content;
+}
+
+.💌>h1 * {
+    user-select: none;
 }
 
 .😶‍🌫️ {
@@ -81,4 +80,11 @@ body {
     left: -5vmax;
     bottom: 0;
     height: 110vmax;
+}
+
+*:not(span) {
+    font-family: Inter, system-ui, sans-serif;
+    color: white;
+    margin: 0;
+    transition: opacity 2s, scale 2s;
 }

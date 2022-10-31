@@ -19,6 +19,7 @@
 
     for (const [i, hid] of hidden.entries()) {
         setTimeout(function () {
+            if (hid.tagName.toLowerCase() === 'img') return;
             hid.classList.remove('😶‍🌫️');
         }, i * 300)
     }
