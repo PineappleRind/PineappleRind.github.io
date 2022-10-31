@@ -1,0 +1,84 @@
+*:not(span) {
+    font-family: Inter, system-ui, sans-serif;
+    color: white;
+    margin: 0;
+    transition: opacity 2s, scale 2s;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+    background: radial-gradient(#222, #000);
+}
+
+.📦 {
+    overflow: hidden;
+
+    border-radius: 20px;
+    backdrop-filter: blur(40px);
+    max-width: 500px;
+    -webkit-backdrop-filter: blur(40px);
+    background: rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.💌 {
+    margin: 20px;
+}
+
+.💌>h1 {
+    font-size: 70px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.36)) drop-shadow(2px 2px 0px white);
+    width: 400px !important;
+    height: 90px !important;
+    transition: 4s !important;
+    height: fit-content;
+}
+
+.😶‍🌫️ {
+    scale: 0.9;
+    opacity: 0;
+}
+
+.🧐 {
+    opacity: 0.6;
+}
+
+.⛓ {
+    margin-top: 5px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.🔗 {
+    padding: 8px;
+    display: inline-block;
+    transition: opacity 2s, scale 2s, border 0.2s;
+    margin: 1px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    list-style: none;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.🔗:hover {
+    border: 1px solid rgb(255, 255, 255, 1);
+}
+
+.🌿 {
+    position: absolute;
+    z-index: -3;
+    top: -5vmin;
+    left: -5vmax;
+    bottom: 0;
+    height: 110vmax;
+}
