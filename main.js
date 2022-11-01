@@ -24,7 +24,7 @@
       name: "Seaweed",
       description: "Single",
       img: "/music/seaweed/seaweed.thumb",
-      link: "https://artists.landr.com/seaweed",
+      link: "/music/seaweed",
       type: "music",
       class: "new",
       tracks: 1,
