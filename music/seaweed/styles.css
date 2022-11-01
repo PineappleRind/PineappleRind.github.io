@@ -1,5 +1,3 @@
-
-
 body {
     display: flex;
     align-items: center;
@@ -42,11 +40,6 @@ body {
     user-select: none;
 }
 
-.😶‍🌫️ {
-    scale: 0.9;
-    opacity: 0;
-}
-
 .🧐 {
     opacity: 0.6;
 }
@@ -76,15 +69,22 @@ body {
 .🌿 {
     position: absolute;
     z-index: -3;
-    top: -5vmin;
-    left: -5vmax;
+    left: 0;
     bottom: 0;
-    height: 110vmax;
+    height: 100vmax;
 }
 
+@media only screen and (min-width: 2000px) {
+    .🌿 {
+        top: -20vw;
+    }
+}
 *:not(span) {
     font-family: Inter, system-ui, sans-serif;
     color: white;
+    user-select: none;
+    -webkit-user-select: none;
+    cursor: default;
     margin: 0;
     transition: opacity 2s, scale 2s;
 }
