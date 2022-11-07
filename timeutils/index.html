@@ -18,11 +18,12 @@
     <meta property="og:url" content="https://pineapplerind.xyz/timeutils">
     <meta property="twitter:url" content="https://pineapplerind.xyz/timeutils">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/timeutils/style.css">
 
 </head>
 
 <body>
+    <noscript>Please enable JavaScript for this app to function properly</noscript>
     <h1>TimeUtils</h1>
     <p>Get your date/time, current timezone, and create Discord timestamps</p>
     <br>
@@ -59,44 +60,7 @@
     <p id="gdt-output-label" style="opacity: 0">Output</p>
     <pre id="gdt-output"></pre>
 
-
-    <script>
-        const $ = (s,a) => document[`querySelector${a ? 'All' : ''}`](s);
-
-        const timeGet = {
-            usertime: () => new Date().toLocaleTimeString(),
-            userlocale: () => (navigator.languages && navigator.languages.length) ? navigator.languages[0] : navigator.language,
-            gmttime: () => new Date().toLocaleTimeString(timeGet.userlocale(), { timeZone: "Europe/London" }),
-            tz: () => Intl.DateTimeFormat().resolvedOptions().timeZone
-        }
-
-        function updateFields() {
-            let tufields = $('.tu-field',1);
-            for (const tufield of tufields)
-                tufield.innerHTML = timeGet[tufield.dataset.value]()
-        }
-
-        setInterval(updateFields, 300)
-
-        $('#gdt-today').onclick = () => {
-            let date = new Date();
-            date.setMinutes(date.getMinutes() - date.getTimezoneOffset());
-            $('#gdt-selectDatetime').value = date.toISOString().slice(0,16);
-
-            updateOutput()
-        }
-
-        oninput = updateOutput
-
-        function updateOutput() {
-            let output = $('#gdt-output'), outputlabel = $('#gdt-output-label');
-            outputlabel.style.opacity = 1;
-            let date = new Date($('#gdt-selectDatetime').value).getTime() / 1000;
-            let type = $('#gdt-selectType').value;
-            let d = `&lt;t:${date}:${type}>`;
-            output.innerHTML = d;
-        }
-    </script>
+    <script src="/timeutils/index.min.js"></script>
 </body>
 
 </html>
