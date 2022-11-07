@@ -77,6 +77,14 @@
       type: "site",
       img: "./imgs/wiggle",
     },
+    {
+      name: "TimeUtils",
+      description:
+        "Create Discord timestamps and get your IANA timezone",
+      link: "/timeutils",
+      type: "site",
+      img: "./timeutils/thumb",
+    },
   ];
 
   // Warning — messy code...
