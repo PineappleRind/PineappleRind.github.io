@@ -91,7 +91,13 @@ b {
 pre {
     padding: 4px 7px;
     background: var(--el-background);
-    border-radius: 5px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
     font-size: 14px;
     font-family:'Courier New', Courier, monospace;
+}
+
+.outputflex {
+    display: flex;
 }

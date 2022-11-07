@@ -22,13 +22,27 @@ function updateOutput() {
     output.innerHTML = d;
 }
 
-$('#gdt-today').onclick = () => {
-    let date = new Date();
-    date.setMinutes(date.getMinutes() - date.getTimezoneOffset());
-    $('#gdt-selectDatetime').value = date.toISOString().slice(0, 16);
-    
-    updateOutput()
+function copy(text, out) {
+    let oh = out.innerHTML, reset = () => setTimeout(() => out.innerHTML = oh, 2000);
+    navigator.clipboard.writeText(text).then(() => {
+        out.innerHTML = 'Copied ✅'
+        reset()
+    }, (err) => {
+        console.error(err);
+        out.innerHTML = 'Error copying ❌'
+        reset()
+    });
 }
+
+// Set date to today
+let date = new Date();
+date.setMinutes(date.getMinutes() - date.getTimezoneOffset());
+$('#gdt-selectDatetime').value = date.toISOString().slice(0, 16);
+updateOutput()
+
+
+$('#gdt-copy').onclick = (e) => copy($('#gdt-output').innerText, e.target);
 
 setInterval(updateFields, 300)
 oninput = updateOutput
+

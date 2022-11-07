@@ -36,15 +36,14 @@
         <p class="tu-field" data-value="gmttime"></p>
     </div>
     <div class="tcont">
-        <b>Your Timezone</b>
+        <b>Your Computer's Timezone</b>
         <p class="tu-field" data-value="tz"></p>
     </div>
     <br>
     <h2>Generate Discord Timestamp</h3>
     <p>Select time</p>
     <div class="dtselect">
-        <input value="" type="datetime-local" name="dtl" id="gdt-selectDatetime">
-        <button id="gdt-today">Now</button>
+        <input type="datetime-local" name="dtl" id="gdt-selectDatetime">
     </div>
     <p>Select display type</p>
     <select id="gdt-selectType">
@@ -58,7 +57,10 @@
     </select>
     <br><br>
     <p id="gdt-output-label" style="opacity: 0">Output</p>
-    <pre id="gdt-output"></pre>
+    <div class="outputflex">
+        <pre id="gdt-output"></pre>
+        <button id="gdt-copy">Copy</button>
+    </div>
 
     <script src="/timeutils/index.min.js"></script>
 </body>
