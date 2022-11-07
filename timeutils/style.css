@@ -1,0 +1,97 @@
+body {
+    --accent-color: #4650bf;
+    --text-color: #dfe3ff;
+    --text-color-q: #b5badd;
+    --background-color: linear-gradient(#12173a, #0e1124);
+    --border: 1px solid rgba(255, 255, 255, 0.5);
+    --el-background: rgba(255, 255, 255, 0.2);
+}
+
+html {
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+}
+body {
+    background: var(--background-color);
+    padding: calc(20px + 1vw);
+
+    border: 1px solid transparent;
+    width: fit-content;
+    border-top: var(--border);
+    border-left: var(--border);
+    border-radius: 40px;
+    box-shadow: inset 50px 50px 50px rgba(168, 165, 255, 0.097);
+}
+
+h1 {
+    font-weight: 300;
+    font-size: 36px;
+    /* Some tweener fallback that doesn't look awful */
+    font-size: clamp(35px, 5.4vw, 90px);
+}
+h2 {
+    font-weight: 400;
+    font-size: 20px;
+    padding-top: 15px;
+    border-top: var(--border);
+}
+* {
+    margin: 0;
+    font-size: 102%;
+    color: var(--text-color);
+    box-sizing: border-box;
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, Roboto, Oxygen, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+button {
+    background: var(--el-background);
+    margin: 0;
+    border: 0;
+    border-radius: 100px;
+    padding: 7px 14px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    margin-left: 4px;
+    transition: 0.2s;
+}
+
+button:hover {
+    border: var(--border);
+}
+
+input,
+select {
+    border-radius: 100px;
+    border: var(--border);
+    margin: 4px;
+    color-scheme: dark;
+    background: 0;
+    padding: 5px 10px;
+    background: var(--el-background)
+}
+
+b {
+    font-weight: 300;
+    border-right: var(--border);
+    padding-right: 3px;
+    width: 250px;
+    display: inline-block;
+    margin: 1px;
+}
+
+.tu-field {
+    padding-left: 5px;
+    display: inline-block;
+}
+
+pre {
+    padding: 4px 7px;
+    background: var(--el-background);
+    border-radius: 5px;
+    font-size: 14px;
+    font-family:'Courier New', Courier, monospace;
+}

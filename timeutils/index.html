@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TimeUtils</title>
+
+    <meta name="theme-color" content="#4650bf">
+
+    <meta property="og:title" content="TimeUtils">
+    <meta property="twitter:title" content="TimeUtils">
+    <meta property="og:description" content="Get your date/time, current timezone, and create Discord timestamps">
+    <meta property="twitter:description" content="Get your date/time, current timezone, and create Discord timestamps">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pineapplerind.xyz/timeutils">
+    <meta property="twitter:url" content="https://pineapplerind.xyz/timeutils">
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <h1>TimeUtils</h1>
+    <p>Get your date/time, current timezone, and create Discord timestamps</p>
+    <br>
+    <div class="tcont">
+        <b>Current Time (your timezone)</b>
+        <p class="tu-field" data-value="usertime"></p>
+    </div>
+    <div class="tcont">
+        <b>Current Time (GMT)</b>
+        <p class="tu-field" data-value="gmttime"></p>
+    </div>
+    <div class="tcont">
+        <b>Your Timezone</b>
+        <p class="tu-field" data-value="tz"></p>
+    </div>
+    <br>
+    <h2>Generate Discord Timestamp</h3>
+    <p>Select time</p>
+    <div class="dtselect">
+        <input value="" type="datetime-local" name="dtl" id="gdt-selectDatetime">
+        <button id="gdt-today">Now</button>
+    </div>
+    <p>Select display type</p>
+    <select id="gdt-selectType">
+        <option value="t">Time only</option>
+        <option value="T">Time only (with seconds)</option>
+        <option value="d">Date only</option>
+        <option value="D">Date only (with month name)</option>
+        <option value="f">Date and time</option>
+        <option value="F">Date and time (with day name)</option>
+        <option value="R">Relative</option>
+    </select>
+    <br><br>
+    <p id="gdt-output-label" style="opacity: 0">Output</p>
+    <pre id="gdt-output"></pre>
+
+
+    <script>
+        const $ = (s,a) => document[`querySelector${a ? 'All' : ''}`](s);
+
+        const timeGet = {
+            usertime: () => new Date().toLocaleTimeString(),
+            userlocale: () => (navigator.languages && navigator.languages.length) ? navigator.languages[0] : navigator.language,
+            gmttime: () => new Date().toLocaleTimeString(timeGet.userlocale(), { timeZone: "Europe/London" }),
+            tz: () => Intl.DateTimeFormat().resolvedOptions().timeZone
+        }
+
+        function updateFields() {
+            let tufields = $('.tu-field',1);
+            for (const tufield of tufields)
+                tufield.innerHTML = timeGet[tufield.dataset.value]()
+        }
+
+        setInterval(updateFields, 300)
+
+        $('#gdt-today').onclick = () => {
+            let date = new Date();
+            date.setMinutes(date.getMinutes() - date.getTimezoneOffset());
+            $('#gdt-selectDatetime').value = date.toISOString().slice(0,16);
+
+            updateOutput()
+        }
+
+        oninput = updateOutput
+
+        function updateOutput() {
+            let output = $('#gdt-output'), outputlabel = $('#gdt-output-label');
+            outputlabel.style.opacity = 1;
+            let date = new Date($('#gdt-selectDatetime').value).getTime() / 1000;
+            let type = $('#gdt-selectType').value;
+            let d = `&lt;t:${date}:${type}>`;
+            output.innerHTML = d;
+        }
+    </script>
+</body>
+
+</html>
