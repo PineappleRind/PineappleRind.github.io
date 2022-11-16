@@ -53,7 +53,7 @@
     },
     {
       name: "Colours",
-      description: "Album (01/2022)",
+      description: "Album",
       img: "/music/colours/colours.thumb",
       link: "https://artists.landr.com/pr",
       type: "music",
