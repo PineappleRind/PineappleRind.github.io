@@ -1,0 +1,183 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+    background: radial-gradient(rgb(0, 0, 0), rgb(50, 50, 50))
+}
+
+:root {
+    --card-bg: rgba(255, 255, 255, 0.07);
+    --card-bg-intense: rgba(255, 255, 255, 0.14);
+    --card-border: rgba(255, 255, 255, 0.3);
+    --video-blur: 7px;
+}
+
+.wrapper {
+    overflow: hidden;
+    border-radius: 20px;
+    position: relative;
+    backdrop-filter: blur(40px);
+    max-width: 500px;
+    -webkit-backdrop-filter: blur(40px);
+    background: rgba(0, 0, 0, 0.1);
+    animation: fadeDown 2s;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.header {
+    margin: 20px;
+}
+
+.header h1 {
+    font-size: 50px;
+    font-weight: 800;
+    height: fit-content;
+    animation: fadeDown both 2s;
+    animation-delay: 3s;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+}
+
+.header h1 small {
+    font-size: 20px;
+    font-weight: 500;
+    text-shadow: none;
+}
+
+.main {
+    animation: popup both 3s;
+    animation-delay: 4s;
+}
+
+.pane {
+    padding: 20px;
+    background: var(--card-bg-intense);
+    backdrop-filter: blur(calc(var(--video-blur) * 2));
+    -webkit-backdrop-filter: blur(calc(var(--video-blur) * 2));
+}
+
+.pane-switchers {
+    width: 100%;
+    background: var(--card-bg);
+    display: flex;
+    backdrop-filter: blur(var(--video-blur));
+    -webkit-backdrop-filter: blur(var(--video-blur));
+    padding: 4px;
+    padding-bottom: 0;
+}
+
+[disabled] {
+    color: rgba(255, 255, 255, 0.7);
+    cursor: not-allowed;
+}
+
+.pane-switcher {
+    padding: 6px 8px 20px 8px;
+    position: relative;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.pane-switcher:hover:not([disabled]) {
+    background: var(--card-bg);
+    cursor: pointer;
+}
+
+.pane-switcher::after {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translateX(-50%);
+    content: attr(data-date);
+    font-size: 11px;
+    white-space: nowrap;
+    transition: 0.2s;
+}
+
+/*
+will use this later for pre-saving
+.pane-switcher[disabled]:hover::after,
+.pane-switcher[disabled]:focus::after {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+*/
+
+.pane-switcher.selected {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-bottom: 0;
+}
+
+.button-store-link {
+    padding: 8px;
+    display: inline-block;
+    transition: opacity 2s, scale 2s, border 0.2s;
+    margin: 1px;
+    border: 1px solid var(--card-border);
+    list-style: none;
+    cursor: pointer;
+    background: var(--card-bg);
+    border-radius: 10px;
+}
+
+.button-store-link:hover {
+    border: 1px solid rgb(255, 255, 255, 1);
+}
+
+.bg-image {
+    position: absolute;
+    z-index: -3;
+    left: 0;
+    bottom: 0;
+    height: 100vmax;
+}
+
+video {
+    position: absolute;
+    top: -56.25%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100% !important;
+    height: auto !important;
+    z-index: -1;
+    animation: fadeIn both;
+    animation-duration: 3s;
+    animation-delay: 200ms;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0
+    }
+}
+
+@keyframes fadeDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px)
+    }
+}
+
+@keyframes popup {
+    from {
+        opacity: 0;
+        transform: translateY(100%)
+    }
+}
+
+@media only screen and (min-width: 2000px) {
+    .🌿 {
+        top: -20vw;
+    }
+}
+
+*:not(span) {
+    font-family: Inter, system-ui, sans-serif;
+    color: white;
+    cursor: default;
+    margin: 0;
+}
