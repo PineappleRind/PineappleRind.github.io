@@ -27,7 +27,7 @@
     // load buttons
     function loadButtons() {
         for (const [storeId, storeName] of Object.entries(stores)) {
-            let button = createElement('a', `class:button-store-link;data-ref:${storeId}`, storeName);
+            let button = createElement('a', `class:button-store-link;data-ref:${storeId};target:_blank`, storeName);
             $('.pane').append(button);
         }
 
