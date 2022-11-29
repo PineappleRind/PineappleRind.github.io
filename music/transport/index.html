@@ -2,36 +2,60 @@
 <html lang="en">
 
 <head>
+    <style>
+        .skip-animation.hidden {
+            pointer-events: none;
+            opacity: 0;
+            scale: 0.9;
+        }
+    </style>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transport | PineappleRind</title>
     <link rel="stylesheet" href="/music/transport/styles.css">
 
-    <link rel="icon" type="image/x-icon" href="transport.thumb.png">
+    <link rel="icon" type="image/x-icon" href="imgs/collageTransport.thumb.png">
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://pineapplerind.xyz/music/transport">
     <meta property="og:title" content="Transport">
     <meta property="og:description" content="Collection of EPs by PineappleRind (2022-2023)">
-    <!--<meta property="og:image" content="transport.thumb.png">-->
+    <meta property="og:image" content="collageTransport.thumb.png">
 
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://pineapplerind.xyz/music/transport">
     <meta property="twitter:title" content="Transport">
     <meta property="twitter:description" content="Colection of EPs by PineappleRind (2022-2023)">
-    <!--<meta property="twitter:image" content="transport.thumb.png">-->
+    <meta property="twitter:image" content="collageTransport.thumb.png">
+
+
 </head>
 
 <body>
-    <!-- background image -->
-    <img class="bg-image" src="/music/transport/transport-underground.png">
+    <!-- background images -->
+    <div class="bg-images">
+        <picture class="bg-image underground">
+            <source srcset="/music/transport/imgs/undergroundTransport.thumb.webp">
+            <img src="/music/transport/imgs/undergroundTransport.thumb.png">
+        </picture>
+        <picture class="bg-image ground hidden">
+            <source srcset="/music/transport/imgs/groundTransport.thumb.webp">
+            <img src="/music/transport/imgs/groundTransport.thumb.png">
+        </picture>
+        <picture class="bg-image air hidden">
+            <source srcset="/music/transport/imgs/airTransport.thumb.webp">
+            <img src="/music/transport/imgs/airTransport.thumb.png">
+        </picture>
+    </div>
     <!-- a wrapper for everything. makes it nice and box-ified :) -->
     <div class="wrapper">
         <!-- now the header -->
         <div class="header">
             <!-- inside the header we have the title and the author (me)-->
-            <h1>Transport <small style="color:rgba(255, 255, 255, 0.64)">by <a href="/" style="cursor:pointer;color:rgba(255, 255, 255, 0.868)">PineappleRind</a></small></h1>
+            <h1>Transport <small style="color:rgba(255, 255, 255, 0.64)">by <a href="/"
+                        style="cursor:pointer;color:rgba(255, 255, 255, 0.868)">PineappleRind</a></small></h1>
         </div>
 
         <!-- wrap again for the main content, for ease of animation -->
@@ -39,14 +63,14 @@
 
             <!-- the pane switchers ("tabs") -->
             <div class="pane-switchers">
-                <div class="pane-switcher" disabled data-trigger="underground" data-date="Nov 29">Underground</div>
+                <div class="pane-switcher selected" data-trigger="underground" data-date="Nov 29">Underground</div>
                 <div class="pane-switcher" disabled data-trigger="ground" data-date="Dec 29">Ground</div>
                 <div class="pane-switcher" disabled data-trigger="air" data-date="Jan 29">Air</div>
             </div>
             <!-- we don't actually need a different pane for each EP-->
             <!-- so let's just have 1 pane and switch the button hrefs -->
             <!-- ( buttons loaded in JS ) -->
-            <div class="pane"><i>(coming soon...)</i></div>
+            <div class="pane"><i></i></div>
         </div>
         <!-- and finally, the video (best part) -->
         <div id="video">
@@ -56,8 +80,11 @@
         </div>
     </div>
 
-    <!-- load our JS -->
-    <script src="/music/transport/index.js"></script>
+    <!-- only shown if user has visited the site before-->
+    <footer class="skip-animation hidden">Skip animation</footer>
+
+    <!-- load our JS — try /music/transport/index.js for unobfuscated code -->
+    <script src="/music/transport/index.min.js"></script>
 </body>
 
 </html>

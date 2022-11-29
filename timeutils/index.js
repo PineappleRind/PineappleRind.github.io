@@ -1,48 +1,61 @@
-const $ = (s, a) => document[`querySelector${a ? 'All' : ''}`](s);
+import nlp from 'https://unpkg.com/compromise@14.8.0/builds/three/compromise-three.mjs'
 
-const timeGet = {
-    usertime: () => new Date().toLocaleTimeString(),
-    userlocale: () => (navigator.languages && navigator.languages.length) ? navigator.languages[0] : navigator.language,
-    gmttime: () => new Date().toLocaleTimeString(timeGet.userlocale(), { timeZone: "Europe/London" }),
-    tz: () => Intl.DateTimeFormat().resolvedOptions().timeZone
-}
+(function () {
+    nlp.plugin(compromiseDates)
+    
+    const $ = (s, a) => document[`querySelector${a ? 'All' : ''}`](s);
 
-function updateFields() {
-    let tufields = $('.tu-field', 1);
-    for (const tufield of tufields)
-        tufield.innerHTML = timeGet[tufield.dataset.value]()
-}
+    const timeGet = {
+        usertime: () => new Date().toLocaleTimeString(),
+        userlocale: () => (navigator.languages && navigator.languages.length) ? navigator.languages[0] : navigator.language,
+        gmttime: () => new Date().toLocaleTimeString(timeGet.userlocale(), { timeZone: "Europe/London" }),
+        tz: () => Intl.DateTimeFormat().resolvedOptions().timeZone
+    }
 
-function updateOutput() {
-    let output = $('#gdt-output'), outputlabel = $('#gdt-output-label');
-    outputlabel.style.opacity = 1;
-    let date = new Date($('#gdt-selectDatetime').value).getTime() / 1000;
-    let type = $('#gdt-selectType').value;
-    let d = `&lt;t:${date}:${type}>`;
-    output.innerHTML = d;
-}
+    function updateFields() {
+        let tufields = $('.tu-field', 1);
+        for (const tufield of tufields)
+            tufield.innerHTML = timeGet[tufield.dataset.value]()
+    }
 
-function copy(text, out) {
-    let oh = out.innerHTML, reset = () => setTimeout(() => out.innerHTML = oh, 2000);
-    navigator.clipboard.writeText(text).then(() => {
-        out.innerHTML = 'Copied ✅'
-        reset()
-    }, (err) => {
-        console.error(err);
-        out.innerHTML = 'Error copying ❌'
-        reset()
-    });
-}
+    function updateOutput() {
+        let output = $('#gdt-output'), outputlabel = $('#gdt-output-label');
+        outputlabel.style.opacity = 1;
+        let date = new Date($('#gdt-selectDatetime').value).getTime() / 1000;
+        let type = $('#gdt-selectType').value;
+        let d = `&lt;t:${date}:${type}>`;
+        output.innerHTML = d;
+    }
 
-// Set date to today
-let date = new Date();
-date.setMinutes(date.getMinutes() - date.getTimezoneOffset());
-$('#gdt-selectDatetime').value = date.toISOString().slice(0, 16);
-updateOutput()
+    function copy(text, out) {
+        let oh = out.innerHTML, reset = () => setTimeout(() => out.innerHTML = oh, 2000);
+        navigator.clipboard.writeText(text).then(() => {
+            out.innerHTML = 'Copied ✅'
+            reset()
+        }, (err) => {
+            console.error(err);
+            out.innerHTML = 'Error copying ❌'
+            reset()
+        });
+    }
+
+    // Set date to today
+    let date = new Date();
+    date.setMinutes(date.getMinutes() - date.getTimezoneOffset());
+    $('#gdt-selectDatetime').value = date.toISOString().slice(0, 16);
+    updateOutput()
 
 
-$('#gdt-copy').onclick = (e) => copy($('#gdt-output').innerText, e.target);
+    $('#gdt-copy').onclick = (e) => copy($('#gdt-output').innerText, e.target);
 
-setInterval(updateFields, 300)
-oninput = updateOutput
+    setInterval(updateFields, 300)
+    oninput = updateOutput
 
+    /// Natural Language Processing
+    let input = $('#nlp-input');
+    input.onkeyup = () => {
+        let date = nlp(input.value).dates().get()[0]?.start;
+        if (!date) return $('#nlp-output').innerHTML = 'No output/invalid date'
+        $('#nlp-output').innerHTML = new Date(date).toLocaleString();
+    }
+})()

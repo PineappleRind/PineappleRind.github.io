@@ -25,44 +25,54 @@
 <body>
     <noscript>Please enable JavaScript for this app to function properly</noscript>
     <h1>TimeUtils</h1>
-    <p>Get your date/time, current timezone, and create Discord timestamps</p>
-    <br>
-    <div class="tcont">
-        <b>Current Time (your timezone)</b>
-        <p class="tu-field" data-value="usertime"></p>
+    <div class="info">
+        <div class="tcont">
+            <b>Current Time (your timezone)</b>
+            <p class="tu-field" data-value="usertime"></p>
+        </div>
+        <div class="tcont">
+            <b>Current Time (GMT)</b>
+            <p class="tu-field" data-value="gmttime"></p>
+        </div>
+        <div class="tcont">
+            <b>Your Computer's Timezone</b>
+            <p class="tu-field" data-value="tz"></p>
+        </div>
     </div>
-    <div class="tcont">
-        <b>Current Time (GMT)</b>
-        <p class="tu-field" data-value="gmttime"></p>
+    <div class="gdt">
+        <h2>Generate Discord Timestamp</h2>
+        <p>Select time</p>
+        <div class="dtselect">
+            <input type="datetime-local" name="dtl" id="gdt-selectDatetime">
+        </div>
+        <p>Select display type</p>
+        <select id="gdt-selectType">
+            <option value="t">Time only</option>
+            <option value="T">Time only (with seconds)</option>
+            <option value="d">Date only</option>
+            <option value="D">Date only (with month name)</option>
+            <option value="f">Date and time</option>
+            <option value="F">Date and time (with day name)</option>
+            <option value="R">Relative</option>
+        </select>
+        <br>
+        <p id="gdt-output-label" style="opacity: 0">Output</p>
+        <div class="outputflex">
+            <pre id="gdt-output"></pre>
+            <button id="gdt-copy">Copy</button>
+        </div>
     </div>
-    <div class="tcont">
-        <b>Your Computer's Timezone</b>
-        <p class="tu-field" data-value="tz"></p>
+    <div class="nlp">
+        <h2>Natural Language Processing <small>powered by <a
+                    href="https://github.com/spencermountain/compromise">compromise</a> </small></h2>
+        <p>Enter a prompt, like <code>10 weeks from yesterday</code> or <code>in a year</code></p>
+        <input placeholder="Type..." id="nlp-input">
+        <p>Output</p>
+        <pre id="nlp-output">No output</pre>
     </div>
-    <br>
-    <h2>Generate Discord Timestamp</h3>
-    <p>Select time</p>
-    <div class="dtselect">
-        <input type="datetime-local" name="dtl" id="gdt-selectDatetime">
     </div>
-    <p>Select display type</p>
-    <select id="gdt-selectType">
-        <option value="t">Time only</option>
-        <option value="T">Time only (with seconds)</option>
-        <option value="d">Date only</option>
-        <option value="D">Date only (with month name)</option>
-        <option value="f">Date and time</option>
-        <option value="F">Date and time (with day name)</option>
-        <option value="R">Relative</option>
-    </select>
-    <br><br>
-    <p id="gdt-output-label" style="opacity: 0">Output</p>
-    <div class="outputflex">
-        <pre id="gdt-output"></pre>
-        <button id="gdt-copy">Copy</button>
-    </div>
-
-    <script src="/timeutils/index.min.js"></script>
+    <script src="https://unpkg.com/compromise-dates"></script>
+    <script type="module" src="/timeutils/index.js"></script>
 </body>
 
 </html>

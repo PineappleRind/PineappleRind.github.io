@@ -18,9 +18,8 @@ html {
 body {
     background: var(--background-color);
     padding: calc(20px + 1vw);
-
     border: 1px solid transparent;
-    width: fit-content;
+    width: clamp(300px, 700px, 100vw);
     border-top: var(--border);
     border-left: var(--border);
     border-radius: 40px;
@@ -30,14 +29,18 @@ body {
 h1 {
     font-weight: 300;
     font-size: 36px;
-    /* Some tweener fallback that doesn't look awful */
+
     font-size: clamp(35px, 5.4vw, 90px);
 }
 h2 {
     font-weight: 400;
     font-size: 20px;
     padding-top: 15px;
+    margin-top: 15px;
     border-top: var(--border);
+}
+input {
+    width: fit-content
 }
 * {
     margin: 0;
@@ -68,6 +71,7 @@ select {
     border-radius: 100px;
     border: var(--border);
     margin: 4px;
+    width: 100%;
     color-scheme: dark;
     background: 0;
     padding: 5px 10px;
@@ -78,7 +82,7 @@ b {
     font-weight: 300;
     border-right: var(--border);
     padding-right: 3px;
-    width: 250px;
+    width: 260px;
     display: inline-block;
     margin: 1px;
 }
@@ -88,7 +92,7 @@ b {
     display: inline-block;
 }
 
-pre {
+pre, code {
     padding: 4px 7px;
     background: var(--el-background);
     border-radius: 10px;
@@ -96,6 +100,17 @@ pre {
     align-items: center;
     font-size: 14px;
     font-family:'Courier New', Courier, monospace;
+}
+pre {
+    padding: 12px 12px;
+}
+
+code {
+   display: inline-block 
+}
+
+small, h2 small {
+    font-size: 11px;
 }
 
 .outputflex {
