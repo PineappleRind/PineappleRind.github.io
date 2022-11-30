@@ -5,6 +5,7 @@
     // is this what you were looking for? ;)
     const urls = {
         "underground": {
+            "spotify": "https://open.spotify.com/album/0UDLh0aaDqesBu7dmxOYuw",
             "youtube": "https://music.youtube.com/playlist?list=OLAK5uy_kcwzkOW_hHLIo3WaCaii5Pe78UTh1g6Sc",
             "deezer": "https://www.deezer.com/album/381835367",
             "tidal": "https://listen.tidal.com/album/263457030",
