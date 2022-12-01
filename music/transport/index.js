@@ -2,15 +2,16 @@
 // IIFE for safety
 (function () {
     // data: each URL for the buttons of each EP
-    // is this what you were looking for? ;)
     const urls = {
         "underground": {
             "spotify": "https://open.spotify.com/album/0UDLh0aaDqesBu7dmxOYuw",
+            "apple": "https://music.apple.com/ca/album/underground-transport-ep/1657309013",
             "youtube": "https://music.youtube.com/playlist?list=OLAK5uy_kcwzkOW_hHLIo3WaCaii5Pe78UTh1g6Sc",
             "deezer": "https://www.deezer.com/album/381835367",
             "tidal": "https://listen.tidal.com/album/263457030",
             "amazon": "https://music.amazon.com/albums/B0BNLVY6JG"
         },
+        // leave these empty, the user won't access it anyways
         "ground": {},
         "air": {}
     }
