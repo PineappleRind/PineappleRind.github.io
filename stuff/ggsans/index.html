@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compare GG Sans to Whitney | PineappleRind</title>
+    <style>
+        @font-face {
+            font-family: GG Sans;
+            src: url('/stuff/ggsans/fonts/GGSansMedium.woff2');
+        }
+
+        @font-face {
+            font-family: Whitney;
+            src: url('/stuff/ggsans/fonts/WhitneyNormal.woff');
+        }
+
+        * {
+            font-family: GG Sans;
+            margin: 0;
+            color: white;
+            box-sizing: border-box
+        }
+
+        body {
+            background: rgb(54, 57, 62);
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .showcase {
+            padding: 10px;
+            position: relative;
+            font-size: 4vh;
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .font {
+            width: fit-content;
+            padding: 12px 16px;
+            border-radius: 10px;
+            line-height: calc(4vh);
+        }
+
+        .font.ggsans {
+            line-height: calc(4vh - 1px);
+            letter-spacing: -0.5px;
+        }
+
+        .font.whitney {
+            font-family: Whitney
+        }
+
+        .settings {
+            display: flex;
+            align-items: center;
+        }
+
+        .btn {
+            margin-left: 4px;
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 7px 14px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.16);
+        }
+
+        .btn:active {
+            scale: 0.99;
+            box-shadow: 0 4px 4px 0px rgba(0, 0, 0, 0.2);
+        }
+
+        .fontswitcher::after {
+            content: "Old font (Whitney)"
+        }
+
+        .fontswitcher.new::after {
+            content: "New font (GG Sans)"
+        }
+
+        .sep {
+            display: inline-block;
+            height: 100%;
+            margin: 0 10px;
+            width: 1px;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .hidden {
+            opacity: 0;
+        }
+
+        [contenteditable] {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .edit.btn::after {
+            content: 'Edit this text'
+        }
+        .edit.btn.editing::after {
+            content: 'Stop editing'
+        }
+    </style>
+</head>
+
+<body>
+    <div class="settings">
+        Currently showing <div class="fontswitcher btn new"></div>
+        <div class="sep"></div>
+        <div class="edit btn"></div>
+    </div>
+    <div class="showcase">
+        <div class="font ggsans">This is demo text, click the button above to edit this text</div>
+    </div>
+    <script>
+        const $ = document.querySelector.bind(document);
+        const $$ = document.querySelectorAll.bind(document);
+        $('.fontswitcher').onclick = () => {
+            $('.fontswitcher').classList.toggle('new');
+            for (const font of $$('.font')) {
+                font.classList.toggle('whitney');
+                font.classList.toggle('ggsans');
+            }
+        }
+        let editing = false;
+        $('.edit').onclick = () => {
+            editing = !editing;
+            for (const font of $$('.font')) {
+                if (editing) font.setAttribute('contenteditable', '')
+                else font.removeAttribute('contenteditable')
+                font.focus()
+            }
+            $('.edit').classList.toggle('editing');
+        }
+    </script>
+</body>
+
+</html>
