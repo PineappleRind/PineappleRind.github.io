@@ -7,12 +7,15 @@
 
 void (function () {
   // i'm aware this code may not be the *best*
-  // but it works & it's pretty readable if you ask me
+  // but it works & it's pretty readable
 
   // jquery-like shorthand
   const $ = document.querySelector.bind(document);
 
-  // lerp function I stole form somewhere
+  // set version
+  window.__version__ = '1.1.1';
+  
+  // Lerp Function
   const lerp = (start, end, amt) =>
     Math.round(((1 - amt) * start + amt * end) * 100) / 100;
 
@@ -68,7 +71,7 @@ void (function () {
       {
         name: "Warp: infinity",
         data: [
-          [683, 396], [592, 368], [737, 382], [799, 228], [764, 49], [639, 8], [456, 144], [260, 331], [97, 398], [9, 282], [16, 91], [118, 0], [288, 93], [486, 284], [618, 384], [775, 330], [796, 142], [719, 8], [565, 50], [370, 230], [158, 393], [48, 367], [0, 198], [50, 31], [185, 19], [373, 174], [568, 353], [722, 391], [796, 254], [774, 67], [660, 2], [483, 119], [285, 310], [115, 400], [15, 306], [10, 114], [100, 2], [263, 71], [460, 259], [642, 393], [765, 349], [799, 168], [735, 17], [589, 34], [396, 204], [205, 370], [62, 380], [1, 225], [38, 46], [163, 9], ,
+          [683, 396], [592, 368], [737, 382], [799, 228], [764, 49], [639, 8], [456, 144], [260, 331], [97, 398], [9, 282], [16, 91], [118, 0], [288, 93], [486, 284], [618, 384], [775, 330], [796, 142], [719, 8], [565, 50], [370, 230], [158, 393], [48, 367], [0, 198], [50, 31], [185, 19], [373, 174], [568, 353], [722, 391], [796, 254], [774, 67], [660, 2], [483, 119], [285, 310], [115, 400], [15, 306], [10, 114], [100, 2], [263, 71], [460, 259], [642, 393], [765, 349], [799, 168], [735, 17], [589, 34], [396, 204], [205, 370], [62, 380], [1, 225], [38, 46], [163, 9],
         ],
         show: bits.midpoints,
       },
@@ -88,13 +91,13 @@ void (function () {
       colorAlgorithm: "goldenAngle",
       noCookies: undefined,
     },
+    expiry: Date.now() + (1000 * 60 * 60 * 24 * 60),
   };
   // Keybinds
   let keybinds = {
     " ": () => {
       playing = !playing;
-      if (t <= 0.01) trail.clear();
-      else if (t >= 0.999) replay();
+      if (t >= 0.999) replay();
     },
     Enter: () => {
       $("#controls").classList.toggle("hidden");
@@ -112,7 +115,7 @@ void (function () {
   let computed = [];
 
   var save = {
-    getData: function () {
+    get data() {
       return JSON.parse(localStorage.getItem("bezierSaveData"));
     },
     set: function () {
@@ -123,9 +126,18 @@ void (function () {
     },
   };
 
-  if (!save.getData()) save.set();
-  else saveData = save.getData();
-
+  if (!save.data) save.set();
+  saveData = save.data;
+  
+  // If data has expired
+  if (saveData?.expiry < Date.now() || !saveData.expiry) {
+    // Remove the data
+    localStorage.removeItem('bezierSaveData');
+    // Clear the data variable
+    saveData = {};
+    // Repopulate data by reloading
+    window.location.reload();
+  }
   // Onclick handlers for the cookie banner
   const removeBanner = (n) => {
     $(".banner").classList.add("form-hidden");
@@ -191,6 +203,8 @@ void (function () {
       window.cancelAnimationFrame(this.animationFrame);
       this.animationFrame =
         window[`${newv ? "request" : "cancel"}AnimationFrame`](advance);
+
+      if (t <= 0.01) trail.clear();
 
       $("#playBtn").innerHTML = $("#quickPlay").innerHTML = newv
         ? "Stop"
@@ -351,18 +365,20 @@ void (function () {
   /*************
    * Button Handlers
    ***************/
+
+  // Onclick
   $("#minimize").onclick = (e) => {
     $("#quickActions").classList.toggle("hidden");
     $("#speedometer").classList.toggle("hidden");
     $("#controls").classList.toggle("hidden");
   };
-  $("#playBtn").onclick = $("#quickPlay").onclick = (e) => {
-    controls.playing = !controls.playing;
-    if (t <= 0.01) trail.clear();
-  };
+
+  $("#playBtn").onclick = $("#quickPlay").onclick = () => controls.playing = !controls.playing;
   $("#replayBtn").onclick = replay;
   $("#quickReplay").onclick = replay;
   $("#resetCurveBtn").onclick = resetCurve;
+
+  // Oninput
   $("#animationSpeed").oninput = (e) => {
     $("#animationSpeedLabel").innerHTML = e.target.value;
     saveData.settings.speed = +e.target.value;
@@ -382,6 +398,7 @@ void (function () {
     initialPoints();
   }
 
+  // Next frame function
   function advance() {
     canvas.clear();
     if (!saveData.settings.ease) saveData.settings.ease = "quadraticEaseInOut";
@@ -406,7 +423,7 @@ void (function () {
 
     // Next frame
     // stop if it shouldn't be playing
-    if (easedT < 0 || easedT >= 1 || controls.playing === false)
+    if (easedT < 0 || t >= 1 || controls.playing === false)
       controls.playing = false;
     // continue if it should
     else controls.playing = true;
@@ -659,7 +676,7 @@ void (function () {
     res += `</select>`;
     return res;
   }
-  $("#animationSpeed").value = saveData.settings.speed;
+
   $("#colorOption").parentElement.innerHTML = getColorSelectHTML();
   /**********************
    * Saving Features
@@ -746,6 +763,10 @@ void (function () {
   updateCheckboxes();
   showSaveData();
   resizeHandler();
+
+  // Update animation speed value
+  $("#animationSpeed").value = $("#animationSpeedLabel").innerHTML = saveData.settings.speed.toFixed(4);
+
   // Start the animation
   controls.playing = true;
 })();

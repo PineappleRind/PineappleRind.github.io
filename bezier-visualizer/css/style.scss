@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Bevan&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 @mixin flex {
   display: flex;
@@ -89,6 +89,10 @@ code * {
   font-family: monospace;
 }
 
+small {
+  opacity: 0.7;
+}
+
 #controls {
   @include size(calc(225px + 20%), 100%);
   @include blur(20px);
@@ -111,7 +115,7 @@ code * {
     transition: 0.5s cubic-bezier(0.04, 0.91, 0.54, 0.99);
     padding: 30px;
 
-    > div {
+    >div {
       padding: 10px;
       border-top: var(--border);
     }
@@ -133,7 +137,7 @@ code * {
     font-size: 30px;
 
     &:hover {
-      border: var(--border-hover);
+      scale: 1.1;
     }
   }
 
@@ -166,6 +170,11 @@ button:hover {
 
 #controls p {
   margin: 5px;
+
+  &.subheading-separator {
+    margin: 2px;
+    margin-top: 10px;
+  }
 }
 
 hr {
@@ -242,25 +251,6 @@ form p#close:hover {
 
   &:hover {
     opacity: 1;
-  }
-}
-
-[construction] {
-  position: relative;
-  overflow: hidden;
-
-  &:after {
-    @include blur(3px);
-    @include fixedPosition(0, 0, 0, 0);
-    @include flex;
-    position: absolute;
-    content: "Under construction";
-    font-weight: 900;
-    font-family: "Bevan", "Rockwell", "Impact", sans-serif;
-    cursor: not-allowed;
-    background: rgba(30, 38, 105, 0.938);
-    border-radius: 10px;
-    border: 2px dashed rgba(55, 65, 211, 0.9);
   }
 }
 
@@ -422,7 +412,7 @@ textarea,
   border: var(--border);
   background: var(--background-color);
   padding: 0px;
-  border-radius: 20px;
+  border-radius: 10px;
   backdrop-filter: 20px;
   transition: 0.5s cubic-bezier(0.04, 0.91, 0.54, 0.99);
   bottom: 20px;
@@ -437,23 +427,27 @@ textarea,
   }
 
   a {
-    padding: 10px 20px;
+    padding: 6px 14px;
     background: rgba(255, 255, 255, 0.1);
     color: white;
     font-size: 15px;
     text-decoration: none;
     user-select: none;
     transition: 0.3s;
+    margin: 4px;
+    border-radius: 10px;
     cursor: pointer;
+    border: var(--border);
 
     &:hover {
-      background: rgba(255, 255, 255, 0.3);
+      background: var(--background-color-hover);
+      border:var(--border-hover);
     }
   }
 }
 
 /* Custom checkbox styles! */
-input[type="checkbox"] + label {
+input[type="checkbox"]+label {
   cursor: pointer;
   font-size: 90%;
 }
@@ -545,10 +539,12 @@ input[type="range"]::-webkit-slider-thumb {
   cursor: pointer;
   /* Cursor on hover */
 }
+
 input[type="range"]:focus-within ::-webkit-slider-thumb {
   outline: 1px solid white;
   background: var(--accent-hover);
 }
+
 input[type="range"]::-moz-range-thumb {
   width: 18px;
   /* Set a specific slider handle width */
@@ -573,6 +569,7 @@ Speedometer
   left: 10px;
   font-size: 20px;
   z-index: 59;
+
   &.hidden {
     left: -100px;
   }
@@ -613,6 +610,7 @@ select:focus {
   background: var(--background-color-hover);
   border: var(--border-hover);
 }
+
 .select-wrap::before {
   position: absolute;
   border-right: 1px solid white;
