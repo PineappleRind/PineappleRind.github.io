@@ -8,8 +8,8 @@ class Studier {
     this.switcher = new Switcher();
     this.loaders = [new Quiz.Initializer(), new View.Loader()];
 
-    let declensions = fetchToJSON("./data/declensions.json"),
-      vocab = fetchToJSON("./data/vocab.json");
+    let declensions = fetchToJSON("/latinstudy/data/declensions.json"),
+      vocab = fetchToJSON("/latinstudy/data/vocab.json");
 
     Promise.all([declensions, vocab]).then((values) => {
       return this.initialize(values);
