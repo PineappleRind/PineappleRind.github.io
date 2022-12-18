@@ -20,6 +20,7 @@ export default class Loader {
             this.update[e.target.value](data);
             $('.view-decl').style.display = (e.target.value === 'vocab' ? 'none' : 'block');
             $('.view-vocab').style.display = (e.target.value !== 'vocab' ? 'none' : 'block')
+            $('#view-note').innerHTML = '';
         };
 
         this.options.declType.oninput = (e) => {

@@ -22,5 +22,4 @@ class Studier {
 }
 
 
-
 window.latinstudier = new Studier();
