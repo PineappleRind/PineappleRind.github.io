@@ -21,12 +21,22 @@
       type: "theme",
     },
     {
+      name: "Multidimensional Interchange",
+      description: "Single",
+      img: "/music/multidimensional-interchange/mi.thumb",
+      type: "music",
+      link: "/music/multidimensional-interchange",
+      class: "new",
+      tracks: 1,
+      date: "2022.12.20",
+      time: 4,
+    },
+    {
       name: "Transport",
       description: "3 EPs",
       img: "/music/transport/imgs/collageTransport.thumb",
       link: "/music/transport",
       type: "music",
-      class: "new",
       tracks: "?",
       date: "2022.11.29 - 2023.01.29",
       time: "?",
@@ -50,16 +60,6 @@
       tracks: 5,
       date: "2022.08.02",
       time: 17,
-    },
-    {
-      name: "Polyhedra",
-      description: "Single",
-      img: "/music/polyhedra/polyhedra.thumb",
-      type: "music",
-      link: "/music/polyhedra",
-      tracks: 1,
-      date: "2022.07.18",
-      time: 3,
     },
     {
       name: "Social Credit Quiz",
@@ -128,12 +128,10 @@
 
   // current selected project type
   var pType = {
-    string: hash ? hash : "site",
-    element: hash
-      ? $(`.select-project-type.${hash}`)
-      : $(".select-project-type.site"),
+    string: "site",
+    element: $(".select-project-type.site"),
   };
-  if (hash) pType.element.classList.add("active");
+
 
   function switchProjectType(type) {
     let projects = $(".projects");
@@ -198,7 +196,7 @@
         removeActive(select.parentElement.children);
         updateIndicator(rect);
         select.classList.add("selected");
-        break;
+        continue;
       }
   }
   function updateIndicator(rect) {
@@ -214,8 +212,9 @@
       container = document.createElement('div');
     container.classList.add('more-music-link-container');
     link.classList.add('more-music-link');
-    link.onclick = moreMusicHandler;
+    link.onfocus = moreMusicHandler;
     link.innerHTML = 'More music...'
+    link.setAttribute('tabindex', 0)
     container.append(link)
     return container;
   }
@@ -267,16 +266,18 @@
           closeLauncher(launcher)
         }
       })
-    })
+    }, 100)
   }
 
   function closeLauncher(launcher) {
     launcher.classList.add('hidden');
+    $('.more-music-link').blur()
     setTimeout(function () {
       launcher.remove();
       mm_isOpen = false;
     }, 400)
   }
   /******** init ********/
-  $(".projects").innerHTML += getProjectHTML(pType.string);
+  if (hash) switchProjectType(hash)
+  else $(".projects").innerHTML += getProjectHTML(pType.string);
 })();
