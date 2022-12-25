@@ -1,0 +1,132 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Inter;
+    color: white;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: rgb(24, 21, 16);
+}
+
+main {
+    width: clamp(300px, 60vw, 830px);
+    padding: 50px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    box-shadow: 0 4px 40px -15px rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 40px;
+    backdrop-filter: blur(4px);
+}
+
+.center {
+    text-align: center;
+}
+
+h1 {
+    font-weight: 800;
+    font-size: 50px;
+}
+
+h2 {
+    margin-top: 20px;
+    padding-bottom: 4px;
+    margin-bottom: 6px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2)
+}
+h3 {
+    font-weight: 300;
+    font-size: 20px;
+}
+
+canvas {
+    position: fixed;
+    top: 0;
+    z-index: -1;
+}
+
+table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    border-radius: 20px;
+    margin: 10px;
+}
+
+table td,
+table th {
+    padding: 8px;
+}
+
+table td:not(:last-child),
+table th:not(:last-child) {
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+table th:first-child {
+    border-top-left-radius: 20px;
+}
+
+table th:last-child {
+    border-top-right-radius: 20px;
+}
+
+table tr:last-child td:first-child {
+    border-bottom-left-radius: 20px;
+}
+
+table tr:last-child td:last-child {
+    border-bottom-right-radius: 20px;
+}
+
+table tr:nth-child(even) {
+    background-color: #ffffff12;
+}
+
+table td:nth-child(3) {
+    max-width: 350px;
+}
+table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #535eff91;
+    color: white;
+}
+
+code,pre {
+    font-family: 'Courier New', Courier, monospace;
+    padding: 3px 7px;
+    background: rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+}
+
+pre {
+    padding: 12px 16px;
+}
+
+@media screen and (max-width: 1100px) {
+    main {
+        width: clamp(300px, 90vw, 830px)
+    }
+}
+
+footer {
+    margin-top: 30px;
+    text-align: center;
+    color: rgba(255,255,255,0.7)
+}
+a {
+    color: rgba(255,255,255,0.7)
+}
+a:hover, a:focus {
+    color: white;
+    text-decoration: none;
+}
