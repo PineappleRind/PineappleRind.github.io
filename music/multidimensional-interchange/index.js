@@ -30,7 +30,7 @@ function option(name, link) {
 
 sel.oninput = e => {
     if (e.target.dataset.choose === '') return;
-    window.open(e.target.value, '_blank');
+    window.location.href = e.target.value;
 }
 
 // distribute the headers
