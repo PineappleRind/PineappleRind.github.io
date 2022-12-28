@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/libraries/blizzard/styles.css" />
+</head>
+
+<body>
+    <main>
+        <h1 class="text-align: center">Blizzard <small style="font-size: 19px;opacity:0.7">v0.1</small></h1>
+        <h3 class="text-align: center">An instant snowstorm on your website</h3>
+        <br />
+        <h2>Installation</h2>
+        <p>To use Blizzard, you'll need to download/copy the built JavaScript (<a href="/libraries/blizzard/build/blizzard.min.js">here</a>, 1.6KB) into a file that
+            you can import via <code>&lt;script src&gt;</code>.</li>
+        <h2>Usage</h2>
+        <p>Blizzard adds a class to the window object. It's at <code>window.Blizzard</code>.</p>
+        <p>Instantiate the class with 2 arguments: an HTMLCanvasElement and an object (options).</p>
+        <p>Then, you can use the <code>.play()</code> and <code>.pause()</code> methods on the instantiated class.</p>
+        <h2>Options</h2>
+        <table>
+            <tr>
+                <th>Option</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Default value</th>
+            </tr>
+            <tr>
+                <td><code>amount</code></td>
+                <td>Number</td>
+                <td>Amount of snowflakes</td>
+                <td>200</td>
+            </tr>
+            <tr>
+                <td><code>size</code></td>
+                <td>Number</td>
+                <td>Size multiplier...basically size</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td><code>movement</code></td>
+                <td>Number</td>
+                <td>Oscillation intensity, how much they move from side to side</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td><code>fallSpeed</code></td>
+                <td>Number</td>
+                <td>How fast they fall</td>
+                <td>0.5</td>
+            </tr>
+            <tr>
+                <td><code>respawn</code></td>
+                <td>Number</td>
+                <td>After <code>(respawn * windowHeight)</code> pixels, you see the same snowflake again — in other
+                    words, lower = more repetitive patterns</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td><code>focus</code></td>
+                <td>Number, 0-9</td>
+                <td>The z position the "camera" is "focused" on. 9 means it's focused on the closest snowflakes,
+                    blurring the farthest snowflfakes. 0 is the opposite.</td>
+                <td>9</td>
+            </tr>
+            <tr>
+                <td><code>fStop</code></td>
+                <td>Number, 0-1</td>
+                <td>Blur intensity; how much the focused z position is focused, kind of. 1 will disable focusing
+                    completely.</td>
+                <td>1</td>
+            </tr>
+        </table>
+        <i>Note! Performance is affected when using depth of field (focus/fStop), due to canvas filters. There is a better way to blur snowflakes (gradients). That will come in a later version if it's better on performance.</i>
+        <h2>Example</h2>
+        <pre>
+let blizzard = new window.Blizzard(c, {
+    amount: 350,
+    size: 0.2
+}).play();</pre>
+        <footer>
+            <a href="https://github.com/pineapplerind/blizzard">Source on GitHub</a> | by <a href="https://github.com/pineapplerind">PineappleRind</a>, 2022
+        </footer>
+    </main>
+    <canvas></canvas>
+    <script src="/libraries/blizzard/build/blizzard.min.js"></script>
+    <script>
+        let c = document.querySelector("canvas");
+        c.width = window.innerWidth;
+        c.height = window.innerHeight;
+
+        let blizzard = new Blizzard(c, {
+            amount: 150, // # of snowflakes
+            size: 0.6, // 0-1, size multiplier
+            movement: 10, // in px, x movement
+            fallSpeed: 0.5, // 0-1
+            respawn: 1, // 0-100
+            focus: 1, //0-9 - focus on this Z pos, 9 is closest
+            fStop: 1, // 0-1
+        });
+        blizzard.play()
+
+        
+    </script>
+</body>
+
+</html>
