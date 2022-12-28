@@ -213,6 +213,10 @@
     container.classList.add('more-music-link-container');
     link.classList.add('more-music-link');
     link.onfocus = moreMusicHandler;
+    link.onblur = () => {
+      mm_isOpen = false;
+      closeLauncher()
+    }
     link.innerHTML = 'More music...'
     link.setAttribute('tabindex', 0)
     container.append(link)
@@ -250,32 +254,27 @@
       btn.setAttribute('target', '_blank')
       launcher.append(btn);
 
-      btn.onclick = () => closeLauncher(launcher);
+      btn.onclick = () => closeLauncher();
     }
     mm_isOpen = true;
     document.body.append(launcher);
-
-    /* handle close, wrapped in setTimeout */
-    setTimeout(() => {
-      document.documentElement.addEventListener('click', e => {
-        if (
-          (e.target !== launcher)
-          &&
-          (!e.target.classList.contains('more-music-store'))) {
-          mm_isOpen = false;
-          closeLauncher(launcher)
-        }
-      })
-    }, 100)
   }
 
-  function closeLauncher(launcher) {
+  function closeLauncher() {
+    let launcher = $('.more-music-launcher');
     launcher.classList.add('hidden');
     $('.more-music-link').blur()
     setTimeout(function () {
       launcher.remove();
       mm_isOpen = false;
     }, 400)
+  }
+
+  /********* animation *********/
+  for (const [i, element] of document.querySelectorAll('.animate-hidden').entries()) {
+    setTimeout(() => {
+      element.classList.remove('animate-hidden');
+    }, (i + 1) * 100)
   }
   /******** init ********/
   if (hash) switchProjectType(hash)

@@ -6,7 +6,10 @@ a {
     font-family: Inter, Roboto, -apple-system, system-ui, sans-serif;
     margin: 0;
     box-sizing: border-box;
-    color: #fff
+    color: #fff;
+    transition: 0.4s;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 @property --round {
@@ -22,6 +25,7 @@ a {
     --card-bg-intense: #ffffff29;
     --card-border: rgba(255, 255, 255, 0.104);
     --card-border-intense: rgba(255, 255, 255, 0.404);
+    --project-animateX: 15px;
 }
 
 ::-webkit-scrollbar {
@@ -86,71 +90,6 @@ body {
     justify-content: center
 }
 
-.subtitle {
-    margin: 10px 0;
-    display: flex;
-    align-items: center;
-}
-
-.subtitle::before,
-.subtitle::after {
-    font-family: 'Courier New', Courier, monospace;
-    height: 2px;
-    width: clamp(50px, 150px, 400px);
-    display: inline-block;
-    background: linear-gradient(to right, white, rgba(255, 255, 255, 0));
-    vertical-align: middle;
-    margin: 0 10px;
-    content: '';
-    border-radius: 20px;
-    opacity: 0.5;
-    font-weight: 100;
-}
-
-.subtitle::before {
-    background: linear-gradient(to left, white, rgba(255, 255, 255, 0));
-}
-
-button {
-    background: rgba(27, 0, 203, .3);
-    border: 1px solid rgba(255, 255, 255, .253);
-    position: relative;
-    border-radius: 200px;
-    padding: 10px 30px;
-    overflow: hidden;
-    font-size: 30px;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    cursor: pointer
-}
-
-button::after {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    width: 100%;
-    content: '→';
-    z-index: 0;
-    position: absolute;
-    left: 0;
-    transition: .3s cubic-bezier(.38, .51, .21, 1.58);
-    right: 0;
-    bottom: 0;
-    height: 0%;
-    background: #1b00cb
-}
-
-button:focus::after,
-button:hover::after {
-    height: 100%
-}
-
-button:hover {
-    color: #ccc
-}
-
 h1 {
     font-size: 50px;
     width: 100%;
@@ -192,7 +131,7 @@ h2 {
 
 .project h1 {
     transition: .2s;
-    font-weight: 800;
+    font-weight: 700;
     opacity: .9;
     font-size: 26px;
     width: fit-content;
@@ -241,9 +180,11 @@ h2 {
 
 .projects-wrap {
     width: 100vw;
+    max-width: 1100px;
     height: 90vh;
     display: flex;
     justify-content: center;
+    perspective: 5000px;
 }
 
 .projects {
@@ -333,6 +274,7 @@ h2 {
     align-items: center;
     justify-content: center;
 }
+
 .more-music-link {
     margin-bottom: 80px;
     transition: 0.2s;
@@ -459,13 +401,15 @@ button[disabled]:hover {
 
 .going-left,
 .coming-left {
-    transform: translateX(-10vw);
+    transform: 
+        translateX(calc(-1 * var(--project-animateX)));
     opacity: 0
 }
 
 .going-right,
 .coming-right {
-    transform: translateX(10vw);
+    transform: 
+        translateX(var(--project-animateX));
     opacity: 0
 }
 
@@ -476,6 +420,7 @@ button[disabled]:hover {
     border: 1px solid var(--card-border);
     position: relative;
     background: var(--card-bg);
+    margin-top: 10px;
 }
 
 .select-project-type-wrap .indicator {
@@ -510,63 +455,9 @@ button[disabled]:hover {
     color: rgba(255, 255, 255, 1);
 }
 
-.modal-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 4;
+.animate-hidden {
     opacity: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0, 0, 0, 0.4);
-    pointer-events: none;
-    transition: 0.4s;
-    backdrop-filter: blur(10px) opacity(0);
-    -webkit-backdrop-filter: blur(10px) opacity(0);
-}
-
-.modal-container.overlay {
-    opacity: 1;
-    backdrop-filter: blur(10px) opacity(1);
-    -webkit-backdrop-filter: blur(10px) opacity(1);
-    pointer-events: all;
-}
-
-.modal {
-    background: rgba(255, 255, 255, .153);
-    padding: 20px;
-    animation: modal 0.4s;
-    border-radius: 20px;
-    transform: scale(0.9);
-    transition: 0.4s;
-    color: var(--body-text-alternate)
-}
-
-.modal.showing {
-    transform: scale(1);
-}
-
-.modal-buttons {
-    margin-top: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-@keyframes modal {
-    from {
-        transform: scale(0.9)
-    }
-}
-
-@keyframes goup {
-    from {
-        transform: translateY(15px);
-        opacity: 0
-    }
+    transform: translateY(3px) scale(0.99);
 }
 
 @media only screen and (min-width:700px) {
