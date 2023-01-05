@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     display: flex;
     align-items: center;
@@ -50,6 +54,35 @@ body {
     border: 1px solid var(--card-border);
 }
 
+.wrapper-sub {
+    margin-top: 5px;
+    padding: 8px 15px;
+    background: rgba(var(--card-generic), var(--card-bg-alpha));
+    border-radius: 20px;
+    max-width: 500px;
+    border: 1px solid var(--card-border);
+    color: rgba(255,255,255,0.7);
+    font-size: 12px;
+    animation: popout calc(2s * var(--animation)) both 6s;
+    z-index:-1;
+    position: static;
+}
+
+.wrapper-sub .info {
+    display: inline-block;
+    border-radius: 50px;
+    height: 17px;
+    width: 17px;
+    background: rgba(83, 155, 255, 0.787);
+    border: 1px solid rgb(134, 176, 255);
+    color: white;
+    line-height: 17px;
+    vertical-align: middle;
+    text-align: center;
+    font-family: monospace;
+    font-style: normal;
+}
+
 .header {
     margin: 20px;
 }
@@ -83,11 +116,12 @@ body {
 }
 
 .pane .button-store-link {
-    transition: 0.2s;
+    transition: border 0.2s, opacity 0.5s, scale 0.5s;
 }
 
 .button-store-link.hidden {
     opacity: 0 !important;
+    scale: 0.96;
 }
 
 .pane-switchers {
@@ -173,6 +207,10 @@ will use this later for pre-saving stuff
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.457);
 }
 
+.button-store-link {
+
+}
+
 .button-store-link:not([disabled]):hover,
 .skip-animation:hover {
     border: 1px solid var(--card-border-intense);
@@ -212,6 +250,7 @@ will use this later for pre-saving stuff
     animation: fadeIn both calc(3s * var(--animation));
     animation-delay: 4s;
     z-index: -3;
+    transition: 2s;
 }
 
 .bg-image img {
@@ -221,8 +260,8 @@ will use this later for pre-saving stuff
     object-fit: cover;
 }
 
-.bg-image.hidden {
-    opacity: 0;
+.bg-image.showing {
+    opacity: 1 !important;
 }
 
 video {
@@ -278,4 +317,8 @@ video {
     color: white;
     cursor: default;
     margin: 0;
+}
+
+@keyframes popout {
+    from{translate: 0 -90px;opacity: 0;}
 }

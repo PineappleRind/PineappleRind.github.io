@@ -36,15 +36,15 @@
 <body>
     <!-- background images -->
     <div class="bg-images">
-        <picture class="bg-image underground">
+        <picture class="bg-image underground showing" style="opacity:0">
             <source srcset="/music/transport/imgs/undergroundTransport.thumb.webp">
             <img src="/music/transport/imgs/undergroundTransport.thumb.png">
         </picture>
-        <picture class="bg-image ground hidden">
+        <picture class="bg-image ground" style="opacity:0">
             <source srcset="/music/transport/imgs/groundTransport.thumb.webp">
             <img src="/music/transport/imgs/groundTransport.thumb.png">
         </picture>
-        <picture class="bg-image air hidden">
+        <picture class="bg-image air" style="opacity:0">
             <source srcset="/music/transport/imgs/airTransport.thumb.webp">
             <img src="/music/transport/imgs/airTransport.thumb.png">
         </picture>
@@ -64,7 +64,7 @@
             <!-- the pane switchers ("tabs") -->
             <div class="pane-switchers">
                 <div class="pane-switcher selected" data-trigger="underground" data-date="Nov 29">Underground</div>
-                <div class="pane-switcher" disabled data-trigger="ground" data-date="Dec 29">Ground</div>
+                <div class="pane-switcher" data-trigger="ground" data-date="Dec 29">Ground</div>
                 <div class="pane-switcher" disabled data-trigger="air" data-date="Jan 29">Air</div>
             </div>
             <!-- we don't actually need a different pane for each EP-->
@@ -79,12 +79,15 @@
             </video>
         </div>
     </div>
+    <div class="wrapper-sub">
+        <span class="info">i</span> Transport will be released as a series of 3 EPs, then as an album containing all 3 EPs in around February. For now, you can browse each EP separately.
+    </div>
 
     <!-- only shown if user has visited the site before-->
     <footer class="skip-animation hidden">Skip animation</footer>
 
     <!-- load our JS — try /music/transport/index.js for unobfuscated code -->
-    <script src="/music/transport/index.min.js"></script>
+    <script src="/music/transport/index.js"></script>
 </body>
 
 </html>
