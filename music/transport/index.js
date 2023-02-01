@@ -24,9 +24,9 @@
       amazon: "https://music.amazon.com/albums/B0BRDFMYFL",
     },
     air: {
-      spotify: null,
-      amazon: null,
       youtube: null,
+      spotify: "https://open.spotify.com/album/1c0g1R0TrzAhNPDs7po0SD",
+      amazon: "https://music.amazon.com/albums/B0BTKK8G7B",
       apple:
         "https://music.apple.com/us/album/air-transport-ep/1669094302?app=music",
       deezer: "https://www.deezer.com/album/402588937",
