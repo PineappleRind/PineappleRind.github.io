@@ -27,7 +27,8 @@
       spotify: null,
       amazon: null,
       youtube: null,
-      apple: "https://music.apple.com/us/album/air-transport-ep/1669094302?app=music",
+      apple:
+        "https://music.apple.com/us/album/air-transport-ep/1669094302?app=music",
       deezer: "https://www.deezer.com/album/402588937",
       tidal: "http://www.tidal.com/album/274386729",
     },
@@ -53,8 +54,6 @@
       );
       $(".pane").append(button);
     }
-
-    switchPanes();
   }
   let last = {
     pic: $(".bg-image.underground"),
@@ -64,7 +63,9 @@
   function switchPanes(pane) {
     // already selected? dumb user :(
     if (last.trigger.dataset === pane) return;
-
+    // update stuff
+    updateTriggers(pane);
+    updateBackground(pane);
     // hide pane
     let paneEl = $(".pane"),
       switchers = $(".pane-switchers");
@@ -75,15 +76,16 @@
     paneEl.classList.add(pane || "underground");
     switchers.classList.add(pane || "underground");
     // update buttons
-    // by the way, this won't ever be shown
-    // because you can't switch tabs yet!
     for (const button of $(".button-store-link", 1)) {
       // hide the button
       button.classList.add("hidden");
       setTimeout(function () {
         // wait until fully hidden, then update button & unhide
         let link = urls[pane || "underground"][button.dataset.ref];
-        if (link) button.href = link;
+        if (link) {
+          button.removeAttribute("disabled");
+          button.href = link;
+        }
         else button.setAttribute("disabled", true);
         button.classList.remove("hidden");
       }, 500);
@@ -95,17 +97,26 @@
     // listen for clicks and update page accordingly
     trigger.onclick = () => {
       if (trigger.getAttribute("disabled") !== null) return;
-      last.trigger.classList.remove("selected");
-      trigger.classList.add("selected");
+
       let togo = trigger.dataset.trigger;
       switchPanes(togo);
-
-      let pic = $(`.bg-image.${togo}`);
-      last.pic.classList.remove("showing");
-      pic.classList.add("showing");
-
-      last = { trigger, pic };
     };
+  }
+
+  function updateTriggers(pane) {
+    let newt = $(`[data-trigger=${pane}]`);
+    last.trigger.classList.remove("selected");
+    newt.classList.add("selected");
+
+    last.trigger = newt;
+  }
+
+  function updateBackground(pane) {
+    let pic = $(`.bg-image.${pane}`);
+    last.pic.classList.remove("showing");
+    pic.classList.add("showing");
+
+    last.pic = pic;
   }
 
   // jquery-like shorthand
@@ -154,5 +165,10 @@
     $(":root").style.setProperty("--animation", "0s");
     skip.classList.add("hidden");
   };
+  // set pane if hash exists
+  const startOff = window.location.hash.toLowerCase()?.replace("#", "");
+  if (startOff && ["underground", "ground", "air"].includes(startOff))
+      switchPanes(startOff);
+
   localStorage.setItem("transport-already-visited", true);
 })();
