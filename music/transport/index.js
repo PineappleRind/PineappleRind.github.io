@@ -24,13 +24,13 @@
       amazon: "https://music.amazon.com/albums/B0BRDFMYFL",
     },
     air: {
-      youtube: null,
       spotify: "https://open.spotify.com/album/1c0g1R0TrzAhNPDs7po0SD",
-      amazon: "https://music.amazon.com/albums/B0BTKK8G7B",
       apple:
-        "https://music.apple.com/us/album/air-transport-ep/1669094302?app=music",
+      "https://music.apple.com/us/album/air-transport-ep/1669094302?app=music",
+      youtube: "https://music.youtube.com/playlist?list=OLAK5uy_nCgJieft-lX10_gssVPS7DCkJiT8O1-xc",
       deezer: "https://www.deezer.com/album/402588937",
       tidal: "http://www.tidal.com/album/274386729",
+      amazon: "https://music.amazon.com/albums/B0BTKK8G7B",
     },
   };
 
