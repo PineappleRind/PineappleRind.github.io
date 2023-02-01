@@ -23,8 +23,14 @@
       tidal: "http://www.tidal.com/album/269261591",
       amazon: "https://music.amazon.com/albums/B0BRDFMYFL",
     },
-    // leave this empty, the user won't access it anyways
-    air: {},
+    air: {
+      spotify: null,
+      amazon: null,
+      youtube: null,
+      apple: "https://music.apple.com/us/album/air-transport-ep/1669094302?app=music",
+      deezer: "https://www.deezer.com/album/402588937",
+      tidal: "http://www.tidal.com/album/274386729",
+    },
   };
 
   // data: each store and its corresponding full name
