@@ -1,8 +1,4 @@
-import nlp from 'https://unpkg.com/compromise@14.8.0/builds/three/compromise-three.mjs'
-
-(function () {
-    nlp.plugin(compromiseDates)
-    
+(function () {    
     const $ = (s, a) => document[`querySelector${a ? 'All' : ''}`](s);
 
     const timeGet = {
@@ -50,12 +46,4 @@ import nlp from 'https://unpkg.com/compromise@14.8.0/builds/three/compromise-thr
 
     setInterval(updateFields, 300)
     oninput = updateOutput
-
-    /// Natural Language Processing
-    let input = $('#nlp-input');
-    input.onkeyup = () => {
-        let date = nlp(input.value).dates().get()[0]?.start;
-        if (!date) return $('#nlp-output').innerHTML = 'No output/invalid date'
-        $('#nlp-output').innerHTML = new Date(date).toLocaleString();
-    }
 })()
