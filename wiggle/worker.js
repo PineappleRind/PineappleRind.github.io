@@ -30,7 +30,7 @@ var Maker = {
             spaceArray.push(spaces);
         }
         spaceArray.push(...[...spaceArray].reverse());
-        return spaceArray;
+        return spaceArray.join("\n");
     }
 };
 
