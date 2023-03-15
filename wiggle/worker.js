@@ -19,35 +19,18 @@ var Maker = {
         quartIn: x => x * x * x * x,
         bezier: obj => cubicBezier(obj)
     },
-    generateSpacesArray: (height, width, ease) => {
-        let res = [], eased
-        for (let i = 0; i < height; i++) {
-            if (!ease.points) eased = Maker.eases[ease](Math.abs(i / height)) * width;
-            else eased = Maker.eases.bezier({ points: ease.points, toEase: (Math.abs(i / height)) }) * width;
-
-            res.push(eased.toFixed(1));
-        }
-        let len = res.length;
-        for (let j = 0; j < len; j++) {
-            res.push(res[Math.abs(len - j) - 1]);
-        }
-        let finalres = [];
-        for (let k = 0; k < res.length; k++) {
-            let topush = "";
-            for (let l = 0; l < res[k]; l++) {
-                topush += " ";
-            }
-            finalres.push(topush);
-        }
-        return finalres;
-    },
     generateWiggle: (height, width, text, ease) => {
-        let arr = Maker.generateSpacesArray(height, width, ease);
-        let res = ``;
-        for (let i = 0; i < arr.length; i++) {
-            res += arr[i] + text + "\n";
+        let spaceArray = [];
+        for (let i = 0; i < height; i++) {
+            let rowWidth;
+            if (!ease.points) rowWidth = Maker.eases[ease](Math.abs(i / height)) * width;
+            else rowWidth = Maker.eases.bezier({ points: ease.points, toEase: (Math.abs(i / height)) }) * width;
+            
+            let spaces = " ".repeat(rowWidth) + text;
+            res.push(spaces);
         }
-        return res;
+        res.push(res.reverse());
+        return res.join("\n");
     },
 };
 
