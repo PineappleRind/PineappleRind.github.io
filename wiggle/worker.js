@@ -19,7 +19,7 @@ var Maker = {
         quartIn: x => x * x * x * x,
         bezier: obj => cubicBezier(obj)
     },
-    generateWiggle: (height, width, text, ease) => {
+    generateWiggle(height, width, text, ease) {
         let spaceArray = [];
         for (let i = 0; i < height; i++) {
             let rowWidth;
@@ -27,11 +27,11 @@ var Maker = {
             else rowWidth = Maker.eases.bezier({ points: ease.points, toEase: (Math.abs(i / height)) }) * width;
             
             let spaces = " ".repeat(rowWidth) + text;
-            res.push(spaces);
+            spaceArray.push(spaces);
         }
-        res.push(res.reverse());
-        return res.join("\n");
-    },
+        spaceArray.push(...[...spaceArray].reverse());
+        return spaceArray;
+    }
 };
 
 onmessage = function (e) {
