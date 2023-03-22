@@ -72,3 +72,4 @@ export const projects = [
         img: "./timeutils/thumb",
     },
 ];
+//# sourceMappingURL=projects.js.map

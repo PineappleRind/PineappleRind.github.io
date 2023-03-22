@@ -2,6 +2,7 @@
     "compilerOptions": {
         "lib": ["es2017", "dom"],
         "target": "es2015",
-        "outDir": "./build"
+        "outDir": "./build",
+        "sourceMap": true
     }
 }

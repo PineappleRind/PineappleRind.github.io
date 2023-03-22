@@ -272,3 +272,4 @@ for (const [i, element] of Array.from($$(".animate-hidden")).entries()) {
         element.classList.remove("animate-hidden");
     }, (i + 1) * 100);
 }
+//# sourceMappingURL=main.js.map
