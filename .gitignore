@@ -1,0 +1,7 @@
+.DS_Store
+*.lockb
+node_modules
+
+# Include build folder because I want to use prebuilt
+# files without having to rely on the hosting provider
+# home/build

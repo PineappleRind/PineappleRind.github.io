@@ -67,7 +67,7 @@ body {
     display: block
 }
 
-.body-box .inner {
+.inner {
     padding: 40px;
     overflow-y: auto;
     overflow-x: hidden;
@@ -112,7 +112,7 @@ h2 {
     width: fit-content;
     padding: 20px;
     border-radius: 25px;
-    transition: .3s cubic-bezier(0, .01, 0, 2.04);
+    transition: .3s cubic-bezier(.34,0,.39,1.32);
     cursor: pointer;
     width: 440px;
     position: relative;
@@ -124,8 +124,7 @@ h2 {
 .project:focus,
 .project:hover {
     background: var(--card-bg-intense);
-    transform: translateY(-3px);
-    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.6);
     border: 1px solid var(--card-border-intense);
 }
 
