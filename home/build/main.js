@@ -127,7 +127,7 @@ class ProjectManager {
         return __awaiter(this, void 0, void 0, function* () {
             let newBlock = this.newBlock(pane);
             yield this.animator.requestSwitch(newBlock, pane);
-            // console.log("Did", this.previousBlock.dataset.type, pane)
+            console.log("Did", this.previousBlock.dataset.type, pane);
         });
     }
 }
@@ -148,7 +148,6 @@ class PaneAnimator {
             }
             let s = this.showing;
             // console.log(`Doing ${s} ${pane}`);
-            this.showing = pane;
             yield this.switchToPane($(`.projects[data-type=${s}]`), newBlock, pane);
         });
     }
@@ -158,6 +157,7 @@ class PaneAnimator {
     switchToPane(currentBlock, newBlock, pane) {
         return __awaiter(this, void 0, void 0, function* () {
             const direction = this.getDirection(this.showing, pane);
+            this.showing = pane;
             // Move currently showing block away from this direction
             $(`.projects[data-type=${currentBlock.dataset.type}]`).classList.add(`going-${this.directionMap[-direction]}`);
             // Hide the new block towards this direction

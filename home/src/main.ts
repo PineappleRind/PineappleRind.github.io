@@ -131,7 +131,7 @@ class ProjectManager {
     async switch(pane: string) {
         let newBlock = this.newBlock(pane);
         await this.animator.requestSwitch(newBlock, pane);
-        // console.log("Did", this.previousBlock.dataset.type, pane)
+        console.log("Did", this.previousBlock.dataset.type, pane)
     }
 }
 
@@ -155,7 +155,6 @@ class PaneAnimator {
 
         let s = this.showing;
         // console.log(`Doing ${s} ${pane}`);
-        this.showing = pane;
         await this.switchToPane($(`.projects[data-type=${s}]`), newBlock, pane);
     }
 
@@ -165,7 +164,7 @@ class PaneAnimator {
     // project container of the same type...
     private async switchToPane(currentBlock: HTMLElement, newBlock: HTMLElement, pane: string) {
         const direction = this.getDirection(this.showing, pane)
-
+        this.showing = pane;
         // Move currently showing block away from this direction
         $(`.projects[data-type=${currentBlock.dataset.type}]`).classList.add(`going-${this.directionMap[-direction]}`);
         // Hide the new block towards this direction

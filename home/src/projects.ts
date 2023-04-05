@@ -58,7 +58,7 @@ export const projects = [
             "Inspired by the Internet meme, this quiz tests your loyalty to the CCP",
         link: "/social-credit",
         type: "site",
-        img: "./social-credit/eye-pop",
+        img: "/social-credit/pop",
     },
     {
         name: "Wiggle Text",
