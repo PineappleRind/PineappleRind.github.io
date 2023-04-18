@@ -53,6 +53,7 @@ a {
 body {
     background: var(--base-bg);
     height: 100vh;
+    height: 100dvh;
     width: 100vw;
     overflow: hidden
 }
@@ -63,6 +64,7 @@ body {
     z-index: -1;
     width: 100vw;
     height: 100vh;
+    height: 100dvh;
     transition: 0.2s;
     display: block
 }
@@ -72,6 +74,7 @@ body {
     overflow-y: auto;
     overflow-x: hidden;
     height: 100vh;
+    height: 100dvh;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -112,7 +115,7 @@ h2 {
     width: fit-content;
     padding: 20px;
     border-radius: 25px;
-    transition: .3s cubic-bezier(.34,0,.39,1.32);
+    transition: .3s cubic-bezier(.34, 0, .39, 1.32);
     cursor: pointer;
     width: 440px;
     position: relative;
@@ -181,6 +184,7 @@ h2 {
     width: 100vw;
     max-width: 1100px;
     height: 90vh;
+    height: 90dvh;
     display: flex;
     justify-content: center;
     perspective: 5000px;
@@ -400,14 +404,14 @@ button[disabled]:hover {
 
 .going-left,
 .coming-left {
-    transform: 
+    transform:
         translateX(calc(-1 * var(--project-animateX)));
     opacity: 0
 }
 
 .going-right,
 .coming-right {
-    transform: 
+    transform:
         translateX(var(--project-animateX));
     opacity: 0
 }
@@ -457,6 +461,16 @@ button[disabled]:hover {
 .animate-hidden {
     opacity: 0;
     transform: translateY(3px) scale(0.99);
+}
+
+@media only screen and (max-width:1000px) {
+    .projects {
+        padding: 0;
+    }
+    .project {
+        height: fit-content;
+        width: 600px;
+    }
 }
 
 @media only screen and (min-width:700px) {
