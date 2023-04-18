@@ -102,8 +102,8 @@
             attrs.split(";").forEach((t) => {
                 if (!t)
                     return;
-                let e = t.split(/(?<!\\)\=/gm);
-                el.setAttribute(e[0].trim(), e[1].trim().replace("\\", ""));
+                let e = t.split(/(?!\\)\=/gm);
+                el.setAttribute(e[0].trim().replace("\\", ""), e[1].trim().replace("\\", ""));
             });
         el.innerHTML = value || "";
         return el;

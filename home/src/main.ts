@@ -14,13 +14,13 @@ const $ = document.querySelector.bind(document);
 const $$ = (el: string): NodeListOf<Element> => document.querySelectorAll(el);
 
 // createElement utility
-function createElement(type: string, attrs?: string | null, value?: string) {
+function createElement(type: string, attrs?: string, value?: string) {
     let el = document.createElement(type);
     if (attrs)
         attrs.split(";").forEach((t) => {
             if (!t) return;
-            let e = t.split(/(?<!\\)\=/gm);
-            el.setAttribute(e[0].trim(), e[1].trim().replace("\\", ""));
+            let e = t.split(/(?!\\)\=/gm);
+            el.setAttribute(e[0].trim().replace("\\", ""), e[1].trim().replace("\\", ""));
         });
     el.innerHTML = value || "";
     return el;
