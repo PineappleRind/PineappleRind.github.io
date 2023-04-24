@@ -1,4 +1,7 @@
-var root = "./";
+// old code, could be improved a lot
+// especially with putting events directly in html attributes
+
+var root = "/social-credit/";
 
 function shuffle(array) {
   let currentIndex = array.length,
@@ -231,7 +234,7 @@ const emoji = (type, num) => {
     emoji.src = src;
     emoji.style.left = x + "px";
     emoji.style.top = y + "px";
-    emoji.classList.add("chinese-emoji");
+    emoji.classList.add("emoji");
     document.body.appendChild(emoji);
   }
   worker();
@@ -258,7 +261,7 @@ function msg(mesg, pos, result) {
 }
 
 function purge(pos) {
-  let emojis = $(".chinese-emoji");
+  let emojis = $(".emoji");
   if (pos === false) emojis.forEach((e) => e.remove());
   else emojis[0].remove();
   document.querySelector(".toast").remove();
