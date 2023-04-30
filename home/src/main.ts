@@ -230,7 +230,10 @@ function getMoreMusicLink() {
     container.classList.add("more-music-link-container");
     link.classList.add("more-music-link");
     link.onfocus = moreMusicHandler;
-    link.onblur = () => {
+    link.onblur = (e: FocusEvent) => {
+        if (!mm_isOpen) return;
+        if ($(".more-music-launcher").contains(e.relatedTarget as Node)) return;
+        console.log(e.currentTarget)
         mm_isOpen = false;
         closeLauncher();
     };

@@ -3,35 +3,13 @@
 (function () {
   // data: each URL for the buttons of each EP
   const urls = {
-    underground: {
-      spotify: "https://open.spotify.com/album/0UDLh0aaDqesBu7dmxOYuw",
-      apple:
-        "https://music.apple.com/ca/album/underground-transport-ep/1657309013",
-      youtube:
-        "https://music.youtube.com/playlist?list=OLAK5uy_kcwzkOW_hHLIo3WaCaii5Pe78UTh1g6Sc",
-      deezer: "https://www.deezer.com/album/381835367",
-      tidal: "https://listen.tidal.com/album/263457030",
-      amazon: "https://music.amazon.com/albums/B0BNLVY6JG",
-    },
-    ground: {
-      spotify: "https://open.spotify.com/album/2kP1jXdwPGnjlEOO8Qmxzm",
-      apple:
-        "https://geo.music.apple.com/album/ground-transport-ep/1662145157?app=music",
-      youtube:
-        "https://music.youtube.com/playlist?list=OLAK5uy_mIpJjcPMObgVhh9K6dDdGseW-CK95mV-M",
-      deezer: "https://www.deezer.com/album/391762037",
-      tidal: "http://www.tidal.com/album/269261591",
-      amazon: "https://music.amazon.com/albums/B0BRDFMYFL",
-    },
-    air: {
-      spotify: "https://open.spotify.com/album/1c0g1R0TrzAhNPDs7po0SD",
-      apple:
-      "https://music.apple.com/us/album/air-transport-ep/1669094302?app=music",
-      youtube: "https://music.youtube.com/playlist?list=OLAK5uy_nCgJieft-lX10_gssVPS7DCkJiT8O1-xc",
-      deezer: "https://www.deezer.com/album/402588937",
-      tidal: "http://www.tidal.com/album/274386729",
-      amazon: "https://music.amazon.com/albums/B0BTKK8G7B",
-    },
+    spotify: "https://open.spotify.com/album/7dvhxbHgZNJT66xujplvXg",
+    apple: "https://music.apple.com/us/album/transport/1670647948",
+    youtube:
+      "https://music.youtube.com/playlist?list=OLAK5uy_k8If5EXnpUKWFsQEp4p5DC6-Bzy8fVWgE",
+    deezer: "https://www.deezer.com/us/album/405399667",
+    tidal: "https://listen.tidal.com/album/275720979",
+    amazon: "https://music.amazon.com/albums/B0BV79WHJY",
   };
 
   // data: each store and its corresponding full name
@@ -52,73 +30,10 @@
         `class:button-store-link;data-ref:${storeId};target:_blank`,
         storeName
       );
+      button.href = urls[storeId];
       $(".pane").append(button);
     }
   }
-  let last = {
-    pic: $(".bg-image.underground"),
-    trigger: $("[data-trigger=underground]"),
-  };
-  // updates hrefs of the buttons depending on which tab is selected
-  function switchPanes(pane) {
-    // already selected? dumb user :(
-    if (last.trigger.dataset === pane) return;
-    // update stuff
-    updateTriggers(pane);
-    updateBackground(pane);
-    // hide pane
-    let paneEl = $(".pane"),
-      switchers = $(".pane-switchers");
-    // remove all colorings
-    paneEl.classList.remove("underground", "ground", "air");
-    switchers.classList.remove("underground", "ground", "air");
-    // then add the right one
-    paneEl.classList.add(pane || "underground");
-    switchers.classList.add(pane || "underground");
-    // update buttons
-    for (const button of $(".button-store-link", 1)) {
-      // hide the button
-      button.classList.add("hidden");
-      setTimeout(function () {
-        // wait until fully hidden, then update button & unhide
-        let link = urls[pane || "underground"][button.dataset.ref];
-        if (link) {
-          button.removeAttribute("disabled");
-          button.href = link;
-        }
-        else button.setAttribute("disabled", true);
-        button.classList.remove("hidden");
-      }, 500);
-    }
-  }
-
-  // for each tab
-  for (const trigger of $(".pane-switcher", 1)) {
-    // listen for clicks and update page accordingly
-    trigger.onclick = () => {
-      if (trigger.getAttribute("disabled") !== null) return;
-
-      let togo = trigger.dataset.trigger;
-      switchPanes(togo);
-    };
-  }
-
-  function updateTriggers(pane) {
-    let newt = $(`[data-trigger=${pane}]`);
-    last.trigger.classList.remove("selected");
-    newt.classList.add("selected");
-
-    last.trigger = newt;
-  }
-
-  function updateBackground(pane) {
-    let pic = $(`.bg-image.${pane}`);
-    last.pic.classList.remove("showing");
-    pic.classList.add("showing");
-
-    last.pic = pic;
-  }
-
   // jquery-like shorthand
   function $(str, all) {
     return document[`querySelector${all ? "All" : ""}`].bind(document)(str);
@@ -155,8 +70,10 @@
   let skip = $(".skip-animation");
   if (localStorage.getItem("transport-already-visited")) {
     skip.classList.remove("hidden");
+    skip.setAttribute("aria-hidden", "false");
     setTimeout(function () {
       skip.classList.add("hidden");
+      skip.setAttribute("aria-hidden", "true");
     }, 7000);
   }
 
@@ -164,11 +81,12 @@
   skip.onclick = () => {
     $(":root").style.setProperty("--animation", "0s");
     skip.classList.add("hidden");
+    skip.setAttribute("aria-hidden", "true");
   };
   // set pane if hash exists
   const startOff = window.location.hash.toLowerCase()?.replace("#", "");
   if (startOff && ["underground", "ground", "air"].includes(startOff))
-      switchPanes(startOff);
+    switchPanes(startOff);
 
   localStorage.setItem("transport-already-visited", true);
 })();

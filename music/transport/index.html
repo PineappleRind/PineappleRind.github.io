@@ -18,35 +18,28 @@
 
     <link rel="icon" type="image/x-icon" href="/music/transport/imgs/collageTransport.thumb.png">
 
+    <meta name="description" content="Album by PineappleRind (2023)">
+    <meta name="keywords" content="pineapplerind,album,music">
+    
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://pineapplerind.xyz/music/transport">
     <meta property="og:title" content="Transport">
-    <meta property="og:description" content="Collection of EPs by PineappleRind (2022-2023)">
+    <meta property="og:description" content="Album by PineappleRind (2023)">
     <meta property="og:image" content="/music/transport/imgs/collageTransport.thumb.png">
 
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://pineapplerind.xyz/music/transport">
     <meta property="twitter:title" content="Transport">
-    <meta property="twitter:description" content="Colection of EPs by PineappleRind (2022-2023)">
+    <meta property="twitter:description" content="Album by PineappleRind (2023)">
     <meta property="twitter:image" content="/music/transport/imgs/collageTransport.thumb.png">
-
-
 </head>
 
 <body>
-    <!-- background images -->
+    <!-- background image, only one -->
     <div class="bg-images">
-        <picture class="bg-image underground showing" style="opacity:0">
-            <source srcset="/music/transport/imgs/undergroundTransport.thumb.webp">
-            <img src="/music/transport/imgs/undergroundTransport.thumb.png">
-        </picture>
-        <picture class="bg-image ground" style="opacity:0">
-            <source srcset="/music/transport/imgs/groundTransport.thumb.webp">
-            <img src="/music/transport/imgs/groundTransport.thumb.png">
-        </picture>
-        <picture class="bg-image air" style="opacity:0">
-            <source srcset="/music/transport/imgs/airTransport.thumb.webp">
-            <img src="/music/transport/imgs/airTransport.thumb.png">
+        <picture aria-hidden="true" class="bg-image">
+            <source srcset="/music/transport/imgs/collageTransport.thumb.webp">
+            <img src="/music/transport/imgs/collageTransport.thumb.png">
         </picture>
     </div>
     <!-- a wrapper for everything. makes it nice and box-ified :) -->
@@ -54,37 +47,28 @@
         <!-- now the header -->
         <div class="header">
             <!-- inside the header we have the title and the author (me)-->
-            <h1>Transport <small style="color:rgba(255, 255, 255, 0.64)">by <a href="/"
-                        style="cursor:pointer;color:rgba(255, 255, 255, 0.868)">PineappleRind</a></small></h1>
+            <h1 aria-label="Transport, an album by PineappleRind">Transport</h1> <small style="color:rgba(255, 255, 255, 0.64)">by <a href="/"
+                style="cursor:pointer;color:rgba(255, 255, 255, 0.868)">PineappleRind</a></small>
         </div>
 
         <!-- wrap again for the main content, for ease of animation -->
-        <div class="main">
+        <div role="none" class="main">
 
-            <!-- the pane switchers ("tabs") -->
-            <div class="pane-switchers">
-                <div class="pane-switcher selected" data-trigger="underground" data-date="Nov 29">Underground</div>
-                <div class="pane-switcher" data-trigger="ground" data-date="Dec 29">Ground</div>
-                <div class="pane-switcher" data-trigger="air" data-date="Jan 29">Air</div>
-            </div>
-            <!-- we don't actually need a different pane for each EP-->
-            <!-- so let's just have 1 pane and switch the button hrefs -->
-            <!-- ( buttons loaded in JS ) -->
+            <!-- only one pane, there used to be three for each EP -->
+            <!-- but now there's only one album, so link to that -->
             <div class="pane"><i></i></div>
         </div>
         <!-- and finally, the video (best part) -->
         <div id="video">
-            <video autoplay muted>
+            <video role="none" autoplay muted playsinline>
                 <source src="/music/transport/Transport.mp4">
             </video>
         </div>
     </div>
-    <div class="wrapper-sub">
-        <span class="info">i</span> Transport will be released as a series of 3 EPs, then as an album containing all 3 EPs in around February. For now, you can browse each EP separately.
-    </div>
 
     <!-- only shown if user has visited the site before-->
-    <footer class="skip-animation hidden">Skip animation</footer>
+    <!-- hide it from -->
+    <button class="skip-animation hidden">Skip animation</button>
 
     <!-- load our JS — try /music/transport/index.js for unobfuscated code -->
     <script src="/music/transport/index.min.js"></script>

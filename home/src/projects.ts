@@ -30,11 +30,11 @@ export const projects = [
     },
     {
         name: "Transport",
-        description: "3 EPs",
+        description: "Album",
         img: "/music/transport/imgs/collageTransport.thumb",
         link: "/music/transport",
         type: "music",
-        metadata: { tracks: "?", date: "2022.11.29 - 2023.01.29", time: "?" },
+        metadata: { tracks: "12", date: "2023.02.08", time: "41" },
     },
     {
         name: "Seaweed",

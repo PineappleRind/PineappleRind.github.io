@@ -54,52 +54,27 @@ body {
     border: 1px solid var(--card-border);
 }
 
-.wrapper-sub {
-    margin-top: 5px;
-    padding: 8px 15px;
-    background: rgba(var(--card-generic), var(--card-bg-alpha));
-    border-radius: 20px;
-    max-width: 500px;
-    border: 1px solid var(--card-border);
-    color: rgba(255,255,255,0.7);
-    font-size: 12px;
-    animation: popout calc(2s * var(--animation)) both 6s;
-    z-index:-1;
-    position: static;
-}
-
-.wrapper-sub .info {
-    display: inline-block;
-    border-radius: 50px;
-    height: 17px;
-    width: 17px;
-    background: rgba(83, 155, 255, 0.787);
-    border: 1px solid rgb(134, 176, 255);
-    color: white;
-    line-height: 17px;
-    vertical-align: middle;
-    text-align: center;
-    font-family: monospace;
-    font-style: normal;
-}
-
 .header {
     margin: 20px;
+    animation: fadeDown both calc(2s * var(--animation));
+    animation-delay: 3s;
+    display: flex;
 }
 
 .header h1 {
     font-size: 50px;
     font-weight: 800;
     height: fit-content;
-    animation: fadeDown both calc(2s * var(--animation));
-    animation-delay: 3s;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
 }
 
-.header h1 small {
+.header small {
     font-size: 20px;
     font-weight: 500;
     text-shadow: none;
+    vertical-align: text-bottom;
+    margin-top: 29px;
+    margin-left: 10px;
 }
 
 .main {
@@ -178,15 +153,6 @@ body {
     transition: 0.2s;
 }
 
-/*
-will use this later for pre-saving stuff
-.pane-switcher[disabled]:hover::after,
-.pane-switcher[disabled]:focus::after {
-    transform: translateX(-50%) translateY(0);
-    opacity: 1;
-}
-*/
-
 .pane-switcher.selected {
     background: rgba(var(--card-generic), var(--card-bg-alpha));
     border: 1px solid var(--card-border);
@@ -214,6 +180,7 @@ will use this later for pre-saving stuff
 .button-store-link:not([disabled]):hover,
 .skip-animation:hover {
     border: 1px solid var(--card-border-intense);
+    scale: 1.01;
 }
 
 .button-store-link[disabled] {
@@ -300,7 +267,11 @@ video {
 @keyframes popup {
     from {
         opacity: 0;
+        backdrop-filter: blur(var(--video-blur)) opacity(0);
         transform: translateY(100%)
+    }
+    to {
+        backdrop-filter: blur(var(--video-blur)) opacity(1);
     }
 }
 

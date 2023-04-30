@@ -31,11 +31,11 @@
         },
         {
             name: "Transport",
-            description: "3 EPs",
+            description: "Album",
             img: "/music/transport/imgs/collageTransport.thumb",
             link: "/music/transport",
             type: "music",
-            metadata: { tracks: "?", date: "2022.11.29 - 2023.01.29", time: "?" },
+            metadata: { tracks: "12", date: "2023.02.08", time: "41" },
         },
         {
             name: "Seaweed",
@@ -292,7 +292,12 @@
         container.classList.add("more-music-link-container");
         link.classList.add("more-music-link");
         link.onfocus = moreMusicHandler;
-        link.onblur = () => {
+        link.onblur = (e) => {
+            if (!mm_isOpen)
+                return;
+            if ($(".more-music-launcher").contains(e.relatedTarget))
+                return;
+            console.log(e.currentTarget);
             mm_isOpen = false;
             closeLauncher();
         };
