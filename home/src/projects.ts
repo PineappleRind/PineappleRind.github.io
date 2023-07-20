@@ -16,6 +16,14 @@ export const projects = [
         type: "other",
     },
     {
+        name: "Solar Wind",
+        description: "Single",
+        img: "/music/solar-wind/solarwind.thumb",
+        link: "/music/solar-wind",
+        type: "music",
+        metadata: { tracks: 1, date: "2023.05.08", time: 4 },
+    },
+    {
         name: "Multidimensional Interchange",
         description: "Single",
         img: "/music/multidimensional-interchange/mi.thumb",
@@ -35,14 +43,6 @@ export const projects = [
         link: "/music/transport",
         type: "music",
         metadata: { tracks: "12", date: "2023.02.08", time: "41" },
-    },
-    {
-        name: "Seaweed",
-        description: "Single",
-        img: "/music/seaweed/seaweed.thumb",
-        link: "/music/seaweed",
-        type: "music",
-        metadata: { tracks: 1, date: "2022.10.29", time: 4 },
     },
     {
         name: "Berries",
