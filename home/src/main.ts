@@ -55,8 +55,8 @@ class ProjectManager {
     generate = {
         /* main generation function; generates a project card */
         project(project: Project | MusicProject): HTMLElement {
-            const { name, img: url, type, link, description: desc = "" } = project;
-            let card = this.generate.container(type, link),
+            const { name, img: url, type, link, description: desc = "", class: classname } = project;
+            let card = this.generate.container(type, link, classname),
                 infoContainer = createElement("div"),
                 heading = createElement("h1", `data-type=${type}`, name),
                 picture = this.generate.image(name, url),
@@ -72,9 +72,9 @@ class ProjectManager {
             return card;
         },
         /* generation helpers; generates the container surrounding the project */
-        container(type: string, link: string) {
+        container(type: string, link: string, classname: string) {
             // create container initialized with its type
-            let container = createElement("a", `class=project project-type-${type}`) as HTMLAnchorElement;
+            let container = createElement("a", `class=project project-type-${type} ${classname}`) as HTMLAnchorElement;
             // add its <a> stuff, if necessary
             if (link) {
                 container.href = link;

@@ -1,4 +1,6 @@
-export const projects = [
+import { Projects } from "./types";
+
+export const projects: Projects = [
     {
         name: "Bezier Visualizer",
         description:
@@ -16,6 +18,15 @@ export const projects = [
         type: "other",
     },
     {
+        name: "Space Phenomena",
+        description: "Album",
+        img: "/music/space-phenomena/spacephenomena.thumb",
+        link: "/music/space-phenomena",
+        type: "music",
+        metadata: { tracks: 8, date: "2023.08.07", time: 32 },
+        class: "new",
+    },
+    {
         name: "Solar Wind",
         description: "Single",
         img: "/music/solar-wind/solarwind.thumb",
@@ -29,7 +40,6 @@ export const projects = [
         img: "/music/multidimensional-interchange/mi.thumb",
         type: "music",
         link: "/music/multidimensional-interchange",
-        class: "new",
         metadata: {
             tracks: 1,
             date: "2022.12.20",
@@ -42,15 +52,7 @@ export const projects = [
         img: "/music/transport/imgs/collageTransport.thumb",
         link: "/music/transport",
         type: "music",
-        metadata: { tracks: "12", date: "2023.02.08", time: "41" },
-    },
-    {
-        name: "Berries",
-        description: "EP",
-        img: "/music/berries/berries.thumb",
-        type: "music",
-        link: "/music/berries",
-        metadata: { tracks: 5, date: "2022.08.02", time: 17 },
+        metadata: { tracks: 12, date: "2023.02.08", time: 41 },
     },
     {
         name: "Social Credit Quiz",

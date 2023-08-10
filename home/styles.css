@@ -3,7 +3,7 @@ a {
 }
 
 * {
-    font-family: Inter, Roboto, -apple-system, system-ui, sans-serif;
+    font-family: -apple-system, Inter, system-ui, Helvetica Neue, Roboto, sans-serif;
     margin: 0;
     box-sizing: border-box;
     color: #fff;
@@ -96,7 +96,8 @@ body {
 h1 {
     font-size: 50px;
     width: 100%;
-    text-align: center
+    text-align: center;
+    letter-spacing: -0.04em;
 }
 
 h2 {
@@ -467,6 +468,7 @@ button[disabled]:hover {
     .projects {
         padding: 0;
     }
+
     .project {
         height: fit-content;
         width: 600px;
