@@ -12,7 +12,9 @@ body {
     line-height: 1.5;
     text-rendering: optimizeLegibility;
     color: white;
+    height: 100vh;
     height: 100dvh;
+    width: 100vw;
     width: 100dvw;
     display: grid;
     place-items: center;
@@ -23,6 +25,7 @@ main {
     align-content: center;
     justify-content: center;
     flex-direction: column;
+    max-width: clamp(300px, 90vw, 1900px);
     max-width: clamp(300px, 90dvw, 1900px);
     max-height: 600px;
     padding: min(7%, 200px) min(17%, 300px);
@@ -200,6 +203,7 @@ footer {
     color: #666690;
     position: absolute;
     top: 10px;
+    text-align: center;
     opacity: 0.5;
     animation: footer var(--anim-duration) both 2s;
 }

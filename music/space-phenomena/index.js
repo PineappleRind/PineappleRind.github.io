@@ -1,6 +1,6 @@
 const listen = document.querySelector("#listenContents");
 const links = document.querySelector("#linkContents");
-const ease = document.body.computedStyleMap().get("--anim-ease");
+const ease = getComputedStyle(document.body).getPropertyValue("--anim-ease");
 const data = {
     "Spotify": "https://open.spotify.com/album/0zARpE80yYn1FaOSaKRkhU",
     "Apple Music": "https://music.apple.com/us/album/1699244574",
@@ -11,15 +11,17 @@ const data = {
 }
 populateLinks(links.querySelector(".contents-inner"))
 
-listen["ontouchstart" in window ? "ontouchstart" : "onclick"] = async () => {
+let touchEvent = 'ontouchstart' in window ? 'touchstart' : 'click';
+
+listen.addEventListener(touchEvent, async () => {
     listen.animate([
         { gridTemplateRows: "1fr" }, { gridTemplateRows: "0fr" }
     ], { duration: 1000, fill: "both", easing: ease });
-    console.log("Animating links")
+
     await links.animate([
         { gridTemplateRows: "0fr" }, { gridTemplateRows: "1fr" }
     ], { duration: 1000, fill: "both", easing: ease }).finished;
-}
+})
 
 
 function populateLinks(links) {
