@@ -11,7 +11,7 @@ const data = {
 }
 populateLinks(links.querySelector(".contents-inner"))
 
-listen.onclick = async () => {
+listen["ontouchstart" in window ? "ontouchstart" : "onclick"] = async () => {
     listen.animate([
         { gridTemplateRows: "1fr" }, { gridTemplateRows: "0fr" }
     ], { duration: 1000, fill: "both", easing: ease });
