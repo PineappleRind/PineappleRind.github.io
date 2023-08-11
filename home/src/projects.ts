@@ -27,14 +27,6 @@ export const projects: Projects = [
         class: "new",
     },
     {
-        name: "Solar Wind",
-        description: "Single",
-        img: "/music/solar-wind/solarwind.thumb",
-        link: "/music/solar-wind",
-        type: "music",
-        metadata: { tracks: 1, date: "2023.05.08", time: 4 },
-    },
-    {
         name: "Multidimensional Interchange",
         description: "Single",
         img: "/music/multidimensional-interchange/mi.thumb",
@@ -53,6 +45,14 @@ export const projects: Projects = [
         link: "/music/transport",
         type: "music",
         metadata: { tracks: 12, date: "2023.02.08", time: 41 },
+    },
+    {
+        name: "Berries",
+        description: "EP",
+        img: "/music/berries/berries.thumb",
+        type: "music",
+        link: "/music/berries",
+        metadata: { tracks: 5, date: "2022.08.02", time: 17 },
     },
     {
         name: "Social Credit Quiz",
