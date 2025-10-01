@@ -1,4 +1,4 @@
-/* hey there 
+/* hey there
    so this is the first iteration of cleaning up
    my old, bad homepage code. there's still a bit
    to do but it's a good start (:
@@ -7,7 +7,8 @@
 import { projects } from "./projects";
 import type { MusicProject, Project, Projects } from "./types";
 
-const TRANSITION_LENGTH_MS = 600;
+const TRANSITION_LENGTH_MS = 300;
+const DEFAULT_PANE = "music";
 
 let hash = window.location.hash.substring(1);
 const $ = document.querySelector.bind(document);
@@ -95,11 +96,11 @@ class ProjectManager {
         musicMetadata(metadata) {
             let output: HTMLElement[] = [];
             for (const item in metadata) {
-                let element = createElement('p', `class=music-sub ${item}`, metadata[item]);
+                let element = createElement('p', `class=music-sub ${item}`, metadata[item] || "?");
                 // add plural units if necessary
                 if (item === 'time') element.textContent += ` minutes`;
                 else if (item === 'tracks') {
-                    // deal with singles as well 
+                    // deal with singles as well
                     if (metadata[item] === 1) element.textContent = 'single';
                     else element.textContent += ` tracks`;
                 }
@@ -119,7 +120,7 @@ class ProjectManager {
     }
     /**
      * Loads a pane without animating it in.
-     * This function should only be called once. 
+     * This function should only be called once.
      * It assumes .projects-wrap is empty.
      */
     load(pane: string) {
@@ -142,7 +143,7 @@ class PaneAnimator {
     directionMap: { [x: string]: string }
     constructor(container: HTMLElement) {
         this.container = container;
-        this.showing = "site";
+        this.showing = DEFAULT_PANE;
         this.types = ["site", "music", "other"];
         this.directionMap = { "1": "right", "-1": "left" }
     }
@@ -170,7 +171,7 @@ class PaneAnimator {
         // Hide the new block towards this direction
         newBlock.classList.add(`coming-${this.directionMap[direction]}`);
         this.container.append(newBlock);
-        // Wait until the next event loop to make sure we're not 
+        // Wait until the next event loop to make sure we're not
         // adding and removing the class at the same time
         await new Promise(resolve => setTimeout(resolve, 10))
         newBlock.classList.remove(`coming-${this.directionMap[direction]}`);
@@ -186,7 +187,7 @@ class PaneAnimator {
 
 /******** init ********/
 let projectLoader = new ProjectManager(projects);
-projectLoader.load(hash || 'site');
+projectLoader.load(hash || DEFAULT_PANE);
 
 /********** Listen ***********/
 let projectTypes = $$(".select-project-type"),
@@ -214,6 +215,8 @@ for (const select of Array.from(projectTypes)) {
             select.classList.add("selected");
             continue;
         }
+
+    if (select.dataset.type === DEFAULT_PANE) updateIndicator(rect);
 }
 function updateIndicator(rect) {
     indicator.style.width = rect.cur.width + "px";
@@ -292,8 +295,8 @@ function closeLauncher() {
 }
 
 /********* animation *********/
-for (const [i, element] of Array.from($$(".animate-hidden")).entries()) {
+  for (const [i, element] of Array.from($$(".animate-hidden")).entries()) {
     setTimeout(() => {
-        element.classList.remove("animate-hidden");
-    }, (i + 1) * 100);
-}
+      element.classList.remove("animate-hidden");
+    }, (i + 2) * 200);
+  }

@@ -9,7 +9,7 @@
     <meta name="description" content="frontend web developer & musician">
     <title>PineappleRind</title>
     <link rel="stylesheet" href="/home/styles.css">
-    <!-- googlesearch console verification-->
+    <!--search console-->
     <meta name="google-site-verification" content="Z_UlT5tdYsTxPy4urVE5b9aIB3gfW6ZOaJNZwGd5jrU" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,13 +20,13 @@
 </head>
 
 <body>
-    <div id="visual">
+    <div id="visual" class="animate animate-hidden">
         <svg id="svg" style="position: fixed; bottom: -520px;width: 100%;min-width: 900px;height:100%; "
             viewBox="0 0 1440 490" pr version="1.1" xmlns="http://www.w3.org/2000/svg">
             <defs>
                 <linearGradient id="sw-gradient-0" x1="0" x2="0" y1="1" y2="0">
-                    <stop stop-color="rgba(0, 10, 255, 1)" offset="0%"></stop>
-                    <stop stop-color="rgba(255, 0, 255, 1)" offset="100%"></stop>
+                    <stop stop-color="rgba(250, 25, 0, 1)" offset="0%"></stop>
+                    <stop stop-color="rgba(255, 55, 0, 1)" offset="100%"></stop>
                 </linearGradient>
             </defs>
             <path style="transform:translate(0, 0px); opacity:0.5; z-index: 2; position: fixed"
@@ -36,8 +36,8 @@
 
             <defs>
                 <linearGradient id="sw-gradient-2" x1="0" x2="0" y1="1" y2="0">
-                    <stop stop-color="rgba(0, 10, 255, 1)" offset="0%"></stop>
-                    <stop stop-color="rgba(195, 0, 255, 1)" offset="100%"></stop>
+                    <stop stop-color="rgba(250, 55, 0, 1)" offset="0%"></stop>
+                    <stop stop-color="rgba(255, 245, 0, 1)" offset="100%"></stop>
                 </linearGradient>
             </defs>
             <path style="transform:translate(0, 0px); opacity:0.3" fill="url(#sw-gradient-2)"
@@ -45,8 +45,8 @@
             </path>
             <defs>
                 <linearGradient id="sw-gradient-3" x1="0" x2="0" y1="1" y2="0">
-                    <stop stop-color="rgba(0, 10, 255, 1)" offset="0%"></stop>
-                    <stop stop-color="rgba(255, 0, 255, 1)" offset="100%"></stop>
+                    <stop stop-color="rgba(250, 55, 0, 1)" offset="0%"></stop>
+                    <stop stop-color="rgba(255, 200, 0, 1)" offset="100%"></stop>
                 </linearGradient>
             </defs>
             <path style="transform:translate(0, 0px); opacity:0.2" fill="url(#sw-gradient-3)"
@@ -56,7 +56,7 @@
     </div>
 
     <div class="inner">
-        <h1 class="title animate-hidden" style="display:flex">pineapplerind
+        <h1 class="title animate animate-hidden" style="display:flex">pineapplerind
             <div class="links">
                 <a href="https://github.com/pineapplerind" style="margin: 0 5px;" tooltip="GitHub">
                     <img alt="GitHub link" src="imgs/github.svg">
@@ -66,15 +66,13 @@
                 </a>
             </div>
         </h1>
-        <div class="select-project-type-wrap animate-hidden">
+        <div class="select-project-type-wrap animate animate-hidden">
             <div class="indicator"></div>
-            <div class="select-project-type site selected" data-type="site">Sites</div>
-            <div class="select-project-type music" data-type="music">Music</div>
+            <div class="select-project-type site" data-type="site">Sites</div>
+            <div class="select-project-type music selected" data-type="music">Music</div>
             <div class="select-project-type other" data-type="other">Other</div>
         </div>
-        <br>
-
-        <div class="projects-wrap" style="position: relative;"></div>
+        <div class="projects-wrap animate animate-hidden" style="position: relative;"></div>
     </div>
 
     <div class="modal-container"></div>

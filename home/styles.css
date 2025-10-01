@@ -1,53 +1,59 @@
 a {
-    text-decoration: none
+    text-decoration: none;
 }
 
 * {
-    font-family: -apple-system, Inter, system-ui, Helvetica Neue, Roboto, sans-serif;
+    font-family:
+        -apple-system,
+        Inter,
+        system-ui,
+        Helvetica Neue,
+        Roboto,
+        sans-serif;
     margin: 0;
     box-sizing: border-box;
     color: #fff;
-    transition: 0.4s;
     user-select: none;
     -webkit-user-select: none;
+    corner-shape: superellipse(1.5);
 }
 
 @property --round {
-    syntax: '<integer>';
+    syntax: "<integer>";
     initial-value: 0;
-    inherits: false
-        /* or true depending on context */
+    inherits: false;
+    /* or true depending on context */
 }
 
 :root {
-    --base-bg: #000020;
+    --base-bg: #200500;
     --card-bg: #ffffff1f;
     --card-bg-intense: #ffffff29;
     --card-border: rgba(255, 255, 255, 0.104);
     --card-border-intense: rgba(255, 255, 255, 0.404);
-    --project-animateX: 15px;
+    --project-animateX: 5px;
 }
 
 ::-webkit-scrollbar {
     width: 10px;
     position: absolute;
-    right: 15px
+    right: 15px;
 }
 
 ::-webkit-scrollbar-track {
     background: #f1f1f123;
-    padding: 3px
+    padding: 3px;
 }
 
 ::-webkit-scrollbar-thumb {
     margin: 13px;
     display: block;
     border-radius: 10px;
-    background: rgba(255, 255, 255, .596)
+    background: rgba(255, 255, 255, 0.596);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, .555)
+    background: rgba(255, 255, 255, 0.555);
 }
 
 body {
@@ -55,7 +61,8 @@ body {
     height: 100vh;
     height: 100dvh;
     width: 100vw;
-    overflow: hidden
+    overflow: hidden;
+    line-height: 1.3;
 }
 
 #visual,
@@ -65,8 +72,7 @@ body {
     width: 100vw;
     height: 100vh;
     height: 100dvh;
-    transition: 0.2s;
-    display: block
+    display: block;
 }
 
 .inner {
@@ -83,14 +89,28 @@ body {
 }
 
 .title {
-    font-weight: 900;
+    font-weight: 700;
+    transition: 0s;
     width: 100vw;
     font-size: calc(28px + 3vw);
     margin-bottom: 5px;
     text-align: center;
     display: flex;
     align-items: center;
-    justify-content: center
+    justify-content: center;
+    font-style: italic;
+    position: relative;
+    color: rgba(255, 255, 255, 0.9);
+    /*clip-path: polygon(0 73%, 100% 76%, 100% 0, 0 0);*/
+}
+.title::after {
+    color: rgba(255, 105, 0);
+    clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+    position: absolute;
+    left: -60px;
+    width: 100vw;
+    text-align: center;
+    content: "pineappıerinp ";
 }
 
 h1 {
@@ -100,7 +120,8 @@ h1 {
     letter-spacing: -0.04em;
 }
 
-:is(h1 *)::after, :is(h1 *)::before {
+:is(h1 *)::after,
+:is(h1 *)::before {
     letter-spacing: 0em;
 }
 
@@ -119,12 +140,15 @@ h2 {
     margin: 10px;
     width: fit-content;
     padding: 20px;
-    border-radius: 25px;
-    transition: .3s cubic-bezier(.34, 0, .39, 1.32);
+    border-radius: 35px;
+    transition:
+        0.2s scale cubic-bezier(0.34, 0, 0.39, 1.52),
+        0.2s border cubic-bezier(0.34, 0, 0.39, 1.52),
+        0.2s background cubic-bezier(0.34, 0, 0.39, 1.52);
     cursor: pointer;
     width: 440px;
     position: relative;
-    height: 160px;
+    height: 170px;
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--card-border);
 }
@@ -134,38 +158,41 @@ h2 {
     background: var(--card-bg-intense);
     box-shadow: 0 3px 4px rgba(0, 0, 0, 0.6);
     border: 1px solid var(--card-border-intense);
+    scale: 1.005;
 }
 
 .project h1 {
-    transition: .2s;
-    font-weight: 700;
-    opacity: .9;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    font-style: italic;
+    opacity: 0.9;
     font-size: 26px;
     width: fit-content;
     position: relative;
     text-align: left;
+    line-height: 1;
 }
-
 
 .project.new h1::after,
 .project.soon h1::after {
-    background: rgba(0, 94, 255, 0.611);
+    background: rgba(255, 94, 0, 0.911);
     color: #fff;
     font-size: 15px;
     padding: 2px 8px;
     margin: 0 6px;
-    content: 'New';
+    content: "New";
     border-radius: 15px;
     vertical-align: middle;
 }
 
 .project.soon h1::after {
     background: rgba(255, 123, 7, 0.389);
-    content: "Soon"
+    content: "Soon";
 }
 
 .project p {
-    opacity: .8;
+    margin-top: 0.3em;
+    opacity: 0.8;
     font-weight: 260;
 }
 
@@ -178,10 +205,10 @@ h2 {
     max-width: 160px;
     height: 120px;
     margin-right: 20px;
-    border-radius: 20px
+    border-radius: 20px;
 }
 
-.project img~* {
+.project img ~ * {
     width: 100%;
 }
 
@@ -192,7 +219,6 @@ h2 {
     height: 90dvh;
     display: flex;
     justify-content: center;
-    perspective: 5000px;
 }
 
 .projects {
@@ -204,8 +230,8 @@ h2 {
     padding: 0 50px;
     left: 0;
     right: 0;
-    transition: 0.6s;
     position: absolute;
+    transition: 0.2s;
 }
 
 .project .music-sub {
@@ -229,11 +255,11 @@ h2 {
 }
 
 .project .music-sub.date::before {
-    content: '\f073';
+    content: "\f073";
 }
 
 .project.coming-soon .music-sub.date::after {
-    content: ' Coming soon';
+    content: " Coming soon";
     font-weight: 400;
 }
 
@@ -243,7 +269,7 @@ h2 {
 }
 
 .project.coming-soon::after {
-    content: 'Pre-save';
+    content: "Pre-save";
     text-align: center;
     min-width: 3em;
     max-width: 21em;
@@ -252,13 +278,13 @@ h2 {
     text-overflow: ellipsis;
     padding: 6px 8px;
     border-radius: 3px;
-    color: #FFFFFF;
+    color: #ffffff;
     bottom: 100%;
     border-bottom-width: 0;
-    border-top-color: #4621FF;
+    border-top-color: #4621ff;
     z-index: 99;
     line-height: 1;
-    font-size: .9em;
+    font-size: 0.9em;
     pointer-events: none;
     position: absolute;
     box-sizing: border-box;
@@ -289,19 +315,19 @@ h2 {
     opacity: 0.7;
     border: 1px solid var(--card-border);
     text-align: center;
-    border-radius: 10px;
+    border-radius: 15px;
     background: var(--card-bg);
     padding: 10px;
     margin-top: 10px;
     display: inline-block;
     user-select: none;
-    -webkit-user-select: none
+    -webkit-user-select: none;
 }
 
 .more-music-link:hover {
     opacity: 0.9;
     cursor: pointer;
-    border: 1px solid var(--card-border-intense);
+    border: 1px solid var(--card-border);
 }
 
 .more-music-launcher {
@@ -310,9 +336,9 @@ h2 {
     transform: translateX(-50%);
     background: var(--card-bg);
     border: 1px solid var(--card-border);
-    animation: launcher-popup 0.3s;
+    animation: launcher-popup 0.2s;
     padding: 5px;
-    border-radius: 10px;
+    border-radius: 15px;
     width: fit-content;
     display: flex;
     align-items: center;
@@ -341,7 +367,6 @@ h2 {
     background: var(--card-bg);
 }
 
-
 @keyframes launcher-popup {
     from {
         opacity: 0;
@@ -350,26 +375,28 @@ h2 {
 }
 
 button[disabled] {
-    opacity: .5;
-    cursor: not-allowed
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 button[disabled]:active {
-    pointer-events: none
+    pointer-events: none;
 }
 
 button[disabled]:hover::after {
-    display: none
+    display: none;
 }
 
 button[disabled]:hover {
     color: #fff;
-    opacity: .5
+    opacity: 0.5;
 }
 
 .links a {
     position: relative;
-    transition: .2s;
+    transition:
+        0.2s transform,
+        0.2s opacity;
     opacity: 0.8;
 }
 
@@ -381,7 +408,7 @@ button[disabled]:hover {
 .links {
     margin-left: 20px;
     display: flex;
-    width: 100px
+    width: 100px;
 }
 
 .links a::after {
@@ -393,37 +420,35 @@ button[disabled]:hover {
     transform: translateX(50%) translateY(10px);
     opacity: 0;
     font-weight: 300;
-    transition: .2s;
+    transition: 0.2s;
     text-align: center;
-    content: attr(tooltip)
+    content: attr(tooltip);
 }
 
 .links a:hover {
     transform: translateY(-2px);
-    opacity: 1
+    opacity: 1;
 }
 
 .links a:hover::after {
-    opacity: 0.9
+    opacity: 0.9;
 }
 
 .going-left,
 .coming-left {
-    transform:
-        translateX(calc(-1 * var(--project-animateX)));
-    opacity: 0
+    transform: translateX(calc(-1 * var(--project-animateX)));
+    opacity: 0;
 }
 
 .going-right,
 .coming-right {
-    transform:
-        translateX(var(--project-animateX));
-    opacity: 0
+    transform: translateX(var(--project-animateX));
+    opacity: 0;
 }
 
 .select-project-type-wrap {
     display: flex;
-    border-radius: 10px;
+    border-radius: 15px;
     padding: 0 2px;
     border: 1px solid var(--card-border);
     position: relative;
@@ -437,8 +462,8 @@ button[disabled]:hover {
     margin: 5px;
     bottom: 0;
     top: 0;
-    border-radius: 10px;
-    transition: 0.5s;
+    border-radius: 12px;
+    transition: 0.2s;
     width: 65px;
     background: var(--card-bg);
 }
@@ -450,25 +475,32 @@ button[disabled]:hover {
     min-width: 65px;
     text-align: center;
     border: 1px dashed transparent;
-    transition: 0.2s;
     border-radius: 10px;
     color: rgba(255, 255, 255, 0.8);
 }
 
 .select-project-type:hover {
-    border: 1px dashed var(--card-border-intense);
+    color: white;
+    font-style: italic;
 }
 
 .select-project-type.selected {
     color: rgba(255, 255, 255, 1);
+    font-style: italic;
 }
 
+.animate {
+    transition: 0.7s opacity, 0.5s transform;
+}
 .animate-hidden {
     opacity: 0;
     transform: translateY(3px) scale(0.99);
 }
+.animate-hidden#visual {
+    transform: translateY(3px);
+}
 
-@media only screen and (max-width:1000px) {
+@media only screen and (max-width: 1000px) {
     .projects {
         padding: 0;
     }
@@ -479,15 +511,15 @@ button[disabled]:hover {
     }
 }
 
-@media only screen and (min-width:700px) {
+@media only screen and (min-width: 700px) {
     .projects {
         flex-flow: wrap;
         flex-wrap: wrap;
-        flex-direction: row
+        flex-direction: row;
     }
 
     .box {
-        width: 46% !important
+        width: 46% !important;
     }
 }
 
@@ -495,6 +527,12 @@ button[disabled]:hover {
     h1 {
         display: flex;
         flex-direction: column-reverse;
+    }
+    
+    /* i hate to have to do this */
+    .title::after {
+        left: 0; 
+        top: 51.5px;
     }
 
     .links a svg,

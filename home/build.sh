@@ -1,1 +1,1 @@
-bun build --minify ./src/main.ts --outdir ./build/ --sourcemap external
+bun build --minify ./src/main.ts --outdir ./build/ --sourcemap=external
