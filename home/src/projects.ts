@@ -19,11 +19,11 @@ export const projects: Projects = [
   },
   {
     name: "???",
-    description: "EP? Album?",
+    description: "Single",
     img: "/imgs/comingsoon",
     link: "#nicetry",
     type: "music",
-    metadata: { tracks: null, date: "2025", time: null },
+    metadata: { tracks: null, date: "Jan 2026", time: null },
     class: "new",
   },
   {
