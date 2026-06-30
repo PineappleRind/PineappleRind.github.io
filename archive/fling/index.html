@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation | Fling</title>
+    <link rel="stylesheet" href="/archive/fling/styles.css">
+    <style>
+.active{color:#fff!important;background:#364161!important;transform:translateX(1px)!important;display:block}a:not(.active){color:rgba(255,255,255,.767)!important}
+    </style>
+</head>
+<body>
+    <div class="left-align">
+       <div id="sidebar">
+          <a class="active" id="afling" href="#fling">
+             <div class="sidebar-item">To top</div>
+          </a>
+          <a id="ainstallation" href="#installation">
+             <div class="sidebar-item">Installation</div>
+          </a>
+          <a href="#usage">
+             <div class="sidebar-item">Usage</div>
+          </a>
+          <a href="#params">
+             <div class="sidebar-item">Parameters/Settings</div>
+          </a>
+          <a href="#example">
+             <div class="sidebar-item">Example of initialization</div>
+          </a>
+          <a href="#effects">
+             <div class="sidebar-item">Animation types</div>
+          </a>
+       </div>
+    </div>
+    <div id="readme">
+       <section id="fling">
+          <h1 data-fling="slide">fling.js<i class="small">v0-alpha</i></h1>
+          <p data-fling="rotate" data-fling-duration="300" data-fling-letters="true">An open-source, lightweight, easy-to-use text animation library for web.</p>
+          <!--<div class="badges">-->
+            <!--<a data-fling="scale" data-fling-delay="100" href="https://opensource.org/licenses/mit-license.php" title=""><img src="https://badges.frapsoft.com/os/mit/mit.svg?v=103" alt="MIT Licence" /></a>-->
+            <!--<a data-fling="scale" data-fling-delay="200" href="https://GitHub.com/PineappleRind/fling/contributors/" title=""><img src="https://img.shields.io/github/contributors/PineappleRind/fling" alt="GitHub contributors" /></a>-->
+            <!--<a data-fling="scale" data-fling-delay="300" href="https://GitHub.com/PineappleRind/fling/releases/" title=""><img src="https://img.shields.io/github/release/PineappleRind/fling.svg" alt="GitHub release" /></a>-->
+          <!--</div>-->
+       </section>
+       <section id="installation">
+          <h2> Installation</h2>
+          <p> I currently do not have this plugin on NPM or CDNJS, so if you want to install you will have to download the code.</p>
+          <p>
+             <a href="https://github.com/PineappleRind/fling/blob/master/src/index.js" title="">Minified</a>
+             <a href="https://github.com/PineappleRind/fling/blob/master/src/index.js" title="">Unminified</a>
+          </p>
+       </section>
+       <section id="usage">
+          <h2> Usage</h2>
+          <p> Initialize Fling with the <code>fling()</code> function, and pass an HTML element (or multiple in an array) and an object into it.</p>
+          <pre class="language-js">
+                    <code class="language-js">
+<span class="token func">fling</span>(<span class="token str">'#elementId', </span>{
+   <span class="token var">effect: </span><span class="token str">"rotate"</span>,
+   <span class="token var">delay: </span><span class="token int">50</span>,
+   <span class="token var">duration: </span><span class="token int">500</span>,
+   <span class="token var">letters: </span><span class="token bool">true</span>
+})
+                    </code>
+                </pre>
+          <h3>HTML Attributes are partially supported.</h3>
+          <p>To use Fling with HTML attributes:</p>
+          <pre class="language-html">
+                    <code class="language-html">
+<span class="token punc">&lt;</span><span class="token tag">h1</span> <span class="token attr">data-fling</span><span class="token attr-value">="slide"</span> <span class="token attr">data-fling-delay</span><span class="token attr-value">="100"</span> <span class="token attr">data-fling-duration</span><span class="token attr-value">="500"</span> <span class="token attr">data-fling-letters</span><span class="token attr-value">="true"</span><span class="token punc">&gt;</span><span class="token">Text to Animate</span><span class="token punc">&gt;&lt;/</span><span class="token tag">h1</span><span class="token punc">&gt;</span>
+                    </code>
+                </pre>
+          <p> The <code>data-fling</code> attribute value should be one of the animation types listed below.</p>
+          <p> The <code>data-fling-letters</code> attribute value should be a boolean.</p>
+          <p> The <code>data-fling-delay</code> and <code>data-fling-duration</code> attribute values should be an integer.</p>
+
+          <b>The only necessary attribute to include is <code>data-fling</code>. The rest are optional.</b>
+       </section>
+       <section id="params">
+          <h2>Parameters/Settings</h2>
+          <p>
+          <table>
+             <tr>
+                <th>Parameter</th>
+                <th>Description</th>
+             </tr>
+             <tr>
+                <td>Effect</td>
+                <td>The animation effect (a string). <a href="#effects" style="color:white">Listed below.</a></td>
+             </tr>
+             <tr>
+                <td>Delay</td>
+                <td>Animation delay. An integer, in milliseconds. Minimum value is 1.</td>
+             </tr>
+             <tr>
+             <tr>
+                <td>Duration</td>
+                <td>Animation duration. An integer, in milliseconds. </td>
+             </tr>
+             <tr>
+                <td>Letters (optional)</td>
+                <td>Setting this to <code>true</code> will individually animate each letter in the element. By default, this setting is <code>false</code>.</p></td>
+             </tr>
+          </table>
+       </section>
+       <section id="example">
+          <h2>  Example of Initialization</h2>
+          <pre class="language-html">
+                <code class="language-html">
+<span class="token punc">&lt;</span><span class="token tag">h1</span> <span class="token attr">id</span><span class="token attr-value">="h1"</span><span class="token punc">&gt;</span><span class="token">Text to Animate</span><span class="token punc">&lt;/</span><span class="token tag">h1</span><span class="token punc">&gt;</span>
+<span class="token punc">&lt;</span><span class="token tag">script </span><span class="token attr">src</span><span class="token attr-value">="https://fling.gq/src/index.min.js"</span><span class="token punc">&gt;&lt;/</span><span class="token tag">script</span><span class="token punc">&gt;</span>
+<span class="token punc">&lt;</span><span class="token tag">script</span><span class="token punc">&gt;</span>
+<div class="language-js">  <span class="token func">fling</span>(<span class="token str">'#elementId',</span>{
+    <span class="token var">effect: </span><span class="token str">"rotate"</span>,
+    <span class="token var">delay: </span><span class="token int">50</span>,
+    <span class="token var">duration: </span><span class="token int">500</span>,
+    <span class="token var">letters: </span><span class="token bool">true</span>
+  })</div><span class="token punc">&lt;/</span><span class="token tag">script</span><span class="token punc">&gt;</span>
+                </code>
+            </pre>
+       </section>
+       <section id="effects"><h2> Animation types</h2>
+       <table>
+          <tr>
+             <th>Animation</th>
+             <th>Description</th>
+          </tr>
+          <tr>
+             <td>slide</td>
+             <td>Slides from below</td>
+          </tr>
+          <tr>
+             <td>scale</td>
+             <td>Scales the text from the center</td>
+          </tr>
+          <tr>
+             <td>opacity</td>
+             <td>Fades the text in</td>
+          </tr>
+          <tr>
+            <td>rotate</td>
+            <td>Rotates the text in counterclockwise</td>
+         </tr>
+       </table>
+       <p style="font-size:12px;">Made by PineappleRind</p>
+    </div></section>
+    <div class="break"></div>
+    <script src="src/index.js"></script>
+    <script>
+const scrollLink = document.querySelectorAll('a[href^="#"]');
+const section = document.querySelectorAll('section');
+const sections = {};
+let identCounter = 0;
+
+scrollLink.forEach(item => {
+    item.addEventListener('click', (e) => {
+        let targetBlock = document.querySelector(e.getAttribute("href"));
+        e.preventDefault()
+        window.scrollTo({
+            top: targetBlock.offsetTop,
+            behavior: 'smooth'
+        });
+    });
+})
+
+Array.from(section).forEach((e) => {
+    sections[e.id] = e.offsetTop;
+});
+
+window.onscroll = () => {
+    let scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
+    for (identCounter in sections) {
+        if (sections[identCounter] <= scrollPosition) {
+            document.querySelector('.active').setAttribute('class', ' ');
+            document.querySelector('a[href*=' + identCounter + ']').setAttribute('class', 'active');
+        }
+    }
+};
+
+    </script>
+</body>
+</html>

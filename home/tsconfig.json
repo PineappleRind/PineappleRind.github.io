@@ -1,8 +1,8 @@
 {
-    "compilerOptions": {
-        "lib": ["es2017", "dom"],
-        "target": "es2015",
-        "outDir": "./build",
-        "sourceMap": true
-    }
+	"compilerOptions": {
+		"lib": ["es2021", "dom"],
+		"target": "es2015",
+		"outDir": "./build",
+		"sourceMap": true
+	}
 }

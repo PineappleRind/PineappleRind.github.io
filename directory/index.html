@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="PineappleRind">
+    <meta name="description" content="frontend web developer & musician">
+    <title>PineappleRind</title>
+    <link rel="stylesheet" href="/home/css/styles.css">
+    <link rel="stylesheet" href="/directory/styles.css">
+    <!--search console-->
+    <meta name="google-site-verification" content="Z_UlT5tdYsTxPy4urVE5b9aIB3gfW6ZOaJNZwGd5jrU" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/2485b4b6f4.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="visual">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 121">
+          <defs>
+            <linearGradient id="a" x1="0" x2="0" y1="1" y2="0">
+              <stop offset="0" stop-color="rgba(250, 25, 0, 1)"/>
+              <stop offset="1" stop-color="rgba(255, 105, 0, 1)"/>
+            </linearGradient>
+            <linearGradient id="b" x1="0" x2="0" y1="1" y2="0">
+              <stop offset="0" stop-color="rgba(250, 5, 0, 1)"/>
+              <stop offset="1" stop-color="rgba(255, 170, 100, 1)"/>
+            </linearGradient>
+          </defs>
+          <path fill="url(#b)" d="M1-21h16c16 0 48 0 80 11s64 33 96 42 64 4 96 11c32 6 64 24 96 15s82-43 114-44v86H290c-32 0-289-4-291 0V-21Z" style="opacity:.15;stroke-width:1" transform="translate(1 21)"/>
+        </svg>
+    </div>
+
+    <div class="inner animate-hidden">
+        <article>
+            <div class="title-box-for-layout-purposes">
+                <p><a href="/" class="nostyle">&larr; return to familiarity</a></p>
+                <span class="title animate animate-hidden" style="display:flex">pıneapplerınd</span>
+                <p style="text-align: right;">public web project directory</p>
+            </div>
+            <!--<p>Most of these are pretty old.</p>-->
+            <h2>Sites</h2>
+            <ul>
+                <li>This website ᴖᴖ &nbsp; Blue version 2023; orangified 2025. Updated 2026.</li>
+                <li>2021. <a href="/bezier-visualizer/">Bezier Visualizer</a>. Visualize a manipulable, animated Bezier curve with any amount of control points.</li>
+                <li>2021 (updated 2025). <a href="/archive/box-drawings/">Box Drawings</a>. Wrap your text in a box made of unicode box drawing characters.</li>
+                <li>2022 (updated 2023). <a href="/wiggle/">Wiggle Text Generator</a>. Make a string of text that appears to be in the shape of a wiggle.</li>
+                <li>2021 (updated 2022). <a href="/social-credit/">Social Credit Quiz</a>. Inspired by the Internet meme, this quiz tests your loyalty to the CCP.</li>
+                <li>2021. <a href="/text-stats/">Text Statistics</a>. Basic letter, word, and sentence counter.</li>
+                <li>2022. <a href="/algorithms/sine-wave/">Sine Wave Visualizer</a>. Relax with Lissajous curves (if you can figure out the UI).</li>
+            </ul>
+            <h2>Libraries</h2>
+            <ul>
+                <li>December 2022. <a href="/libraries/blizzard/">Blizzard</a>. An instant snowstorm on your website.</li>
+                <li>October 2022. <a href="/libraries/wobbletext/example/">WobbleText</a>. The only library to animate wobbles into your text. </li>
+                <li>October 2021. <a href="/libraries/bigsur-modal/">bigsur-modal</a>. MacOS Big Sur-style modals.</li>
+                <li>May 2021. <a href="/libraries/bigsur-notif/demo/">bigsur-notif</a>. MacOS Big Sur-style notifications (incomplete).</li>
+                <li>April 2021. <a href="/archive/fling/">Fling.js</a>. An easy-to-use letter-by-letter text animation library.</li>
+            </ul>
+     <p>
+        </article>
+     </div>
+
+
+     <div class="background-amdg-container" inert>
+        <div class="wrapper-amdg-container">
+            <p class="amdg" id="amdgInitialTarget">A<span>d </span>M<span>aiorem </span>D<span>ei </span>G<span>loriam</span></p>
+            <p><i>Unto the Greater Glory of God</i></p>
+        </div>
+    </div>
+    <footer>
+        <p class="amdg" id="amdg">A<span>.</span>M<span>.</span>D<span>.</span>G<span>.</span></p>
+    </footer>
+    <script>
+      for (const a of document.querySelectorAll("a:not(.nostyle)")) a.target = "_blank"
+    </script>
+    <script src="/home/build/main.js"></script>
+</body>
+
+</html>
