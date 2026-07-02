@@ -1,12 +1,7 @@
-const amdgStartingPoint = document.querySelector(
-	"#amdg",
-) as HTMLParagraphElement;
-const amdgTarget = document.querySelector(
-	"#amdgInitialTarget",
-) as HTMLParagraphElement;
-const amdgBackground = document.querySelector(
-	".background-amdg-container",
-) as HTMLDivElement;
+import { $, createElement } from "./util";
+const amdgStartingPoint = $("#amdg") as HTMLParagraphElement;
+const amdgTarget = $("#amdgInitialTarget") as HTMLParagraphElement;
+const amdgBackground = $(".background-amdg-container") as HTMLDivElement;
 const amdgAnimationSettings = {
 	duration: 900,
 	fill: "forwards" as FillMode,
@@ -14,17 +9,6 @@ const amdgAnimationSettings = {
 };
 let amdgAnimationOngoing = false;
 let amdgAnimationRunCount = 0;
-
-function createElement(
-	type: string,
-	attrs?: Record<string, string>,
-	value?: string,
-) {
-	let el = document.createElement(type);
-	if (attrs) for (const key in attrs) el.setAttribute(key, attrs[key]);
-	el.innerHTML = value || "";
-	return el;
-}
 
 amdgStartingPoint.onclick = () => {
 	if (amdgAnimationOngoing) return;
@@ -41,7 +25,7 @@ async function completeAMDGTransition() {
 		const newElement = await transitionToUp();
 		// Solidification is necessary because
 		// the transition relies on text-align center.
-		// This is conceptually easier to behold.
+		// This method is conceptually easier to behold.
 		const solidified = await solidifyNewElement(newElement);
 		await expandText(solidified);
 		await fadeOutSolidified(solidified);
@@ -58,13 +42,16 @@ async function completeAMDGTransition() {
 			[{ opacity: 1 }, { opacity: 0 }],
 			amdgAnimationSettings,
 		);
-		(
-			document.querySelector(".wrapper-amdg-container") as HTMLDivElement
-		).animate([{ opacity: 1 }, { opacity: 0 }], amdgAnimationSettings);
+		($(".wrapper-amdg-container") as HTMLDivElement).animate(
+			[{ opacity: 1 }, { opacity: 0 }],
+			amdgAnimationSettings,
+		);
 		amdgStartingPoint.style.visibility = "visible";
 		fadeIn(amdgStartingPoint);
 		amdgBackground.setAttribute("inert", "");
-		window.removeEventListener("pointerup", listener);
+
+		amdgBackground.removeEventListener("pointerup", listener);
+		window.removeEventListener("keydown", listener);
 	};
 	amdgBackground.addEventListener("pointerup", listener);
 	window.addEventListener("keydown", listener);
@@ -185,37 +172,33 @@ async function fadeOutSolidified(solidified: HTMLElement) {
 	await solidanimation.finished;
 	solidified.remove();
 }
+
 function showRealOne() {
 	amdgTarget.parentElement!.style.visibility = "visible";
 	fadeIn(amdgTarget.parentElement!);
 
 	setTimeout(() => {
 		helpfulSibling();
-	}, 5000);
+	}, 3000);
 }
 
 function helpfulSibling() {
-	let helpfulSibling = document.querySelector(
-		".helpful-amdg-exit-notice-frater",
-	) as HTMLElement;
+	let helpfulSibling = $(".helpful-amdg-exit-notice-frater") as HTMLElement;
 	if (!helpfulSibling) {
 		helpfulSibling = createElement("small", {
 			class: "helpful-amdg-exit-notice-frater",
 		});
 		amdgTarget.parentElement!.append(helpfulSibling);
 	} else fadeIn(helpfulSibling, { duration: 2000 });
-
-	let thatMessageGutenburg = "Click / tap anywhere to exit";
-	if (amdgAnimationRunCount >= 3 * 1)
-		thatMessageGutenburg = "You know the drill:)";
-	if (amdgAnimationRunCount >= 3 * 2)
-		thatMessageGutenburg = 'Check out "marimba" by favbea - good song';
-	if (amdgAnimationRunCount >= 3 * 3)
-		thatMessageGutenburg = "There are no other secret messages";
-	if (amdgAnimationRunCount === Math.PI)
-		thatMessageGutenburg =
-			"Look at you browsing the code. I wasn't lying. (except for this message - but most people can't see this.)";
-	helpfulSibling.innerText = thatMessageGutenburg;
+	const thoseMessages = [
+		"Click / tap anywhere to exit",
+		"You know the drill:)",
+		'Check out "marimba" by favbea - good song',
+		"There are no other secret messages",
+	];
+	const detent = Math.floor(amdgAnimationRunCount / 3); // detents @ 0, 3, 6, 9 animationRunCount
+	helpfulSibling.innerText =
+		thoseMessages[Math.min(detent, thoseMessages.length - 1)];
 }
 
 function fadeIn(element: Element, additionalOptions: any = {}) {

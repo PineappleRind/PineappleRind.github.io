@@ -1,9 +1,8 @@
 /* This comment is NOt a complaint about code quality, for it does not matter at this time.
  */
+import { $, $$ } from "./util";
 import "./amdg.ts";
-
-const $ = document.querySelector.bind(document);
-const $$ = (el: string): NodeListOf<Element> => document.querySelectorAll(el);
+import "./ai.ts";
 
 /********* animation *********/
 for (const [i, element] of Array.from(

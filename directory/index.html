@@ -21,7 +21,7 @@
 </head>
 
 <body>
-    <div id="visual">
+    <div id="visual" class="animate-hidden">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 121">
           <defs>
             <linearGradient id="a" x1="0" x2="0" y1="1" y2="0">
@@ -63,20 +63,27 @@
                 <li>May 2021. <a href="/libraries/bigsur-notif/demo/">bigsur-notif</a>. MacOS Big Sur-style notifications (incomplete).</li>
                 <li>April 2021. <a href="/archive/fling/">Fling.js</a>. An easy-to-use letter-by-letter text animation library.</li>
             </ul>
-     <p>
+        <p>
         </article>
+        <br/>
+        <footer class="animate-hidden">
+            <div>
+                <p id="aiNotice">AI notice</p>
+                <span>•</span>
+                <p class="amdg" id="amdg">A<span>.</span>M<span>.</span>D<span>.</span>G<span>.</span></p>
+                <!--<span>•</span>
+                <p>Privacy</p>-->
+            </div>
+        </footer>
      </div>
 
 
-     <div class="background-amdg-container" inert>
+    <div class="background-amdg-container" inert>
         <div class="wrapper-amdg-container">
             <p class="amdg" id="amdgInitialTarget">A<span>d </span>M<span>aiorem </span>D<span>ei </span>G<span>loriam</span></p>
-            <p><i>Unto the Greater Glory of God</i></p>
+            <p><i>For the Greater Glory of God</i></p>
         </div>
     </div>
-    <footer>
-        <p class="amdg" id="amdg">A<span>.</span>M<span>.</span>D<span>.</span>G<span>.</span></p>
-    </footer>
     <script>
       for (const a of document.querySelectorAll("a:not(.nostyle)")) a.target = "_blank"
     </script>
