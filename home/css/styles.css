@@ -69,16 +69,16 @@ article li > p {
 article li::marker {
 	color: var(--fg-l4);
 }
-article p.star {
+article .star {
 	position: relative;
 	color: var(--fg-l0);
 }
-article p.star::before {
+article .star::after {
 	content: "★";
 	color: var(--fg-accent);
 	position: absolute;
-	left: -1.6rem;
-	scale: 1.4;
+	left: -2.4rem;
+	scale: 1.74;
 	text-shadow: 0 0 20px var(--fg-accent);
 	animation:
 		starry 17s linear infinite,
@@ -365,4 +365,35 @@ blockquote {
 	border-left: 2px solid var(--fg-l3);
 	color: var(--fg-l3);
 	font-style: italic;
+}
+select {
+	max-width: 15ch;
+}
+.trumpetTruck {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+@media screen and (max-width: 600px) {
+	.trumpetTruck {
+		flex-wrap: wrap;
+		margin-top: 3rem;
+	}
+	.star::after {
+		top: 1.7rem;
+	}
+}
+.trumpetTruck p {
+	min-width: 20ch;
+}
+.trumpetTruck img {
+	height: 5rem;
+	border-radius: 1rem;
+	border: 1px solid var(--bg-l2);
+	margin-right: 0.7rem;
+	display: block;
+	aspect-ratio: 1 / 1;
+	background: url(/imgs/TRUMPETTRUCK.jpg);
+	background-size: cover;
+	content: "";
 }
