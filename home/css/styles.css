@@ -57,7 +57,7 @@ h1 {
 article {
 	text-shadow: 0 0 10px var(--bg-l0);
 	max-width: 70ch;
-	margin-inline: 2rem;
+	margin-inline: 1rem;
 }
 article p,
 article li {
