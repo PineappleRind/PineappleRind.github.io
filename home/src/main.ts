@@ -19,7 +19,7 @@ for (const [i, element] of Array.from(
 
 (() => {
 	if (window.location.pathname !== "/") return;
-	const date = () => new Date("2026-06-30T18:00:00Z").toLocaleDateString();
+	const date = () => new Date("2026-07-02T18:00:00Z").toLocaleDateString();
 	$("#insertDateHerePls").innerText = date();
 
 	let artistURLs = {

@@ -1,8 +1,4 @@
 @import "theme.css";
-a {
-	text-decoration: none;
-}
-
 html {
 	background: var(--bg-l0);
 	overscroll-behavior: none;
